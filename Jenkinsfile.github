@@ -1,0 +1,84 @@
+/*
+*
+*  MIT License
+*
+*  (C) Copyright [2023] Hewlett Packard Enterprise Development LP
+*
+*  Permission is hereby granted, free of charge, to any person obtaining a
+*  copy of this software and associated documentation files (the "Software"),
+*  to deal in the Software without restriction, including without limitation
+*  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+*  and/or sell copies of the Software, and to permit persons to whom the
+*  Software is furnished to do so, subject to the following conditions:
+*
+*  The above copyright notice and this permission notice shall be included
+*  in all copies or substantial portions of the Software.
+*
+*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+*  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+*  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+*  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+*  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+*  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+*  OTHER DEALINGS IN THE SOFTWARE.
+*
+ */
+// Jenkinsfile to push docs-shs repo to github
+@Library('csm-shared-library') _
+
+// Disable pr-merge builds
+if ( env.BRANCH_NAME ==~ ~"^PR-\\d+" ) {
+    currentBuild.result = 'SUCCESS'
+    echo "Pull-Requests are not built for docs-shs; this is a no-op build."
+    return
+}
+
+pipeline {
+    agent {
+        label "metal-gcp-builder"
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: "10"))
+        timestamps()
+    }
+
+    environment {
+        RELEASE_NAME = "shs-docs"
+        PRODUCT = "shs-docs"
+        RELEASE_VERSION = sh(returnStdout: true, script: "./version.sh").trim()
+        GIT_TAG = sh(returnStdout: true, script: "git rev-parse --short HEAD").trim()
+        IS_STABLE = getBuildIsStable()
+    }
+
+    stages {
+        stage("Build") {
+            steps {
+                  withCredentials([
+                            usernamePassword(credentialsId: 'artifactory-algol60-publish', usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_TOKEN')
+                    ]) {
+                    sh "make"
+                }
+            }
+        }
+
+        stage("Publish") {
+            steps {
+                  withCredentials([
+                            usernamePassword(credentialsId: 'artifactory-algol60-publish', usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_TOKEN')
+                    ]) {
+                    script {
+                        publishSHS(artifactoryRepo: 'user-shs-docs', isStable: env.IS_STABLE, version: env.RELEASE_VERSION, pattern: "${WORKSPACE}/dist/shs-docs-"+env.RELEASE_VERSION+".tar.gz")
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Own files so jenkins can clean them up later
+            postChownFiles()
+        }
+    }
+}
