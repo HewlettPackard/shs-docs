@@ -1,11 +1,11 @@
 
-### Post-install tasks
+# Post-install tasks
 
 The `slingshot-network-config` RPM provides template configuration files to be used to create site-specific configuration files.
 The configuration templates are found in the `/opt/slingshot/slingshot-network-config/default/share` directory, while the binaries and scripts are found in the `/opt/slingshot/slingshot-network-config/default/bin` directory.
 When `slingshot-network-config` is installed, the RPM creates a link from the specific installed version of the RPM to a `default` link so that it is easy for customers to reference files between releases.
 
-#### Firmware management
+## Firmware management
 
 HPE Slingshot provides a tool, `slingshot-firmware`, for managing the firmware of a network interface. The utility must be run as `root` since this is a privileged operation.
 
@@ -13,7 +13,7 @@ It is recommended that the version of the firmware match the recommended values 
 
 It is highly recommended that the firmware for all managed devices on all nodes should be updated with this utility after a new install or upgrade of this software distribution.
 
-##### Usage
+### Usage
 
 ```screen
 user@host:/ # slingshot-firmware --help
@@ -53,7 +53,7 @@ The `slingshot-firmware` utility limits firmware management to devices specified
 
 `slingshot-firmware` provides functionality for two actions: `update` and `query`.
 
-##### Query
+### Query
 
 `query` is the action associated with device discovery, and device attribute discovery. The `query` action allows a user to query specific device attributes from a device. The list of supported attributes are given as follows:
 
@@ -71,7 +71,7 @@ hsn1:
    version: 16.28.2006
 ```
 
-##### Update
+### Update
 
 `update` is the action associated with device firmware updates and device firmware configuration. As demonstrated above with the `-D | --device` global option with `query`, the `update` action can be run on a specific device, or on all managed devices. An example using the `update` action is provided below:
 
@@ -132,7 +132,7 @@ Configurations:                              Default         Current         Nex
 The '*' shows parameters with next value different from default/current value.
 ```
 
-#### Generic Slingshot configuration
+## Generic Slingshot configuration
 
 The `slingshot-network-config` RPM provides example configuration files, binaries, and scripts that are used to configure the network adapters for use on an HPE Slingshot fabric.
 The example scripts are provided with assumptions made regarding the names of the network adapters used in the system.
@@ -142,7 +142,7 @@ For example, if two network adapters on a host are connected to the HPE Slingsho
 
 Several aspects of the host's system and kernel configuration should be modified for optimal performance. There are some modifications which are required if certain criteria are met.
 
-#### Host adapter naming
+## Host adapter naming
 
 On a Linux host, `udev` is responsible for naming system devices according to defined system and site-specific policies. The scripts provided by the `slingshot-network-config` RPM assume that the network devices are named according to a specific convention, `hsn<index>`.
 To implement this policy, this `slingshot-network-config` RPM provides a script and an example udev rule which can be used as-is or modified to fit a site-specific configuration.
@@ -187,7 +187,7 @@ To integrate these files into the image:
 
 If the resulting initrd is used for booting the host over the network, such as with a pxeboot, then the resultant initrd from the final step in the example should be used to boot the new image.
 
-#### Slingshot Algorithmic MAC Addressing (AMA) configuration
+## Slingshot Algorithmic MAC Addressing (AMA) configuration
 
 For network adapters connected to an HPE Slingshot fabric, it is required that the adapter should have an algorithmic MAC address (AMA) assigned to the device.
 The AMA assigned to the device is required for traffic to be routed within the HPE Slingshot fabric.
@@ -272,7 +272,7 @@ root@host ~# ip link set hsn<index> up
 
 The HSN device is now up.
 
-##### Check and Modify Interface Admin Status
+### Check and Modify Interface Admin Status
 
 These steps help in checking and changing the administrative status of a network interface to "rxtx" using `lldptool`. This might be necessary in some cases to ensure proper network functionality.
 
@@ -294,7 +294,7 @@ These steps help in checking and changing the administrative status of a network
 
   Replace `hsn<index>` with your hsn interface identifier (for example, hsn0).
 
-#### Multiple network adapters
+## Multiple network adapters
 
 If a host has multiple network adapters connected to the HPE Slingshot fabric, it is recommended that each host run the `/usr/bin/slingshot-ifroute` script. The script assumes that the network adapters follow the recommended prefix and attempts to configure the host with a routing policy required for a multi-homed network.
 Every network adapter in a multi-home configuration should be able to communicate with every other network adapter in the multi-home configuration without the use of a bridge.
@@ -312,7 +312,7 @@ As a result of the script, new routing tables and policies should be created in 
 
 The routing script should be run after all network adapters have been named by `systemd` or `udev`. As an alternative solution, the routing script can also be run as part of the `POST_UP` section of an `ifconfig` configuration file for the interface.
 
-#### HPE Slingshot configuration with Mellanox NICs
+## HPE Slingshot configuration with Mellanox NICs
 
 HPE Slingshot provides libfabric to accelerate HPC applications over an HPE Slingshot network.
 The `libfabric` RPM provides the run-time libraries while the `libfabric-devel` RPM provides the compile-time headers and libraries for compiling user applications.
@@ -347,7 +347,7 @@ root@host ~# ln -s \
   /etc/security/limits.d/99-slingshot-network.conf
 ```
 
-##### Mellanox software configuration
+### Mellanox software configuration
 
 Specific tunable parameters should be changed when operating HPC applications at scale with `libfabric`.
 To avoid connection establishment stalls on Mellanox hardware when running applications at large scale, it is recommended to increase the `recv_queue_size` parameter for the `ib_core` to `8192`.

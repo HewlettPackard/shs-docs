@@ -1,11 +1,11 @@
 
-### Install or upgrade Slingshot Host Software (SHS) on HPCM compute nodes
+# Install or upgrade Slingshot Host Software (SHS) on HPCM compute nodes
 
 This documentation provides step-by-step instructions to install and/or upgrade the Slingshot Host Software (SHS) on compute node images on an HPE Performance Cluster Manager (HPCM) using SLES15-SP4 as an example.
 
 The procedure outlined here is applicable to SLES, RHEL, and COS distributions. Refer to the System Software Requirements for Fabric Manager and Host Software section in the HPE Slingshot Release Notes for exact version support for the release.
 
-#### Process
+## Process
 
 The installation and upgrade method will depend on what type of NIC is installed on the system.
 Select one of the following procedures depending on the NIC in use:
@@ -15,7 +15,7 @@ Select one of the following procedures depending on the NIC in use:
 
 NOTE: The upgrade process is nearly identical to installation, and the proceeding instructions will note where the two processes delineate.
 
-##### Mellanox-based system install/upgrade procedure
+### Mellanox-based system install/upgrade procedure
 
 This section is for systems using Mellanox NICs.
 For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proceed to the [HPE Slingshot 200Gbps CXI NIC system install/upgrade procedure](#hpe-slingshot-200gbps-cxi-nic-system-installupgrade-procedure).
@@ -205,7 +205,7 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
 
 13. Proceed directly to the [Firmware management](#firmware-management) and [ARP settings](#arp-settings) sections of this document to complete SHS compute install.
 
-##### HPE Slingshot 200Gbps CXI NIC system install/upgrade procedure
+### HPE Slingshot 200Gbps CXI NIC system install/upgrade procedure
 
 This section is for systems using HPE Slingshot 200Gbps CXI NICs.
 For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-based system install procedure](#mellanox-based-system-installupgrade-procedure), followed by the [Firmware management](#firmware-management) section.
@@ -401,11 +401,11 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
 
 10. Apply the post-boot firmware and firmware configuration. General instructions are in the "Install compute nodes" section of the _HPE Slingshot Installation Guide for Bare Metal_.
 
-### Firmware management
+# Firmware management
 
 Mellanox NICs system firmware management is done through the `slingshot-firmware` utility.
 
-### ARP settings
+# ARP settings
 
 The following settings are suggested for larger clusters to reduce the frequency of ARP cache misses during connection establishment when using the libfabric `verbs` provider, as basic/standard ARP default parameters will not scale to support large systems.
 

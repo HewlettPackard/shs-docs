@@ -1,5 +1,5 @@
 
-### `sysctl` configuration example
+# `sysctl` configuration example
 
 The `slingshot-network-config` RPM contains an example `sysctl` configuration file shown here:
 

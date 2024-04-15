@@ -1,5 +1,5 @@
 
-### Install or upgrade compute nodes
+# Install or upgrade compute nodes
 
 The installation method will depend on what type of NIC is installed on the system.
 Select one of the following procedures depending on the NIC in use:
@@ -9,7 +9,7 @@ Select one of the following procedures depending on the NIC in use:
 
 NOTE: The upgrade process is nearly identical to the installation, and the proceeding instructions will note where the two processes delineate.
 
-#### Prerequisites for Mellanox-based system installation
+## Prerequisites for Mellanox-based system installation
 
 1. Identify the target OS distribution, and distribution version for all compute targets in the cluster. Use this information to select the appropriate Mellanox OFED (MOFED) tar file to be used for install from the URL listed in the [External Vendor Software](install_metal.md#external-vendor-software) table above. The filename typically follows this pattern: `MLNX_OFED_LINUX-<version>-<OS distro>-<arch>.tgz`.
 
@@ -30,7 +30,7 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
 
    NOTE: If the customer requires UCX on the system, then install the HPC-X solution using the recommended version provided by the [External Vendor Software](install_metal.md#external-vendor-software) table. Ensure that the HPC-X tarball matches the installed version of Mellanox OFED. In the HPC-x package, installation instructions are provided by Mellanox.
 
-#### Install via package managers (recommended)
+## Install via package managers (recommended)
 
 1. For each distribution and distribution version as collected in the first step of the prerequisite install, download the RPMs mentioned in the previous section in the Slingshot RPMs table above.
 
@@ -113,7 +113,7 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
 
    c. If the host is a compute node, and a user access node, perform steps 1 and 2, otherwise skip this step.
 
-#### Install via command line
+## Install via command line
 
 1. For each distribution and distribution version as collected in the first step of the prerequisite install, download the RPMs mentioned in the previous section (Installation | Required Material | Source | RPMs).
 

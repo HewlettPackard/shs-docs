@@ -1,9 +1,9 @@
 
-### Install 200Gbps NIC host software
+# Install 200Gbps NIC host software
 
 The 200Gbps NIC software stack includes drivers and libraries to support standard Ethernet and libfabric RDMA interfaces.
 
-#### Prerequisites for compute node installs
+## Prerequisites for compute node installs
 
 The 200Gbps NIC software stack must be installed after a base compute OS install has been completed. A list of 200Gbps NIC supported distribution installs can be found in the "Support Matrix" section under "Slingshot Host Software (SHS)" in the _HPE Slingshot Release Notes_ document. When those have been installed, then proceed with instructions for Installing 200Gbps NIC Host Software for that distribution.
 
@@ -45,7 +45,7 @@ manually loaded with the following commands:
 To complete setup, follow the fabric management procedure for Algorithmic MAC
 Address configuration.
 
-#### 200Gbps NIC support in early boot
+## 200Gbps NIC support in early boot
 
 If traffic must be passed over the 200Gbps NIC prior to the root filesystem
 being mounted (for example, for a network root filesystem using the 200Gbps NIC),
@@ -68,7 +68,7 @@ Due to these caveats, it is recommended that the `cray-libcxi-dracut` RPM only
 be installed on systems whose configurations require 200Gbps NIC support in early
 boot.
 
-#### Check 200Gbps NIC host software version
+## Check 200Gbps NIC host software version
 
 Each 200Gbps NIC RPM has the HPE Slingshot version embedded in the release field of the
 RPM metadata. This information can be queried using standard RPM commands. The
@@ -104,7 +104,7 @@ Distribution: (none)
 The HPE Slingshot release for this version of `cray-libcxi` is 1.2.1 (SSHOT1.2.1).
 This process can be repeated for all 200Gbps NIC RPMs.
 
-#### Install validation
+## Install validation
 
 The 200Gbps NIC software stack install procedure should make all 200Gbps NIC devices
 available for Ethernet and RDMA. Perform the following steps to validate the
@@ -132,7 +132,7 @@ Check for 200Gbps NIC Ethernet network devices.
 hsn0 is CXI interface
 ```
 
-#### 200Gbps NIC firmware management
+## 200Gbps NIC firmware management
 
 See the [Firmware Management](#firmware-management) section for more information on how to update firmware.
 

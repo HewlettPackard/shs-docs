@@ -1,19 +1,19 @@
 
-## Configure Soft-RoCE
+# Configure Soft-RoCE
 
 Remote direct memory access (RDMA) over Converged Ethernet (RoCE) is a network protocol that enables RDMA over an Ethernet network.
 RoCE can be implemented both in the hardware and in the software.
 Soft-RoCE is the software implementation of the RDMA transport. RoCE v2 is used for HPE Slingshot 200Gbps NICs.
 
-### Soft-RoCE on HPE Slingshot 200Gbps NICs
+## Soft-RoCE on HPE Slingshot 200Gbps NICs
 
-#### Prerequisites
+### Prerequisites
 
 1. `cray-cxi-driver` RPM package must be installed.
 2. `cray-rxe-driver` RPM package must be installed.
 3. HPE Slingshot 200Gbps NIC Ethernet must be configured and active.
 
-#### Configuration
+### Configuration
 
 The following configuration is on the node image, and modifying the node image varies depending on the system management solution being used (HPE Cray EX or HPCM).
 
@@ -84,11 +84,11 @@ Follow the relevant procedures to achieve the needed configuration. Contact a sy
 NOTE: Soft-RoCE device creation is not persistent across reboots.
 The `rxe_init.sh` script must be run on every boot after the HPE Slingshot 200Gbps NIC Ethernet device is fully programmed with links up and AMAs assigned.
 
-### Lustre Network Driver (LND) ko2iblnd configuration
+## Lustre Network Driver (LND) ko2iblnd configuration
 
 The ko2iblnd.ko changes are needed for better Soft-RoCE performance on LNDs.
 
-#### Compute Node tuning for Soft-RoCE
+### Compute Node tuning for Soft-RoCE
 
 Tuning on compute node can be achieved in two ways. Follow the steps that work best for the system in use.
 
@@ -160,7 +160,7 @@ Tuning on compute node can be achieved in two ways. Follow the steps that work b
       /sys/module/ko2iblnd/parameters/wrq_sge:1
       ```
 
-#### E1000 ko2iblnd tuning for Soft-RoCE
+### E1000 ko2iblnd tuning for Soft-RoCE
 
 Configure clients to use Soft-RoCE and configure storage with MLX HCAs running HW RoCE.
 

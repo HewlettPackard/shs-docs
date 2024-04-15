@@ -1,8 +1,8 @@
-# DOCS-SHS
+# shs-docs
 
 ## Overview
 
-The docs-shs repository holds the documentation and documentation publication tooling
+The shs-docs repository holds the documentation and documentation publication tooling
 for the HPE Slingshot Host Software (SHS) product.
 
 ## Documentation Source

@@ -1,5 +1,5 @@
 
-## Install SHS on CSM release 1.4 or newer - Install and Upgrade Framework
+# Install SHS on CSM release 1.4 or newer - Install and Upgrade Framework
 
 The Slingshot Host Software (SHS) distribution provides firmware, diagnostics, and the network software stack for hosts which communicate using the Slingshot network.
 
@@ -28,21 +28,21 @@ IUF will perform the following tasks for a release of SHS:
 
 IUF uses a variety of CSM and SAT tools when performing these tasks. The [IUF section](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) of the [Cray System Management Documentation](https://cray-hpe.github.io/docs-csm/) describes how to use these tools directly if it is desirable to use them instead of IUF.
 
-### IUF Stage Details for SHS
+## IUF Stage Details for SHS
 
 This section describes any SHS details that an administrator may need to be aware of before executing IUF stages. Entries are prefixed with **Information** if no administrative action is required or **Action** if an administrator may need to perform tasks outside of IUF.
 
-#### update-cfs-config
+### update-cfs-config
 
 **Action**: Before running this stage, make any site-local SHS configuration changes so the following stages run using the desired SHS configuration values. See [Operational activities](#operational-activities) for more information.
 
-## Install SHS on CSM release 1.3 or prior
+# Install SHS on CSM release 1.3 or prior
 
 The SHS distribution provides firmware, diagnostics, and the network software stack for hosts which communicate using the Slingshot network.
 
 For upgrades, the manual steps or the Compute Node Environment (CNE) installer tool can be used. See [SHS upgrade with CNE installer](#shs-upgrade-with-cne-installer) for more information on the `cne-install` method.
 
-### Common requirements of SHS
+## Common requirements of SHS
 
 - SUSE Linux Enterprise Operating System for HPE Cray EX product must be installed.
 - System Admin Toolkit (SAT) product must be installed and configured.
@@ -53,17 +53,17 @@ For upgrades, the manual steps or the Compute Node Environment (CNE) installer t
 - SHS CFS plays should be one of the first plays run in the configuration.
 - SHS CFS installation must occur before any product with dependencies on the network stack installs software.
 
-#### Requirements for new installations or upgrades of SHS
+### Requirements for new installations or upgrades of SHS
 
 - All image and node targets must be clear of software with dependencies on the network stack prior to the execution of the SHS CFS play.
 
-### SHS upgrade with CNE installer
+## SHS upgrade with CNE installer
 
 The CNE installer (`cne-install`) tool can only be used to upgrade SHS in this release. `cne-install` performs all of the manual steps shown in the [Install product stream](#install-product-stream) and [Operational activities](#operational-activities) sections of the upgrade procedure.
 
 Refer to the "Compute Node Environment (CNE) Installer" section of the [HPE Cray EX System Software Getting Started Guide (S-8000)](https://www.hpe.com/support/ex-S-8000) for more information about the tool.
 
-### Install product stream
+## Install product stream
 
 1. Start a typescript to capture the commands and output from this installation.
 
@@ -162,11 +162,11 @@ Refer to the "Compute Node Environment (CNE) Installer" section of the [HPE Cray
 
 SHS now supports installation via HPE Cray EX System Software CFS. Proceed to the next section to install the software via HPE Cray EX System Software CFS. Otherwise, proceed to the [Legacy Install Procedure for non-CFS based installs](#legacy-install-procedure-for-non-cfs-based-installs) section.
 
-### Operational activities
+## Operational activities
 
 SHS uses the HPE Cray EX System Software Configuration Framework Service to install, upgrade, and configure nodes or images. The following procedures will provide instructions on how to add the SHS CFS components to your CFS configurations.
 
-#### SHS CFS variable reference
+### SHS CFS variable reference
 
 The following Ansible variables are publicly exposed for use by customers or administrators with SHS CFS playbooks:
 
@@ -195,11 +195,11 @@ The following Ansible variables are publicly exposed for use by customers or adm
   type: `string`
   description: sets the target platform to use when defining repository URIs. Available choices are one of [`cos-2.4`, `cos-2.5`, `cos-2.6`, `csm-1.3.0`, `csm-1.4.0`, `csm-1.5.0`]
 
-#### Setup
+### Setup
 
 Create an `integration-<RELEASE>` branch using the imported branch from the SHS installation. The imported branch will be reported in the cray-product-catalog and may be found in the cray/slingshot-host-software-config-management repository. The imported branch may be used as a base branch. The imported branch from the installation should not be modified. It is recommended that a branch is created from the imported branch to customize the provided content as necessary. The following steps create an `integration-<RELEASE>` branch to accomplish this. It is required that the user has basic git workflow understanding including concepts to do `git rebase` to completion.
 
-#### Authentication credentials
+### Authentication credentials
 
 Obtain the authentication credentials needed for the git repository. Git will prompt for them when required.
 
@@ -213,7 +213,7 @@ ncn-m001# VCSUSERPW=$(kubectl get secret -n services vcs-user-credentials \
 ncn-m001# printf 'VCSUSER=%s\nVCSUSERPW=%s\n' "${VCSUSER}" "${VCSUSERPW}"
 ```
 
-#### Find targets
+### Find targets
 
 Obtain the `release` and `import_branch` from the `cray-product-catalog`.
 where `<release>` is the full or partial release version.
@@ -236,7 +236,7 @@ configuration:
 ...
 ```
 
-#### Clone
+### Clone
 
 Clone the slingshot-host-software-config-management repository and change to that working directory. Note that the `CLONE_URL` below is different than the `clone_url` and `ssh_url` reported in the previous step.
 
@@ -248,7 +248,7 @@ ncn-m001# git clone ${CLONE_URL}
 ncn-m001# cd slingshot-host-software-config-management
 ```
 
-#### References
+### References
 
 Examine the references in the local git working directory using the following command. Keep this information at hand.
 
@@ -257,7 +257,7 @@ ncn-m001# git for-each-ref \
 --sort=refname 'refs/remotes/origin/integration*' 'refs/remotes/origin/cray/slingshot-host-software/*'
 ```
 
-#### Target shell variables
+### Target shell variables
 
 Set shell variables that correspond to the desired release, working integration branch, and the base import branch.
 
@@ -279,7 +279,7 @@ ncn-m001# printf 'RELEASE=%s\nBRANCH=%s\nIMPORT_BRANCH_REF=%s\n' \
 "${RELEASE}" "${BRANCH}" "${IMPORT_BRANCH_REF}"
 ```
 
-#### Workflow decisions
+### Workflow decisions
 
 At this point, some workflow decisions need to be made. These decisions depend on repository findings and which goals are to be achieved.
 
@@ -350,7 +350,7 @@ At this point, some workflow decisions need to be made. These decisions depend o
     ncn-m001# git push -f origin
     ```
 
-##### Apply customizations
+#### Apply customizations
 
 Apply any customizations and modifications to the Ansible configuration, if required.
 These customizations should never be made to the base release branch.
@@ -367,7 +367,7 @@ ncn-m001# git commit
 ncn-m001# git push origin ${BRANCH}
 ```
 
-##### Identify commit hash
+#### Identify commit hash
 
 Identify the commit hash for this branch and store it for later use.
 This will be used when creating the CFS configuration layer.
@@ -376,12 +376,12 @@ This will be used when creating the CFS configuration layer.
 ncn-m001# export SHS_CONFIG_COMMIT_HASH=$(git rev-parse --verify HEAD)
 ```
 
-##### Configuration data defined
+#### Configuration data defined
 
 SHS configuration data is now defined in the appropriate integration branch of the slingshot-host-software-config-management repository in VCS.
 It will be used when performing the operations described in the next sections.
 
-##### Recommendations
+#### Recommendations
 
 SHS ships a single configuration for all releases, and this may result in default values that are not usable for the installed release.
 Defaults are based on the primary development platform at the time of release, so these values are subject to change over time.
@@ -436,7 +436,7 @@ shs_target_platform: "csm-1.3.0"
 These variables can be defined in multiple ways according to customer or administrator requirements.
 If they are left undefined, they will be defined by CFS plays using defaults provided in `ansible/roles/setup/defaults/main.yml`, and set by `roles/setup/tasks.yml`.
 
-#### Non-compute Node (NCN) personalization and image customization
+### Non-compute Node (NCN) personalization and image customization
 
 NCN personalization and image customization are both methods used to configure NCNs.
 NCN personalization is the process of applying product-specific configuration to NCNs post-boot.
@@ -449,7 +449,7 @@ Select one of the following procedures depending on the version of CSM in use:
 - **CSM 1.2 or earlier versions**: Proceed to the [NCN personalization](#ncn-personalization) procedure.
 - **CSM 1.3 or later versions**: Proceed to the [NCN image customization](#ncn-image-customization) procedure.
 
-#### NCN personalization
+### NCN personalization
 
 This section is only for systems using CSM 1.2 or earlier versions. For systems using CSM 1.3 or later versions, skip this section and instead proceed to the [NCN image customization](#ncn-image-customization) instructions.
 
@@ -464,7 +464,7 @@ Installation and upgrade is aimed at discussing the process and procedure for in
 
 Migration is aimed at discussing how to replace the SHS networking software stack on a NCN with a different networking stack from SHS. Only migration from systems with Mellanox NICs to systems with HPE Slingshot 200Gbps NICs is supported at this time.
 
-##### Install or upgrade with NCN personalization
+#### Install or upgrade with NCN personalization
 
 The following steps describe how to use the NCN personalization CFS configuration in conjunction with HPE Cray EX CFS software to install, update, and configure SHS provided content on NCN workers.
 
@@ -619,7 +619,7 @@ If other HPE Cray EX software products are being installed in conjunction with S
 
 If other HPE Cray EX software products are not being installed at this time, continue to the next section of this document to configure compute content.
 
-##### Migration
+#### Migration
 
 If a fresh install of the NCN worker has occurred and SHS has never been installed before on the target node, see `Install/Upgrade` section above. If SHS has never been installed, then the node can be considered to be 'clean' and does not require uninstallation of the Slingshot software stack with Mellanox NICs.
 
@@ -775,7 +775,7 @@ These steps are necessary to provide the networking drivers, management software
 
    If the modules are not listed for each worker node, and you have done the steps above, refer to `Perform NCN personalization` in the CSM documentation for NCN Personalization details.
 
-#### NCN image customization
+### NCN image customization
 
 This section is for systems using CSM 1.3 or later versions.
 For systems using CSM 1.2 or earlier versions, skip this section and proceed to the [NCN personalization](#ncn-personalization) procedure, followed by the [Compute Node Configuration](#compute-node-configuration) procedure.
@@ -857,7 +857,7 @@ At this point, SHS configuration content has been updated in HPE Cray EX System 
 
 If other HPE Cray EX software products are being installed in conjunction with SHS, refer to the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) to determine what step to perform next. If other HPE Cray EX software products are not being installed at this time, continue to the next section of this document.
 
-#### Compute node configuration
+### Compute node configuration
 
 This section provides detailed instructions on how to modify Compute CFS configurations to support installation use cases on HPE Cray EX systems. Two separate approaches are provided:
 
@@ -870,13 +870,13 @@ It is highly recommended that `sat bootprep` be used to perform these tasks. If 
 
 If `sat bootprep` is available, then follow the instructions in the "SAT Bootprep" section below and do not follow the instructions in the "Legacy Compute Node CFS procedure" section. Otherwise if `sat bootprep` is not available, then follow the instructions in the "Legacy Compute Node CFS procedure section" below and do not follow the instructions in the "SAT Bootprep" section.
 
-##### SAT Bootprep
+#### SAT Bootprep
 
 The "SAT Bootprep" section of the _HPE Cray EX System Admin Toolkit (SAT) Guide_ provides information on how to use `sat bootprep` to create CFS configurations, build images with IMS, and create BOS session templates. To include SHS software and configuration data in these operations, ensure that the `sat bootprep` input file includes content similar to that described in the following subsections.
 
 NOTE: The `sat bootprep` input file will contain content for additional HPE Cray EX software products and not only SHS. The following examples focus on SHS entries only.
 
-##### SHS configuration content
+#### SHS configuration content
 
 The `sat bootprep` input file should contain sections similar to the following to ensure SHS configuration data is used when configuring the compute image prior to boot and when personalizing compute nodes after boot. Replace `<version>` with the version of SHS desired. The version of SHS installed resides in the CSM product catalog and can be displayed with the `sat showrev` command.
 
@@ -905,7 +905,7 @@ configurations:
 
 NOTE: The `shs-integration-<version>` layer should precede the COS layer in the `sat bootprep` input file.
 
-##### Legacy compute node CFS procedure
+#### Legacy compute node CFS procedure
 
 This step should not be executed until after COS install/upgrade has finished on the system. COS provides the instructions for creating a CFS configuration for compute nodes. The procedure in this section aims at updating the existing CFS configuration for compute nodes.
 
@@ -979,7 +979,7 @@ The existing configuration will likely include other Cray EX product entries. Th
 
 At this point, SHS configuration content has been updated in HPE Cray EX System Software CFS. If other HPE Cray EX software products are being installed in conjunction with SHS, refer to the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) to determine what step to perform next. If other HPE Cray EX software products are not being installed at this time, continue to the next section of this document.
 
-#### Application node configuration
+### Application node configuration
 
 Ensure that the `Setup` section preceding this section has been completed prior to running any steps in this section.
 
@@ -1059,11 +1059,11 @@ The example steps below reference how to modify the user access node CFS configu
 
 At this point, SHS configuration content has been updated in HPE Cray EX System Software CFS. If other HPE Cray EX software products are being installed in conjunction with SHS, refer to the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) to determine what step to perform next. If other HPE Cray EX software products are not being installed at this time, continue to the next section of this document.
 
-#### Image building
+### Image building
 
 SHS provides CFS plays for the management of provided content. The process for building images, and how to create/deploy/boot images can be found within the COS, CSM, and UAN documentation.
 
-### Post-install operational tasks
+## Post-install operational tasks
 
 The firmware must be updated with each new install. The firmware can be updated using `slingshot-firmware` as provided by the `slingshot-firmware-management` package.
 
@@ -1090,9 +1090,9 @@ The firmware must be updated with each new install. The firmware can be updated 
 
 3. Firmware updates do not take effect immediately. Firmware updates will only go into operation after the device has been power-cycled. Before putting the server back into operation, it must be rebooted or power-cycled according to the administration guide for the target server. Reference the COS documentation for Compute node maintenance procedures, and the CSM documentation for NCN and UAN maintenance procedures.
 
-### Legacy install procedure for non-CFS based installs
+## Legacy install procedure for non-CFS based installs
 
-#### Updating compute and UAN image recipe
+### Updating compute and UAN image recipe
 
 See sub-section "Upload and Register an Image Recipe" under the "Image Management" section of the CSM documentation for general steps on how to download, modify, upload, and register a image recipe.
 
@@ -1248,7 +1248,7 @@ For systems equipped with Mellanox NICs, follow the instructions in 1. below. Fo
      sed -i 's/^allow_unsupported_modules 0/allow_unsupported_modules 1/' /etc/modprobe.d/10-unsupported-modules.conf
      ```
 
-#### Notes
+### Notes
 
 The following steps need to occur to build compute and UAN/UAI images prior to boot with the updated Slingshot components:
 

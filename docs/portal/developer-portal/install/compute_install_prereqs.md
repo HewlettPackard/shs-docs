@@ -1,9 +1,9 @@
 
-### Required material
+# Required material
 
 All material will be available via the source URLs provided below as part of the HPE Slingshot Release for manufacturing and internal development systems.
 
-#### Slingshot RPMs
+## Slingshot RPMs
 
 | Name                          | Contains                                                                                                        | Typical Install Target             |
 |-------------------------------|-----------------------------------------------------------------------------------------------------------------|------------------------------------|
@@ -18,7 +18,7 @@ All material will be available via the source URLs provided below as part of the
 
 Libfabric-devel is required on any host that a user would be able to compile an application for use with `libfabric`.
 
-#### External vendor software
+## External vendor software
 
 | Name                       | Contains                                    | Typical Install Target                  | Recommended Version | URL                                                                                            |
 |----------------------------|---------------------------------------------|-----------------------------------------|---------------------|------------------------------------------------------------------------------------------------|
