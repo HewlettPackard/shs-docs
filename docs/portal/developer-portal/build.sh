@@ -65,7 +65,7 @@ mkdir -m777 -p build/Markdown
 echo "Building SHS Install Guide";
 
 # This line builds the HPESC HTML bundle for the install guide
-dita -i tmp/shs_install_guide.ditamap -o build/install -f HPEscHtml5 && cp install_publication.json build/install/publication.json && cd build/install/ && zip -r crs8032_@docid_suffix@en_us.zip ./
+dita -i tmp/shs_install_guide.ditamap -o build/install -f HPEscHtml5 && cp shs_install_publication.json build/install/publication.json && cd build/install/ && zip -r crs8032_@docid_suffix@en_us.zip ./
 cd $THIS_DIR
 # This builds the PDF using DITA-OT's default PDF transform
 dita -i shs_install_guide.ditamap -o build/PDF/install -f pdf
