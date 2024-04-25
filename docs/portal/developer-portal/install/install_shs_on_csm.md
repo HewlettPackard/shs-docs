@@ -38,7 +38,7 @@ This section describes any SHS details that an administrator may need to be awar
 
 # Install SHS on CSM release 1.3 or prior
 
-The SHS distribution provides firmware, diagnostics, and the network software stack for hosts which communicate using the Slingshot network.
+The SHS distribution provides firmware, diagnostics, and the network software stack for hosts which communicate using the HPE Slingshot network.
 
 For upgrades, the manual steps or the Compute Node Environment (CNE) installer tool can be used. See [SHS upgrade with CNE installer](#shs-upgrade-with-cne-installer) for more information on the `cne-install` method.
 
@@ -47,21 +47,21 @@ For upgrades, the manual steps or the Compute Node Environment (CNE) installer t
 - SUSE Linux Enterprise Operating System for HPE Cray EX product must be installed.
 - System Admin Toolkit (SAT) product must be installed and configured.
 - Cray System Management (CSM) product must be installed and configured.
-- The Cray command line interface (CLI) tool is initialized and configured on the system. See 'Configure the Cray Command Line Interface (CLI)' section of the Cray System Management (CSM) documentation for more information.
+- The Cray CLI tool is initialized and configured on the system. See 'Configure the Cray Command Line Interface (CLI)' section of the Cray System Management (CSM) documentation for more information.
 - COS 2.3+ must be used for HPE Slingshot 200Gbps NIC installations.
-- HPE Cray EX System Software Configuration Framework Service (CFS) must be installed, and available.
+- HPE Cray EX System Software Configuration Framework Service (CFS) must be installed and available.
 - SHS CFS plays should be one of the first plays run in the configuration.
 - SHS CFS installation must occur before any product with dependencies on the network stack installs software.
 
-### Requirements for new installations or upgrades of SHS
+## Requirements for new installations or upgrades of SHS
 
-- All image and node targets must be clear of software with dependencies on the network stack prior to the execution of the SHS CFS play.
+All image and node targets must be clear of software with dependencies on the network stack prior to the execution of the SHS CFS play.
 
 ## SHS upgrade with CNE installer
 
-The CNE installer (`cne-install`) tool can only be used to upgrade SHS in this release. `cne-install` performs all of the manual steps shown in the [Install product stream](#install-product-stream) and [Operational activities](#operational-activities) sections of the upgrade procedure.
+The CNE installer (`cne-install`) tool can only be used to upgrade SHS in this release. `cne-install` performs all the manual steps shown in the [Install product stream](#install-product-stream) and [Operational activities](#operational-activities) sections of the upgrade procedure.
 
-Refer to the "Compute Node Environment (CNE) Installer" section of the [HPE Cray EX System Software Getting Started Guide (S-8000)](https://www.hpe.com/support/ex-S-8000) for more information about the tool.
+See the "Compute Node Environment (CNE) Installer" section of the [HPE Cray EX System Software Getting Started Guide (S-8000)](https://www.hpe.com/support/ex-S-8000) for more information about the tool.
 
 ## Install product stream
 
@@ -72,7 +72,7 @@ Refer to the "Compute Node Environment (CNE) Installer" section of the [HPE Cray
    ncn-m001# export PS1='\u@\H \D{%Y-%m-%d} \t \w # '
    ```
 
-2. Copy the release tar file of the target platform (cos-2.x, sle15spx, or other) to ncn-m001.
+2. Copy the release tar file of the target platform (cos-2.x, sle15spx, or other) to `ncn-m001`.
 
 3. Unzip and extract the tar file.
 
@@ -80,7 +80,7 @@ Refer to the "Compute Node Environment (CNE) Installer" section of the [HPE Cray
    ncn-m001# tar xzvf slingshot-host-software-<version>-<OS distro>_<OS Architecture>.tar.gz
    ```
 
-   where `<release>` is the release version and build number of the release tar file, and `<platform>` is the target platform.
+   `<release>` is the release version and build number of the release tar file, and `<platform>` is the target platform.
    An example of these values would be `2.0.0` for release, and `cos-2.4` for platform.
    This would result in the following command:
 
@@ -92,45 +92,45 @@ Refer to the "Compute Node Environment (CNE) Installer" section of the [HPE Cray
 
    a. Change directory to the extracted COS tar file directory.
 
-   ```screen
-   ncn-m001# cd slingshot-host-software-<release>-<cos-release>
-   ```
+      ```screen
+      ncn-m001# cd slingshot-host-software-<release>-<cos-release>
+      ```
 
-   where `<release>` is the release version and build number of the release tar file, and `<cos-release>` is the release version of the COS release tar file. An example of this would be `2.0.0` for the release, and `cos-2.4` for the COS release. This would result in the following command:
+      `<release>` is the release version and build number of the release tar file, and `<cos-release>` is the release version of the COS release tar file. An example of this would be `2.0.0` for the release, and `cos-2.4` for the COS release. This would result in the following command:
 
-   ```screen
-   ncn-m001# cd slingshot-host-software-2.0.0-cos-2.4
-   ```
+      ```screen
+      ncn-m001# cd slingshot-host-software-2.0.0-cos-2.4
+      ```
 
    a. Run the `install.sh` script to install SHS.
 
-   ```screen
-   ncn-m001# ./install.sh
-   ...
-   < example output from install >
-   ```
+      ```screen
+      ncn-m001# ./install.sh
+      ...
+      < example output from install >
+      ```
 
 5. Execute the `install.sh` script for CSM.
 
    a. Change directory to the extracted CSM tar file directory.
 
-   ```screen
-   ncn-m001# cd slingshot-host-software-<release>-<csm-release>
-   ```
+      ```screen
+      ncn-m001# cd slingshot-host-software-<release>-<csm-release>
+      ```
 
-   where `<release>` is the release version and build number of the release tar file, and `<csm-release>` is the release version of the CSM release tar file. An example of this would be `2.0.0` for the release, and `csm-1.3` for the CSM release. This would result in the following command:
+      `<release>` is the release version and build number of the release tar file, and `<csm-release>` is the release version of the CSM release tar file. An example of this would be `2.0.0` for the release, and `csm-1.3` for the CSM release. This would result in the following command:
 
-   ```screen
-   ncn-m001# cd slingshot-host-software-2.0.0-csm-1.3
-   ```
+      ```screen
+      ncn-m001# cd slingshot-host-software-2.0.0-csm-1.3
+      ```
 
    a. Run the `install.sh` script to install SHS.
 
-   ```screen
-   ncn-m001# ./install.sh
-   ...
-   < example output from install >
-   ```
+      ```screen
+      ncn-m001# ./install.sh
+      ...
+      < example output from install >
+      ```
 
 6. Verify that the installation has completed successfully by querying Nexus to show the newly installed repositories.
 
@@ -160,7 +160,7 @@ Refer to the "Compute Node Environment (CNE) Installer" section of the [HPE Cray
    | slingshot-host-software | 2.0.0 |
    ```
 
-SHS now supports installation via HPE Cray EX System Software CFS. Proceed to the next section to install the software via HPE Cray EX System Software CFS. Otherwise, proceed to the [Legacy Install Procedure for non-CFS based installs](#legacy-install-procedure-for-non-cfs-based-installs) section.
+SHS now supports installation through HPE Cray EX System Software CFS. Proceed to the next section to install the software through HPE Cray EX System Software CFS. Otherwise, proceed to the [Legacy Install Procedure for non-CFS based installs](#legacy-install-procedure-for-non-cfs-based-installs) section.
 
 ## Operational activities
 
@@ -181,7 +181,7 @@ The following Ansible variables are publicly exposed for use by customers or adm
   description: If enabled, then `-devel` and header packages will be installed or upgraded.
 - name: `shs_profile`
   type: `string`
-  description: Sets the node profile. This is an advanced usage variable to sets the configuration of a node to a pre-determined configuration. The configuration is viewable in `ansible/roles/setup/defaults/main.yml`. Available choices are one of [`compute`, `application`, `worker`].
+  description: Sets the node profile. This is an advanced usage variable to set the configuration of a node to a pre-determined configuration. The configuration is viewable in `ansible/roles/setup/defaults/main.yml`. Available choices are one of [`compute`, `application`, `worker`].
 - name: `shs_target_network`
   type: `string`
   description: Sets the network type. Available choices are one of [`mellanox`, `cassini`]
@@ -238,7 +238,7 @@ configuration:
 
 ### Clone
 
-Clone the slingshot-host-software-config-management repository and change to that working directory. Note that the `CLONE_URL` below is different than the `clone_url` and `ssh_url` reported in the previous step.
+Clone the slingshot-host-software-config-management repository and change to that working directory. The following `CLONE_URL` is different than the `clone_url` and `ssh_url` reported in the previous step.
 
 ```screen
 ncn-m001# export CLONE_URL=\
@@ -281,7 +281,7 @@ ncn-m001# printf 'RELEASE=%s\nBRANCH=%s\nIMPORT_BRANCH_REF=%s\n' \
 
 ### Workflow decisions
 
-At this point, some workflow decisions need to be made. These decisions depend on repository findings and which goals are to be achieved.
+At this point, some workflow decisions must be made. These decisions depend on repository findings and which goals are to be achieved.
 
 - If an `integration-<RELEASE>` branch for the targeted release exists then do
 
@@ -356,7 +356,7 @@ Apply any customizations and modifications to the Ansible configuration, if requ
 These customizations should never be made to the base release branch.
 
 It is **highly recommended** to set specific variables for node groups.
-This can be done via `group_vars`, or other mechanisms for setting variables in Ansible.
+This can be done through `group_vars`, or other mechanisms for setting variables in Ansible.
 Defaults are provided for all variables.
 
 **_If there are any modifications, then commit the changes and push the changes to the integration branch of the SHS repository in VCS._**
@@ -379,7 +379,7 @@ ncn-m001# export SHS_CONFIG_COMMIT_HASH=$(git rev-parse --verify HEAD)
 #### Configuration data defined
 
 SHS configuration data is now defined in the appropriate integration branch of the slingshot-host-software-config-management repository in VCS.
-It will be used when performing the operations described in the next sections.
+It will be used when performing the operations described in the following sections.
 
 #### Recommendations
 
@@ -393,18 +393,18 @@ This makes the playbook highly configurable and adaptable to other environments.
 The following variables **must** be defined:
 
 - `shs_release`: Set this to the major.minor version of the product stream that should be used. For example, a major.minor version value for release `2.0.0` would be `2.0`.
-- `shs_target_distro`: For some COS releases, the distro target will be different between node types, such as workers and computes. Refer to COS and CSM documentation regarding the distribution target for a specific platform.
+- `shs_target_distro`: For some COS releases, the distro target will be different between node types, such as workers and computes. See the COS and CSM documentation regarding the distribution target for a specific platform.
 - `shs_target_platform`: Set this to the target platform supported by the product stream. This should be one of choices provided above in the variable description.
 
-Failure to define any of three variables above may result in install, upgrade or image build failures due to missing or invalid RPMs for the target node/image type.
+Failure to define any of the three variables above may result in install, upgrade, or image build failures due to missing or invalid RPMs for the target node or image type.
 
 If group variable files are used, then a file must be defined for each target node type. Three groups of nodes are supported
 
 | Node Type          | Product | Target Kernel Distribution                           | Group Variable File Name      |
 | ------------------ | ------- | ---------------------------------------------------- | ----------------------------- |
-| Compute            | COS     | COS (refer to COS installation for target OS kernel) | Compute/default.yml           |
-| User Access/Login  | UAN     | COS (refer to COS installation for target OS kernel) | Application/default.yml       |
-| Non-compute Worker | CSM     | CSM (refer to CSM installation for target OS kernel) | Management_Worker/default.yml |
+| Compute            | COS     | COS (see COS installation for target OS kernel) | Compute/default.yml           |
+| User Access/Login  | UAN     | COS (see COS installation for target OS kernel) | Application/default.yml       |
+| Non-compute Worker | CSM     | CSM (see CSM installation for target OS kernel) | Management_Worker/default.yml |
 
 An example configuration for a Compute node (`ansible/group_vars/Compute/default.yml`) on HPE Cray EX System Software 1.5 using COS 2.4 and CSM 1.3 might be the following:
 
@@ -415,7 +415,7 @@ shs_target_distro: "sle15-sp4"
 shs_target_platform: "cos-2.4"
 ```
 
-An example configuration for an User Access/Login node (`ansible/group_vars/Application/default.yml`) on HPE Cray EX System Software 1.5 using COS 2.4 might be the following:
+An example configuration for a User Access/Login node (`ansible/group_vars/Application/default.yml`) on HPE Cray EX System Software 1.5 using COS 2.4 might be the following:
 
 ```yaml
 ---
@@ -440,8 +440,8 @@ If they are left undefined, they will be defined by CFS plays using defaults pro
 
 NCN personalization and image customization are both methods used to configure NCNs.
 NCN personalization is the process of applying product-specific configuration to NCNs post-boot.
-NCN image customization is the process of applying product-specific configuration to a NCN image prior to boot.
-It must be run on the NCN worker node image to ensure the appropriate SHS CFS layer is applied.
+NCN image customization is the process of applying product-specific configuration to an NCN image prior to boot.
+It must be run on the NCN worker node image to ensure that the appropriate SHS CFS layer is applied.
 
 The NCN configuration method will vary based on the version of CSM installed on the system.
 Select one of the following procedures depending on the version of CSM in use:
@@ -460,9 +460,9 @@ Two subsections are provided in this section for NCN installation and configurat
 - Installation and upgrade
 - Migration
 
-Installation and upgrade is aimed at discussing the process and procedure for installing or upgrading SHS on a NCN worker.
+Installation and upgrade are aimed at discussing the process and procedure for installing or upgrading SHS on an NCN worker.
 
-Migration is aimed at discussing how to replace the SHS networking software stack on a NCN with a different networking stack from SHS. Only migration from systems with Mellanox NICs to systems with HPE Slingshot 200Gbps NICs is supported at this time.
+Migration is aimed at discussing how to replace the SHS networking software stack on an NCN with a different networking stack from SHS. Only migration from systems with Mellanox NICs to systems with HPE Slingshot 200Gbps NICs is supported at this time.
 
 #### Install or upgrade with NCN personalization
 
@@ -480,148 +480,148 @@ These steps provide the networking drivers, management software, and device firm
 
 2. Update or add the SHS config commit hash in the NCN personalization CFS configuration.
 
-   a. Download the current NCN personalization CFS configuration. ( or create a new one)
+   a. Download the current NCN personalization CFS configuration. (or create a new one)
 
-   ```screen
-   ncn-m001# cray cfs configurations describe ncn-personalization \
-   --format json | jq ". | {layers}" > ncn-personalization.json
-   {
-     "layers": [
-       {
-         "cloneUrl": "<git repository url>",
-         "commit": "<git commit hash>",
-         "name": "<name of the CFS layer>",
-         "playbook": "<ansible playbook to run>"
-       },
-   ...
-   ```
+      ```screen
+      ncn-m001# cray cfs configurations describe ncn-personalization \
+      --format json | jq ". | {layers}" > ncn-personalization.json
+      {
+        "layers": [
+          {
+            "cloneUrl": "<git repository url>",
+            "commit": "<git commit hash>",
+            "name": "<name of the CFS layer>",
+            "playbook": "<ansible playbook to run>"
+          },
+      ...
+      ```
 
-   The above shows an example of what the configuration could look like with stub values for each field.
+      The above shows an example of what the configuration could look like with stub values for each field.
 
    b. Edit the JSON file.
 
-   A CFS layer is defined by four fields: `cloneUrl`, `commit`, `name`, and `playbook`.
+      A CFS layer is defined by four fields: `cloneUrl`, `commit`, `name`, and `playbook`.
 
-   The entry for the play should have the following format. Replace values in the format with the instructions below.
+      The entry for the play should have the following format. Replace values in the format with the instructions below.
 
-   ```json
-   {
-     "cloneUrl": "<git repository url>",
-     "commit": "<git commit hash>",
-     "name": "<name of the CFS layer>",
-     "playbook": "<ansible playbook to run>"
-   }
-   ```
+      ```json
+      {
+        "cloneUrl": "<git repository url>",
+        "commit": "<git commit hash>",
+        "name": "<name of the CFS layer>",
+        "playbook": "<ansible playbook to run>"
+      }
+      ```
 
-   - Replace `<git repository url>` with the value saved in `${CLONE_URL}`.
-   - Replace `<git commit hash>` with the value saved in `${SHS_CONFIG_COMMIT_HASH}`.
-   - Replace `<name of the CFS layer>` with `shs-integration-<release>`.
-     `<release>` should be replaced by the SHS release.
-     Earlier examples provided `2.0.0` as the release. The release field should match the release of SHS that is being installed or match the targeted update release.
-   - Replace `<ansible playbook to run>` with one of the following:
-     - `shs_cassini_install.yml` if the HPE Slingshot 200Gbps NIC software stack should be installed or updated.
-     - `shs_mellanox_install.yml` if the Mellanox software stack should be installed or updated.
+      - Replace `<git repository url>` with the value saved in `${CLONE_URL}`.
+      - Replace `<git commit hash>` with the value saved in `${SHS_CONFIG_COMMIT_HASH}`.
+      - Replace `<name of the CFS layer>` with `shs-integration-<release>`.
+        `<release>` should be replaced by the SHS release.
+        Earlier examples provided `2.0.0` as the release. The release field should match the release of SHS that is being installed or match the targeted update release.
+      - Replace `<ansible playbook to run>` with one of the following:
+        - `shs_cassini_install.yml` if the HPE Slingshot 200Gbps NIC software stack should be installed or updated.
+        - `shs_mellanox_install.yml` if the Mellanox software stack should be installed or updated.
 
-   **_If an entry already exists for SHS, then perform the following sub-step._**
+      **_If an entry exists for SHS, then perform the following substep._**
 
    c. Edit the existing layer for SHS in the `layers` list of the JSON file. Save the changes to the file.
 
-   **_If an entry does not exist for SHS, then perform the following sub-step._**
+      **_If an entry does not exist for SHS, then perform the following substep._**
 
    d. Add a new layer for SHS to the `layers` list in the JSON file.
 
-   Consult the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) for guidance on how to order layers following the `sat bootprep` input files.
+      Consult the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) for guidance on how to order layers following the `sat bootprep` input files.
 
-   Save the changes to the JSON file after adding in the new layer.
+      Save the changes to the JSON file after adding in the new layer.
 
-   After the edits are complete, the SHS layer should look like this:
+      After the edits are complete, the SHS layer should look like this:
 
-   ```json
-   {
-     "layers": [
-       {
-         "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/slingshot-host-software-config-management.git",
-         "commit": "<git commit hash>",
-         "name": "shs-integration-2.0.0",
-         "playbook": "shs_cassini_install.yml"
-       }
-     ]
-   }
-   ```
+      ```json
+      {
+        "layers": [
+          {
+            "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/slingshot-host-software-config-management.git",
+            "commit": "<git commit hash>",
+            "name": "shs-integration-2.0.0",
+            "playbook": "shs_cassini_install.yml"
+          }
+        ]
+      }
+      ```
 
-   NOTE: The above values are provided as examples. The values in the JSON file may differ for each installation or upgrade. Cross-reference the values with the `cray-product-catalog` information, and the saved values from previous steps to verify your work.
+      NOTE: The above values are provided as examples. The values in the JSON file may differ for each installation or upgrade. Cross-reference the values with the `cray-product-catalog` information, and the saved values from previous steps to verify your work.
 
-   e. Upload the new configuration into CFS. It should look similar to the output below.
+   e. Upload the new configuration into CFS. It should look similar to the following output.
 
-   ```json
-   ncn-m001# cray cfs configurations update ncn-personalization \
-   --file ncn-personalization.json --format json
-   {
-     "lastUpdated": "2022-08-08T17:51:09Z",
-     "layers": [
-         {
-             "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/slingshot-host-software-config-management.git",
-             "commit": "<git commit hash>",
-             "name": "shs-integration-<release>",
-             "playbook": "shs_cassini_install.yml"
-         },
-         ...
-     ],
-     "name": "ncn-personalization"
-   }
-   ```
+      ```json
+      ncn-m001# cray cfs configurations update ncn-personalization \
+      --file ncn-personalization.json --format json
+      {
+        "lastUpdated": "2022-08-08T17:51:09Z",
+        "layers": [
+            {
+                "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/slingshot-host-software-config-management.git",
+                "commit": "<git commit hash>",
+                "name": "shs-integration-<release>",
+                "playbook": "shs_cassini_install.yml"
+            },
+            ...
+        ],
+        "name": "ncn-personalization"
+      }
+      ```
 
    f. Run NCN personalization for the worker nodes to install, upgrade, and/or configure the software.
-   For a fresh install, this step can be performed on all worker nodes at once. For upgrades, refer to **CSM documentation on best practices on how to upgrade worker nodes safely**. This step will show the process for updating a single worker.
+   For a fresh install, this step can be performed on all worker nodes at once. For upgrades, see the **CSM documentation on best practices on how to upgrade worker nodes safely**. This step will show the process for updating a single worker.
 
    g. Enable and run NCN personalization on the worker.
-   _If this is a fresh install, then perform these step below:_
+      _If this is a fresh install, then perform the following steps:_
 
-   ```console
-   ncn-m001# cray cfs components update --desired-config ncn-personalization \
-                       --enabled true --state '[]' --error-count 0 XNAME --format json
-   ```
+      ```console
+      ncn-m001# cray cfs components update --desired-config ncn-personalization \
+                          --enabled true --state '[]' --error-count 0 XNAME --format json
+      ```
 
-   _Otherwise, perform these step below:_
+      _Otherwise, perform the following steps:_
 
-   ```console
-   ncn-m001# cray cfs components update \
-                       --enabled true --state '[]' --error-count 0 XNAME --format json
-   ```
+      ```console
+      ncn-m001# cray cfs components update \
+                          --enabled true --state '[]' --error-count 0 XNAME --format json
+      ```
 
    `XNAME` must be replaced with the XNAME of the worker node.
 
    h. Wait for ncn-personalization to be in the `configured` state. The state of the job can be monitored with the following command:
 
-   ```console
-   ncn-m001# watch "cray cfs components describe --format json XNAME"
-   ```
+      ```console
+      ncn-m001# watch "cray cfs components describe --format json XNAME"
+      ```
 
-   `XNAME` must be replaced with the XNAME of the worker node.
+      `XNAME` must be replaced with the XNAME of the worker node.
 
    i. Verify that the worker is running new software.
 
-   ```console
-   ncn-w001# lsmod | grep -P 'mlx|cxi'
-   # if the Mellanox software stack is installed
-   ncn-w001# modinfo mlx5_core
-   # if the HPE Slingshot 200Gbps NIC software stack is installed
-   ncn-w001# modinfo cxi_core
-   # if performing an upgrade with a live Slingshot fabric
-   ncn-w001# slingshot-diag
-   ```
+      ```console
+      ncn-w001# lsmod | grep -P 'mlx|cxi'
+      # if the Mellanox software stack is installed
+      ncn-w001# modinfo mlx5_core
+      # if the HPE Slingshot 200Gbps NIC software stack is installed
+      ncn-w001# modinfo cxi_core
+      # if performing an upgrade with a live Slingshot fabric
+      ncn-w001# slingshot-diag
+      ```
 
-   If the modules are not listed for each worker node, and you have done the steps above, refer to `Perform NCN personalization` in the CSM documentation for NCN Personalization details.
+   If the modules are not listed for each worker node, and you have done the steps above, see `Perform NCN personalization` in the CSM documentation for NCN Personalization details.
 
-At this stage in the documentation, SHS content has been installed/upgraded and configured on the NCN workers.
+At this stage in the documentation, SHS content has been installed or upgraded and configured on the NCN workers.
 
-If other HPE Cray EX software products are being installed in conjunction with SHS, refer to the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) to determine what step to perform next.
+If other HPE Cray EX software products are being installed in conjunction with SHS, see the "Install and Upgrade Framework (IUF)" section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) to determine what step to perform next.
 
 If other HPE Cray EX software products are not being installed at this time, continue to the next section of this document to configure compute content.
 
 #### Migration
 
-If a fresh install of the NCN worker has occurred and SHS has never been installed before on the target node, see `Install/Upgrade` section above. If SHS has never been installed, then the node can be considered to be 'clean' and does not require uninstallation of the Slingshot software stack with Mellanox NICs.
+If a fresh install of the NCN worker has occurred and SHS has never been installed before on the target node, see `Install/Upgrade` section above. If SHS has never been installed, then the node can be considered to be 'clean' and does not require uninstallation of the HPE Slingshot software stack with Mellanox NICs.
 
 The following steps describe how to use the NCN personalization CFS configuration in conjunction with HPE Cray EX System Software CFS to migrate SHS provided content on NCN Workers from an installation with Mellanox NICs to an installation with HPE Slingshot 200Gbps NICs.
 These steps are necessary to provide the networking drivers, management software, and device firmware as required.
@@ -636,144 +636,144 @@ These steps are necessary to provide the networking drivers, management software
 
 2. Update or add the SHS config commit hash in the NCN personalization CFS configuration
 
-   a. Download the current NCN personalization CFS configuration. ( or create a new one)
+   a. Download the current NCN personalization CFS configuration. (or create a new one)
 
-   ```json
-   ncn-m001# cray cfs configurations describe ncn-personalization \
-   --format json | jq ". | {layers}" > ncn-personalization.json
-   {
-     "layers": [
-       {
-         "cloneUrl": "<git repository url>",
-         "commit": "<git commit hash>",
-         "name": "<name of the CFS layer>",
-         "playbook": "<ansible playbook to run>"
-       },
-   ...
-   ```
+      ```json
+      ncn-m001# cray cfs configurations describe ncn-personalization \
+      --format json | jq ". | {layers}" > ncn-personalization.json
+      {
+        "layers": [
+          {
+            "cloneUrl": "<git repository url>",
+            "commit": "<git commit hash>",
+            "name": "<name of the CFS layer>",
+            "playbook": "<ansible playbook to run>"
+          },
+      ...
+      ```
 
-   The above shows an example of what the configuration could look like with stub values for each field.
+      The above shows an example of what the configuration could look like with stub values for each field.
 
    b. Edit the JSON file.
 
-   A CFS layer is defined by four fields: `cloneUrl`, `commit`, `name`, and `playbook`.
+      A CFS layer is defined by four fields: `cloneUrl`, `commit`, `name`, and `playbook`.
 
-   The entries for the play should have the following format. Replace values in the format with the instructions below.
+      The entries for the play should have the following format. Replace values in the format with the instructions below.
 
-   ```json
-   {
-     "cloneUrl": "<git repository url>",
-     "commit": "<git commit hash>",
-     "name": "<name of the CFS layer>",
-     "playbook": "<ansible playbook to run>"
-   }
-   ```
+      ```json
+      {
+        "cloneUrl": "<git repository url>",
+        "commit": "<git commit hash>",
+        "name": "<name of the CFS layer>",
+        "playbook": "<ansible playbook to run>"
+      }
+      ```
 
-   - Replace `<git repository url>` with the value saved in `${CLONE_URL}`.
-   - Replace `<git commit hash>` with the value saved in `${SHS_CONFIG_COMMIT_HASH}`.
-   - Replace `<name of the CFS layer>` with `shs-integration-<release>`. `<release>` should be replaced by the SHS release.
-     Earlier examples provided `2.0.0` as the release. The release field should match the release of SHS that is being installed or updated to.
-   - Replace `<ansible playbook to run>` with one of the following:
-     - `shs_cassini_install.yml` if the HPE Slingshot 200Gbps NIC software stack should be installed or updated.
-     - `shs_mellanox_install.yml` if the Mellanox software stack should be installed or updated.
-     - `shs_cassini_uninstall.yml` if the HPE Slingshot 200Gbps NIC software stack should be uninstalled.
-     - `shs_mellanox_uninstall.yml` if the Mellanox software stack should be uninstalled.
+      - Replace `<git repository url>` with the value saved in `${CLONE_URL}`.
+      - Replace `<git commit hash>` with the value saved in `${SHS_CONFIG_COMMIT_HASH}`.
+      - Replace `<name of the CFS layer>` with `shs-integration-<release>`. `<release>` should be replaced by the SHS release.
+        Earlier examples provided `2.0.0` as the release. The release field should match the release of SHS that is being installed or updated to.
+      - Replace `<ansible playbook to run>` with one of the following:
+        - `shs_cassini_install.yml` if the HPE Slingshot 200Gbps NIC software stack should be installed or updated.
+        - `shs_mellanox_install.yml` if the Mellanox software stack should be installed or updated.
+        - `shs_cassini_uninstall.yml` if the HPE Slingshot 200Gbps NIC software stack should be uninstalled.
+        - `shs_mellanox_uninstall.yml` if the Mellanox software stack should be uninstalled.
 
-   **_If an entry already exists for SHS, then perform the following sub-step._**
+      **_If an entry exists for SHS, then perform the following substep._**
 
    c. Edit the existing layer for SHS in the `layers` list of the JSON file. Save the changes to the file.
 
-   **_If an entry does not exist for SHS, then perform the following sub-step._**
+      **_If an entry does not exist for SHS, then perform the following substep._**
 
    d. Add a new layer for SHS to the `layers` list in the JSON file.
 
-   Consult the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) for guidance on how to order layers following the `sat bootprep` input files.
+      Consult the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) for guidance on how to order layers following the `sat bootprep` input files.
 
-   Save the changes to the JSON file when complete.
+      Save the changes to the JSON file when complete.
 
-   A CFS configuration that is defined for the migration use case should have two layers for SHS. See the example below for comparison.
+      A CFS configuration that is defined for the migration use case should have two layers for SHS. See the example below for comparison.
 
-   NOTE: In the following JSON example, some configuration layers have been omitted for readability and the values are provided only as examples. The values in the JSON file may differ for each migration, so cross-reference the values with the cray-product-catalog information and the saved values from previous steps to verify the accuracy of the values.
+      NOTE: In the following JSON example, some configuration layers have been omitted for readability and the values are provided only as examples. The values in the JSON file may differ for each migration, so cross-reference the values with the cray-product-catalog information and the saved values from previous steps to verify the accuracy of the values.
 
-   ```json
-   {
-   "layers": [
-       ... other layers before Slingshot such as SMA ...
-       {
-         "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/slingshot-host-software-config-management.git",
-         "commit": "<git commit hash>",
-         "name": "shs-integration-2.0.0",
-         "playbook": "shs_mellanox_uninstall.yml"
-       },
-       {
-         "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/slingshot-host-software-config-management.git",
-         "commit": "<git commit hash>",
-         "name": "shs-integration-2.0.0",
-         "playbook": "shs_cassini_install.yml"
-       }
-     ]
-   }
-   ```
+      ```json
+      {
+      "layers": [
+          ... other layers before Slingshot such as SMA ...
+          {
+            "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/slingshot-host-software-config-management.git",
+            "commit": "<git commit hash>",
+            "name": "shs-integration-2.0.0",
+            "playbook": "shs_mellanox_uninstall.yml"
+          },
+          {
+            "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/slingshot-host-software-config-management.git",
+            "commit": "<git commit hash>",
+            "name": "shs-integration-2.0.0",
+            "playbook": "shs_cassini_install.yml"
+          }
+        ]
+      }
+      ```
 
    e. Upload the new configuration into CFS. It should look similar to the output below.
 
-   ```json
-   ncn-m001# cray cfs configurations update ncn-personalization \
-   --file ncn-personalization.json --format json
-   {
-     "lastUpdated": "2022-08-17T17:51:09Z",
-     "layers": [
-         ...
-         {
-             "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/slingshot-host-software-config-management.git",
-             "commit": "<git commit hash>",
-             "name": "shs-integration-<release>",
-             "playbook": "shs_cassini_install.yml"
-         },
-         ...
-     ],
-     "name": "ncn-personalization"
-   }
-   ```
+      ```json
+      ncn-m001# cray cfs configurations update ncn-personalization \
+      --file ncn-personalization.json --format json
+      {
+        "lastUpdated": "2022-08-17T17:51:09Z",
+        "layers": [
+            ...
+            {
+                "cloneUrl": "https://api-gw-service-nmn.local/vcs/cray/slingshot-host-software-config-management.git",
+                "commit": "<git commit hash>",
+                "name": "shs-integration-<release>",
+                "playbook": "shs_cassini_install.yml"
+            },
+            ...
+        ],
+        "name": "ncn-personalization"
+      }
+      ```
 
    f. Run NCN personalization for the worker nodes to install, upgrade, and/or configure the software.
-   For a fresh install, this step can be performed on all worker nodes at once. For upgrades, refer to **CSM documentation on best practices on how to upgrade worker nodes safely**. This step will show the process for updating a single worker.
+      For a fresh install, this step can be performed on all worker nodes at once. For upgrades, see the **CSM documentation on best practices on how to upgrade worker nodes safely**. This step will show the process for updating a single worker.
 
    g. Enable and run NCN personalization on the worker.
-   _If this is a fresh install, then perform these step below:_
+      _If this is a fresh install, then perform the following steps:_
 
-   ```screen
-   ncn-m001# cray cfs components update --desired-config ncn-personalization \
-                       --enabled true --state '[]' --error-count 0 XNAME --format json
-   ```
+      ```screen
+      ncn-m001# cray cfs components update --desired-config ncn-personalization \
+                          --enabled true --state '[]' --error-count 0 XNAME --format json
+      ```
 
-   _Otherwise, perform these step below:_
+      _Otherwise, perform these step below:_
 
-   ```screen
-   ncn-m001# cray cfs components update \
-                       --enabled true --state '[]' --error-count 0 XNAME --format json
-   ```
+      ```screen
+      ncn-m001# cray cfs components update \
+                          --enabled true --state '[]' --error-count 0 XNAME --format json
+      ```
 
-   `XNAME` must be replaced with the XNAME of the worker node.
+      `XNAME` must be replaced with the XNAME of the worker node.
 
    h. Wait for ncn-personalization to be in the `configured` state. The state of the job can be monitored with the following command:
 
-   ```screen
-   ncn-m001# cray cfs components describe --format json XNAME
-   ```
+      ```screen
+      ncn-m001# cray cfs components describe --format json XNAME
+      ```
 
-   `XNAME` must be replaced with the XNAME of the worker node.
+      `XNAME` must be replaced with the XNAME of the worker node.
 
    i. Verify that the worker is running new software.
 
-   ```screen
-   ncn-w001# lsmod | grep -P 'mlx|cxi'
-   ncn-w001# modinfo mlx5_core  # if the Mellanox software stack is installed
-   ncn-w001# modinfo cxi_core   # if the HPE Slingshot 200Gbps NIC software stack is installed
-   ncn-w001# slingshot-diag     # if performing an upgrade with a live Slingshot fabric
-   ```
+      ```screen
+      ncn-w001# lsmod | grep -P 'mlx|cxi'
+      ncn-w001# modinfo mlx5_core  # if the Mellanox software stack is installed
+      ncn-w001# modinfo cxi_core   # if the HPE Slingshot 200Gbps NIC software stack is installed
+      ncn-w001# slingshot-diag     # if performing an upgrade with a live Slingshot fabric
+      ```
 
-   If the modules are not listed for each worker node, and you have done the steps above, refer to `Perform NCN personalization` in the CSM documentation for NCN Personalization details.
+      If the modules are not listed for each worker node, and you have done the steps above, refer to `Perform NCN personalization` in the CSM documentation for NCN Personalization details.
 
 ### NCN image customization
 
@@ -1057,7 +1057,7 @@ The example steps below reference how to modify the user access node CFS configu
    }
    ```
 
-At this point, SHS configuration content has been updated in HPE Cray EX System Software CFS. If other HPE Cray EX software products are being installed in conjunction with SHS, refer to the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) to determine what step to perform next. If other HPE Cray EX software products are not being installed at this time, continue to the next section of this document.
+At this point, SHS configuration content has been updated in HPE Cray EX System Software CFS. If other HPE Cray EX software products are being installed in conjunction with SHS, see the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) to determine what step to perform next. If other HPE Cray EX software products are not being installed at this time, continue to the next section of this document.
 
 ### Image building
 
@@ -1067,7 +1067,7 @@ SHS provides CFS plays for the management of provided content. The process for b
 
 The firmware must be updated with each new install. The firmware can be updated using `slingshot-firmware` as provided by the `slingshot-firmware-management` package.
 
-1. Run `slingshot-firmware query` to query the current version of the software
+1. Run `slingshot-firmware query` to query the current version of the software.
 
    ```screen
    ncn-w001# slingshot-firmware query
@@ -1094,9 +1094,9 @@ The firmware must be updated with each new install. The firmware can be updated 
 
 ### Updating compute and UAN image recipe
 
-See sub-section "Upload and Register an Image Recipe" under the "Image Management" section of the CSM documentation for general steps on how to download, modify, upload, and register a image recipe.
+See subsection "Upload and Register an Image Recipe" under the "Image Management" section of the CSM documentation for general steps on how to download, modify, upload, and register an image recipe.
 
-In the examples below, the config.xml files will show '2.0' as the version of Slingshot defined within the image recipe. The version of Slingshot in the image recipe may differ from the examples shown here.
+In the following examples, the `config.xml` files will show '2.0' as the version of HPE Slingshot defined within the image recipe. The version of HPE Slingshot in the image recipe may differ from the examples shown here.
 
 For systems equipped with Mellanox NICs, follow the instructions in 1. below. For systems equipped with HPE Slingshot 200Gbps NIC, follow the instructions in 2.
 
@@ -1111,7 +1111,7 @@ For systems equipped with Mellanox NICs, follow the instructions in 1. below. Fo
    </repository>
    ```
 
-   with the following lines, replacing `<slingshot-version>` with the version of Slingshot that is being installed:
+   with the following lines, replacing `<slingshot-version>` with the version of HPE Slingshot that is being installed:
 
    ```xml
    <!-- Slingshot SLES15sp4 CN, Nexus repo -->
@@ -1153,7 +1153,7 @@ For systems equipped with Mellanox NICs, follow the instructions in 1. below. Fo
    slingshot-host-software-<slingshot-version>-cos-2.4
    ```
 
-2. HPE Slingshot 200Gbps NIC systems:
+2. HPE Slingshot 200Gbps NIC systems.
 
    For the compute image recipe, replace the following lines in config.xml:
 
@@ -1164,7 +1164,7 @@ For systems equipped with Mellanox NICs, follow the instructions in 1. below. Fo
    </repository>
    ```
 
-   with the following lines, replacing `<slingshot-version>` with the version of Slingshot that is being installed:
+   with the following lines, replacing `<slingshot-version>` with the version of HPE Slingshot that is being installed:
 
    ```xml
    <!-- Slingshot SLES15sp4 CN, Nexus repo -->
@@ -1173,7 +1173,7 @@ For systems equipped with Mellanox NICs, follow the instructions in 1. below. Fo
    </repository>
    ```
 
-   For the UAN image recipe, replace the following lines in config.xml:
+   For the UAN image recipe, replace the following lines in `config.xml`:
 
    ```xml
    <!-- Slingshot SLES15sp4 CN, Nexus repo -->
@@ -1182,7 +1182,7 @@ For systems equipped with Mellanox NICs, follow the instructions in 1. below. Fo
    </repository>
    ```
 
-   with the following lines, replacing `<slingshot-version>` with the version of Slingshot that is being installed:
+   with the following lines, replacing `<slingshot-version>` with the version of HPE Slingshot that is being installed:
 
    ```xml
    <!-- Slingshot SLES15sp4 CN, Nexus repo -->
@@ -1250,7 +1250,7 @@ For systems equipped with Mellanox NICs, follow the instructions in 1. below. Fo
 
 ### Notes
 
-The following steps need to occur to build compute and UAN/UAI images prior to boot with the updated Slingshot components:
+The following steps need to occur to build compute and UAN/UAI images prior to boot with the updated HPE Slingshot components:
 
 1. Build a new COS image from recipe and then customize it with CFS-based image customization. See the _HPE Cray Operating System Administration Guide_.
 

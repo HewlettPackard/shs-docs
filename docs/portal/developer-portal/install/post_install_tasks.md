@@ -55,13 +55,13 @@ The `slingshot-firmware` utility limits firmware management to devices specified
 
 ### Query
 
-`query` is the action associated with device discovery, and device attribute discovery. The `query` action allows a user to query specific device attributes from a device. The list of supported attributes are given as follows:
+`query` is the action associated with device discovery, and device attribute discovery. The `query` action allows a user to query specific device attributes from a device. The list of supported attributes is given as follows:
 
 | Field   | Description                               |
 |---------|-------------------------------------------|
 | version | firmware version of the network interface |
 
-An example of the use of this action is provided below:
+An example of the use of this action is provided:
 
 ```screen
 user@host:/ # slingshot-firmware query
@@ -132,7 +132,7 @@ Configurations:                              Default         Current         Nex
 The '*' shows parameters with next value different from default/current value.
 ```
 
-## Generic Slingshot configuration
+## Generic HPE Slingshot configuration
 
 The `slingshot-network-config` RPM provides example configuration files, binaries, and scripts that are used to configure the network adapters for use on an HPE Slingshot fabric.
 The example scripts are provided with assumptions made regarding the names of the network adapters used in the system.
@@ -179,7 +179,7 @@ To integrate these files into the image:
    /usr/lib/dracut/modules.d/99slingshot-network-udev
    ```
 
-3. Rebuild the initrd with the udev module to support use cases requiring network file system mounts on boot.
+3. Rebuild the initrd with the udev module to support use cases requiring NFS mounts on boot.
 
    ```screen
    root@host ~# dracut --add slingshot-network-udev --verbose --rebuild /boot/initrd
@@ -187,7 +187,7 @@ To integrate these files into the image:
 
 If the resulting initrd is used for booting the host over the network, such as with a pxeboot, then the resultant initrd from the final step in the example should be used to boot the new image.
 
-## Slingshot Algorithmic MAC Addressing (AMA) configuration
+## Algorithmic MAC Addressing (AMA) configuration
 
 For network adapters connected to an HPE Slingshot fabric, it is required that the adapter should have an algorithmic MAC address (AMA) assigned to the device.
 The AMA assigned to the device is required for traffic to be routed within the HPE Slingshot fabric.
@@ -215,7 +215,7 @@ The following is an example set of instructions to fully integrate.
    /usr/lib/dracut/modules.d/96slingshot-network-lldp
    ```
 
-3. Rebuild the initrd with the udev module to support use cases requiring network file system mounts on boot.
+3. Rebuild the initrd with the udev module to support use cases requiring NFS mounts on boot.
 
    ```screen
    root@host ~# dracut --add slingshot-network-lldp --verbose --rebuild /boot/initrd
@@ -263,7 +263,8 @@ Unidentified Org Specific TLV
 End of LLDPDU TLV
 ```
 
-When reported by LLDP, the Chassis ID's MAC address is the MAC address of the Rosetta switch port. Change the 2nd octet to 00 to set the device side of the link.
+When reported by LLDP, the Chassis ID's MAC address is the MAC address of the Rosetta switch port.
+Change the second octet to 00 to set the device side of the link.
 
 ```screen
 root@host ~# ip link set addr <MAC> dev hsn<index>
@@ -274,7 +275,8 @@ The HSN device is now up.
 
 ### Check and Modify Interface Admin Status
 
-These steps help in checking and changing the administrative status of a network interface to "rxtx" using `lldptool`. This might be necessary in some cases to ensure proper network functionality.
+These steps help in checking and changing the administrative status of a network interface to "rxtx" using `lldptool`.
+This might be necessary in some cases to ensure proper network functionality.
 
 - Checking Interface Admin Status
 
@@ -296,7 +298,8 @@ These steps help in checking and changing the administrative status of a network
 
 ## Multiple network adapters
 
-If a host has multiple network adapters connected to the HPE Slingshot fabric, it is recommended that each host run the `/usr/bin/slingshot-ifroute` script. The script assumes that the network adapters follow the recommended prefix and attempts to configure the host with a routing policy required for a multi-homed network.
+If a host has multiple network adapters connected to the HPE Slingshot fabric, it is recommended that each host run the `/usr/bin/slingshot-ifroute` script.
+The script assumes that the network adapters follow the recommended prefix and attempts to configure the host with a routing policy required for a multi-homed network.
 Every network adapter in a multi-home configuration should be able to communicate with every other network adapter in the multi-home configuration without the use of a bridge.
 In addition, the routing modifications performed by the script ensure that traffic destined for one network adapter on a host from another network adapter on the same host should use the HPE Slingshot network instead of the host's loopback device.
 This specific modification is a requirement for correct network data transfer behavior as required by some HPC API standards such as MPI, SHMEM, or PGAS.
@@ -329,7 +332,7 @@ Other settings relating to performance or functionality are provided in the exam
 
 See the Examples section, 'Host `sysctl` configuration', for details about the suggested sysctl values and the rationale behind the settings.
 
-An example of how to integrate these settings into the host OS, or host OS image is given below.
+The following is an example of how to integrate these settings into the host OS, or host OS image.
 
 Create a link from the example sysctl configuration to the local host's `/usr/lib/sysctl.d` site customizations directory:
 
@@ -355,9 +358,9 @@ The recommended setting is provided in the example file:
 
 `/opt/slingshot/slingshot-network-config/default/share/modprobe/99-slingshot-network.conf`
 
-If the network adapter must be initialized early during dracut for network file system mounts, it is required to integrate this change to the initrd in dracut for the module parameter change.
+If the network adapter must be initialized early during dracut for NFS mounts, it is required to integrate this change to the initrd in dracut for the module parameter change.
 
-An example of how to integrate these settings into the host OS, or host OS image is given below.
+The following is an example of how to integrate these settings into the host OS, or host OS image.
 
 Create a link in the modprobe directory to the example module configuration file.
 
@@ -375,7 +378,7 @@ root@host ~# ln -s \
   /usr/lib/dracut/modules.d/99slingshot-network-modprobe
 ```
 
-Rebuild the initrd with the udev module to support use cases requiring network file system mounts on boot.
+Rebuild the initrd with the udev module to support use cases requiring NFS mounts on boot.
 
 ```screen
 root@host ~# dracut --add slingshot-network-modprobe --verbose --rebuild /boot/initrd

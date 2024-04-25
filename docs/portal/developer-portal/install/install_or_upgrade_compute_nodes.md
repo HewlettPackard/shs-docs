@@ -11,13 +11,13 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
 
 ## Prerequisites for Mellanox-based system installation
 
-1. Identify the target OS distribution, and distribution version for all compute targets in the cluster. Use this information to select the appropriate Mellanox OFED (MOFED) tar file to be used for install from the URL listed in the [External Vendor Software](install_metal.md#external-vendor-software) table above. The filename typically follows this pattern: `MLNX_OFED_LINUX-<version>-<OS distro>-<arch>.tgz`.
+1. Identify the target OS distribution, and distribution version for all compute targets in the cluster. Use this information to select the appropriate Mellanox OFED (MOFED) tar file to be used for install from the URL listed in the [External Vendor Software](compute_install_prereqs.md#external-vendor-software) table. The filename typically follows this pattern: `MLNX_OFED_LINUX-<version>-<OS distro>-<arch>.tgz`.
 
    For example, the `MLNX_OFED_LINUX-5.6-2.0.9.0-sles15sp4-x86_64.tgz` tar file would be used to install MOFED v5.6-2.0.9.0 stack on a SLES 15 SP4 x86_64 host or host OS image.
 
 2. Download and unzip the MOFED tarball.
 
-3. Install the Mellanox OFED distribution using the recommended version provided by the [External Vendor Software](#external-vendor-software) table.
+3. Install the Mellanox OFED distribution using the recommended version provided by the [External Vendor Software](compute_install_prereqs.md#external-vendor-software) table.
 
    - For installs: create a `/mellanox` directory in the `/opt/clmgr/repos/other/mellanox` directory and move the MOFED items there.
 
@@ -28,11 +28,11 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
 
    - For upgrades: move the MOFED items directly to the existing `/opt/clmgr/repos/other/mellanox` directory.
 
-   NOTE: If the customer requires UCX on the system, then install the HPC-X solution using the recommended version provided by the [External Vendor Software](install_metal.md#external-vendor-software) table. Ensure that the HPC-X tarball matches the installed version of Mellanox OFED. In the HPC-x package, installation instructions are provided by Mellanox.
+   NOTE: If the customer requires UCX on the system, then install the HPC-X solution using the recommended version provided by the [External Vendor Software](compute_install_prereqs.md#external-vendor-software) table. Ensure that the HPC-X tarball matches the installed version of Mellanox OFED. In the HPC-x package, installation instructions are provided by Mellanox.
 
 ## Install via package managers (recommended)
 
-1. For each distribution and distribution version as collected in the first step of the prerequisite install, download the RPMs mentioned in the previous section in the Slingshot RPMs table above.
+1. For each distribution and distribution version as collected in the first step of the prerequisite install, download the RPMs mentioned in the previous section in the HPE Slingshot RPMs table above.
 
    a. The RPMs should be copied or moved to a location accessible to one or more hosts where the RPMs will be installed. This can be a network file share, a physically backed location such as a disk drive on the host, or a remotely accessible location such as a web server that hosts the RPMs.
 
@@ -76,40 +76,40 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
 
    The `zypper ar` command should be tailored specifically to the customer's environment as needed and is only provided here as an example.
 
-2. For hosts using a Slingshot configuration with Mellanox NICs:
+2. For hosts using an HPE Slingshot configuration with Mellanox NICs:
 
    a. If the host or host OS image is a compute node, install the compute-required RPMs:
-   NOTE: For COS 2.x images, use the Slingshot version as provided/specified in the COS image recipe.
+   NOTE: For COS 2.x images, use the HPE Slingshot version as provided/specified in the COS image recipe.
 
-   - For installs, run:
+    - For installs, run:
 
-     ```screen
-     root@host: ~# zypper install slingshot-network-config slingshot-utils libfabric
-     ... <output from zypper>
-     ```
+      ```screen
+      root@host: ~# zypper install slingshot-network-config slingshot-utils libfabric
+      ... <output from zypper>
+      ```
 
-   - For upgrades, replace the `zypper install` command with `zypper upgrade`:
+    - For upgrades, replace the `zypper install` command with `zypper upgrade`:
 
-     ```screen
-     root@host: ~# zypper upgrade slingshot-network-config slingshot-utils libfabric
-     ... <output from zypper>
-     ```
+      ```screen
+      root@host: ~# zypper upgrade slingshot-network-config slingshot-utils libfabric
+      ... <output from zypper>
+      ```
 
    b. If the host or host OS image is a user access node, install the user access node-required RPMs:
 
-   - For installs, run:
+     - For installs, run:
 
-     ```screen
-     root@host: ~# zypper install libfabric-devel
-     ... <output from zypper>
-     ```
+       ```screen
+       root@host: ~# zypper install libfabric-devel
+       ... <output from zypper>
+       ```
 
-   - For upgrades, replace the `zypper install` command with `zypper upgrade`:
+     - For upgrades, replace the `zypper install` command with `zypper upgrade`:
 
-     ```screen
-     root@host: ~# zypper upgrade libfabric-devel
-     ... <output from zypper>
-     ```
+       ```screen
+       root@host: ~# zypper upgrade libfabric-devel
+       ... <output from zypper>
+       ```
 
    c. If the host is a compute node, and a user access node, perform steps 1 and 2, otherwise skip this step.
 
@@ -119,9 +119,9 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
 
    The RPMs should be copied or moved to a location accessible to one or more hosts where the RPMs will be installed. This can be a network file share, or a physically backed location such as a disk drive on the host.
 
-2. For hosts using a Slingshot configuration with Mellanox NICs:
+2. For hosts using an HPE Slingshot configuration with Mellanox NICs:
 
-   For each host in the system, or in the host OS image for the specific target, install the Slingshot RPMs downloaded in step 2 using the command line using `rpm`:
+   For each host in the system, or in the host OS image for the specific target, install the HPE Slingshot RPMs downloaded in step 2 using the command line using `rpm`:
 
    As an example, assume the following RPMs were downloaded.
 
@@ -142,7 +142,7 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
    slingshot-utils-<version>_<hash>.x86_64.rpm
    ```
 
-   Then as an example, you can install the RPMs using the following example commands:
+   Then as an example, install the RPMs using the following example commands:
 
    ```bash
    root@host> rpm -ivf /share/slingshot-rpms/slingshot-network-config-<version>_<hash>.x86_64.rpm
