@@ -1,0 +1,7 @@
+name: @name@
+version: @product_version@
+docs_product_manifest_version: @doc_product_manifest_version@ # Keep this field like this until further notice
+ 
+csm-based-install-docs: docs/portal/developer-portal/build/Markdown/shs_install_guide.md
+ 
+csm-based-upgrade-docs: docs/portal/developer-portal/build/Markdown/shs_install_guide.md
