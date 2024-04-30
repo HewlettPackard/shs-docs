@@ -186,4 +186,4 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
 
 12. Apply the post-boot firmware and firmware configuration. General instructions are in the "Install compute nodes" section of the _HPE Slingshot Installation Guide for Bare Metal_.
 
-13. Proceed directly to the [Firmware management](#firmware-management) and [ARP settings](arp_settings.md) sections of this document to complete SHS compute install.
+13. Proceed directly to the [Firmware management](firmware_management.md) and [ARP settings](arp_settings.md) sections of this document to complete SHS compute install.

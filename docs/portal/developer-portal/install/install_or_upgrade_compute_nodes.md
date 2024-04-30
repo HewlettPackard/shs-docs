@@ -4,8 +4,8 @@
 The installation method will depend on what type of NIC is installed on the system.
 Select one of the following procedures depending on the NIC in use:
 
-- **Systems using Mellanox NICs**: Proceed to the [Prerequisites for Mellanox-based System Installation](#prerequisites-for-mellanox-based-system-installation) procedure first.
-- **Systems using HPE Slingshot 200Gbps NICs**: Proceed directly to the [Install via Package Managers](#install-via-package-managers-recommended) procedure.
+- **Systems using Mellanox NICs**: Proceed to the [Prerequisites for Mellanox-based System Installation](install_or_upgrade_compute_nodes.md#install-or-upgrade-compute-nodes/prerequisites-for-mellanox-based-system-installation) procedure first.
+- **Systems using HPE Slingshot 200Gbps NICs**: Proceed directly to the [Install via Package Managers](install_or_upgrade_compute_nodes.md#install-or-upgrade-compute-nodes/install-via-package-managers-recommended) procedure.
 
 NOTE: The upgrade process is nearly identical to the installation, and the proceeding instructions will note where the two processes delineate.
 

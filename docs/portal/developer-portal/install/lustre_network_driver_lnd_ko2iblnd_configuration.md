@@ -8,7 +8,7 @@ Tuning on compute node can be achieved in two ways. Follow the steps that work b
 
 1. Change the kernel module parameters.
 
-   Follow the [Soft-RoCE Configuration](#configuration) section to use kernel module parameter change.
+   Follow the [Soft-RoCE Configuration](softroce_on_HPE_Slingshot_200Gpbs_.md#configuration) section to use kernel module parameter change.
 
 2. Use `modprobe.d` to tune compute nodes for Soft-RoCE.
 
