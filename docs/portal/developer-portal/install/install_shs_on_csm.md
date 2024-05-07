@@ -193,7 +193,7 @@ The following Ansible variables are publicly exposed for use by customers or adm
   description: Sets the target distribution to use when defining repository URIs. Available choices are one of [`sle15-sp3`, `sle15-sp4`]. See guidance below for selecting a target distribution
 - name: `shs_target_platform`
   type: `string`
-  description: sets the target platform to use when defining repository URIs. Available choices are one of [`cos-2.4`, `cos-2.5`, `cos-2.6`, `csm-1.3.0`, `csm-1.4.0`, `csm-1.5.0`]
+  description: sets the target platform to use when defining repository URIs. Available choices are one of [`cos-2.4`, `cos-2.5`, `cos-2.6`, `csm-1.3`, `csm-1.4`, `csm-1.5`]
 
 ### Setup
 
@@ -310,7 +310,7 @@ At this point, some workflow decisions must be made. These decisions depend on r
     For example:
 
     ```screen
-    ncn-m001# OLD_RELEASE=1.7.3
+    ncn-m001# OLD_RELEASE=2.1.0
     ncn-m001# OLD_BRANCH_REF=refs/remotes/origin/integration-${OLD_RELEASE}
     ncn-m001# OLD_IMPORT_BRANCH_REF=refs/remotes/origin/cray/slingshot-host-software/${OLD_RELEASE}
     ```
@@ -333,7 +333,7 @@ At this point, some workflow decisions must be made. These decisions depend on r
     Example output:
 
     ```screen
-    ncn-m001# OLD_RELEASE=1.7.3
+    ncn-m001# OLD_RELEASE=2.1.0
     ncn-m001# OLD_BRANCH_REF=refs/remotes/origin/integration
     ncn-m001# OLD_IMPORT_BRANCH_REF=refs/remotes/origin/cray/slingshot-host-software/${OLD_RELEASE}
     ```
