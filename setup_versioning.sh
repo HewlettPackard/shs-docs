@@ -10,9 +10,9 @@ CURRENT_BRANCH=$GIT_BRANCH
 # RELEASE_BRANCH is used to checkout the correct slingshot-version!
 # Update RELEASE_BRANCH when a new release branch is created.
 # For example:
-# RELEASE_BRANCH=release/slingshot-2.1
+# RELEASE_BRANCH=release/shs-11.0
 
-RELEASE_BRANCH=master
+RELEASE_BRANCH=main
 
 if [ -d hpc-shs-version ]; then
     rm -rf hpc-shs-version
@@ -25,7 +25,7 @@ fi
 
 cd hpc-shs-version
 if ! git checkout $CURRENT_BRANCH > /dev/null ; then
-    echo "INFO: Branch ${CURRENT_BRANCH} is not an official Slingshot branch, using version string from ${RELEASE_BRANCH}" >&2
+    echo "INFO: Branch ${CURRENT_BRANCH} is not an official SHS branch, using version string from ${RELEASE_BRANCH}" >&2
 fi
 cd - > /dev/null
 
