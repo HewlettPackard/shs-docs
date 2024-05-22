@@ -179,20 +179,20 @@ dir: $(TMPDIR)/VeRsIoN.md pdf-templates/fancy.tex
 
 ifdef NODOCKER
 $(HTMLBUILDDIR)/%.html: $(SOURCEDIR)/%.md dir
-	$(eval VER := $(shell cat ${VERSIONDIR}/slingshot-build-version))
+	$(eval VER := $(shell cat ${VERSIONDIR}/shs-build-version))
 	$(HTML_PANDOC-N) -o $@ $(TMPDIR)/VeRsIoN.md $<
 
 $(PDFBUILDDIR)/%.pdf: $(SOURCEDIR)/%.md dir
-	$(eval VER := $(shell cat ${VERSIONDIR}/slingshot-build-version))
+	$(eval VER := $(shell cat ${VERSIONDIR}/shs-build-version))
 	$(PANDOC-N) -o $@ $(TMPDIR)/VeRsIoN.md $<
 
 $(MANBUILDDIR)/%.8: $(MANPAGE_SOURCEDIR)/%.8.md dir
-	$(eval VER := $(shell cat ${VERSIONDIR}/slingshot-build-version))
+	$(eval VER := $(shell cat ${VERSIONDIR}/shs-build-version))
 	$(eval NAME := $(shell basename $(patsubst %.8.md,%,$<)))
 	$(MAN_PANDOC-N) -o $@  $<
 
 $(HTMLBUILDDIR)/man/%.8.html: $(MANPAGE_SOURCEDIR)/%.8.md dir
-	$(eval VER := $(shell cat ${VERSIONDIR}/slingshot-build-version))
+	$(eval VER := $(shell cat ${VERSIONDIR}/shs-build-version))
 	$(eval NAME := $(shell basename $(patsubst %.8.md,%,$<)))
 	$(MAN_PANDOC_HTML-N) -o $@  $<
 
@@ -202,20 +202,20 @@ $(MDBUILDDIR)/%.md: $(SOURCEDIR)/%.md dir
 else
 
 $(HTMLBUILDDIR)/%.html: $(SOURCEDIR)/%.md dir
-	$(eval VER := $(shell cat ${VERSIONDIR}/slingshot-build-version))
+	$(eval VER := $(shell cat ${VERSIONDIR}/shs-build-version))
 	$(HTML_PANDOC) -o $@ $(TMPDIR)/VeRsIoN.md $<
 
 $(PDFBUILDDIR)/%.pdf: $(SOURCEDIR)/%.md dir
-	$(eval VER := $(shell cat ${VERSIONDIR}/slingshot-build-version))
+	$(eval VER := $(shell cat ${VERSIONDIR}/shs-build-version))
 	$(PANDOC) -o $@ $(TMPDIR)/VeRsIoN.md $<
 
 $(MANBUILDDIR)/%.8: $(MANPAGE_SOURCEDIR)/%.8.md dir
-	$(eval VER := $(shell cat hpc-sshot-slingshot-version/slingshot-build-version))
+	$(eval VER := $(shell cat hpc-sshot-slingshot-version/shs-build-version))
 	$(eval NAME := $(shell basename $(patsubst %.8.md,%,$<)))
 	$(MAN_PANDOC) -o $@  $<
 
 $(HTMLBUILDDIR)/man/%.8.html: $(MANPAGE_SOURCEDIR)/%.8.md dir
-	$(eval VER := $(shell cat hpc-sshot-slingshot-version/slingshot-build-version))
+	$(eval VER := $(shell cat hpc-sshot-slingshot-version/shs-build-version))
 	$(eval NAME := $(shell basename $(patsubst %.8.md,%,$<)))
 	$(MAN_PANDOC_HTML) -o $@ $<
 
