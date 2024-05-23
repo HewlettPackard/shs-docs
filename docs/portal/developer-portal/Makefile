@@ -283,7 +283,7 @@ $(RPM_BUILD_ROOT)/rpmbuild:
 	mkdir -p $@/SRPMS
 
 package: $(RPM_BUILD_ROOT)/rpmbuild install
-	rpmbuild -ba product-docs.spec --define "_topdir $(RPM_BUILD_ROOT)/rpmbuild"
+	rpmbuild -ba shs-docs.spec --define "_topdir $(RPM_BUILD_ROOT)/rpmbuild"
 
 dita_ot_dir: dir
 	../../scripts/dita_build_prep.sh
@@ -319,7 +319,10 @@ dita_ot_html: dita_ot_dir dita_container_prep
 	../../scripts/dita_build.sh -w
 endif
 
-dita_ot_tar: dita_ot_md dita_ot_html dita_ot_pdf hpesc_build
+dita_ot_tar: dita_ot_md dita_ot_html dita_ot_pdf
 	cp $(TMPDIR)/VeRsIoN.md $(BUILDDIR)/md
+
+# Delete the empty HPESC bundle build dir
+	rm -fr $(HPESCBUILDDIR)
 	tar cf pdfhtml.tar $(BUILDDIR)
 	mv pdfhtml.tar $(BUILDDIR)
