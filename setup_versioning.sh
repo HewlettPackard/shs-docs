@@ -1,4 +1,25 @@
 #!/bin/sh -x
+# MIT License
+#
+# (C) Copyright [2020-2022] Hewlett Packard Enterprise Development LP
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+# OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+# ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
 set -ex
 # Automated versioning changes are done here.
 # Do not change versions in any other place
@@ -58,7 +79,7 @@ if [ "-d" = "${1}" ]; then
 # Copyright and Version
 &copy; 2024 Hewlett Packard Enterprise Development LP
 
-Slingshot:
+SHS:
 ${PRODUCT_VERSION}-${RELEASE}
 
 Doc git hash:
@@ -68,10 +89,7 @@ Generated:
 ${date}
 
 EOF
-   # Modify Latex Footer to contain version
-    cat ./pdf-templates/fancy.tex.template | sed \
-        -e "s/VERSIONFOOTER/Version: ${PRODUCT_VERSION}-${RELEASE}/g" > ./pdf-templates/fancy.tex
-   exit 0
+
 fi
 
 if [ ! -z "${BUILD_NUMBER}" ]; then
@@ -86,9 +104,9 @@ if [ ! -z "${BUILD_NUMBER}" ]; then
     sed -i s/999.999.999/${PRODUCT_VERSION}/g .version_rpm
 
     # Modify rpm spec
-    cat portal/developer-portal/slingshot-docs.spec.template | sed \
+    cat docs/portal/developer-portal/shs-docs.spec.template | sed \
         -e "s/999.999.999/$PRODUCT_VERSION/g" \
         -e "/__CHANGELOG_SECTION__/r $CHANGE_LOG" \
-        -e "/__CHANGELOG_SECTION__/d" > portal/developer-portal/slingshot-docs.spec
+        -e "/__CHANGELOG_SECTION__/d" > docs/portal/developer-portal/shs-docs.spec
 fi
 rm -f ${CHANGE_LOG}

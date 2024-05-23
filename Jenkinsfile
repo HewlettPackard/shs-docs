@@ -23,9 +23,7 @@
 
 def pipelineParams= [
     executeScript: "createTar.sh",
-    executeScript2: "createCLI.sh",
-    executeScript3: "import_yaml.sh",
-    makeMakefile: "portal/developer-portal/Makefile",
+    makeMakefile: "docs/portal/developer-portal/Makefile",
     dockerfile: "Dockerfile",
     //dockerfileSpell: "Dockerfile.spellcheck",
     repository: "shs",
@@ -80,7 +78,7 @@ pipeline {
     }
 
     environment {
-        VERSION = sh(returnStdout: true, script: "./setup_versioning.sh;cat .version").trim()
+        VERSION = sh(returnStdout: true, script: 'chmod +x setup_versioning.sh && ./setup_versioning.sh; cat .version').trim()
         VERSION_RPM = sh(returnStdout: true, script: "cat .version_rpm").trim()
         GIT_TAG = sh(returnStdout: true, script: "git rev-parse --short HEAD").trim()
         BUILD_DATE = "${buildDate}" 
@@ -151,7 +149,7 @@ pipeline {
                 BUILD_DATE = "${buildDate}" 
             }
             steps {
-            // Build MD PDF HTML MAN
+            // Build MD PDF HTML
                 withCredentials([
                     usernamePassword(credentialsId: 'REDOC_LICENSE', usernameVariable: 'REDOC_USER', passwordVariable: 'REDOC_LICENSE_PW')])
                     {
@@ -159,13 +157,11 @@ pipeline {
                         set -x
                         if [[ -f ${pipelineParams.makeMakefile} ]]; then
                             mkdir -p ${WORKSPACE}/build/results
-                            sh scripts/editConfig.sh \"${REDOC_LICENSE_PW}\"
-                            cd portal/developer-portal;make lint;make tar
+                            cd docs/portal/developer-portal;make tar
                             cp docs/*.tar ${WORKSPACE}/build/results/${IMAGE_NAME_PDFHTML}.tar
                             cp ${WORKSPACE}/build/results/${IMAGE_NAME_PDFHTML}.tar ${WORKSPACE}/build/results/${PRODUCT_NAME}-pdfhtml-${LATEST}-LATEST.tar
                             cp docs/pdf ${WORKSPACE}/build/results/${IMAGE_NAME_PDF} -rf
                             cp docs/html ${WORKSPACE}/build/results/${IMAGE_NAME_HTML} -rf
-                            cp docs/man ${WORKSPACE}/build/results/${IMAGE_NAME_MAN} -rf
                             cp docs/md ${WORKSPACE}/build/results/${IMAGE_NAME_MD} -rf
                         else
                             echo "${pipelineParams.makeMakefile} doesn't exist"
@@ -299,13 +295,11 @@ pipeline {
                 echo "Log Stash: rpmBuildPipeline - RPM Build From SPEC File"
                 echo "Build"
                 sh """
-                cd portal/developer-portal  
+                cd docs/portal/developer-portal  
                 cp  ${WORKSPACE}/build/results/${IMAGE_NAME_PDF} pdf -rf
                 cp  ${WORKSPACE}/build/results/${IMAGE_NAME_HTML} html -rf
-                cp  ${WORKSPACE}/build/results/${IMAGE_NAME_MAN} man -rf
                 cp  ${WORKSPACE}/build/results/${IMAGE_NAME_MD} md -rf
-                cp  ${WORKSPACE}/build/results/${IMAGE_NAME} public -rf
-                docker exec ${containerId} sh ./scripts/make_package.sh
+                docker exec ${containerId} sh ./docs/portal/scripts/make_package.sh
                 cp -r rpmbuild/RPMS/x86_64/*.rpm ${WORKSPACE}/build/results
                 """       
             }

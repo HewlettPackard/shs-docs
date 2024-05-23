@@ -21,33 +21,20 @@ BUILDDIR = docs
 VERSIONDIR = hpc-sshot-slingshot-version
 
 SOURCEDIR = .
-MANPAGE_SOURCEDIR = ./snippets/fabric_commands
-MANSECTION = 8
-OPENAPI = ../openapi
 TMPDIR = ./tmp
 
 HPESCBUILDDIR = $(BUILDDIR)/hpesc
 PDFBUILDDIR = $(BUILDDIR)/pdf
 PDFDRAFTSBUILDDIR = $(BUILDDIR)/drafts/pdf
 HTMLBUILDDIR = $(BUILDDIR)/html
-MANBUILDDIR = $(BUILDDIR)/man/man$(MANSECTION)
 HTMLDRAFTSBUILDDIR = $(BUILDDIR)/drafts/html
 MDSBUILDDIR = $(SOURCEDIR)
-YAMLBUILDDIR = $(BUILDDIR)/html
 MDBUILDDIR = $(BUILDDIR)/md
 
-IMAGESDIR = images
+# IMAGESDIR = images
 CSSDIR = css
 WORKSPACE = "/workspace"
 
-
-# In the case of this repo, we have subordinate .mds files,
-# so need to explicitly define MDS_DOCS to be set of standalone docs.
-
-MDS_DOCS = $(SOURCEDIR)/HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide.mds
-
-
-MD_DOCS = $(patsubst %.mds,%.md,$(MDS_DOCS))
 
 ## Target file names with extensions (use substitution references)
 ## https://www.gnu.org/software/make/manual/make.html#Substitution-Refs
@@ -55,10 +42,7 @@ MD_DOCS = $(patsubst %.mds,%.md,$(MDS_DOCS))
 ## Expands to a list of all markdown files in the working directory
 MD_SRC = $(wildcard $(SOURCEDIR)/*.md)
 MDS_SRC = $(wildcard $(SOURCEDIR)/*.mds)
-MANPAGE_DOCS = $(wildcard $(MANPAGE_SOURCEDIR)/*.$(MANSECTION).md)
 
-YAML = $(wildcard $(OPENAPI)/*.yaml)
-YAML_SRC = $(patsubst %.page.yaml,%.yaml,$(wildcard $(YAML)) )
 
 ## Expands to list of .html, .pdf, .md objects to build based on .md and .mds
 ## x.pdf depends on x.md, x.html depends on x.md, x.md depends on x.mds, etc
@@ -85,8 +69,6 @@ HTMLMANPAGES = $(patsubst $(MANPAGE_SOURCEDIR)/%.8.md,$(HTMLBUILDDIR)/man/%.8.ht
 MDDOCS = $(patsubst $(SOURCEDIR)/%.md,$(MDBUILDDIR)/%.md,$(MD_DOCS))
 
 
-YAMLOBJECTS = $(patsubst $(OPENAPI)/%.yaml,$(YAMLBUILDDIR)/%.html,$(YAML_SRC))
-
 ## Expands to a list of all publication-level ditamaps in the working directory
 DITAMAPS = $(wildcard $(SOURCEDIR)/*.ditamap)
 
@@ -101,7 +83,7 @@ DITAMAPS = $(wildcard $(SOURCEDIR)/*.ditamap)
 
 # Convert .mds to .md file
 COMPILEMDS = ../../scripts/compileMDS.py
-MKVERSION = ../../setup_versioning.sh
+MKVERSION = ../../../setup_versioning.sh
 
 PANDOC_OPTS = --toc --pdf-engine=xelatex -H ./pdf-templates/fancy.tex -V urlcolor:blue -V linkcolor:blue -V monofontoptions:"Scale=0.4" -V geometry:"top=2cm, bottom=1.5cm, left=1.5cm, right=1.5cm" -H pdf-templates/headings.tex -H pdf-templates/tables.tex --listings -H pdf-templates/code.tex -M subtitle="Version: ${VER}" --number-sections
 
@@ -143,7 +125,7 @@ pdf:    $(PDFDOCS) $(PDFDOCS2)
 
 html:   $(HTMLDOCS) $(HTMLDOC2S)
 
-manpages: dir md $(TROFFDOCS) $(HTMLMANPAGES)  
+# manpages: dir md $(TROFFDOCS) $(HTMLMANPAGES)  
 
 dita_build: $(TMPDIR)/VeRsIoN.md
 	bash ../../scripts/dita_build.sh
@@ -158,19 +140,18 @@ dita_build: $(TMPDIR)/VeRsIoN.md
 ## and '$<' is a variable holding the (first) dependency of a rule.
 
 # Setup Version/Copyright for Doc section
-$(TMPDIR)/VeRsIoN.md pdf-templates/fancy.tex:
+$(TMPDIR)/VeRsIoN.md:
 	mkdir -p $(TMPDIR)
-	sh $(MKVERSION) -d > $(TMPDIR)/VeRsIoN.md
+	cd ../../.. && sh setup_versioning.sh -d > docs/portal/developer-portal/$(TMPDIR)/VeRsIoN.md
 
-dir: $(TMPDIR)/VeRsIoN.md pdf-templates/fancy.tex
+dir: $(TMPDIR)/VeRsIoN.md
 	mkdir -p $(PDFBUILDDIR)
-	mkdir -p $(MANBUILDDIR)
 	mkdir -p $(PDFDRAFTSBUILDDIR)
-	mkdir -p $(HTMLBUILDDIR)/man
+#	mkdir -p $(HTMLBUILDDIR)/man
 	mkdir -p $(HTMLDRAFTSBUILDDIR)
 	mkdir -p $(HPESCBUILDDIR)
 	mkdir -p $(MDBUILDDIR)
-	cp -r $(IMAGESDIR) $(HTMLBUILDDIR)
+#	cp -r $(IMAGESDIR) $(HTMLBUILDDIR)
 	cp -r $(CSSDIR) $(HTMLBUILDDIR)
 
 # Some build environments may not have docker installed
@@ -215,7 +196,7 @@ $(MANBUILDDIR)/%.8: $(MANPAGE_SOURCEDIR)/%.8.md dir
 	$(MAN_PANDOC) -o $@  $<
 
 $(HTMLBUILDDIR)/man/%.8.html: $(MANPAGE_SOURCEDIR)/%.8.md dir
-	$(eval VER := $(shell cat hpc-sshot-slingshot-version/shs-build-version))
+	$(eval VER := $(shell cat hpc-shs-version/shs-build-version))
 	$(eval NAME := $(shell basename $(patsubst %.8.md,%,$<)))
 	$(MAN_PANDOC_HTML) -o $@ $<
 
@@ -231,8 +212,6 @@ else
 	$(COMPILEMDS) -e $<
 endif
 
-$(YAMLBUILDDIR)/%.html: $(OPENAPI)/%.yaml
-	$(REDOC) openapi/`basename $<` -o developer-portal/$@
 
 clean:
 	rm -fr $(BUILDDIR) $(TMPDIR) $(VERSIONDIR)
@@ -244,17 +223,15 @@ clean:
 
 
 ifdef NODOCKER
-lint: ./snippets/**/*.md 
+lint: ./**/*.md 
 	$(MDL-N) $(MD_DOCS)
 else
-lint: ./snippets/**/*.md 
+lint: ./**/*.md 
 	$(MDL) $(patsubst %,$(WORKSPACE)/%,$(^))
 endif
 
 
 test:
-	echo 'ybuilddir'
-	echo $(YAMLBUILDDIR)
 	echo 'src'
 	echo $(MD_SRC)
 	echo 'mds'
@@ -271,12 +248,6 @@ test:
 	echo $(PDFOBJECTS2)
 	echo 'md'
 	echo $(MDOBJECTS)
-	echo 'yamlobjs'
-	echo $(YAMLOBJECTS)
-	echo 'yamlsrc'
-	echo $(YAML_SRC)
-	echo 'manpage docs'
-	echo $(MANPAGE_DOCS)
 	echo 'troff docs'
 	echo $(TROFFDOCS)
 	echo $(HTMLMANPAGES)
@@ -284,7 +255,7 @@ test:
 
 tar: $(BUILDDIR)/pdfhtml.tar
 
-$(BUILDDIR)/pdfhtml.tar: manpages html pdf md
+$(BUILDDIR)/pdfhtml.tar: html pdf md
 	rm -f $(BUILDDIR)/*/apis* \
 		$(BUILDDIR)/*/admin* \
 		$(BUILDDIR)/*/overview* \
@@ -295,12 +266,12 @@ $(BUILDDIR)/pdfhtml.tar: manpages html pdf md
         $(BUILDDIR)/*/hw*
 	tar cf $@ $(BUILDDIR)/*
 
-slingshot-docs-$(VERSION).tar.bz2:
-	mkdir -p slingshot-docs-$(VERSION)
-	cp -a md man html pdf public slingshot-docs-$(VERSION)
-	tar cjf $@ slingshot-docs-$(VERSION)
+shs-docs-$(VERSION).tar.bz2:
+	mkdir -p shs-docs-$(VERSION)
+	cp -a md html pdf shs-docs-$(VERSION)
+	tar cjf $@ shs-docs-$(VERSION)
 
-install: slingshot-docs-$(VERSION).tar.bz2
+install: shs-docs-$(VERSION).tar.bz2
 	cp -r $< $(RPM_BUILD_ROOT)/rpmbuild/SOURCES/
 
 $(RPM_BUILD_ROOT)/rpmbuild:

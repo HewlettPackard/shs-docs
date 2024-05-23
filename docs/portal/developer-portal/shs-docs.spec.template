@@ -1,0 +1,48 @@
+Summary:       SHS Documentation
+Name:          shs-docs
+Version:       999.999.999
+Release:       %(echo ${BUILD_NUMBER:-999})
+Group:         Network Fabric Software
+License:       HPE Software License Agreement
+URL:           http://www.hpe.com
+Prefix:        %{_prefix}
+BuildRoot:     %{buildroot}
+Source0:       %{name}-%{version}.tar.bz2
+Requires:      (man or man-db)
+
+%description
+SHS documentation: Markdown, PDFs, and HTML
+
+%prep
+%setup -q 
+
+%build
+
+%install
+mkdir -p ${RPM_BUILD_ROOT}/usr/share/doc/%{name}/man
+mkdir -p ${RPM_BUILD_ROOT}/usr/share/man/man8
+mkdir -p ${RPM_BUILD_ROOT}/var/www/slingshot/ui/%{name}
+
+cp -pr public/* ${RPM_BUILD_ROOT}/var/www/slingshot/ui/%{name}/
+cp -pr pdf/* ${RPM_BUILD_ROOT}/usr/share/doc/%{name}/
+cp -pr md/* ${RPM_BUILD_ROOT}/usr/share/doc/%{name}/
+cp -pr html/* ${RPM_BUILD_ROOT}/usr/share/doc/%{name}/
+cp -pr html/man/*.html ${RPM_BUILD_ROOT}/usr/share/doc/%{name}/man
+cp -pr html/css ${RPM_BUILD_ROOT}/usr/share/doc/%{name}/
+cp -pr html/images ${RPM_BUILD_ROOT}/usr/share/doc/%{name}/
+cp -pr man/man8/*.8 ${RPM_BUILD_ROOT}/usr/share/man/man8/
+
+chmod -R 555 ${RPM_BUILD_ROOT}/var/www/slingshot/ui/%{name}
+
+%files
+%docdir /usr/share/doc/%{name}
+%docdir /var/www/slingshot/ui/%{name}
+/var/www/slingshot/ui/%{name}/*
+/usr/share/doc/%{name}/*
+/usr/share/man
+
+%post
+mandb
+
+%changelog
+__CHANGELOG_SECTION__
