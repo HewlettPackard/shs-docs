@@ -96,7 +96,7 @@ pipeline {
         TEST_IMAGE_VERSIONED = getDockerImageReference(repository: "${pipelineParams.repository}", imageName: "${pipelineParams.imagePrefix}-${pipelineParams.app}-test", imageTag: "${IMAGE_TAG}", product: "${pipelineParams.product}")
         TEST_IMAGE_LATEST = getDockerImageReference(repository: "${pipelineParams.repository}", imageName: "${pipelineParams.imagePrefix}-${pipelineParams.app}-test", imageTag: "latest", product: "${pipelineParams.product}")
         PRODUCT = "${pipelineParams.product}"
-        PRODUCT_NAME = "shsdocs"
+        PRODUCT_NAME = "shs-docs"
         TARGET_OS = "${pipelineParams.targetOS}"
         TARGET_ARCH = "noarch"
         HPE_GITHUB_TOKEN = credentials('ghe_jenkins_token')
@@ -158,11 +158,11 @@ pipeline {
                         if [[ -f ${pipelineParams.makeMakefile} ]]; then
                             mkdir -p ${WORKSPACE}/build/results
                             cd docs/portal/developer-portal;make tar
-                            cp docs/*.tar ${WORKSPACE}/build/results/${IMAGE_NAME_PDFHTML}.tar
+                            cp build/*.tar ${WORKSPACE}/build/results/${IMAGE_NAME_PDFHTML}.tar
                             cp ${WORKSPACE}/build/results/${IMAGE_NAME_PDFHTML}.tar ${WORKSPACE}/build/results/${PRODUCT_NAME}-pdfhtml-${LATEST}-LATEST.tar
-                            cp docs/pdf ${WORKSPACE}/build/results/${IMAGE_NAME_PDF} -rf
-                            cp docs/html ${WORKSPACE}/build/results/${IMAGE_NAME_HTML} -rf
-                            cp docs/md ${WORKSPACE}/build/results/${IMAGE_NAME_MD} -rf
+                            cp build/pdf ${WORKSPACE}/build/results/${IMAGE_NAME_PDF} -rf
+                            cp build/html ${WORKSPACE}/build/results/${IMAGE_NAME_HTML} -rf
+                            cp build/md ${WORKSPACE}/build/results/${IMAGE_NAME_MD} -rf
                         else
                             echo "${pipelineParams.makeMakefile} doesn't exist"
                             exit 1

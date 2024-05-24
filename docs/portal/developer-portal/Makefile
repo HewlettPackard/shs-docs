@@ -17,7 +17,7 @@ RPM_BUILD_ROOT := `pwd`
 endif
 
 ## Build dir
-BUILDDIR = docs
+BUILDDIR = build
 VERSIONDIR = hpc-sshot-slingshot-version
 
 SOURCEDIR = .

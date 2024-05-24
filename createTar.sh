@@ -35,7 +35,7 @@ PW=$3
 
 cd /tmp/workdir/docs/portal/developer-portal/;make VERSIONED_MD=Y NOEDITLINKS=Y  md
 cd /tmp/workdir/docs/portal/developer-portal;rm -fr install operations overview
-cd /tmp/workdir/portal;yarn install;yarn build --relative-paths
+#cd /tmp/workdir/docs/portal;yarn install;yarn build --relative-paths
 #cd /tmp/workdir;tar cvzf ${IMAGENAME}.tar.gz portal/public
 #cd /tmp/workdir;cp -pr docs/portal/public ${OUTPUTDIR}/${IMAGENAME}
 cd /tmp/workdir;cp ${IMAGENAME}.tar.gz ${OUTPUTDIR}
