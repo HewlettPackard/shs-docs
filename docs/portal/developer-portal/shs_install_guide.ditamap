@@ -13,12 +13,12 @@
             <navtitle>Install or upgrade SHS for CSM</navtitle>
         </topicmeta>
         <topicref href="install/compute_install_prereqs.md" format="mdita"/>
-        <topicref href="install/install_shs_on_csm14_or_newer.md" format="mdita"/>
-        <topicref href="install/install_shs_on_csm13_or_prior.md" format="mdita"/>
+        <topicref href="install/install_shs_on_csm_14_or_newer.md" format="mdita"/>
+        <topicref href="install/install_shs_on_csm_13_or_prior.md" format="mdita"/>
         <topicref href="operations/operational_activities_csm.md" format="mdita"/>
             <topicref href="operations/shs_cfs_variable_reference.md" format="mdita"/>
             <topicref href="operations/setup.md" format="mdita"/>
-            <topicref href="operations/authentication_credentials.md.md" format="mdita"/>
+            <topicref href="operations/authentication_credentials.md" format="mdita"/>
             <topicref href="operations/find_targets.md" format="mdita"/>
             <topicref href="operations/clone.md" format="mdita"/>
             <topicref href="operations/references.md" format="mdita"/>

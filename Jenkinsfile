@@ -157,7 +157,7 @@ pipeline {
                         set -x
                         if [[ -f ${pipelineParams.makeMakefile} ]]; then
                             mkdir -p ${WORKSPACE}/build/results
-                            cd docs/portal/developer-portal;make tar
+                            cd docs/portal/developer-portal;make set-permissions && make dita_ot_tar
                             cp build/*.tar ${WORKSPACE}/build/results/${IMAGE_NAME_PDFHTML}.tar
                             cp ${WORKSPACE}/build/results/${IMAGE_NAME_PDFHTML}.tar ${WORKSPACE}/build/results/${PRODUCT_NAME}-pdfhtml-${LATEST}-LATEST.tar
                             cp build/pdf ${WORKSPACE}/build/results/${IMAGE_NAME_PDF} -rf

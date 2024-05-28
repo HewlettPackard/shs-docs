@@ -123,5 +123,5 @@ See the "Compute Node Environment (CNE) Installer" section of the [HPE Cray EX S
    | slingshot-host-software | 2.0.0 |
    ```
 
-SHS now supports installation through HPE Cray EX System Software CFS. Proceed to the next section to install the software through HPE Cray EX System Software CFS. Otherwise, proceed to the [Legacy Install Procedure for non-CFS based installs](legacy_install_procedure_for_non_cfs_based_installs.md) section.
+SHS now supports installation through HPE Cray EX System Software CFS. Proceed to the next section to install the software through HPE Cray EX System Software CFS. Otherwise, proceed to the [Legacy Install Procedure for non-CFS based installs](legacy_install_procedure_for_non_cfs_based_installs.md#legacy-install-procedure-for-non-cfs-based-installs) section.
 

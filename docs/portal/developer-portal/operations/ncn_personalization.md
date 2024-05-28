@@ -1,5 +1,4 @@
 
-
 # NCN personalization
 
 This section is only for systems using CSM 1.2 or earlier versions. For systems using CSM 1.3 or later versions, skip this section and instead proceed to the [NCN image customization](ncn_image_customization.md#ncn-image-customization) instructions.

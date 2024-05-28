@@ -82,7 +82,7 @@ DITAMAPS = $(wildcard $(SOURCEDIR)/*.ditamap)
 # LATEXMK = latexmk -use-make -pdf -pdflatex="pdflatex -interactive=nonstopmode"
 
 # Convert .mds to .md file
-COMPILEMDS = ../../scripts/compileMDS.py
+COMPILEMDS = ../scripts/compileMDS.py
 MKVERSION = ../../../setup_versioning.sh
 
 PANDOC_OPTS = --toc --pdf-engine=xelatex -H ./pdf-templates/fancy.tex -V urlcolor:blue -V linkcolor:blue -V monofontoptions:"Scale=0.4" -V geometry:"top=2cm, bottom=1.5cm, left=1.5cm, right=1.5cm" -H pdf-templates/headings.tex -H pdf-templates/tables.tex --listings -H pdf-templates/code.tex -M subtitle="Version: ${VER}" --number-sections
@@ -127,8 +127,13 @@ html:   $(HTMLDOCS) $(HTMLDOC2S)
 
 # manpages: dir md $(TROFFDOCS) $(HTMLMANPAGES)  
 
+set-permissions:
+	chmod +x ../scripts/dita_build_prep.sh
+	chmod +x ../scripts/dita_build.sh
+
+
 dita_build: $(TMPDIR)/VeRsIoN.md
-	bash ../../scripts/dita_build.sh
+	bash ../scripts/dita_build.sh
 
 
 ## https://www.gnu.org/software/make/manual/html_node/Using-Implicit.html#Using-Implicit
@@ -268,7 +273,7 @@ $(BUILDDIR)/pdfhtml.tar: html pdf md
 
 shs-docs-$(VERSION).tar.bz2:
 	mkdir -p shs-docs-$(VERSION)
-	cp -a md html pdf shs-docs-$(VERSION)
+	cp -ar md html pdf shs-docs-$(VERSION)
 	tar cjf $@ shs-docs-$(VERSION)
 
 install: shs-docs-$(VERSION).tar.bz2
@@ -286,37 +291,37 @@ package: $(RPM_BUILD_ROOT)/rpmbuild install
 	rpmbuild -ba shs-docs.spec --define "_topdir $(RPM_BUILD_ROOT)/rpmbuild"
 
 dita_ot_dir: dir
-	../../scripts/dita_build_prep.sh
+	../scripts/dita_build_prep.sh
 
 dita_container_prep:
-	$(OCI_ENGINE) image build -t test-dita-ot-image:1.0 docker/
+	docker image build -t test-dita-ot-image:1.0 docker/
 
 ifdef NODOCKER
 echo "NON-DOCKER DITA-OT BUILDS NOT SUPPORTED"
 else
 hpesc_build: dita_ot_dir dita_container_prep
-	../../scripts/dita_build.sh -b
+	../scripts/dita_build.sh -b
 endif
 
 ifdef NODOCKER
 echo "NON-DOCKER DITA-OT BUILDS NOT SUPPORTED"
 else
 dita_ot_pdf: dita_ot_dir dita_container_prep
-	../../scripts/dita_build.sh -p
+	../scripts/dita_build.sh -p
 endif
 
 ifdef NODOCKER
 echo "NON-DOCKER DITA-OT BUILDS NOT SUPPORTED"
 else
 dita_ot_md: dita_ot_dir dita_container_prep
-	../../scripts/dita_build.sh -m
+	../scripts/dita_build.sh -m
 endif
 
 ifdef NODOCKER
 	echo "NON-DOCKER DITA-OT BUILDS NOT SUPPORTED"
 else
 dita_ot_html: dita_ot_dir dita_container_prep
-	../../scripts/dita_build.sh -w
+	../scripts/dita_build.sh -w
 endif
 
 dita_ot_tar: dita_ot_md dita_ot_html dita_ot_pdf

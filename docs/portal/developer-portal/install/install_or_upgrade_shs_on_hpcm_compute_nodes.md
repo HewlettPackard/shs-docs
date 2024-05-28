@@ -10,7 +10,7 @@ The procedure outlined here is applicable to SLES, RHEL, and COS distributions. 
 The installation and upgrade method will depend on what type of NIC is installed on the system.
 Select one of the following procedures depending on the NIC in use:
 
-- **Systems using Mellanox NICs**: Proceed to the [Mellanox-based system install/upgrade procedure](mellanox_based_system_install_upgrade_procedure.md).
-- **Systems using HPE Slingshot 200Gbps NICs**: Proceed to the [HPE Slingshot 200Gbps CXI NIC system install/upgrade procedure](HPE_Slingshot_200Gbps_cxi_nic_system_install_upgrade_procedure.md).
+- **Systems using Mellanox NICs**: Proceed to the [Mellanox-based system install/upgrade procedure](mellanox_based_system_install_upgrade_procedure.md#mellanox-based-system-installupgrade-procedure).
+- **Systems using HPE Slingshot 200Gbps NICs**: Proceed to the [HPE Slingshot 200Gbps CXI NIC system install/upgrade procedure](HPE_Slingshot_200Gbps_cxi_nic_system_install_upgrade_procedure.md#hpe-slingshot-200gbps-cxi-nic-system-installupgrade-procedure).
 
 NOTE: The upgrade process is nearly identical to installation, and the proceeding instructions will note where the two processes delineate.

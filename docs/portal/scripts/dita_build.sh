@@ -30,6 +30,7 @@ for MAP in $(ls ${PWD}/*.ditamap);do
 function build_bundle(){
     for STEM in ${PUB_STEMS[@]};do
         docker run --rm \
+        --user `id -u`:`id -g` \
         -v $THIS_DIR:/src test-dita-ot-image:1.0 \
         -i /src/$STEM.ditamap \
         -o /src/build/hpesc/$STEM/ \
@@ -43,6 +44,7 @@ function build_bundle(){
 function build_pdf(){
     for STEM in ${PUB_STEMS[@]};do
         docker run --rm \
+        --user `id -u`:`id -g` \
         -v $THIS_DIR:/src test-dita-ot-image:1.0 \
         -i /src/$STEM.ditamap \
         -o /src/build/pdf/$STEM/ \
@@ -55,6 +57,7 @@ function build_pdf(){
 function build_html5(){
     for STEM in ${PUB_STEMS[@]};do
         docker run --rm \
+        --user `id -u`:`id -g` \
         -v $THIS_DIR:/src test-dita-ot-image:1.0 \
         -i /src/$STEM.ditamap \
         --root-chunk-override=to-content \
@@ -66,6 +69,7 @@ function build_html5(){
 function build_gfm(){
     for STEM in ${PUB_STEMS[@]};do
         docker run --rm \
+        --user `id -u`:`id -g` \
         -v $THIS_DIR:/src test-dita-ot-image:1.0 \
         -i /src/$STEM.ditamap \
         --root-chunk-override=to-content \

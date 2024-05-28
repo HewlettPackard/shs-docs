@@ -2,7 +2,7 @@
 
 This section is for systems using HPE Slingshot 200Gbps CXI NICs.
 
-For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-based system install procedure](mellanox_based_system_install_upgrade_procedure.md), followed by the [Firmware management](firmware_management.md) section.
+For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-based system install procedure](mellanox_based_system_install_upgrade_procedure.md#mellanox-based-system-installupgrade-procedure), followed by the [Firmware management](firmware_management.md#firmware-management) section.
 
 1. Copy the HPE Slingshot compute RPMs tarball for the required distributions to the target system's admin node where the HPCM images will be created. The filename typically follows this pattern: `slingshot-host-software-<version>-<OS distro>_<OS Architecture>.tar.gz`.
 
