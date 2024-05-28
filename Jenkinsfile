@@ -288,7 +288,6 @@ pipeline {
             }
         }
 
-    
         
         stage('Create RPM') {
             steps {
@@ -304,9 +303,7 @@ pipeline {
                 """       
             }
         }
-           
-     
-
+    
         stage ("Sign RPMS") {
             when { expression {BRANCH_NAME ==~ /release\/.*/}}
             steps {
