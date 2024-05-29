@@ -30,6 +30,7 @@
             <topicref href="operations/application_node_configuration.md" format="mdita"/>
             <topicref href="operations/image_building.md" format="mdita"/>
         <topicref href="install/post_install_operational_tasks.md" format="mdita"/>
+        <topicref href="install/legacy_install_procedure_for_non_cfs_based_installs.md" format="mdita"/>
         <topicref href="install/install_notes.md" format="mdita"/>
         <topicref href="install/configure_softroce.md" format="mdita"/>
     </topichead>
