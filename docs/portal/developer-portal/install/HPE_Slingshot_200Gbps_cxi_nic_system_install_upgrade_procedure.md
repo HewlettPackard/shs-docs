@@ -57,7 +57,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
       cray-libcxi-utils
       cray-libcxi-retry-handler
       cray-slingshot-base-link-devel
-      pyxci
+      pycxi
       pycxi-utils
 
    """ > ./shs-cxi.rpmlist

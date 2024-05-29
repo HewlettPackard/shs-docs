@@ -22,7 +22,7 @@ The following RPMs should be retrieved and installed using `zypper install`:
 - `slingshot-network-config`
 - `slingshot-firmware-management`
 - `slingshot-firmware-cassini`
-- `pyxci`
+- `pycxi`
 - `pycxi-utils`
 
 After installing the above RPMs, the system must be configured to allow
