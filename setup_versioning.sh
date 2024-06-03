@@ -100,12 +100,12 @@ if [ ! -z "${BUILD_NUMBER}" ]; then
     create_changelog $CHANGE_LOG ${PRODUCT_VERSION}
 
     # Modify .version files
-    sed -i s/999.999.999/${PRODUCT_VERSION}-${BUILD_NUMBER}/g .version
-    sed -i s/999.999.999/${PRODUCT_VERSION}/g .version_rpm
+    sed -i s/0.0.0/${PRODUCT_VERSION}-${BUILD_NUMBER}/g .version
+    sed -i s/0.0.0/${PRODUCT_VERSION}/g .version_rpm
 
     # Modify rpm spec
     cat docs/portal/developer-portal/shs-docs.spec.template | sed \
-        -e "s/999.999.999/$PRODUCT_VERSION/g" \
+        -e "s/0.0.0/$PRODUCT_VERSION/g" \
         -e "/__CHANGELOG_SECTION__/r $CHANGE_LOG" \
         -e "/__CHANGELOG_SECTION__/d" > docs/portal/developer-portal/shs-docs.spec
 fi

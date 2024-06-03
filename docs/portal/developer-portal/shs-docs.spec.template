@@ -1,6 +1,6 @@
 Summary:       SHS Documentation
 Name:          shs-docs
-Version:       999.999.999
+Version:       0.0.0
 Release:       %(echo ${BUILD_NUMBER:-999})
 Group:         Network Fabric Software
 License:       HPE Software License Agreement
