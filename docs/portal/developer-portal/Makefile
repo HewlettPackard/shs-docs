@@ -296,33 +296,17 @@ dita_ot_dir: dir
 dita_container_prep:
 	docker image build -t test-dita-ot-image:1.0 docker/
 
-ifdef NODOCKER
-echo "NON-DOCKER DITA-OT BUILDS NOT SUPPORTED"
-else
 hpesc_build: dita_ot_dir dita_container_prep
 	../scripts/dita_build.sh -b
-endif
 
-ifdef NODOCKER
-echo "NON-DOCKER DITA-OT BUILDS NOT SUPPORTED"
-else
 dita_ot_pdf: dita_ot_dir dita_container_prep
 	../scripts/dita_build.sh -p
-endif
 
-ifdef NODOCKER
-echo "NON-DOCKER DITA-OT BUILDS NOT SUPPORTED"
-else
 dita_ot_md: dita_ot_dir dita_container_prep
 	../scripts/dita_build.sh -m
-endif
 
-ifdef NODOCKER
-	echo "NON-DOCKER DITA-OT BUILDS NOT SUPPORTED"
-else
 dita_ot_html: dita_ot_dir dita_container_prep
 	../scripts/dita_build.sh -w
-endif
 
 dita_ot_tar: dita_ot_md dita_ot_html dita_ot_pdf
 	cp $(TMPDIR)/VeRsIoN.md $(BUILDDIR)/md
