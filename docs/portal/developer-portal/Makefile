@@ -158,6 +158,12 @@ dir: $(TMPDIR)/VeRsIoN.md
 	mkdir -p $(MDBUILDDIR)
 #	cp -r $(IMAGESDIR) $(HTMLBUILDDIR)
 	cp -r $(CSSDIR) $(HTMLBUILDDIR)
+	cp *.ditamap $(TMPDIR)
+	cp *.json $(TMPDIR)
+	cp -r install $(TMPDIR)
+	cp -r operations $(TMPDIR)
+	cp -r overview $(TMPDIR)
+
 
 # Some build environments may not have docker installed
 # In this case, specify make NODOCKER='y', and
