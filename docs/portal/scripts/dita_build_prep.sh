@@ -11,7 +11,7 @@ for STEM in ${PUB_STEMS[@]};do
 	mkdir -p build/hpesc/$STEM;
 	mkdir -p build/pdf/$STEM;
     mkdir -p build/html/$STEM;
-    mkdir -p  build/md/$STEM;
+    mkdir -p build/md/$STEM;
 	# create an images subdir for each pub
     # the DITA-OT container isn't allowed to
     # create them during Jenkins builds
@@ -28,12 +28,12 @@ DOCS_VERSION=`cat ../../../.version`
 echo "VERSION PASSED TO DITA BUILD IS $DOCS_VERSION"
 DOCS_GIT_HASH=`grep -C 1 "Doc git hash" ${PWD}/tmp/VeRsIoN.md | tail -n 1`
 echo "GIT HASH PASSED TO DITA BUILD IS $DOCS_GIT_HASH"
-for file in $(find . -name "*.json");do	
-	sed -i'' -e "s/@version@/$DOCS_VERSION/g" $file
+for file in $(find ./tmp -name "*.json");do	
+	sed -i'' -e "s/@product_version@/$DOCS_VERSION/g" $file
 	sed -i'' -e "s/@docs_git_hash@/$DOCS_GIT_HASH/g" $file 
 	done
-for file in $(ls *.ditamap);do	
-	sed -i'' -e "s/@version@/$DOCS_VERSION/g" $file
+for file in $(find ./tmp -name "*.ditamap");do	
+	sed -i'' -e "s/@product_version@/$DOCS_VERSION/g" $file
 	sed -i'' -e "s/@docs_git_hash@/$DOCS_GIT_HASH/g" $file
 	done
 
