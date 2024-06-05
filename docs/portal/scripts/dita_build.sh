@@ -32,7 +32,7 @@ function build_bundle(){
         docker run --rm \
         --user `id -u`:`id -g` \
         -v $THIS_DIR:/src test-dita-ot-image:1.0 \
-        -i /src/$STEM.ditamap \
+        -i /src/tmp/$STEM.ditamap \
         -o /src/build/hpesc/$STEM/ \
         -f HPEscHtml5 \
         && cp publication_json_files/$STEM.json build/hpesc/$STEM/publication.json \
@@ -46,7 +46,7 @@ function build_pdf(){
         docker run --rm \
         --user `id -u`:`id -g` \
         -v $THIS_DIR:/src test-dita-ot-image:1.0 \
-        -i /src/$STEM.ditamap \
+        -i /src/tmp/$STEM.ditamap \
         -o /src/build/pdf/$STEM/ \
         --theme=/src/pdf-formatting/hpe-basic-pdf-theme.yaml \
         --args.fo.userconfig=/src/pdf-formatting/fop.xconf \
@@ -59,7 +59,7 @@ function build_html5(){
         docker run --rm \
         --user `id -u`:`id -g` \
         -v $THIS_DIR:/src test-dita-ot-image:1.0 \
-        -i /src/$STEM.ditamap \
+        -i /src/tmp/$STEM.ditamap \
         --root-chunk-override=to-content \
         -o /src/build/html/$STEM/ \
         -f HPEscHtml5;
@@ -71,7 +71,7 @@ function build_gfm(){
         docker run --rm \
         --user `id -u`:`id -g` \
         -v $THIS_DIR:/src test-dita-ot-image:1.0 \
-        -i /src/$STEM.ditamap \
+        -i /src/tmp/$STEM.ditamap \
         --root-chunk-override=to-content \
         -o /src/build/md/$STEM/ \
         -f markdown_github;
