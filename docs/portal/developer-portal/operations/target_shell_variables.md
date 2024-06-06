@@ -1,7 +1,7 @@
 
 # Target shell variables
 
-Set shell variables that correspond to the desired release, working integration branch, and the base import branch.
+Set shell variables that correspond to the desired release, working integration branch, and the base import branch for SHS.
 
 ```screen
 ncn-m001# export RELEASE=<RELEASE>

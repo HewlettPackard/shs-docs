@@ -1,6 +1,8 @@
 
 # Required material
 
+You must install these other software packages on nodes before installing or upgrading SHS.
+
 All material will be available via the source URLs provided below as part of the HPE Slingshot Release for manufacturing and internal development systems.
 
 ## Slingshot RPMs

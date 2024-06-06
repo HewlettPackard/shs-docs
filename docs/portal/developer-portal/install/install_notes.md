@@ -1,7 +1,7 @@
 
 # Notes
 
-The following steps need to occur to build compute and UAN/UAI images prior to boot with the updated HPE Slingshot components:
+Perform these steps to build compute and UAN/UAI images prior to boot with the updated HPE Slingshot components.
 
 1. Build a new COS image from recipe and then customize it with CFS-based image customization. See the _HPE Cray Operating System Administration Guide_.
 

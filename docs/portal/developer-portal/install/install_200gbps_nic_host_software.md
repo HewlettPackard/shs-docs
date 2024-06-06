@@ -1,7 +1,7 @@
 
 # Install 200Gbps NIC host software
 
-The 200Gbps NIC software stack includes drivers and libraries to support standard Ethernet and libfabric RDMA interfaces.
+The 200Gbps NIC software stack includes drivers and libraries to support standard Ethernet and libfabric RDMA interfaces. Perform this procedure the install it.
 
 ## Prerequisites for compute node installs
 

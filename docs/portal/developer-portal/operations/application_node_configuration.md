@@ -1,6 +1,8 @@
 
 # Application node configuration
 
+Follow these steps to add SHS content to User Access Node (UAN) images using CFS.
+
 Ensure that the [Setup](setup.md#setup) section preceding this section has been completed prior to running any steps in this section.
 
 This step is not executed until after the UAN install or upgrade has finished on the system. UAN provides the instructions for creating a CFS configuration for compute nodes. The procedure in this section aims at updating the existing CFS configuration for application nodes.

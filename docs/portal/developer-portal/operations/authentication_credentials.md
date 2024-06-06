@@ -1,7 +1,9 @@
 
 # Authentication credentials
 
-Obtain the authentication credentials needed for the git repository. Git will prompt for them when required.
+Before you configure SHS, obtain and save the authentication credentials needed for the configuration management git repository of the system. 
+
+Git will prompt for the configuration management repository user name and password them when required.
 
 ```screen
 ncn-m001# VCSUSER=$(kubectl get secret -n services vcs-user-credentials \

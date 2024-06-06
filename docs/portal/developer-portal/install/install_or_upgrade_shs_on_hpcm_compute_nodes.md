@@ -1,6 +1,8 @@
 
 # Install or upgrade Slingshot Host Software (SHS) on HPCM compute nodes
 
+Perform one of two procedures to install or upgrade SHS on HPCM compute nodes, depending on the HSN NICs installed on those nodes.
+
 This documentation provides step-by-step instructions to install and/or upgrade the Slingshot Host Software (SHS) on compute node images on an HPE Performance Cluster Manager (HPCM) using SLES15-SP4 as an example.
 
 The procedure outlined here is applicable to SLES, RHEL, and COS distributions. Refer to the System Software Requirements for Fabric Manager and Host Software section in the HPE Slingshot Release Notes for exact version support for the release.

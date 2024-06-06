@@ -1,6 +1,8 @@
 
 # NCN personalization
 
+Use this configuration method to install SHS on NCN worker nodes only if the system uses CSM 1.2 or earlier versions.
+
 This section is only for systems using CSM 1.2 or earlier versions. For systems using CSM 1.3 or later versions, skip this section and instead proceed to the [NCN image customization](ncn_image_customization.md#ncn-image-customization) instructions.
 
 Ensure that the [Setup](setup.md#setup) section preceding this section has been completed prior to running any steps in this section.

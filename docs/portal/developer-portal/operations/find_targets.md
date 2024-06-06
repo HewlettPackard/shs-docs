@@ -1,7 +1,7 @@
 
 # Find targets
 
-Obtain the `release` and `import_branch` from the `cray-product-catalog`.
+Obtain the SHS `release` and `import_branch` from the `cray-product-catalog`.
 where `<release>` is the full or partial release version.
 
 ```screen

@@ -1,7 +1,9 @@
 
 # Compute node configuration
 
-This section provides detailed instructions on how to modify Compute CFS configurations to support installation use cases on HPE Cray EX systems. Two separate approaches are provided:
+This section provides detailed instructions on how to modify Compute CFS configurations to support SHS installation use cases on HPE Cray EX systems. 
+
+There are two options for modifying those configurations:
 
 - SAT Bootprep
 - Legacy Compute Node CFS procedure

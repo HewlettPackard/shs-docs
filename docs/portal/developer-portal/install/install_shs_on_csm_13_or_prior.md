@@ -1,6 +1,8 @@
 
 # Install SHS on CSM release 1.3 or prior
 
+If the CSM version is 1.3 or earlier, use `cne-install` to upgrade SHS, or use the product installation script to install SHS. 
+
 The SHS distribution provides firmware, diagnostics, and the network software stack for hosts which communicate using the HPE Slingshot network.
 
 For upgrades, the manual steps or the Compute Node Environment (CNE) installer tool can be used. See [SHS upgrade with CNE installer](#shs-upgrade-with-cne-installer) for more information on the `cne-install` method.

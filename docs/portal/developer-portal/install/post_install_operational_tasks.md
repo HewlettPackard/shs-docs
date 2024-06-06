@@ -1,7 +1,7 @@
 
 # Post-install operational tasks
 
-The firmware must be updated with each new install. The firmware can be updated using `slingshot-firmware` as provided by the `slingshot-firmware-management` package.
+The HPE Slingshot firmware must be updated with each new SHS install. The firmware can be updated using `slingshot-firmware` as provided by the `slingshot-firmware-management` package.
 
 1. Run `slingshot-firmware query` to query the current version of the software.
 

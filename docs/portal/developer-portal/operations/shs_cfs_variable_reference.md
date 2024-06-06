@@ -1,7 +1,7 @@
 
 # SHS CFS variable reference
 
-The following Ansible variables are publicly exposed for use by customers or administrators with SHS CFS playbooks:
+These Ansible variables are publicly exposed for use by customers or administrators with SHS CFS playbooks:
 
 - name: `shs_libfabric_enabled`
   type: `bool`
