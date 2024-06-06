@@ -30,6 +30,10 @@ pdf2:
 page:
   size: Letter
   mirror-margins: true
+  top: 15mm
+  outside: 6mm
+  bottom: 10mm
+  inside: 9mm
 # ↑ end-page-settings ↑
 
 # ↓ add-header-setup ↓
@@ -185,6 +189,13 @@ style:
       background-color: $brand-color-note-background-tip
     warning:
       background-color: $brand-color-note-background-caution
+  pre:
+    background-color: $brand-color-inverse
+    border: solid 1pt $brand-color-tertiary
+    font-family: $pdf2-font-monospaced
+    font-size: 8pt
+    keep-together.within-page: always
+    space-after: 8pt
   section-title:
     color: $brand-color-secondary
   shortdesc:
