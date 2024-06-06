@@ -35,7 +35,7 @@ function build_bundle(){
         -i /src/tmp/$STEM.ditamap \
         -o /src/build/hpesc/$STEM/ \
         -f HPEscHtml5 \
-        && cp publication_json_files/$STEM.json build/hpesc/$STEM/publication.json \
+        && cp tmp/$STEM.json build/hpesc/$STEM/publication.json \
         && cd build/hpesc/$STEM/ && zip -r $STEM.zip ./
         cd $THIS_DIR;
 	    done
