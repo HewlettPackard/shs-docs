@@ -188,8 +188,8 @@ style:
   section-title:
     color: $brand-color-secondary
   shortdesc:
-    color: $brand-color-secondary
-    font-size: 13pt
+    color: $brand-color-primary
+    font-size: 11pt
     line-height: 1.3
   table:
     caption:
