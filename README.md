@@ -36,3 +36,16 @@ Lightweight DITA (LwDITA) standard in the future
 - There cannot be any content above the topmost header. DITA-OT will throw a fatal error.
 - Cross-reference link targets must include the target file. You can optionally add the target header if you need to point to a specific section in the target file. DITA-OT requires it. The benefit is that DITA-OT will keep track of all cross-references no matter how the content is transformed (by assigning unique ids to the source and target). Another benefit is that if the xref works in the Markdown source, it'll work in the output.
 
+## Build docs locally with DITA-OT
+
+Same process as building docs locally via the Pandoc container, except that you will use different Makefile targets:
+
+- `hpesc_build`: builds a `.zip` file for HPESC Direct Publishing for each publication
+- `dita_ot_md`: builds a single file GitHub Flavored Markdown (GFM) output for each publication
+- `dita_ot_html`: builds an HPE-styled single file HTML5 output for each publication
+- `dita_ot_pdf`: builds an HPE-styled PDF output for each publication
+- `dita_ot_tar`: builds all of the above and combines them in a tarball
+
+## Build docs automatically with DITA-OT
+
+Same Jenkinsfile configuration as with the mds-file-and-Pandoc build process, except that you must replace the current Makefile target(s) with one or more of the above for automated Hummingbird builds.

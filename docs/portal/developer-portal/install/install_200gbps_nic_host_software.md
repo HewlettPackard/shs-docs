@@ -1,7 +1,7 @@
 
 # Install 200Gbps NIC host software
 
-The 200Gbps NIC software stack includes drivers and libraries to support standard Ethernet and libfabric RDMA interfaces.
+The 200Gbps NIC software stack includes drivers and libraries to support standard Ethernet and libfabric RDMA interfaces. Perform this procedure the install it.
 
 ## Prerequisites for compute node installs
 
@@ -22,7 +22,7 @@ The following RPMs should be retrieved and installed using `zypper install`:
 - `slingshot-network-config`
 - `slingshot-firmware-management`
 - `slingshot-firmware-cassini`
-- `pyxci`
+- `pycxi`
 - `pycxi-utils`
 
 After installing the above RPMs, the system must be configured to allow
@@ -134,7 +134,7 @@ hsn0 is CXI interface
 
 ## 200Gbps NIC firmware management
 
-See the [Firmware Management](firmware_management_post_install.md) section for more information on how to update firmware.
+See the [Firmware Management](firmware_management_post_install.md#firmware-management) section for more information on how to update firmware.
 
 Both `slingshot-firmware-cassini` and `slingshot-firmware-management` must be installed to successfully update 200Gbps NIC firmware.
 

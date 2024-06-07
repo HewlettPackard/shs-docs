@@ -22,7 +22,7 @@ Follow the relevant procedures to achieve the needed configuration. Contact a sy
 2. If Lustre is being used, modify the client and server parameters.
 
    Skip this step if Lustre is not being used.
-   See the [Lustre configuration](lustre_network_driver_lnd_ko2iblnd_configuration.md) procedure for more details.
+   See the [Lustre configuration](lustre_network_driver_lnd_ko2iblnd_configuration.md#lustre-network-driver-lnd-ko2iblnd-configuration) procedure for more details.
 
    The client and server parameters can be modified using one of the following methods:
 

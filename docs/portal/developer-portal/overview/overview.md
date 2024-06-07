@@ -1,6 +1,8 @@
 
 # Overview
 
+HPE Slingshot Host Software (SHS) provides the software packages that must be installed on nodes that use the HPE Slingshot interconnect.
+
 HPE Slingshot Host Software (SHS) includes drivers and diagnostics for the HPE Slingshot NIC (CXI device driver), OFI Libfabric libraries for both the HPE Slingshot NIC and for supported industry NICs
 (NVIDIA Mellanox CX-5), and Linux configuration utilities and sample code for configuring the host images.
 For systems using the Cray Operating System (COS), the host software packages also supply drivers for the supported industry standard NICs.
