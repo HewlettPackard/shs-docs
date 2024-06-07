@@ -197,7 +197,7 @@ style:
     keep-together.within-page: always
     space-after: 8pt
   section-title:
-    color: $brand-color-secondary
+    color: $brand-color-primary
   shortdesc:
     color: $brand-color-primary
     font-size: 11pt
@@ -218,25 +218,17 @@ style:
     font-style: normal
     start-indent: 0
   toc-2:
-    color: black
+    color: $brand-color-primary
     font-family: $pdf2-font-sans
     font-style: normal
-    space-before: 4pt
-    start-indent: 5pt
-    level: 2
-    scope: local
   toc-3:
-    color: black
+    color: $brand-color-primary
     font-family: $pdf2-font-sans
     font-style: normal
-    space-before: 2pt
-    start-indent: 24pt
   toc-4:
-    color: black
+    color: $brand-color-primary
     font-family: $pdf2-font-sans
     font-style: normal
-    space-before: 2pt
-    start-indent: 40pt
   varname:
     color: $brand-color-secondary
     font-style: italic
