@@ -38,10 +38,7 @@
             <topicref href="install/legacy_install_procedure_for_non_cfs_based_installs.md" format="mdita">
                 <topicref href="install/install_notes.md" format="mdita"/>
             </topicref>
-<<<<<<< HEAD
-=======
         </topicref>
->>>>>>> 033cc921fb84e496b3309e082e3a08cc994ceadd
         <topicref href="install/configure_softroce.md" format="mdita"/>
     </topichead>
     <topichead>
@@ -55,11 +52,7 @@
             <topicref
                 href="install/HPE_Slingshot_200Gbps_cxi_nic_system_install_upgrade_procedure.md"
                 format="mdita"/>
-<<<<<<< HEAD
-            </topicref>
-=======
         </topicref>
->>>>>>> 033cc921fb84e496b3309e082e3a08cc994ceadd
         <topicref href="install/firmware_management.md" format="mdita"/>
         <topicref href="install/arp_settings.md" format="mdita"/>
     </topichead>
@@ -83,9 +76,6 @@
         <topicref href="install/configure_softroce.md" format="mdita">
             <topicref href="install/softroce_on_HPE_Slingshot_200Gpbs_.md" format="mdita"/>
             <topicref href="install/lustre_network_driver_lnd_ko2iblnd_configuration.md" format="mdita"/>
-<<<<<<< HEAD
-=======
         </topicref>
->>>>>>> 033cc921fb84e496b3309e082e3a08cc994ceadd
     </topichead>
 </map>
