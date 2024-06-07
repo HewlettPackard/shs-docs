@@ -7,7 +7,7 @@
 "lifecycle": "DRAFT",
 "products": ["1013247219","1013083813"],
 "product_version": "@product_version@",
-"full_title": "HPE Slingshot Host Software Installation and Configuration Guide (S-XXXX) @product_version@",
+"full_title": "HPE Slingshot Host Software Installation and Configuration Guide (S-9009) @product_version@",
 "description": "This publication describes how to install and configure SHS for HPE Slingshot.",
 "language_code": "en_US",
 "object_name": "crs8032_@docid_suffix@en_us",
