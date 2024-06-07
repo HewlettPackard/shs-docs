@@ -29,11 +29,7 @@
                 <topicref href="operations/compute_node_configuration.md" format="mdita"/>
                 <topicref href="operations/application_node_configuration.md" format="mdita"/>
                 <topicref href="operations/image_building.md" format="mdita"/>
-<<<<<<< HEAD
             </topicref>   
-=======
-            </topicref>
->>>>>>> 033cc921fb84e496b3309e082e3a08cc994ceadd
             <topicref href="install/post_install_operational_tasks.md" format="mdita"/>
             <topicref href="install/legacy_install_procedure_for_non_cfs_based_installs.md" format="mdita">
                 <topicref href="install/install_notes.md" format="mdita"/>
