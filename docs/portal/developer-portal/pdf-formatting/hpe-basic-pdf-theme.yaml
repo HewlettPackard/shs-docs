@@ -223,6 +223,8 @@ style:
     font-style: normal
     space-before: 4pt
     start-indent: 5pt
+    level: 2
+    scope: local
   toc-3:
     color: black
     font-family: $pdf2-font-sans
