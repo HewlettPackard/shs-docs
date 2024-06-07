@@ -29,9 +29,11 @@
                 <topicref href="operations/compute_node_configuration.md" format="mdita"/>
                 <topicref href="operations/application_node_configuration.md" format="mdita"/>
                 <topicref href="operations/image_building.md" format="mdita"/>
+            </topicref>   
             <topicref href="install/post_install_operational_tasks.md" format="mdita"/>
             <topicref href="install/legacy_install_procedure_for_non_cfs_based_installs.md" format="mdita"/>
                 <topicref href="install/install_notes.md" format="mdita"/>
+            </topicref>
         <topicref href="install/configure_softroce.md" format="mdita"/>
     </topichead>
     <topichead>
@@ -45,6 +47,7 @@
             <topicref
                 href="install/HPE_Slingshot_200Gbps_cxi_nic_system_install_upgrade_procedure.md"
                 format="mdita"/>
+            </topicref>
         <topicref href="install/firmware_management.md" format="mdita"/>
         <topicref href="install/arp_settings.md" format="mdita"/>
         </topicref>
@@ -62,13 +65,12 @@
                 <topicref href="install/algorithmic_mac_address_mac_configuration.md" format="mdita"/>
                 <topicref href="install/multiple_network_adapters.md" format="mdita"/>
                 <topicref href="install/HPE_Slingshot_configuration_with_Mellanox_nics.md" format="mdita"/>
-            </topicref>
+            </topicref>    
             <topicref href="install/sysctl_configuration_example.md" format="mdita"/>
             <topicref href="install/install_200gbps_nic_host_software.md" format="mdita"/>
+        </topicref>
         <topicref href="install/configure_softroce.md" format="mdita">
             <topicref href="install/softroce_on_HPE_Slingshot_200Gpbs_.md" format="mdita"/>
-            <topicref href="install/lustre_network_driver_lnd_ko2iblnd_configuration.md"
-                format="mdita"/>
-        </topicref>
+            <topicref href="install/lustre_network_driver_lnd_ko2iblnd_configuration.md" format="mdita"/>
     </topichead>
 </map>
