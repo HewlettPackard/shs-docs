@@ -31,13 +31,13 @@ def pipelineParams= [
     app: "website",
     name: "shsdocs",
     description: "Standalone Slingshot Host Software Docs",
-    masterBranch: 'master',
+    masterBranch: 'main',
     dockerbuild: false,
     dockerBuildContextDir: '.',
     dockerArguments: "",
     dockerBuildTarget: "application",
     useEntryPointForTest: true,
-    product: "slingshot",
+    product: "slingshot-host-software",
     targetOS: "noos"
 ]
 
