@@ -31,7 +31,7 @@ HTMLDRAFTSBUILDDIR = $(BUILDDIR)/drafts/html
 MDSBUILDDIR = $(SOURCEDIR)
 MDBUILDDIR = $(BUILDDIR)/md
 
-# IMAGESDIR = images
+IMAGESDIR = images
 CSSDIR = css
 WORKSPACE = "/workspace"
 
@@ -156,13 +156,16 @@ dir: $(TMPDIR)/VeRsIoN.md
 	mkdir -p $(HTMLDRAFTSBUILDDIR)
 	mkdir -p $(HPESCBUILDDIR)
 	mkdir -p $(MDBUILDDIR)
-#	cp -r $(IMAGESDIR) $(HTMLBUILDDIR)
+	cp -r $(IMAGESDIR) $(HTMLBUILDDIR)
 	cp -r $(CSSDIR) $(HTMLBUILDDIR)
 	cp *.ditamap $(TMPDIR)
 	cp *.json $(TMPDIR)
 	cp -r install $(TMPDIR)
+	cp -r troubleshoot $(TMPDIR)
+	cp -r performance $(TMPDIR)
 	cp -r operations $(TMPDIR)
 	cp -r overview $(TMPDIR)
+	cp -r images $(TMPDIR)
 
 
 # Some build environments may not have docker installed

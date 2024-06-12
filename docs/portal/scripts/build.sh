@@ -66,13 +66,17 @@ echo "Building SHS Install Guide";
 
 # This line builds the HPESC HTML bundle for the install guide
 dita -i tmp/shs_install_guide.ditamap -o build/install -f HPEscHtml5 && cp shs_install_publication.json build/install/publication.json && cd build/install/ && zip -r crs8032_@docid_suffix@en_us.zip ./
+# This line builds the HPESC HTML bundle for the troubleshooting guide
+dita -i tmp/HPE_Slingshot_Host_Software_Troubleshooting_Guide.ditamap -o build/troubleshoot -f HPEscHtml5 && cp HPE_Slingshot_Host_Software_Troubleshooting_Guide.json build/troubleshoot/publication.json && cd build/troubleshoot/ && zip -r crs8032_@docid_suffix@en_us.zip ./
 cd $THIS_DIR
 # This builds the PDF using DITA-OT's default PDF transform
 echo "Building PDF"
 dita -i shs_install_guide.ditamap -o build/PDF/install -f pdf
+dita -i HPE_Slingshot_Host_Software_Troubleshooting_Guide.ditamap -o build/PDF/install -f pdf
 # This builds the single file Markdown version of the guide. This leverages DITA's "chunking"
 echo "Building Combined Markdown File"
 dita -i shs_install_guide.ditamap --root-chunk-override=to-content -o build/Markdown -f markdown_github
+dita -i HPE_Slingshot_Host_Software_Troubleshooting_Guide.ditamap --root-chunk-override=to-content -o build/Markdown -f markdown_github
 
 # delete the tmp dir created by the flatten script. The bundle is still in the build subdir
 rm -rf tmp/

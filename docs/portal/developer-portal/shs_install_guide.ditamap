@@ -74,4 +74,25 @@
             <topicref href="install/lustre_network_driver_lnd_ko2iblnd_configuration.md" format="mdita"/>
         </topicref>
     </topichead>
+    <topichead>
+        <topicset id="hsn-performance">
+            <topicmeta>
+                <navtitle>HSN Performance</navtitle>
+            </topicmeta>
+            <topicref href="performance/performance_overview.md" format="mdita"/>
+            <topicref href="performance/performance_benchmark_tools.md" format="mdita"/>
+            <topicref href="performance/HSN_performance_benchmarking.md" format="mdita">
+                <title>HSN Performance Benchmark Tools</title>
+            </topicref>
+            <topicref href="performance/ARP.md" format="mdita"/>
+            <topicref href="performance/ethtool_node_tuning.md" format="mdita"/>
+            <topicref href="performance/AMA.md" format="mdita"/>
+            <topicref href="performance/fabric_links_troubleshooting.md" format="mdita"/>
+            <topicref href="performance/port_configuration.md" format="mdita"/>
+            <topicref href="performance/fabric_health_diagnostics_overview.md" format="mdita">
+                <topicref href="performance/fabric_health_diagnostics.md" format="mdita"/>
+            </topicref>
+            <topicref href="performance/TCP_performance_tuning.md" format="mdita"/>
+        </topicset>
+    </topichead>
 </map>
