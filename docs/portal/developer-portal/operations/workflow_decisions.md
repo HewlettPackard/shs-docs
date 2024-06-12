@@ -30,7 +30,7 @@ At this point, some workflow decisions must be made. These decisions depend on r
     For example:
 
     ```screen
-    ncn-m001# OLD_RELEASE=1.7.3
+    ncn-m001# OLD_RELEASE=2.1.0
     ncn-m001# OLD_BRANCH_REF=refs/remotes/origin/integration-${OLD_RELEASE}
     ncn-m001# OLD_IMPORT_BRANCH_REF=refs/remotes/origin/cray/slingshot-host-software/${OLD_RELEASE}
     ```
@@ -53,7 +53,7 @@ At this point, some workflow decisions must be made. These decisions depend on r
     Example output:
 
     ```screen
-    ncn-m001# OLD_RELEASE=1.7.3
+    ncn-m001# OLD_RELEASE=2.1.0
     ncn-m001# OLD_BRANCH_REF=refs/remotes/origin/integration
     ncn-m001# OLD_IMPORT_BRANCH_REF=refs/remotes/origin/cray/slingshot-host-software/${OLD_RELEASE}
     ```
