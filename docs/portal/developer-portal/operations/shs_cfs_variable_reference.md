@@ -26,5 +26,5 @@ These Ansible variables are publicly exposed for use by customers or administrat
   description: Sets the target distribution to use when defining repository URIs. Available choices are one of (`sle15-sp3`, `sle15-sp4`). See guidance below for selecting a target distribution
 - name: `shs_target_platform`
   type: `string`
-  description: sets the target platform to use when defining repository URIs. Available choices are one of (`cos-2.4`, `cos-2.5`, `cos-2.6`, `csm-1.3.0`, `csm-1.4.0`, `csm-1.5.0`)
+  description: sets the target platform to use when defining repository URIs. Available choices are one of (`cos-2.4`, `cos-2.5`, `cos-2.6`, `csm-1.3`, `csm-1.4`, `csm-1.5`)
 
