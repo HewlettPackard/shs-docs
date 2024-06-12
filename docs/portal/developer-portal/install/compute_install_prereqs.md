@@ -3,6 +3,8 @@
 
 You must install these other software packages on nodes before installing or upgrading SHS.
 
+NOTE: This section does not apply to CSM installs.
+
 All material will be available via the source URLs provided below as part of the HPE Slingshot Release for manufacturing and internal development systems.
 
 ## Slingshot RPMs
