@@ -66,7 +66,7 @@ mkdir -m777 -p build/Markdown
 echo "Building SHS Install Guide";
 
 # This line builds the HPESC HTML bundle for the install guide
-dita -i tmp/shs_install_guide.ditamap -o build/install -f HPEscHtml5 && cp shs_install_publication.json build/install/publication.json && cd build/install/ && zip -r crs8032_@docid_suffix@en_us.zip ./
+dita -i tmp/shs_install_guide.ditamap -o build/install -f HPEscHtml5 && cp shs_install_publication.json build/install/publication.json && cd build/install/ && zip -r crs9009en_us.zip ./
 cd $THIS_DIR
 # This builds the PDF using DITA-OT's default PDF transform
 echo "Building PDF"
@@ -78,7 +78,7 @@ dita -i shs_install_guide.ditamap --root-chunk-override=to-content -o build/Mark
 echo "Building SHS Release Notes";
 
 # This line builds the HPESC HTML bundle for the release notes
-dita -i tmp/HPE_Slingshot_Host_Software_Release_Notes.ditamap -o build/release_notes -f HPEscHtml5 && cp HPE_Slingshot_Host_Software_Release_Notes.json build/release_notes/publication.json && cd build/release_notes/ && zip -r crs8032_@docid_suffix@en_us.zip ./
+dita -i tmp/HPE_Slingshot_Host_Software_Release_Notes.ditamap -o build/release_notes -f HPEscHtml5 && cp HPE_Slingshot_Host_Software_Release_Notes.json build/release_notes/publication.json && cd build/release_notes/ && zip -r crs9010en_us.zip ./
 cd $THIS_DIR
 # This builds the PDF using DITA-OT's default PDF transform
 echo "Building PDF"
