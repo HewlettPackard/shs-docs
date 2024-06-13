@@ -1,47 +1,4 @@
 
-# Slingshot Fabric Manager
-
-## HPCM and Standalone Base OS
-
-| Distribution             | Versions Supported |
-|--------------------------|--------------------|
-| Red Hat Enterprise Linux | 8.6, 8.7, 8.8      |
-| Rocky Linux              | 8                  |
-| SuSE Linux Enterprise 15 | SP3, SP4, SP5      |
-
-## Prerequisites for RPM Installation on Rocky Linux and RHEL
-
-Installation dependencies for Rocky Linux and RHEL can be found in the following package repositories:
-
-- AppStream
-- BaseOS
-- CRB
-- EPEL 8
-- PowerTools
-
-EPEL 8 is an open source package repository containing extra packages for RedHat distributions. AppStream,
-BaseOS, and CRB are provided with the RHEL and Rocky Linux install media.
-
-## Prerequisites for RPM Installation on SLES
-
-Installation dependencies for SLES can be found in the following package repositories included with
-the SUSE installation media:
-
-- `Products/SLE-Module-Basesystem/15-SP<service pack>/x86_64/product/`
-- `Updates/SLE-Module-Basesystem/15-SP<service pack>/x86_64/update`
-- `Products/SLE-Module-Packagehub-Subpackages/15-SP<service pack>/x86_64/product`
-- `Updates/SLE-Module-Packagehub-Subpackages/15-SP<service pack>/x86_64/update/`
-- `Products/SLE-Module-Development-Tools/15-SP4/x86_64/product`
-- `Updates/SLE-Module-Development-Tools/15-SP<service pack>/x86_64/update`
-- `Backports/SLE-15-SP<service pack>/standard`
-
-## HPE System Management Software
-
-| Sys Mgmt                    | Versions Supported            |
-|-----------------------------|-------------------------------|
-| HPE Cray EX System Software | 1.3, 1.4, 1.5                 |
-| HPCM                        | 1.5, 1.6, 1.7, 1.8, 1.9, 1.10 |
-
 
 # Slingshot Host Software (SHS)
 
