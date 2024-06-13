@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map id="shs_relnotes">
+    <title>HPE Slingshot Host Software Release Notes (S-9010) (@product-version@)</title>
+    <topicmeta>
+        <shortdesc>This publication describes release-specific changes for HPE Slingshot Host Software (SHS).</shortdesc>
+        <data name="pubsnumber" value="S-9010"></data>
+        <data name="edition" value="SHS Software Release @product_version@"></data>
+    </topicmeta>
+    <topicref href="release_notes/summary.md" format="mdita" />
+    <topicref href="release_notes/newfeatures.md" format="mdita"/>
+    <topicref href="release_notes/interface_and_operational.md" format="mdita"/>
+    <topicref href="release_notes/resolvedissues.md" format="mdita"/>
+    <topicref href="release_notes/securityissues.md" format="mdita"/>
+    <topicref href="release_notes/knownissues.md" format="mdita"/>
+    <topichead>
+      <topicmeta>
+          <navtitle>System Software Requirements for Fabric Manager and Host Software</navtitle>
+       </topicmeta>
+        <topicref href="release_notes/support_matrix.md" format="mdita"/>
+    </topichead>
+    <topicref href="release_notes/cassini_firmware.md" format="mdita"/>
+    <topichead>
+      <topicmeta>
+          <navtitle>Appendix A: Validate Slingshot Software/Firmware</navtitle>
+       </topicmeta>
+        <topicref href="release_notes/hash_validation_howto.md" format="mdita"/>
+    </topichead>
+    <topicref href="release_notes/new_fmn_commands.md" format="mdita"/>
+</map>
