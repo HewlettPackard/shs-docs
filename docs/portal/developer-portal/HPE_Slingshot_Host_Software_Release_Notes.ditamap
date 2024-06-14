@@ -7,23 +7,23 @@
         <data name="pubsnumber" value="S-9010"></data>
         <data name="edition" value="SHS Software Release @product_version@"></data>
     </topicmeta>
-    <topicref href="release_notes/summary.md" format="mdita" />
-    <topicref href="release_notes/newfeatures.md" format="mdita"/>
-    <topicref href="release_notes/interface_and_operational.md" format="mdita"/>
-    <topicref href="release_notes/resolvedissues.md" format="mdita"/>
-    <topicref href="release_notes/securityissues.md" format="mdita"/>
-    <topicref href="release_notes/knownissues.md" format="mdita"/>
+    <topicref href="release_notes/summary.md" format="markdown" />
+    <topicref href="release_notes/newfeatures.md" format="markdown"/>
+    <topicref href="release_notes/interface_and_operational.md" format="markdown"/>
+    <topicref href="release_notes/resolvedissues.md" format="markdown"/>
+    <topicref href="release_notes/securityissues.md" format="markdown"/>
+    <topicref href="release_notes/knownissues.md" format="markdown"/>
     <topichead>
       <topicmeta>
           <navtitle>System Software Requirements for Fabric Manager and Host Software</navtitle>
        </topicmeta>
-        <topicref href="release_notes/support_matrix.md" format="mdita"/>
+        <topicref href="release_notes/support_matrix.md" format="markdown"/>
     </topichead>
-    <topicref href="release_notes/cassini_firmware.md" format="mdita"/>
+    <topicref href="release_notes/cassini_firmware.md" format="markdown"/>
     <topichead>
       <topicmeta>
           <navtitle>Appendix A: Validate Slingshot Software/Firmware</navtitle>
        </topicmeta>
-        <topicref href="release_notes/hash_validation_howto.md" format="mdita"/>
+        <topicref href="release_notes/hash_validation_howto.md" format="markdown"/>
     </topichead>
 </map>
