@@ -53,4 +53,3 @@
     1 packets transmitted, 1 received, 0% packet loss, time 0ms
     rtt min/avg/max/mdev = 0.107/0.107/0.107/0.000 ms
     ```
-

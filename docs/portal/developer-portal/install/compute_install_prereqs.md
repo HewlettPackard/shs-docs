@@ -7,7 +7,7 @@ NOTE: This section does not apply to CSM installs.
 
 All material will be available via the source URLs provided below as part of the HPE Slingshot Release for manufacturing and internal development systems.
 
-## Slingshot RPMs
+## HPE Slingshot RPMs
 
 | Name                          | Contains                                                                                                        | Typical Install Target             |
 |-------------------------------|-----------------------------------------------------------------------------------------------------------------|------------------------------------|

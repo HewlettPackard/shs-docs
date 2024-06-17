@@ -13,7 +13,7 @@ to run. It can be run on a subset of nodes allocated by the batch system. The
 impact on performance of other applications is low.
 
 Bi-directional RMDA write bandwidth is measured using the CXI diagnostic
-cxi\_write\_bw. For more information about this diagnostic, see CXI
+`cxi_write_bw`. For more information about this diagnostic, see CXI
 Diagnostics and Utilities documentation. Bandwidth is measured from each NIC to
 its connected switch and then back to itself.
 

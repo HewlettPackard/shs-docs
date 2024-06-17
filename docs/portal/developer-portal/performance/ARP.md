@@ -79,7 +79,7 @@ being loaded with the cache entries.
 Example:
 
 ```bash
-[root@slingshotfmn~](STT) show hsn_traffic ping-all-to-all
+[root@slingshotfmn~] (STT) show hsn_traffic ping-all-to-all
 
 [root@login_node ~]pdsh -w nid00[1000-3559] 'for i in {1000..3559} ; \
                    > do ping -W 1 -c 1 nid00$i | grep packet ; done' | dshbak -c

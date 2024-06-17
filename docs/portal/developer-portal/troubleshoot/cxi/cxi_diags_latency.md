@@ -5,9 +5,9 @@ Latency is measured by obtaining the start and end times for individual
 transactions. The start time is the point when the software initiates the
 transaction. The end time is the point when software receives an event from the
 device indicating that the transaction's final data write to either host has
-occurred. For cxi\_write\_lat, this is the write to the target. For cxi\_read\_lat,
-this is the write to the initiator. For cxi\_atomic\_lat, this is the write to the
-target, or for fetching atomics, the initiator. For cxi\_send\_lat, a message is
+occurred. For `cxi_write_lat`, this is the write to the target. For `cxi_read_lat`,
+this is the write to the initiator. For `cxi_atomic_lat`, this is the write to the
+target, or for fetching atomics, the initiator. For `cxi_send_lat`, a message is
 sent first from client to server and then from server to client. The end time is
 the point when the second message has been written, and the latency is estimated
 by halving the round-trip time.
@@ -16,15 +16,15 @@ The client measures and reports the latency. The diagnostics can be run for a
 number of iterations or for a duration of time. They can be configured to use a
 single size or a range of sizes. They can be configured to use either system
 memory or GPU memory for the initiator and target write buffers, with the
-exception of cxi\_atomic_\lat. A summary of the run options is printed during
+exception of `cxi_atomic_lat`. A summary of the run options is printed during
 initialization. If the `--report-all` option is used, each individually measured
 latency is printed. Finally several columns of data are printed, including the
 transaction size, number of transactions, the measured minimum, maximum, and
 average latencies, as well as the standard deviation.
 
-## cxi\_write\_lat
+## `cxi_write_lat`
 
-The cxi\_write\_lat utility measures one-sided RDMA write latency. When using
+The `cxi_write_lat` utility measures one-sided RDMA write latency. When using
 system memory, it can be configured to use huge pages.
 
 **Usage**
@@ -68,6 +68,7 @@ Options:
 This example shows a run with individual latencies printed.
 
 *Server*
+
 ```screen
 $ cxi_write_lat
 Listening on port 49194 for client to connect...
@@ -94,6 +95,7 @@ See client for results.
 ```
 
 *Client*
+
 ```screen
 $ cxi_write_lat 10.1.1.8 -n 5 --report-all
 ------------------------------------------------------------------------
@@ -126,9 +128,9 @@ RDMA Size[B]      Writes     Min[us]     Max[us]    Mean[us]  StdDev[us]
 ------------------------------------------------------------------------
 ```
 
-## cxi\_read\_lat
+## `cxi_read_lat`
 
-The cxi\_read\_lat utility measures one-sided RDMA read latency. When using
+The `cxi_read_lat` utility measures one-sided RDMA read latency. When using
 system memory, it can be configured to use huge pages.
 
 **Usage**
@@ -168,9 +170,10 @@ Options:
 
 **Example**
 
-This example shows a run over a range of sizes for 1 second each.
+This example shows a run over a range of sizes for one second each.
 
 *Server*
+
 ```screen
 $ cxi_read_lat
 Listening on port 49194 for client to connect...
@@ -197,6 +200,7 @@ See client for results.
 ```
 
 *Client*
+
 ```screen
 $ cxi_read_lat 192.168.1.1 -D 1 -s 1:1024
 ------------------------------------------------------------------------
@@ -226,9 +230,9 @@ RDMA Size[B]       Reads     Min[us]     Max[us]    Mean[us]  StdDev[us]
 ------------------------------------------------------------------------
 ```
 
-## cxi\_send\_lat
+## `cxi_send_lat`
 
-The cxi\_send\_bw utility measures two-sided message latency. It can be
+The `cxi_send_bw` utility measures two-sided message latency. It can be
 configured to use eager or rendezvous transactions. When using system memory, it
 can be configured to use huge pages.
 
@@ -326,9 +330,9 @@ Remote (server)  : NIC 0x12 PID 0
 ----------------------------------------------------------------------
 ```
 
-## cxi\_atomic\_lat
+## `cxi_atomic_lat`
 
-The cxi\_atomic\_bw utility measures one-sided AMO latency. It can be configured
+The `cxi_atomic_bw` utility measures one-sided AMO latency. It can be configured
 to use a specific atomic operation and data type. The utility works with or
 without CPU offload, but enabling that feature in the NIC is left to the user.
 

@@ -4,11 +4,11 @@
 ## Errors, Events, and Alerts
 
 * ASIC
-	* None
+  * None
 * SBL
-	* None
+  * None
 * uC
-	* None
+  * None
 
 ## 200Gbps NIC State
 

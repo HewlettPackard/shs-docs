@@ -21,11 +21,10 @@ page with a summary of the diagnostics and their features. Binaries are placed
 in `/usr/bin`, and manpages are placed in `/usr/share/man/man1` and
 `/usr/share/man/man7`.
 
-# Minimum setup required
+## Minimum setup required
 
 - The CXI drivers must be installed.
-- The retry handler service must be running for each NIC (`cxi_rh@cxi0`,
-`cxi_rh@cxi1`, and so on).
+- The retry handler service must be running for each NIC (`cxi_rh@cxi0`, `cxi_rh@cxi1`, and so on).
 - The links must have a valid Algorithmic MAC Address (AMA) configured.
 - The client and server hosts must each have a network device with an IPv4
 address, and they must be able to reach each other through these devices.
@@ -59,7 +58,7 @@ When using huge pages:
 
 - Huge pages must be made available on the nodes.
 
-# Running the diagnostics
+## Running the diagnostics
 
 A subset of the diagnostics are client/server tests that measure point-to-point
 or loopback bandwidth and latency. These can use any IP interface to bootstrap

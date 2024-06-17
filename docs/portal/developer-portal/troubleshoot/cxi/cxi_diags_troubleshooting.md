@@ -177,7 +177,7 @@ option.
 
 ## Sync timeout
 
-cxi\_heatsink\_check spawns multiple processes to generate stress traffic. It
+`cxi_heatsink_check` spawns multiple processes to generate stress traffic. It
 synchronizes these processes when they begin generating traffic and again
 when they stop.
 
@@ -215,7 +215,7 @@ pkill cxi_heatsink_check
 A single SIGINT or SIGTERM signal is often enough to break the processes out of
 their loops and cause them to clean up all 200Gbps NIC resources that were allocated
 through the driver. If they do not finish running within several seconds, they
-can be killed with a second SIGTERM. 
+can be killed with a second SIGTERM.
 
 **Note**: Killing the processes with SIGKILL or a second SIGTERM may result in degraded 200Gbps NIC performance until the
 next node reboot.

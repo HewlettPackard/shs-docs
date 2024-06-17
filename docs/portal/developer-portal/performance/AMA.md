@@ -3,7 +3,7 @@
 
 To support efficient low latency forwarding of frames within the network, a scheme for managing the assignment of L2 addresses to physical ports is required. This allows algorithmically generated fabric addresses to be assigned to physical ports based on the network topology, enabling low latency and interval routing to be used within the High Speed Fabric.
 
-AMA enables Slingshot to treat the entire topology as a flat network:
+AMA enables HPE Slingshot to treat the entire topology as a flat network:
 
 * Faster Lookups (Switch)
 * Ability to control the Address space
@@ -19,7 +19,7 @@ Connectivity/Performance issue: Check that AMA is being set correctly.
 
 All the HSN interfaces have names with HSN, you can use the following command to get all the interfaces of a node:
 
-```bash
+```screen
 id000001:~ # ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
 link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -43,13 +43,13 @@ valid_lft forever preferred_lft forever
 link/ether a4:bf:01:3e:fb:8b brd ff:ff:ff:ff:ff:ff
 ```
 
-**Step 2: Ensure NIC interface is connecting to a Slingshot switch**
+**Step 2: Ensure NIC interface is connecting to an HPE Slingshot switch**
 
 To find out if an HSN interface is connected correctly, we first need to get a list of TLVs being advertised by the peer on
 the interface using the following command: lldptool -n -i -t
 The first step is to confirm the AMA is set up properly on nodes.  Do this by executing the 'lldptool' command for high speed interface:
 
-```bash
+```screen
 ...uan01-nmn:~ # lldptool -n -i hsn0 -t
 Chassis ID TLV
 MAC: 02:fe:00:00:00:1f
@@ -64,14 +64,14 @@ x3000c0r24b0
 End of LLDPDU TLV
 ```
 
-Observe that the string ros appears on the System Name TLV or the Port Description TLV has an Interface with name starting with ros. We know that this HSN interface is attached to a Slingshot switch. From this output, we also know the MAC address of the Slingshot switch port is 02:fe:00:00:00:1f.
+Observe that the string ros appears on the System Name TLV or the Port Description TLV has an Interface with name starting with ros. We know that this HSN interface is attached to an HPE Slingshot switch. From this output, we also know the MAC address of the HPE Slingshot switch port is 02:fe:00:00:00:1f.
 
-**Step 3: Ensure the software assigned MAC address on the HSN interface matches the MAC address of the port on the Slingshot switch**
+**Step 3: Ensure the software assigned MAC address on the HSN interface matches the MAC address of the port on the HPE Slingshot switch**
 Validate configured MAC address of the hsn0 interface should be that with the top 16 bits as 02:00 instead of 02:fe
-on the Slingshot switch side.
+on the HPE Slingshot switch side.
 Use the following command to find the configured MAC address of the hsn0 interface:
 
-```bash
+```screen
 uan01-nmn:~ # ip addr show hsn0
 4: hsn0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9000 qdisc mq state UP group default qlen 1000
 link/ether 02:00:00:00:00:1f brd ff:ff:ff:ff:ff:ff
@@ -83,29 +83,29 @@ From the above ip addr show hsn0 command output, note the hsn0 configured MAC ad
 Compare this MAC address with the lldptool -n -i hsn0 -t command output that we got on the previous step
 02:fe:00:00:00:1f.
 ```
+
 Note that the two MAC addresses differ only on the top 16 bits - 02:00 vs. 02:fe. Therefore, we know the hsn0 interface
 of this node is connected correctly.
 
-**Step 4: Execute fmn-update-compute-hsn-health diagnostic script**
+**Step 4: Execute `fmn-update-compute-hsn-health` diagnostic script**
 
 Compute node HSN NIC health can be checked with command `fmn-update-compute-hsn-health`.
 This command is available on FMN as part of fabric commands toolset.
 This command can be executed on Fabric Manager Node / User Access node or Login Node / Admin node.
 For the given computes and hsn device name this command will validate the following aspects of HSN NIC on compute nodes
 
-*  Compute node has valid lldp configuration
-*  HSN NIC has Algorithmic MAC (AMA) configured as the MAC address
-*  HSN NIC state is in desired configuration (UP)
-*  IP Address is assigned for HSN NIC
-*  nslookup for the IP address is verified as
-*  nodes management network reachable/unreachable
+* Compute node has valid lldp configuration
+* HSN NIC has Algorithmic MAC (AMA) configured as the MAC address
+* HSN NIC state is in desired configuration (UP)
+* IP Address is assigned for HSN NIC
+* nslookup for the IP address is verified as
+* nodes management network reachable/unreachable
 
 Executing on FMN, this command will create a health event if any of the above assertion results in failure.
 
 In the following example, command is executed to verify the `hsn0` from nodes nid003048 to nid006859.
 
-```bash
-
+```screen
 ncn-m001# fmn-update-compute-hsn-health/ --start-nid 3048 --end-nid 6859 -n hsn0 --skip-healthEventCreationn
 Compute Health test Summary Start Nid: 3048 End Nid: 6859 HSN NIC:hsn0
 Total Compute nodes Checked:3812 success computes:3435 failure_computes:377
@@ -122,7 +122,7 @@ In the above example, out of 3812 compute nodes checked for `hsn0`, following co
 
 The log file has more information and recommendations related to the failures.
 
-```bash
+```screen
 grep FAILURE  /tmp/compute-health-2021-07-26_06-27-07.txt
 
 ....
@@ -144,11 +144,11 @@ Administrator is expected to check Management connection for Compute node on thi
 **Sample reference script for checking HSN NIC Configuration**
 
 The following sample program can be used as a reference on how to check AMAs across a range of compute nodes.
-Note: The command *fmn-update-compute-hsn-health* is the recommended method to check AMA.
+Note: The command `fmn-update-compute-hsn-health` is the recommended method to check AMA.
 This is is an example for reference on how to run `pdsh` across compute nodes and check for parameters.
-This program can be run from a login node from where compute nodes can be accessed via pdsh.
+This program can be run from a login node from where compute nodes can be accessed via `pdsh`.
 
-```bash
+```screen
 #!/bin/bash
 # for the given nids and hsn device name it will lookup the nodes for AMA and check if AMA is set
 #input switch start-nid end-nid hsn-dev

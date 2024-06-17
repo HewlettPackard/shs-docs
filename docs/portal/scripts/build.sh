@@ -92,8 +92,8 @@ dita -i HPE_Slingshot_Host_Software_Release_Notes.ditamap --root-chunk-override=
 
 echo "Building SHS Troubleshooting Guide";
 
-# This line builds the HPESC HTML bundle for the release notes
-dita -i tmp/HPE_Slingshot_Host_Software_Troubleshooting_Guide.ditamap -o build/troubleshoot -f HPEscHtml5 && cp HPE_Slingshot_Host_Software_Troubleshooting_Guide.json build/release_notes/publication.json && cd build/release_notes/ && zip -r crs9011en_us.zip ./
+# This line builds the HPESC HTML bundle for the troubleshooting guide
+dita -i tmp/HPE_Slingshot_Host_Software_Troubleshooting_Guide.ditamap -o build/troubleshoot -f HPEscHtml5 && cp HPE_Slingshot_Host_Software_Troubleshooting_Guide.json build/troubleshoot/publication.json && cd build/troubleshoot/ && zip -r crs9011en_us.zip ./
 cd $THIS_DIR
 # This builds the PDF using DITA-OT's default PDF transform
 echo "Building PDF"
@@ -102,14 +102,29 @@ dita -i HPE_Slingshot_Host_Software_Troubleshooting_Guide.ditamap -o build/PDF/t
 echo "Building Combined Markdown File"
 dita -i HPE_Slingshot_Host_Software_Troubleshooting_Guide.ditamap --root-chunk-override=to-content -o build/Markdown -f markdown_github
 
+echo "Building SHS Admin Guide";
+
+# This line builds the HPESC HTML bundle for the admin guide
+dita -i tmp/HPE_Slingshot_Host_Software_Administration_Guide.ditamap -o build/admin -f HPEscHtml5 && cp HPE_Slingshot_Host_Software_Administration_Guide.json build/admin/publication.json && cd build/admin/ && zip -r crs9012en_us.zip ./
+cd $THIS_DIR
+# This builds the PDF using DITA-OT's default PDF transform
+echo "Building PDF"
+dita -i HPE_Slingshot_Host_Software_Administration_Guide.ditamap -o build/PDF/admin -f pdf
+# This builds the single file Markdown version of the guide. This leverages DITA's "chunking"
+echo "Building Combined Markdown File"
+dita -i HPE_Slingshot_Host_Software_Administration_Guide.ditamap --root-chunk-override=to-content -o build/Markdown -f markdown_github
+
+
 # delete the tmp dir created by the flatten script. The bundle is still in the build subdir
 rm -rf tmp/
 
 # DITA-OT spits out the individual Markdown files (which we don't want) in addition to the unified Md files (that we do want). These lines get rid of the extra files 
-mv build/Markdown/shs_*_guide.md build/
+mv build/Markdown/HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide.md build/
 mv build/Markdown/HPE_Slingshot_Host_Software_Release_Notes.md build/
 mv build/Markdown/HPE_Slingshot_Host_Software_Troubleshooting_Guide.md build/
+mv build/Markdown/HPE_Slingshot_Host_Software_Administration_Guide.md build/
 rm -rf build/Markdown/*
-mv build/shs_*_guide.md build/Markdown/
+mv build/HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide.md build/Markdown/
 mv build/HPE_Slingshot_Host_Software_Release_Notes.md build/Markdown/
 mv build/HPE_Slingshot_Host_Software_Troubleshooting_Guide.md build/Markdown/
+mv build/HPE_Slingshot_Host_Software_Administration_Guide.md build/Markdown/

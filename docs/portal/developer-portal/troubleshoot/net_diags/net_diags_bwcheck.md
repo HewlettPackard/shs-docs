@@ -1,5 +1,5 @@
 
-## `bwcheck.sh` overview
+# `bwcheck.sh` overview
 
 The network diagnostic `bwcheck.sh` measures uni-directional loopback bandwidth
 for each Mellanox NIC on each node in a given set of nodes. It targets each node
@@ -30,7 +30,7 @@ NICs excluded from the test by the network checks. This is followed by the min,
 max, and mean bandwidths, along with a list of NICs whose performance falls
 below a threshold compared to the mean.
 
-# Example
+## Example
 
 This example shows running the script with Slurm and using srun's broadcast
 option to distribute the script to the nodes.

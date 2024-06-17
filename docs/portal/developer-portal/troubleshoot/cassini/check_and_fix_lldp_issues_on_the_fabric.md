@@ -87,4 +87,4 @@ adminStatus=disabled
 adminStatus = rxtx
 ```
 
-Refer to the [`lldptool` man page](https://linux.die.net/man/8/lldptool) for more options.
+See the [`lldptool` man page](https://linux.die.net/man/8/lldptool#name) for more options.
