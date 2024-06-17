@@ -160,6 +160,7 @@ dir: $(TMPDIR)/VeRsIoN.md
 	cp -r $(CSSDIR) $(HTMLBUILDDIR)
 	cp *.ditamap $(TMPDIR)
 	cp *.json $(TMPDIR)
+	cp -r release_notes $(TMPDIR)
 	cp -r install $(TMPDIR)
 	cp -r troubleshoot $(TMPDIR)
 	cp -r performance $(TMPDIR)

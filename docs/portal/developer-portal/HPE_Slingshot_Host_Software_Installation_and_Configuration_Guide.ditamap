@@ -8,11 +8,11 @@
 			<data name="edition" value="SHS Software Release @product_version@"></data>
         </topicmeta>
     <topicref href="overview/overview.md" format="mdita"/>
+    <topicref href="install/compute_install_prereqs.md" format="mdita"/>
     <topichead>
         <topicmeta>
             <navtitle>Install or upgrade SHS for CSM</navtitle>
         </topicmeta>
-        <topicref href="install/compute_install_prereqs.md" format="mdita"/>
         <topicref href="install/install_shs_on_csm_14_or_newer.md" format="mdita"/>
         <topicref href="install/install_shs_on_csm_13_or_prior.md" format="mdita">
             <topicref href="operations/operational_activities_csm.md" format="mdita">
@@ -41,7 +41,6 @@
         <topicmeta>
             <navtitle>Install or upgrade SHS for HPCM</navtitle>
         </topicmeta>
-        <topicref href="install/compute_install_prereqs.md" format="mdita"/>
         <topicref href="install/install_or_upgrade_shs_on_hpcm_compute_nodes.md" format="mdita">
             <topicref href="install/mellanox_based_system_install_upgrade_procedure.md"
                 format="mdita"/>
@@ -56,7 +55,6 @@
         <topicmeta>
             <navtitle>Install or upgrade SHS for Bare Metal</navtitle>
         </topicmeta>
-        <topicref href="install/compute_install_prereqs.md" format="mdita"/>
         <topicref href="install/install_or_upgrade_compute_nodes.md" format="mdita">
             <topicref href="install/post_install_tasks.md" format="mdita">
                 <topicref href="install/firmware_management_post_install.md" format="mdita"/>
