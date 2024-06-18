@@ -132,6 +132,7 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
    libfabric-devel-<version>_<hash>.x86_64.rpm
    slingshot-network-config-<version>_<hash>.x86_64.rpm
    slingshot-utils-<version>_<hash>.x86_64.rpm
+   shs-version-<version>.noarch.rpm
    ```
 
    Additionally, for the sake of the example, assume that the RPMs were downloaded to the following location on the host, or within the host OS image:
@@ -142,6 +143,7 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
    libfabric-devel-<version>_<hash>.x86_64.rpm
    slingshot-network-config-<version>_<hash>.x86_64.rpm
    slingshot-utils-<version>_<hash>.x86_64.rpm
+   shs-version-<version>.noarch.rpm
    ```
 
    Then as an example, install the RPMs using the following example commands:
@@ -149,6 +151,7 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
    ```bash
    root@host> rpm -ivf /share/slingshot-rpms/slingshot-network-config-<version>_<hash>.x86_64.rpm
    root@host> rpm -ivf /share/slingshot-rpms/slingshot-utils-<version>_<hash>.x86_64.rpm
+   root@host> rpm -ivf /share/slingshot-rpms/shs-version-<version>.noarch.rpm
    root@host> rpm -ivf /share/slingshot-rpms/libfabric-<version>_<hash>.x86_64.rpm
    root@host> rpm -ivf /share/slingshot-rpms/libfabric-devel-<version>_<hash>.x86_64.rpm
    ```

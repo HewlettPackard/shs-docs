@@ -59,6 +59,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
       cray-slingshot-base-link-devel
       pycxi
       pycxi-utils
+      shs-version
 
    """ > ./shs-cxi.rpmlist
    ```

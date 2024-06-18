@@ -19,6 +19,7 @@ All material will be available via the source URLs provided below as part of the
 | slingshot-firmware-mellanox   | Mellanox plugin for slingshot-firmware-management package                                                       | all nodes with Mellanox hardware   |
 | pycxi                         | Provides CXI user access library, `pycxi`, in addition to support infrastructure and helpers                    | all nodes                          |
 | pycxi-utils                   | Provides multiple tools developed with the `pycxi` library, such as `cxiprof`, `cxiutil`, and `cxi_healthcheck` | all nodes                          |
+| shs-version                   | Records slingshot host software version and build number                                                        | all nodes                          |
 
 Libfabric-devel is required on any host that a user would be able to compile an application for use with `libfabric`.
 

@@ -79,6 +79,7 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
       slingshot-firmware-management
       slingshot-firmware-mellanox
       slingshot-utils
+      shs-version
    """ > ./shs-mlnx.rpmlist
    ```
 
