@@ -24,6 +24,7 @@ The following RPMs should be retrieved and installed using `zypper install`:
 - `slingshot-firmware-cassini`
 - `pycxi`
 - `pycxi-utils`
+- `shs-version`
 
 After installing the above RPMs, the system must be configured to allow
 'unsupported' kernel modules before the drivers can be loaded. Edit
