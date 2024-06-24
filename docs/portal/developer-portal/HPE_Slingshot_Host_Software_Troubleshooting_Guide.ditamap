@@ -71,25 +71,35 @@
         <topicmeta>
             <navtitle>Compute node troubleshooting</navtitle>
         </topicmeta>
-        <topicref href="troubleshoot/troubleshoot_compute.md" format="mdita"/>
+        <topicref href="troubleshoot/compute/troubleshoot_compute.md" format="mdita"/>
+        <topicref href="troubleshoot/compute/troubleshoot_bond0_not_up.md" format="mdita"/>
     </topichead>
-    <topichead id="hpe-slingshot-200Gbps-nic-troubleshooting">
+    <topichead id="hpe-slingshot-200Gbps-nic">
         <topicmeta>
-            <navtitle>HPE Slingshot 200Gbps NIC troubleshooting</navtitle>
+            <navtitle>HPE Slingshot 200Gbps NIC</navtitle>
         </topicmeta>
-        <topicref href="troubleshoot/cassini/check_and_fix_misconfigured_nonvlan_tagged_ethernet_pcp_settings.md" format="mdita"/>
-        <topicref href="troubleshoot/cassini/check_and_fix_lldp_issues_on_the_fabric.md" format="mdita"/>
-    </topichead>
-    <topichead id="hpe-slingshot-200Gbps-nic-host-troubleshooting">
-        <topicmeta>
-            <navtitle>HPE Slingshot 200Gbps NIC Host troubleshooting</navtitle>
-        </topicmeta>
-        <topicref href="troubleshoot/cassini/host_troubleshooting.md" format="mdita"/>
-    </topichead>
-    <topichead id="hpe-slingshot-200Gbps-nic-firmware-troubleshooting">
-        <topicmeta>
-            <navtitle>HPE Slingshot 200Gbps NIC Firmware troubleshooting</navtitle>
-        </topicmeta>
-        <topicref href="troubleshoot/cassini/firmware_troubleshooting.md" format="mdita"/>
+        <topichead id="hpe-slingshot-200Gbps-nic-troubleshooting">
+            <topicmeta>
+                <navtitle>HPE Slingshot 200Gbps NIC troubleshooting</navtitle>
+            </topicmeta>
+            <topicref href="troubleshoot/cassini/check_and_fix_misconfigured_nonvlan_tagged_ethernet_pcp_settings.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/check_and_fix_lldp_issues_on_the_fabric.md" format="mdita"/>
+        </topichead>
+        <topichead id="hpe-slingshot-200Gbps-nic-host-troubleshooting">
+            <topicmeta>
+                <navtitle>HPE Slingshot 200Gbps NIC Host troubleshooting</navtitle>
+            </topicmeta>
+            <topicref href="troubleshoot/cassini/host_troubleshooting.md" format="mdita"/>
+        </topichead>
+        <topichead id="hpe-slingshot-200Gbps-nic-firmware-troubleshooting">
+            <topicmeta>
+                <navtitle>HPE Slingshot 200Gbps NIC Firmware troubleshooting</navtitle>
+            </topicmeta>
+            <topicref href="troubleshoot/cassini/firmware_troubleshooting.md" format="mdita"/>
+        </topichead>
+        <topicref href="troubleshoot/cassini/pause_too_long.md" format="mdita">
+            <topicref href="troubleshoot/cassini/pause_too_long_map_ethernet.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/pause_too_long_fabric_recovery.md" format="mdita"/>
+        </topicref>
     </topichead>
 </map>
