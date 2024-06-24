@@ -74,7 +74,7 @@
         <topicref href="troubleshoot/compute/troubleshoot_compute.md" format="mdita"/>
         <topicref href="troubleshoot/compute/troubleshoot_bond0_not_up.md" format="mdita"/>
     </topichead>
-    <topichead id="hpe-slingshot-200Gbps-nic-troubleshooting">
+    <topichead id="hpe-slingshot-200Gbps-nic">
         <topicmeta>
             <navtitle>HPE Slingshot 200Gbps NIC</navtitle>
         </topicmeta>
