@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map id="shs-troubleshooting">
+    <title>HPE Slingshot Host Software Troubleshooting Guide (S-9011) (@product_version@)</title>
+    <topicmeta>
+        <shortdesc>This publication provides troubleshooting information for HPE Slingshot.</shortdesc>
+        <data name="pubsnumber" value="S-9011"/>
+        <data name="edition" value="SHS Software Release @product_version@"></data>
+    </topicmeta>
+    <topichead id="cxi-diagnostics-and-utilities">
+        <topicmeta>
+            <navtitle>CXI Diagnostics and Utilities</navtitle>
+        </topicmeta>
+        <topicref href="troubleshoot/cxi/cxi_diags_overview.md" format="mdita"/>
+        <topicref href="troubleshoot/cxi/cxi_diags_dev_info.md" format="mdita"/>
+        <topicref href="troubleshoot/cxi/cxi_diags_bandwidth.md" format="mdita"/>
+        <topicref href="troubleshoot/cxi/cxi_diags_latency.md" format="mdita"/>
+        <topicref href="troubleshoot/cxi/cxi_diags_thermal.md" format="mdita"/>
+        <topichead>
+            <topicmeta>
+                <navtitle>Troubleshoot CXI Diagnostics and Utilities</navtitle>
+            </topicmeta>
+            <topicref href="troubleshoot/cxi/cxi_diags_troubleshooting.md" format="mdita"/>
+        </topichead>
+    </topichead>
+    <topichead id="cxi-healthcheck">
+        <topicmeta>
+            <navtitle>CXI HealthCheck</navtitle>
+        </topicmeta>
+        <topicref href="troubleshoot/cxi/cxi_healthcheck.md" format="mdita"/>
+    </topichead>
+    <topichead id="cxi-error-handling-guidance-and-recommendations">
+        <topicmeta>
+            <navtitle>CXI Error Handling Guidance and Recommendations</navtitle>
+        </topicmeta>
+        <topicref href="troubleshoot/cxi/cxi_logged_events.md" format="mdita">
+            <topicref href="troubleshoot/cxi/cxi_error_handling.md" format="mdita"/>
+        </topicref>
+    </topichead>
+    <topichead id="network-diagnostics">
+        <topicmeta>
+            <navtitle>Network Diagnostics</navtitle>
+        </topicmeta>
+        <topicref href="troubleshoot/net_diags/net_diags_overview.md" format="mdita"/>
+        <topichead>
+            <topicmeta>
+                <navtitle>dgnettest</navtitle>
+            </topicmeta>
+            <topicref href="troubleshoot/net_diags/net_diags_dgnettest.md" format="mdita"/>
+        </topichead>
+        <topichead>
+            <topicmeta>
+                <navtitle>cxibwcheck.sh</navtitle>
+            </topicmeta>
+            <topicref href="troubleshoot/net_diags/net_diags_cxibwcheck.md" format="mdita"/>
+        </topichead>
+        <topichead>
+            <topicmeta>
+                <navtitle>bwcheck.sh</navtitle>
+            </topicmeta>
+            <topicref href="troubleshoot/net_diags/net_diags_bwcheck.md" format="mdita"/>
+        </topichead>
+        <topichead>
+            <topicmeta>
+                <navtitle>cxiberstat.sh</navtitle>
+            </topicmeta>
+        <topicref href="troubleshoot/net_diags/net_diags_cxiberstat.md" format="mdita"/>
+        </topichead>
+    </topichead>
+    <topichead id="compute-node-troubleshooting">
+        <topicmeta>
+            <navtitle>Compute node troubleshooting</navtitle>
+        </topicmeta>
+        <topicref href="troubleshoot/troubleshoot_compute.md" format="mdita"/>
+    </topichead>
+    <topichead id="hpe-slingshot-200Gbps-nic-troubleshooting">
+        <topicmeta>
+            <navtitle>HPE Slingshot 200Gbps NIC troubleshooting</navtitle>
+        </topicmeta>
+        <topicref href="troubleshoot/cassini/check_and_fix_misconfigured_nonvlan_tagged_ethernet_pcp_settings.md" format="mdita"/>
+        <topicref href="troubleshoot/cassini/check_and_fix_lldp_issues_on_the_fabric.md" format="mdita"/>
+    </topichead>
+    <topichead id="hpe-slingshot-200Gbps-nic-host-troubleshooting">
+        <topicmeta>
+            <navtitle>HPE Slingshot 200Gbps NIC Host troubleshooting</navtitle>
+        </topicmeta>
+        <topicref href="troubleshoot/cassini/host_troubleshooting.md" format="mdita"/>
+    </topichead>
+    <topichead id="hpe-slingshot-200Gbps-nic-firmware-troubleshooting">
+        <topicmeta>
+            <navtitle>HPE Slingshot 200Gbps NIC Firmware troubleshooting</navtitle>
+        </topicmeta>
+        <topicref href="troubleshoot/cassini/firmware_troubleshooting.md" format="mdita"/>
+    </topichead>
+</map>

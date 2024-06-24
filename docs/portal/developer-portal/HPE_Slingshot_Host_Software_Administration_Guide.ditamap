@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map id="shs-troubleshooting">
+    <title>HPE Slingshot Host Software Administration Guide (S-9012) (@product_version@)</title>
+    <topicmeta>
+        <shortdesc>This publication provides administration procedure for HPE Slingshot Host Software (SHS).</shortdesc>
+        <data name="pubsnumber" value="S-9012"/>
+        <data name="edition" value="SHS Software Release @product_version@"></data>
+    </topicmeta>
+    <topichead>
+        <topicmeta>
+             <navtitle>HSN Performance</navtitle>
+        </topicmeta>
+        <topicref href="performance/performance_overview.md" format="mdita"/>
+        <topicref href="performance/performance_benchmark_tools.md" format="mdita"/>
+        <topichead>
+            <topicmeta>
+                <navtitle>HSN Performance Benchmark Tools</navtitle>
+            </topicmeta>
+            <topicref href="performance/HSN_performance_benchmarking.md" format="mdita"/>
+            </topichead>
+        <topicref href="performance/ARP.md" format="mdita"/>
+        <topicref href="performance/ethtool_node_tuning.md" format="mdita"/>
+        <topicref href="performance/AMA.md" format="mdita"/>
+        <topicref href="performance/fabric_links_troubleshooting.md" format="mdita"/>
+        <topicref href="performance/port_configuration.md" format="mdita"/>
+        <topicref href="performance/fabric_health_diagnostics_overview.md" format="mdita">
+            <topicref href="performance/fabric_health_diagnostics.md" format="mdita"/>
+        </topicref>
+        <topicref href="performance/TCP_performance_tuning.md" format="mdita"/>
+    </topichead>
+    <topicref href="operations/configure_qos_shs.md" format="mdita"/>
+</map>

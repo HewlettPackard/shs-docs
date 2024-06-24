@@ -3,11 +3,11 @@
 
 You can use IUF to automate installation or upgrading SHS.
 
-The Slingshot Host Software (SHS) distribution provides firmware, diagnostics, and the network software stack for hosts which communicate using the Slingshot network.
+The Slingshot Host Software (SHS) distribution provides firmware, diagnostics, and the network software stack for hosts which communicate using the HPE Slingshot network.
 
 The Install and Upgrade Framework (IUF) provides commands which install, upgrade and deploy products on systems managed by CSM. IUF capabilities are described in detail in the [IUF section](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) of the [Cray System Management Documentation](https://cray-hpe.github.io/docs-csm/). The initial install and upgrade workflows described in the [HPE Cray EX System Software Stack Installation and Upgrade Guide for CSM (S-8052)](https://www.hpe.com/support/ex-S-8052) detail when and how to use IUF with a new release of SHS or any other HPE Cray EX product.
 
-This document **does not** replicate install, upgrade or deployment procedures detailed in the [Cray System Management Documentation](https://cray-hpe.github.io/docs-csm/). This document provides details regarding software and configuration content specific to Slingshot which may be needed when installing, upgrading or deploying an SHS release. The [Cray System Management Documentation](https://cray-hpe.github.io/docs-csm/) will indicate when sections of this document should be referred to for detailed information.
+This document **does not** replicate install, upgrade or deployment procedures detailed in the [Cray System Management Documentation](https://cray-hpe.github.io/docs-csm/). This document provides details regarding software and configuration content specific to HPE Slingshot which may be needed when installing, upgrading or deploying an SHS release. The [Cray System Management Documentation](https://cray-hpe.github.io/docs-csm/) will indicate when sections of this document should be referred to for detailed information.
 
 IUF will perform the following tasks for a release of SHS:
 

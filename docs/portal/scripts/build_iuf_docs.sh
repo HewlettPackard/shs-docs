@@ -62,12 +62,12 @@ mkdir -m777 -p build/Markdown
 echo "Building SHS Install Guide";
 
 # This line builds the HPESC HTML bundle for the install guide
-docker run -i -v ${THIS_DIR}:/src ${DITA_CONTAINER} -i /src/shs_install_guide.ditamap -o /src/build/install -f html5 && cp install_publication.json build/install/publication.json && cd build/install/ && zip -r crs8032_@docid_suffix@en_us.zip ./
+docker run -i -v ${THIS_DIR}:/src ${DITA_CONTAINER} -i /src/HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide.ditamap -o /src/build/install -f html5 && cp install_publication.json build/install/publication.json && cd build/install/ && zip -r crs8032_@docid_suffix@en_us.zip ./
 cd $THIS_DIR
 # This builds the PDF using DITA-OT's default PDF transform
-docker run -i -v ${THIS_DIR}:/src ${DITA_CONTAINER} -i /src/shs_install_guide.ditamap -o /src/build/PDF/install -f pdf
+docker run -i -v ${THIS_DIR}:/src ${DITA_CONTAINER} -i /src/HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide.ditamap -o /src/build/PDF/install -f pdf
 # This builds the single file Markdown version of the guide. This leverages DITA's "chunking"
-docker run -i -v ${THIS_DIR}:/src ${DITA_CONTAINER} -i /src/shs_install_guide.ditamap --root-chunk-override=to-content -o /src/build/Markdown -f markdown_github
+docker run -i -v ${THIS_DIR}:/src ${DITA_CONTAINER} -i /src/HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide.ditamap --root-chunk-override=to-content -o /src/build/Markdown -f markdown_github
 
 # DITA-OT spits out the individual Markdown files (which we don't want) in addition to the unified Md files (that we do want). These lines get rid of the extra files 
 mv build/Markdown/shs_*_guide.md build/
