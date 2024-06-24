@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
 <map id="shs_install">
-    <title>HPE Slingshot Host Software Installation and Configuration Guide (S-9009) @product_version@</title>
+    <title>HPE Slingshot Host Software Installation and Configuration Guide (S-9009) (@product_version@)</title>
         <topicmeta>
             <shortdesc>This publication describes how to install and configure SHS for HPE Slingshot.</shortdesc>
             <data name="pubsnumber" value="S-9009"></data>
