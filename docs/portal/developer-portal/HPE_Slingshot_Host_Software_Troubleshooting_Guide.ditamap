@@ -97,11 +97,9 @@
             </topicmeta>
             <topicref href="troubleshoot/cassini/firmware_troubleshooting.md" format="mdita"/>
         </topichead>
-        <topichead id="pause-too-long">
         <topicref href="troubleshoot/cassini/pause_too_long.md" format="mdita">
             <topicref href="troubleshoot/cassini/pause_too_long_map_ethernet.md" format="mdita"/>
             <topicref href="troubleshoot/cassini/pause_too_long_fabric_recovery.md" format="mdita"/>
         </topicref>
-        </topichead>
     </topichead>
 </map>
