@@ -1,6 +1,6 @@
-# HSN Performance Benchmarking
+# HSN performance benchmarking
 
-Performance Benchmarking exercise for HSN fabric is an exercise to verify that the HSN is able to deliver the required performance level so that HPC Applications can run with the desired performance and produce the expected outcome
+The performance benchmarking exercise for HSN fabric is an exercise to verify that the HSN is able to deliver the required performance level so that HPC Applications can run with the desired performance and produce the expected outcome
 
 It is required to progress in a systematic and hierarchical way to validate the HSN fabric health prior to performance benchmarking. Here is a pre-flight checklist that can be used towards the same
 
@@ -15,13 +15,14 @@ It is required to progress in a systematic and hierarchical way to validate the 
   3. HSN NIC has the right MTU size set
   4. HSN NIC state is in desired configuration (UP)
   5. IP Address is assigned for HSN NIC
-  6. nslookup for the IP address is verified
+  6. `nslookup` for the IP address is verified
   7. nodes management network reachable/unreachable
 
-## Edge Performance (Test between compute Nodes connected the same switch)
+## Edge performance (test between compute Nodes connected the same switch)
 
-The following is an example test that provides a sample OSU one-side Performance results between two nodes with HSN Fabric in same group and connected to the same switch. The actual results expected results
-```bash
+The following is an example test that provides a sample OSU one-side Performance results between two nodes with HSN Fabric in same group and connected to the same switch. The actual results expected results.
+
+```screen
 mpirun --host <system_name>n001,<system_name>n003 ./one-sided/osu_get_bw
 # OSU MPI_Get Bandwidth Test v5.7
 # Window creation: MPI_Win_allocate
@@ -52,13 +53,13 @@ mpirun --host <system_name>n001,<system_name>n003 ./one-sided/osu_get_bw
 4194304             12248.76
 ```
 
-## Local Performance Test : (Tests between nodes in the same group)
+## Local performance test (tests between nodes in the same group)
 
 The following is an example test that provides a sample OSU pt2pt mbw  performance results between two nodes with HSN Fabric in same group and connected to the same switch. The actual results expected results. In this Particular topology there are 2 Switches in the Groups and 2 groups in this topology. The tests  verifies the health of the local links and performance between the nodes within the group
 
 **Group 1**
 
-```bash
+```screen
 mpirun -npernode 20 -np 1240  --hostfile <system_name>_group_1  ./pt2pt/osu_mbw_mr
 # OSU MPI Multiple Bandwidth / Message Rate Test v5.7
 # [ pairs: 620 ] [ window size: 64 ]
@@ -91,9 +92,9 @@ mpirun -npernode 20 -np 1240  --hostfile <system_name>_group_1  ./pt2pt/osu_mbw_
 Total Number of Node pairs 31
 Peak BW/Node : 12195 MB/s
 
-**Group2**
+**Group 2**
 
-```bash
+```screen
 # OSU MPI Multiple Bandwidth / Message Rate Test v5.7
 # [ pairs: 60 ] [ window size: 64 ]
 # Size                  MB/s        Messages/s
@@ -125,11 +126,11 @@ Peak BW/Node : 12195 MB/s
 Total Number of Node pairs 20
 Peak BW/Node : 12081 MB/
 
-## Global Performance Test (Tests between nodes in the different group)
+## Global performance test (tests between nodes in the different group)
 
 The following is an example test that provides a sample OSU pt2pt mbw  performance results between two nodes with HSN Fabric in same group and connected to the same switch. The actual results expected results. In this Particular topology there are 2 Switches in the Groups and 2 groups in this topology. The tests  verifies the health of the local links, global links and performance between the nodes in different group
 
-```bash
+```screen
 # OSU MPI Multiple Bandwidth / Message Rate Test v5.7
 # [ pairs: 256 ] [ window size: 64 ]
 # Size                  MB/s        Messages/s
@@ -167,103 +168,103 @@ Admin can automate the tests (osu) that can be run on all nids connected to a sw
 local level or at global level. This automation enables efficient performance benchmarking and also to quickly isolate and rectify performance related problems in
 fabric.
 
-**Step 1: Create a host file with compute nodes connected to switch**
-```bash
-#!/bin/bash
-# for the given nids and switch this script will get all nids connected to a switch
-#input switch start-nid end-nid hsn-dev
-#example ./nids-switch.sh 1000 1063 x1000c1r5b0 hsn1
-print_usage() {
-          echo "Usage:
-          ARG1 [start nid]
-          ARG2 [end nid]
-          ARG3 [switch xname]
-          ARG4 [HSN device]
-          example ./nids-switch.sh 1000 1063 x1000c1r5b0 hsn1"
-}
-fail_with_usage() {
-          echo "ERROR: $*. Exiting." >&2
-            print_usage
-              exit 1
-      }
-if [ $# -ne 4 ] ; then
-   fail_with_usage
-fi
-rm -f nid-switch-$1-$2.txt  $3-nids.txt
-pdsh -w  nid00[$1-$2]-nmn lldptool -i  $4  -t -n >> nid-switch-$1-$2.txt
-grep $3 nid-switch-$1-$2.txt >> $3-nids.txt
-sed -e s/$3//g -e s/://g -i $3-nids.txt
-echo "Check $3-nids.txt"
-```
+1. Create a host file with compute nodes connected to switch.
 
-**Step 2: Execute MPI benchmark programs using Slurm workload manager**
-
-The host file produced in step 1 can be used to run MPI integrating with slurm workload manager
-to identify a set of free nodes and allocating them and trigger the MPI tests
-
-```bash
-#!/bin/bash
-# This script takes the input of a host file that consists of nids connected to a switch
-# Run nids-switch.sh to produce this host file for a switch
-# the script will look for free nodes and prepare a node list of osu_mbw_mr
-print_usage() {
-        echo "Usage:
-        ARG1 [hostfile]
-        ARG2 [osu test program with]
-        example ./ check_nodes_osu.sh x1000c1r5b0-nids.txt /opt/osu/osu-micro-benchmarks-5.7/mpi/pt2pt/osu_mbw_mr"
-}
-fail_with_usage() {
-echo "ERROR: $*. Exiting." >&2
-print_usage
-exit 1
-}
-if [ $# -ne 2 ] ; then
-   fail_with_usage
-fi
-input=$1
-i=0
-while IFS= read -r line
-do
-  echo "$line"
-  avail=$(sinfo -n ${line} | grep idle)
-  if [ $? -eq 0 ]; then
-     nodes[$i]=$(echo $line | tr -d 'nid')
-     ((i=i+1))
-  fi
-done < "$input"
-echo "Available nodes"
-input=$2
-while IFS= read -r line
-do
-  echo "$line"
-  avail=$(sinfo -n ${line} | grep idle)
-  if [ $? -eq 0 ]; then
-     nodes[$i]=$(echo $line | tr -d 'nid')
-     ((i=i+1))
-  fi
-done < "$input"
-echo "Available nodes"
-node_list=""
-for (( j=0 ; j<$i; j++))
-do
-   echo ${nodes[$j]}
-   if [ $j -eq 0 ] ; then
-      node_list="[${nodes[$j]}"
-   else
-      node_list="${node_list},${nodes[$j]}"
+   ```screen
+   #!/bin/bash
+   # for the given nids and switch this script will get all nids connected to a switch
+   #input switch start-nid end-nid hsn-dev
+   #example ./nids-switch.sh 1000 1063 x1000c1r5b0 hsn1
+   print_usage() {
+            echo "Usage:
+            ARG1 [start nid]
+            ARG2 [end nid]
+            ARG3 [switch xname]
+            ARG4 [HSN device]
+            example ./nids-switch.sh 1000 1063 x1000c1r5b0 hsn1"
+   }
+   fail_with_usage() {
+            echo "ERROR: $*. Exiting." >&2
+               print_usage
+               exit 1
+         }
+   if [ $# -ne 4 ] ; then
+      fail_with_usage
    fi
-done
-node_list="${node_list}]"
-echo $node_list
-srun -w  nid${node_list} $2
-```
+   rm -f nid-switch-$1-$2.txt  $3-nids.txt
+   pdsh -w  nid00[$1-$2]-nmn lldptool -i  $4  -t -n >> nid-switch-$1-$2.txt
+   grep $3 nid-switch-$1-$2.txt >> $3-nids.txt
+   sed -e s/$3//g -e s/://g -i $3-nids.txt
+   echo "Check $3-nids.txt"
+   ```
 
-## MPI Example Programs (Tests between nodes)
+2. Execute MPI benchmark programs using Slurm workload manager.
+
+   The host file produced in step 1 can be used to run MPI integrating with slurm workload manager
+   to identify a set of free nodes and allocating them and trigger the MPI tests
+
+   ```screen
+   #!/bin/bash
+   # This script takes the input of a host file that consists of nids connected to a switch
+   # Run nids-switch.sh to produce this host file for a switch
+   # the script will look for free nodes and prepare a node list of osu_mbw_mr
+   print_usage() {
+         echo "Usage:
+         ARG1 [hostfile]
+         ARG2 [osu test program with]
+         example ./ check_nodes_osu.sh x1000c1r5b0-nids.txt /opt/osu/osu-micro-benchmarks-5.7/mpi/pt2pt/osu_mbw_mr"
+   }
+   fail_with_usage() {
+   echo "ERROR: $*. Exiting." >&2
+   print_usage
+   exit 1
+   }
+   if [ $# -ne 2 ] ; then
+      fail_with_usage
+   fi
+   input=$1
+   i=0
+   while IFS= read -r line
+   do
+   echo "$line"
+   avail=$(sinfo -n ${line} | grep idle)
+   if [ $? -eq 0 ]; then
+      nodes[$i]=$(echo $line | tr -d 'nid')
+      ((i=i+1))
+   fi
+   done < "$input"
+   echo "Available nodes"
+   input=$2
+   while IFS= read -r line
+   do
+   echo "$line"
+   avail=$(sinfo -n ${line} | grep idle)
+   if [ $? -eq 0 ]; then
+      nodes[$i]=$(echo $line | tr -d 'nid')
+      ((i=i+1))
+   fi
+   done < "$input"
+   echo "Available nodes"
+   node_list=""
+   for (( j=0 ; j<$i; j++))
+   do
+      echo ${nodes[$j]}
+      if [ $j -eq 0 ] ; then
+         node_list="[${nodes[$j]}"
+      else
+         node_list="${node_list},${nodes[$j]}"
+      fi
+   done
+   node_list="${node_list}]"
+   echo $node_list
+   srun -w  nid${node_list} $2
+   ```
+
+## MPI example programs (tests between nodes)
 
 The following is a sample program that can be used to run MPI tests between two nodes.
 
-```bash
-
+```screen
 /*******************************************************************
  * Copyright 2021 Hewlett Packard Enterprise Development LP
  * MPI Bisectional Bandwidth Test
@@ -518,7 +519,7 @@ mpicc  bisec_bw.c -o bisec_bw
 4 Ranks, Msg Size:   2097152 bytes, Node BW:  12966.72 MB/sec/node,  Aggregate BW:  12.97 GB/sec
 ```
 
-## Fabric Diagnostics during Performance Benchmarks
+## Fabric diagnostics during performance benchmarks
 
 Some of the problems that can impact the performance of OSU pt2pt performance include at Local and Global Level
 

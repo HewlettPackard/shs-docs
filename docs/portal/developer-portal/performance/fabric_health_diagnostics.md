@@ -90,7 +90,7 @@ The metrics data can be viewed through the Fabric Manager API with OData query.s
 top returns top numbers of metrics from the database. They are not guaranteed to be latest metrics unless the query is
 combined with orderby timestamp in descending order.
 
-    ```bash
+    ```screen
     curl -LG 'http://{fmn-baseUrl}/metrics?$top=1' |jq
     {
     "totalCount": 1,
@@ -110,7 +110,7 @@ combined with orderby timestamp in descending order.
 2. limit: limit returns number of metrics per page. You can navigate to the next or previous page by clicking the **nextPageLink** or
 **prevPageLink**.
 
-    ```bash
+    ```screen
     curl -LG 'http://{fmn-baseUrl}/metrics?$limit=3'
     {
     "totalCount": 3,
@@ -132,7 +132,7 @@ combined with orderby timestamp in descending order.
 3. count:
 count returns the total number of metrics of a query result.
 
-    ```bash
+    ```screen
     curl -LG 'http://{fmn-baseUrl}/metrics?$count=true'
     {
     "totalCount": 12490,
@@ -149,7 +149,7 @@ count returns the total number of metrics of a query result.
 4. filter:
    filter returns a subset of metrics match criteria specified in query option.
 
-    ```bash
+    ```screen
     curl -LG 'http://{fmn-baseUrl}/metrics?$filter=Location%20eq%20%27x2006c0r39a0l1%27&$top=1'
     {
     "totalCount": 1,
@@ -185,7 +185,7 @@ This command analyses the downed links and suggests a diagnostic action code bas
 
 This command provides the different counters at the switch level which can be correlated with the performance benchmarking tests.
 
-```bash
+```screen
 (STT) show switches
 
 Working with 'default' topology and 'default' filter profile.
@@ -379,7 +379,7 @@ STT can be used to perform analysis by capturing key metrics before and after pe
 On bigger systems, in order to avoid SSH connection timeouts while connecting to the switches/CNs through STT, timeout value can be increased
 using the option `--ssh_conn_timeout` while launching the tool.
 
-```bash
+```screen
 # slingshot-topology-tool --ssh_conn_timeout 60
 Using Fabric Manager URL http://localhost:8000
 STT diags log directory -  /root/abhilash/stt_diags_logs
@@ -401,7 +401,7 @@ Steps:
 2. Run the tests
 3. Capture show switches output after tests  (show-switches.t1)
 
-    ```bash
+    ```screen
     fm-1# cat show-switches-stats.t0
 
     Using Fabric Manager URL http://localhost:8000
@@ -473,7 +473,7 @@ Steps:
 
     Extracting the discards statistics during the test
 
-    ```bash
+    ```screen
     cat extract_delta.sh
     #!/bin/bash
     cut -c 2-12,107-121,123-137,147-159 show-switches.t1 | sed -e '1,/xname/d' -e '/----/d' -e '/^$/d' > show-switches-stats.t1

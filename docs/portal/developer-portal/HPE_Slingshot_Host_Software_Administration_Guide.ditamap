@@ -3,7 +3,7 @@
 <map id="shs-troubleshooting">
     <title>HPE Slingshot Host Software Administration Guide (S-9012) (@product_version@)</title>
     <topicmeta>
-        <shortdesc>This publication provides administration procedure for HPE Slingshot Host Software (SHS).</shortdesc>
+        <shortdesc>This publication provides administration procedures for HPE Slingshot Host Software (SHS).</shortdesc>
         <data name="pubsnumber" value="S-9012"/>
         <data name="edition" value="SHS Software Release @product_version@"></data>
     </topicmeta>
@@ -12,7 +12,11 @@
              <navtitle>HSN Performance</navtitle>
         </topicmeta>
         <topicref href="performance/performance_overview.md" format="mdita"/>
-        <topicref href="performance/performance_benchmark_tools.md" format="mdita"/>
+        <topicref href="performance/gpcnet_benchmark.md" format="mdita"/>
+        <topicref href="performance/osu_benchmark.md" format="mdita"/>
+        <topicref href="performance/openmpi.md" format="mdita"/>
+        <topicref href="performance/libfabrics.md" format="mdita"/>
+        <topicref href="performance/perftest.md" format="mdita"/>
         <topichead>
             <topicmeta>
                 <navtitle>HSN Performance Benchmark Tools</navtitle>
