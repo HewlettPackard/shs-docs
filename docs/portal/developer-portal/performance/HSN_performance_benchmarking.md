@@ -4,8 +4,8 @@ The performance benchmarking exercise for HSN fabric is an exercise to verify th
 
 It is required to progress in a systematic and hierarchical way to validate the HSN fabric health prior to performance benchmarking. Here is a pre-flight checklist that can be used towards the same
 
-* All Edge links are up and able to achieve line rate with the loopback tests. HSN (hsn\_traffic roce\_perf\_check\_loopback command in STT can be used)
-* All Nodes are able to successfully ping each other through the HSN (how hsn\_traffic ping-all-to-all can be used to validate the same)
+* All Edge links are up and able to achieve line rate with the loopback tests. HSN (hsn_traffic roce_perf_check_loopback command in STT can be used)
+* All Nodes are able to successfully ping each other through the HSN (how hsn_traffic ping-all-to-all can be used to validate the same)
 * All Nodes are rightly sized for the ARP Table Cache
 * All the Local and Global Fabric Links are up and healthy.
 * Health of Compute node HSN NICs has been verified. `fmn-update-compute-hsn-health` command can be used to verify HSN NICs of all compute nodes. This command will verify the following aspects:

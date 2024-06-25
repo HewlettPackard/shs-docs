@@ -1,7 +1,7 @@
 
 # Retry Handler
 
-Each 200Gbps NIC must have a Retry Handler daemon running and they are indexed by device number, such as `cxi0`, `cxi1`, and so on.
+Each HPE Slingshot 200Gbps NIC must have a Retry Handler daemon running and they are indexed by device number, such as `cxi0`, `cxi1`, and so on.
 Note: These instructions refer to `cxi0` in the example.
 
 If the retry handler crashes for some reason, the node must be rebooted. Due to the crash, an unpredictable state (missing traffic that requires retry) may be reached, which can result in putting the fabric into a bad state.

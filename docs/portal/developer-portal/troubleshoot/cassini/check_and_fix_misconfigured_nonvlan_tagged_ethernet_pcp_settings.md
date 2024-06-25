@@ -15,23 +15,23 @@ be reported if the 200Gbps NIC and HPE Slingshot switch have misconfigured PCP v
 [ 6283.580551] cxi_core 0000:c1:00.0:   pbuf_rd_errors: 219
 ```
 
-NOTE: The above errors, specifically pfc\_fifo\_oflw errors, can also occur if
+NOTE: The above errors, specifically pfc_fifo_oflw errors, can also occur if
 the HPE Slingshot Fabric Manager is not configured with 200Gbps NIC QoS settings.
 
 By default, the HPE Slingshot Fabric Manager configures HPE Slingshot switch to map non-VLAN
 tagged Ethernet frames to PCP 6. The CXI driver (cxi-core) defines a kernel
-module parameter, untagged\_eth\_pcp, to change this value. The following is an
+module parameter, untagged_eth_pcp, to change this value. The following is an
 example of how to set this parameter.
 
 ```screen
 modprobe cxi-core untagged_eth_pcp=6
 ```
 
-NOTE: The above method is not the only way to set the cxi-core untagged\_eth\_pcp
+NOTE: The above method is not the only way to set the cxi-core untagged_eth_pcp
 parameter. You can use the standard Linux methods to configure this parameter.
 
 The following provides an example for how to verify what the current cxi-core
-untagged\_eth\_pcp value is.
+untagged_eth_pcp value is.
 
 ```screen
 # cat /sys/module/cxi_core/parameters/untagged_eth_pcp

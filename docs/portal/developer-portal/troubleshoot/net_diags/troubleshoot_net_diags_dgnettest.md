@@ -102,8 +102,8 @@ dgnettest has FAILED
 
 ## Not enough nodes
 
-Due to the nature of the tests, the all2all test must have at least 4 nodes
-present per set, and the bisect test must have at least 2 nodes present. If a
+Due to the nature of the tests, the all2all test must have at least four nodes
+present per set, and the bisect test must have at least two nodes present. If a
 smaller configuration is used, a warning is displayed.
 
 ```bash
@@ -121,7 +121,7 @@ bisect       3   131072    19409    19651    19894      343      1.7%
 dgnettest has PASSED
 ```
 
-## PMPI\_Init error
+## PMPI_Init error
 
 By default, `dgnettest` uses the MPI selection set in Slurm on the system. If this
 fails with the following error, try using the `--mpi` option to select a

@@ -36,7 +36,7 @@ interfaces that connect each node to its NICs. Poor performance on this test
 correlates well to high rates of PCIe errors. It is intended that the test is
 run on all nodes for a period of ten minutes. This is sufficient to detect
 nodes with rates of PCIe errors that impact application performance.
-The diagnostic uses MPI\_Alltoall with the DMAPP optimizations enabled. The tests are
+The diagnostic uses MPI_Alltoall with the DMAPP optimizations enabled. The tests are
 representative of a real application. The diagnostic does not require
 dedicated access to the whole system. It can be run on a subset of nodes
 allocated by the batch system. The impact on performance of other applications

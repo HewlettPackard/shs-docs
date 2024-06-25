@@ -6,14 +6,14 @@ The tests may be used for tuning as well as for functional testing (https://comm
 
 The perftest package contains a set of bandwidth and latency benchmark for RoCE:
 
-* ib\_send\_bw
-* ib\_send\_lat
-* ib\_write\_bw
-* ib\_write\_lat
-* ib\_read\_bw
-* ib\_read\_lat
-* ib\_atomic\_bw
-* ib\_atomic\_lat
+* `ib_send_bw`
+* `ib_send_lat`
+* `ib_write_bw`
+* `ib_write_lat`
+* `ib_read_bw`
+* `ib_read_lat`
+* `ib_atomic_bw`
+* `ib_atomic_lat`
 
 ## Enable perftest package
 
@@ -101,9 +101,9 @@ This will initiate client connection to server
 ---------------------------------------------------------------------------------------
 ```
 
-**Example 2**: Connect QPs with rdma\_cm and run test on those QPs
+**Example 2**: Connect QPs with rdma_cm and run test on those QPs
 
-Option `R` can be used to validate rdma\_cm
+Option `R` can be used to validate rdma_cm
 
 ```screen
 # ib_write_bw -i 1 -d mlx5_0 -R -D 5 --report_gbits

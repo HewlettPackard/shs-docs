@@ -14,7 +14,7 @@ allocated by the batch system. The impact on performance of other applications
 is low.
 
 Bi-directional RMDA write bandwidth is measured using the Perftest diagnostic
-ib\_write\_bw. Bandwidth is measured from each NIC to its connected switch and
+`ib_write_bw`. Bandwidth is measured from each NIC to its connected switch and
 then back to itself.
 
 You must perform some network checks prior to running the test.

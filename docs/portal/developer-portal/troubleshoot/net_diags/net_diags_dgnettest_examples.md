@@ -121,7 +121,7 @@ dgnettest has PASSED
 
 ## Running with a subset of tests
 
-A list of tests to run can be passed to `dgnettest\_run.sh`. When a test list is
+A list of tests to run can be passed to `dgnettest_run.sh`. When a test list is
 provided, the set-size must be specified with `-s` or the test list is ignored.
 
 ```bash
@@ -210,7 +210,7 @@ By default, NICs are divided and mapped evenly across the NUMA nodes. You can
 override it with custom mapping of threads to NICs.
 
 If `dgnettest` is run directly, several MPICH environment variables
-must be set. The `dgnettest\_run.sh` script does this automatically when a custom
+must be set. The `dgnettest_run.sh` script does this automatically when a custom
 mapping is provided. For example, two NICs can be split so NIC 0 is mapped to
 the even ranks and NIC 1 is mapped to the odd ranks.
 
@@ -220,7 +220,7 @@ $ export MPICH_OFI_NIC_POLICY="USER"
 $ export MPICH_OFI_NIC_MAPPING="0:0,2,4,6;1:1,3,5,7"
 ```
 
-The mapping should be provided to `dgnettest` and `dgnettest\_run.sh` with the `-N` option.
+The mapping should be provided to `dgnettest` and `dgnettest_run.sh` with the `-N` option.
 
 **Note:** Results are not guaranteed to be valid when using a custom mapping. You must ensure to validate any errors with a re-run of `dgnettest` with the default settings.
 

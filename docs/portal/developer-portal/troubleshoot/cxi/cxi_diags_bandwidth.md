@@ -14,9 +14,9 @@ target write buffers, with the exception of `cxi_atomic_bw`.
 A summary of the run options is printed during initialization. The summary is followed by several
 columns of data, including the transaction size, number of transactions, measured bandwidth, and measured transaction rate.
 
-## cxi\_write\_bw
+## `cxi_write_bw`
 
-The cxi\_write\_bw utility measures one-sided RDMA write bandwidth. When using
+The `cxi_write_bw` utility measures one-sided RDMA write bandwidth. When using
 system memory, it can be configured to use huge pages.
 
 **Usage**
@@ -59,7 +59,7 @@ Options:
 
 **Example**
 
-This example shows a bidirectional run over a range of sizes for 5 seconds
+This example shows a bidirectional run over a range of sizes for five seconds
 each.
 
 *Server*
@@ -133,9 +133,9 @@ RDMA Size[B]      Writes  BW[MB/s]  PktRate[Mpkt/s]
 ---------------------------------------------------
 ```
 
-## cxi\_read\_bw
+## `cxi_read_bw`
 
-The cxi\_read\_bw utility measures one-sided RDMA read bandwidth. When using
+The `cxi_read_bw` utility measures one-sided RDMA read bandwidth. When using
 system memory, it can be configured to use huge pages.
 
 **Usage**
@@ -231,9 +231,9 @@ RDMA Size[B]       Reads  BW[MB/s]  PktRate[Mpkt/s]
 ---------------------------------------------------
 ```
 
-## cxi\_send\_bw
+## `cxi_send_bw`
 
-The cxi\_send\_bw utility measures two-sided message bandwidth. It can be
+The `cxi_send_bw` utility measures two-sided message bandwidth. It can be
 configured to use eager or rendezvous transactions. When using system memory, it
 can be configured to use huge pages.
 
@@ -333,9 +333,9 @@ Send Size[B]       Sends  BW[MB/s]  PktRate[Mpkt/s]
 ---------------------------------------------------
 ```
 
-## cxi\_atomic\_bw
+## `cxi_atomic_bw`
 
-The cxi\_atomic\_bw utility measures one-sided AMO bandwidth. It can be configured
+The `cxi_atomic_bw` utility measures one-sided AMO bandwidth. It can be configured
 to use a specific atomic operation and data type. Where possible, target buffer
 writes are ensured to occur with every AMO. The utility works with or without
 CPU offload, but enabling that feature in the NIC is left to the user.
@@ -438,9 +438,9 @@ AMO Size[B]         Ops  BW[MB/s]    OpRate[M/s]
 ------------------------------------------------
 ```
 
-## cxi\_gpu\_bw\_loopback
+## `cxi_gpu_bw_loopback`
 
-The cxi\_gpu\_bw\_loopback utility measures one-sided RDMA write bandwidth. When
+The `cxi_gpu_bw_loopback` utility measures one-sided RDMA write bandwidth. When
 using system memory, it can be configured to use huge pages.
 
 **Usage**

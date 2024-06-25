@@ -13,7 +13,7 @@ x2510c7s6b0n0: Warning: encountered unexpected Link Mode NA for non-zero error r
 
 ## No remote copies of `cxi_stat`
 
-The `cxiberstat.sh` uses the CXI diagnostic cxi\_stat to measure BERs. This is
+The `cxiberstat.sh` uses the CXI diagnostic `cxi_stat` to measure BERs. This is
 provided by the `cray-libcxi-utils` package, which should be installed on every
 node. For more information, see CXI Diagnostics and Utilities documentation.
 

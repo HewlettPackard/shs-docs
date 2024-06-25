@@ -1,9 +1,9 @@
 
 # Device information
 
-## cxi\_stat
+## cxi_stat
 
-The cxi\_stat utility displays a summary of information provided by the CXI
+The cxi_stat utility displays a summary of information provided by the CXI
 driver. By default it displays information for all available devices. It can be
 limited to a single device with the `--device` option. Additional HSN link error
 rate and pause information can be shown with the `--rates` option.

@@ -20,9 +20,9 @@ nid000008: bash: ./cxibwcheck.sh: No such file or directory
 pdsh@uan: nid000008: ssh exited with exit code 127
 ```
 
-## No remote copies of `cxi\_write\_bw`
+## No remote copies of `cxi_write_bw`
 
-`cxibwcheck.sh` uses the CXI diagnostic cxi\_write\_bw to measure bandwidth. This
+`cxibwcheck.sh` uses the CXI diagnostic `cxi_write_bw` to measure bandwidth. This
 is provided by the cray-libcxi-utils package, which should be installed on every
 node. See the CXI Diagnostics and Utilities documentation for more details.
 
