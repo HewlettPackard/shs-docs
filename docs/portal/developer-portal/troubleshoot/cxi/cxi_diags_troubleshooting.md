@@ -88,7 +88,7 @@ event RC != RC_OK: CANCELED
 Failed to get initiator ACK TRIGGERED_OP event: No message of desired type
 ```
 
-When High rate puts (HRP) are used, the RC might instead be HRP\_RSP\_DISCARD.
+When High rate puts (HRP) are used, the RC might instead be HRP_RSP_DISCARD.
 This means that the packet made it as far as the switch.
 
 ```screen
@@ -97,7 +97,7 @@ event RC != RC_OK: HRP_RSP_DISCARD
 Failed to get initiator ACK TRIGGERED_OP event: No message of desired type
 ```
 
-If the RC is PKTBUF\_ERROR, the node logs must be checked for pfc\_fifo\_oflw
+If the RC is PKTBUF_ERROR, the node logs must be checked for pfc_fifo_oflw
 errors. This means the switch QoS configuration has not been applied correctly.
 
 ```screen
@@ -141,27 +141,27 @@ by default. This error indicates that the HIP library has not been compiled for 
 
 ## Low bandwidth
 
-In general, the bandwidth utilities and cxi\_heatsink\_check are expected to reach full
+In general, the bandwidth utilities and `cxi_heatsink_check` are expected to reach full
 bandwidth using their default options. However, there are cases where this may
 not be true. The following may result in improved performance:
 
 - Pin processes to specific cores. This can be done to avoid core 0 and to
 assign the server and client to separate cores. When using a multisocket node,
-it is important to use the socket nearest to the NIC under test. cxi\_heatsink\_check
+it is important to use the socket nearest to the NIC under test. `cxi_heatsink_check`
 attempts to intelligently set core affinities, but this can be overridden with
 the `--cpu-list` option.
 - Use larger values for `--size`.
 - Use larger or smaller values for `--list-size` (called `--num-xfers` in
 `cxi_gpu_bw_loopback`). This option specifies the number of transactions that are
 queued up before telling the NIC to proceed.
-- Use larger or smaller values for `--procs` with cxi\_heatsink\_check. This
+- Use larger or smaller values for `--procs` with `cxi_heatsink_check`. This
 option specifies the number of write-generating processes that are created.
 - Use GPU memory for one or both of the TX and RX buffers.
 
 ## List entry exhaustion
 
 The 200Gbps NIC has four processing engines, each of which has access to 16,384
-list entries. When cxi\_heatsink\_check is run with the `--no-ple` option, every
+list entries. When `cxi_heatsink_check` is run with the `--no-ple` option, every
 write is preceded by appending a single, use-once list entry to receive the
 write. If both the number of processes and the list size are set to large
 values, this can result in exceeding the available number of list entries.

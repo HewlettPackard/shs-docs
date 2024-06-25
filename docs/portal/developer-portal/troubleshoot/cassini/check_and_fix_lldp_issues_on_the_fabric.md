@@ -60,10 +60,11 @@ x1001c4r1b0
 #
 ```
 
-Every x100x Series switch should be followed by 16 bit IP addresses. If you see any switch 
-that are not followed by 16 bit IP addresses, the might have a problem. Complete the following steps to resove the problem.
+Every x100x Series switch should be followed by 16 bit IP addresses.
+If you see any switch that are not followed by 16 bit IP addresses, the might have a problem.
+Complete the following steps to resolve the problem.
 
-# Fixing LLDP TLV settings on a switch
+## Fix LLDP TLV settings on a switch
 
 To reconfigure a switch that has lost it's LLDP TLV settings, run the following
 script on the FMN, against that switch:
@@ -73,7 +74,7 @@ script on the FMN, against that switch:
 # ./Set_LLDP_One.sh x1000c3r3b0
 ```
 
-# Enabling LLDP protocol on the Host
+## Enable LLDP protocol on the Host
 
 On the Host, LLDP protocol may be disabled by default. This results in the HSN neighbor information not showing on the switch `lldp neighbor` output.
 

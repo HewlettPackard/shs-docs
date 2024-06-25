@@ -1,31 +1,27 @@
-# Port Configuration
+# Port configuration
 
 **Port Policies**
 
-Fabric Manager commands and Slingshot Topology Tools can be used in combination to analyze verify the health of fabric any port policy mismatch that can cause fabric links to be down
+Fabric Manager commands and Slingshot Topology Tools can be used in combination to analyze verify the health of fabric any port policy mismatch that can cause fabric links to be down.
 
-The example below illustrates analyzing fabric links are down.
+The following example illustrates analyzing fabric links are down.
 
-1. fmn-show-status is used to verify any links that are down.
-2. There are two fabric links which are shown as down and this required further analysis.
+1. `fmn-show-status` is used to verify any links that are down
+2. There are two fabric links which are shown as down and this required further analysis
 3. The fabric policy is different for the port x3000c0r41j13p0 and x3001c0r41j31p0
-4. The two ports that form the link has difference in the port policies as shown the fmctl command
+4. The two ports that form the link has difference in the port policies as shown the `fmctl` command
 5. The port policies have difference in the autoneg value causing the link to be down
 6. STT show fabric show the two fabric ports that are "false" indicating problems
 7. STT show links also shows the Fabric Link marked as "Downed
 8. Port policy mismatch is rectified and port is  x3001c0r41j31p0 is updated with the correct port policy
-9. All the links are online as shown by fmn-show-status.
-10. cx6-port-policy  is created for this configuration as an example for illustration here.
+9. All the links are online as shown by `fmn-show-status`
+10. cx6-port-policy is created for this configuration as an example for illustration here
 
-**Note: Port policies are created based on the site specific configurations.
-**
+**Note:** Port policies are created based on the site specific configurations.
 
 ```screen
 fm-1# fmn-show-status --details
-```
 
-
-```bash
 Edge: 127 / 128
 Fabric: 46 / 48
 Ports Reported: 175 / 176
@@ -121,7 +117,7 @@ fm-1# fmctl get port-policies/fabric-policy
 ```
 
 
-```bash
+```screen
 Working with 'default' topology and 'default' filter profile.
 Collecting data using 'check-switches' script.
 Collecting data using 'check-fabric' script.
@@ -173,7 +169,6 @@ Querying downed links' link partners...
 |Fabric|x3000c0r41j13p0(28)<->x3001c0r41j31p0(49)|None S L |1.5.181 |electrical-N/A| ssh fail | None S L   | 1.5.abray | electrical-N/A |   ssh fail   |
 +------+-----------------------------------------+---------+--------+--------------+----------+------------+-----------+----------------+--------------+
 * The output has been truncated for readability.
-
 ```
 
 
@@ -221,6 +216,5 @@ Edge: 127 / 128
 Fabric: 48 / 48
 Ports Reported: 176 / 176
 Fully Synchronized Switches: 4 / 4
-
 ```
 

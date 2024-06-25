@@ -14,7 +14,7 @@ To achieve high TCP performance on the HPE Slingshot system, tune the following 
 
 - **Enable fair queuing**: Use one queue per packet flow and service them in rotation, this ensures that each flow receives an equal fraction of the resources.
 
-- **Pace and shape the bandwidth**: Queuing theory explains that bursty traffic produces higher queueing delays, more packet losses, and lower throughput. TCP congestion control mechanisms can create burst traffic flows on high bandwidth and multiplexed networks. Therefore, smoothing the behavior of TCP traffic by evenly spacing data transmissions across a round-trip time increases the performance. A flow limit of 10,000 is chosen to gain a couple of Gbps in comparison to a flow limit of 1000. 
+- **Pace and shape the bandwidth**: Queuing theory explains that bursty traffic produces higher queueing delays, more packet losses, and lower throughput. TCP congestion control mechanisms can create burst traffic flows on high bandwidth and multiplexed networks. Therefore, smoothing the behavior of TCP traffic by evenly spacing data transmissions across a round-trip time increases the performance. A flow limit of 10,000 is chosen to gain a couple of Gbps in comparison to a flow limit of 1000.
 
 - **Set Tx Rx queue size**: Set the Rx and Tx queues based on the traffic load. The default Rx and Tx queues are set to 8. If a high traffic load is given, you can set Rx and Tx queues to 16.
 
@@ -22,7 +22,7 @@ To achieve high TCP performance on the HPE Slingshot system, tune the following 
 
 - **Set CPU governor**: Set the CPU governer to **Performance** to maintain a higher clock speed limit, thus increasing the performance.
 
-**Current recommendations for TCP settings**
+## Current recommendations for TCP settings
 
 **Note**: The recommended settings are based on the TCP window size formula and RTT of 0.13ms which may differ for each system.
 
@@ -35,14 +35,14 @@ To achieve high TCP performance on the HPE Slingshot system, tune the following 
 
 - To enable Fair Queuing, use the following command:
 
-  ```screen 	
+  ```screen
   tc qdisc replace dev hsn0 root mq
   ids+=( $(tc qdisc show dev hsn0 | awk '{print $5} ' | sed s'/.*://') )
   for i in ${ids[@]}; do tc qdisc replace dev hsn0 parent "8001:$i" fq; done
   tc qdisc show dev hsn0
   ```
 
-- To pace and shape the bandwidth, set the TCP window size to 8 MB buffers:		
+- To pace and shape the bandwidth, set the TCP window size to 8 MB buffers:
 
   ```screen
   sysctl -w net.ipv4.tcp_rmem="4096 87380 8000000"
@@ -74,4 +74,3 @@ To achieve high TCP performance on the HPE Slingshot system, tune the following 
   ```screen
   cpupower frequency-set -g performance
   ```
-

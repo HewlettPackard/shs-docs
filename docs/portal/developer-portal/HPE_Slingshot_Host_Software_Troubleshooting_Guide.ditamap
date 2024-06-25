@@ -47,24 +47,33 @@
                 <navtitle>dgnettest</navtitle>
             </topicmeta>
             <topicref href="troubleshoot/net_diags/net_diags_dgnettest.md" format="mdita"/>
+            <topicref href="troubleshoot/net_diags/dgnettest_run.md" format="mdita"/>
+            <topicref href="troubleshoot/net_diags/net_diags_dgnettest_examples.md" format="mdita"/>
+            <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_dgnettest.md" format="mdita"/>
         </topichead>
         <topichead>
             <topicmeta>
                 <navtitle>cxibwcheck.sh</navtitle>
             </topicmeta>
             <topicref href="troubleshoot/net_diags/net_diags_cxibwcheck.md" format="mdita"/>
+            <topicref href="troubleshoot/net_diags/net_diags_cxibwcheck_examples.md" format="mdita"/>
+            <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_cxibwcheck.md" format="mdita"/>
         </topichead>
         <topichead>
             <topicmeta>
                 <navtitle>bwcheck.sh</navtitle>
             </topicmeta>
             <topicref href="troubleshoot/net_diags/net_diags_bwcheck.md" format="mdita"/>
+            <topicref href="troubleshoot/net_diags/net_diags_bwcheck_examples.md" format="mdita"/>
+            <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_bwcheck.md" format="mdita"/>
         </topichead>
         <topichead>
             <topicmeta>
                 <navtitle>cxiberstat.sh</navtitle>
             </topicmeta>
         <topicref href="troubleshoot/net_diags/net_diags_cxiberstat.md" format="mdita"/>
+        <topicref href="troubleshoot/net_diags/net_diags_cxiberstat_examples.md" format="mdita"/>
+        <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_cxiberstat.md" format="mdita"/>
         </topichead>
     </topichead>
     <topichead id="compute-node-troubleshooting">
@@ -86,20 +95,27 @@
             <topicref href="troubleshoot/cassini/check_and_fix_lldp_issues_on_the_fabric.md" format="mdita"/>
         </topichead>
         <topichead id="hpe-slingshot-200Gbps-nic-host-troubleshooting">
-            <topicmeta>
-                <navtitle>HPE Slingshot 200Gbps NIC Host troubleshooting</navtitle>
-            </topicmeta>
-            <topicref href="troubleshoot/cassini/host_troubleshooting.md" format="mdita"/>
-        </topichead>
-        <topichead id="hpe-slingshot-200Gbps-nic-firmware-troubleshooting">
-            <topicmeta>
-                <navtitle>HPE Slingshot 200Gbps NIC Firmware troubleshooting</navtitle>
-            </topicmeta>
-            <topicref href="troubleshoot/cassini/firmware_troubleshooting.md" format="mdita"/>
-        </topichead>
-        <topicref href="troubleshoot/cassini/pause_too_long.md" format="mdita">
-            <topicref href="troubleshoot/cassini/pause_too_long_map_ethernet.md" format="mdita"/>
-            <topicref href="troubleshoot/cassini/pause_too_long_fabric_recovery.md" format="mdita"/>
-        </topicref>
+        <topicmeta>
+            <navtitle>HPE Slingshot 200Gbps NIC Host troubleshooting</navtitle>
+        </topicmeta>
+        <topicref href="troubleshoot/cassini/200gbps_nic_appear_down.md" format="mdita"/>
+        <topicref href="troubleshoot/cassini/retry_handler.md" format="mdita"/>
+        <topicref href="troubleshoot/cassini/200gbps_nic_loopback_mode.md" format="mdita"/>
+        <topicref href="troubleshoot/cassini/ethernet_driven_configuration.md" format="mdita"/>
+        <topicref href="troubleshoot/cassini/200gbps_nic_errors.md" format="mdita"/>
+        <topicref href="troubleshoot/cassini/pcie_interface_troubleshooting.md" format="mdita"/>
+        <topicref href="troubleshoot/cassini/ethernet_interface_troubleshooting.md" format="mdita"/>
+    </topichead>
+    <topichead id="hpe-slingshot-200Gbps-nic-firmware-troubleshooting">
+        <topicmeta>
+            <navtitle>HPE Slingshot 200Gbps NIC Firmware troubleshooting</navtitle>
+        </topicmeta>
+        <topicref href="troubleshoot/cassini/firmware_update_failure.md" format="mdita"/>
+        <topicref href="troubleshoot/cassini/firmware_factory_reset.md" format="mdita"/>
+    </topichead>
+    <topicref href="troubleshoot/cassini/pause_too_long.md" format="mdita">
+        <topicref href="troubleshoot/cassini/pause_too_long_map_ethernet.md" format="mdita"/>
+        <topicref href="troubleshoot/cassini/pause_too_long_fabric_recovery.md" format="mdita"/>
+    </topicref>
     </topichead>
 </map>

@@ -1,16 +1,16 @@
 
 # Thermal diagnostic
 
-The cxi\_heatsink\_check utility is a thermal diagnostic intended to validate that
+The `cxi_heatsink_check` utility is a thermal diagnostic intended to validate that
 heat is being dissipated properly. It stresses the ASIC by generating a large
 amount of small RDMA writes.
 
 ## Node configuration
 
-When testing a single-NIC device, only one instance of cxi\_heatsink\_check is
+When testing a single-NIC device, only one instance of `cxi_heatsink_check` is
 needed. However, when testing a dual-NIC device, two instances of the diagnostic
 must run simultaneously, each targeting one of the two NICs. Dual-NIC pairs can
-be determined by using cxi\_stat to obtain NIC serial numbers. NICs of the same
+be determined by using cxi_stat to obtain NIC serial numbers. NICs of the same
 device will have identical serial numbers.
 
 **Note:** In some compute blades, each NIC of a dual-NIC device belongs to a
@@ -21,7 +21,7 @@ Internal-loopback does not fully exercise the SerDes.
 
 ## Running the diagnostic
 
-Running cxi\_heatsink\_check requires root privileges.
+Running `cxi_heatsink_check` requires root privileges.
 
 **Usage**
 
@@ -68,7 +68,7 @@ Options:
 
 **Example of a successful run:**
 
-In this example, the cxi\_heatsink\_check diagnostic utility successfully executed
+In this example, the `cxi_heatsink_check` diagnostic utility successfully executed
 and all tests passed as expected.
 
 ```bash
@@ -144,7 +144,7 @@ Average BW over 19 GB/s:                     10.31 GB/s  FAIL
 
 **Example high temperature failure:**
 
-This example shows a single failure (**200Gbps NIC 0 Temperature (ASIC\_0) under
+This example shows a single failure (**200Gbps NIC 0 Temperature (ASIC_0) under
 85°C**). The 200Gbps NIC temperature rose higher than expected, which indicates that
 heat is not being dissipated properly. In this case the 200Gbps NIC card should
 be inspected to ensure that the heatsink is properly installed and that the

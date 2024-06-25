@@ -12,8 +12,8 @@ run script both run from the User Access Node (UAN). They use Slurm as a
 workload manager, and they use MPI for node-to-node communication.
 
 The `cxibwcheck.sh` and `bwcheck.sh` diagnostics measure loopback bandwidth for a
-given set of nodes. The cxibwcheck.sh script uses a libcxi diagnostic, cxi\_write\_bw.
-The `bwcheck.sh` script uses a Perftest diagnostic, `ib\_write\_bw`. Neither of the scripts rely on the
+given set of nodes. The cxibwcheck.sh script uses a libcxi diagnostic, `cxi_write_bw`.
+The `bwcheck.sh` script uses a Perftest diagnostic, `ib_write_bw`. Neither of the scripts rely on the
 Message Passing Interface (MPI). They can be run on a UAN and use `pdsh` to run on the
 nodes. They also support being run through Slurm. The `cxibwcheck.sh` is 
 valid for use with Slingshot NICs and `bwcheck.sh` is valid for use with

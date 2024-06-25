@@ -1,5 +1,5 @@
 
-# Fabric Links Troubleshooting
+# Fabric links troubleshooting
 
 All the fabric links (local and global) should be properly verified for their status. Any fabric links that are down can impact HSN performance.
 
@@ -12,7 +12,7 @@ All the fabric links (local and global) should be properly verified for their st
 * Preamble for any performance tests - A stable fabric without link flaps
 * Port Policies should match between the fabric ports
 
-## Link Flaps
+## Link flaps
 
 `show flaps` can be used to analyze any links flaps that can significantly impact the HSN performance.
 

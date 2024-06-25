@@ -1,64 +1,21 @@
 
-# GPCNeT Benchmark
-
-GPCNeT benchmark provides the following capabilities:
-
-* Natural Ring Communication Pattern - all processors communicate with their neighbors simultaneously based on adjacent MPI ranks.
-* Random Ring Communication Pattern - processors are paired with random nodes that do not live on a physical neighbor in the machine.
-* Exercising the corners of spacial-temporal locality where spacial locality refers to the likelihood that adjacent memory addresses are referenced in a short period of time and temporal locality refers to the likelihood of a single memory address being referenced several times in a short period of time.
-
-# OSU Benchmark
-
-OSU Benchmark is a collection of MPI test suites that enable to collect key performance metrics (Bandwidth, Latency) for HPC Fabrics. They can operate on any of the standard MPI implementations.
-OSU Micro-Benchmarks provide several different type of benchmarks that can be used to test and measure HPC network performance:
-
-* Point-to-Point MPI Benchmarks: Latency, multi-threaded latency, multi-pair latency, multiple bandwidth / message rate test bandwidth, bidirectional bandwidth
-* One-sided MPI Benchmarks: one-sided put latency, one-sided put bandwidth, one-sided put bidirectional bandwidth, one-sided get latency, one-sided get bandwidth, one-sided accumulate latency
-
-# OpenMPI
-
-The Open MPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners. Some of the features include compliance to Full MPI-3.1 standards conformance ,Thread safety and concurrency ,Dynamic process spawning
-
-# Libfabrics
-
-OpenFabrics Interfaces (OFI) is a framework focused on exporting fabric communication services to applications.
-OFI is best described as a collection of libraries and applications used to export fabric services.
-The key components of OFI are: application interfaces, provider libraries, kernel services, daemons, and test applications (https://ofiwg.github.io/libfabric/).
-OFI is specifically designed to meet the performance and scalability requirements of high-performance computing (HPC) applications, such as MPI.
-The key components of OFI are:
-
-* application interfaces
-*  provider libraries
-*  kernel services
-*  daemons and test applications
-
-The rest of the section outlines different techniques that are adopted to troubleshoot performance mismatch between the expected and actual results.
-It is important to understand the expected results of performance test based on the HSN configuration:
-
-* Topology
-* Number of Endpoints
-* Switches
-* Groups, and Switches per group,
-* Local Links
-* Single or dual NICs
-
 # Perftest
 
-perftest package is a collection of tests written over uverbs intended for use as a performance micro-benchmark.
-The tests may be used for tuning as well as for functional testing (https://community.mellanox.com/s/article/perftest-package)
+The perftest package is a collection of tests written over uverbs intended for use as a performance micro-benchmark.
+The tests may be used for tuning as well as for functional testing (https://community.mellanox.com/s/article/perftest-package).
 
-perftest package contains a set of bandwidth and latency benchmark for RoCE
+The perftest package contains a set of bandwidth and latency benchmark for RoCE:
 
-ib\_send\_bw
-ib\_send\_lat
-ib\_write\_bw
-ib\_write\_lat
-ib\_read\_bw
-ib\_read\_lat
-ib\_atomic\_bw
-ib\_atomic\_lat
+* `ib_send_bw`
+* `ib_send_lat`
+* `ib_write_bw`
+* `ib_write_lat`
+* `ib_read_bw`
+* `ib_read_lat`
+* `ib_atomic_bw`
+* `ib_atomic_lat`
 
-## Enable Perftest Package
+## Enable perftest package
 
 ```screen
 # yum install libmlx5 libmlx4 libibverbs libibumad librdmacm \
@@ -76,7 +33,7 @@ tls                   102400  1 mlx5_core
 
 ```
 
-## Running Perftest Package
+## Run the perftest package
 
 **Example 1:** Bandwidth tests between client and server with Ethernet as Data exchange method
 
@@ -144,9 +101,9 @@ This will initiate client connection to server
 ---------------------------------------------------------------------------------------
 ```
 
-**Example 2**: Connect QPs with rdma\_cm and run test on those QPs
+**Example 2**: Connect QPs with rdma_cm and run test on those QPs
 
-Option `R` can be used to validate rdma\_cm
+Option `R` can be used to validate rdma_cm
 
 ```screen
 # ib_write_bw -i 1 -d mlx5_0 -R -D 5 --report_gbits
@@ -204,7 +161,7 @@ Option `R` can be used to validate rdma\_cm
 ---------------------------------------------------------------------------------------
 ```
 
-## Perftest Results
+## Perftest results
 
 Successful execution of the tests with a bandwidth `~98 Gb/sec` implies that the HSN link
 between the client and server is functional.
@@ -230,7 +187,6 @@ From one of the compute nodes , client connection can be initiated to the server
 **Example**: Scaling perftest for a set of compute nodes
 
 ```bash
-
 # Initiate servers
 [UAN ~] pdsh -w <system_name>n[001-009]  ib_write_bw -i 1 -d mlx5_0 -D 5 -R  --report_gbit
 
