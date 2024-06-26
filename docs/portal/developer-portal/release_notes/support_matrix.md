@@ -2,6 +2,12 @@
 
 # Slingshot Host Software (SHS)
 
+Here are the System Software Requirements for the Host Software release, detailing compatibility and requirements:
+
+- **Cluster Managers**: We have specified the supported cluster managers and their respective versions.
+- **NICs**: Supported Network Interface Cards (NICs) are listed for each given OS distribution.
+- **ROCm and NVIDIA Versions**: Required ROCm and NVIDIA versions are needed for each OS distribution.
+
 Advisory: older platform targets (i.e. SLE 15 SP3, COS 2.4, CSM 1.3, RHEL 8.5) are supported by earlier versions of SHS. Software for older platforms can be found in earlier SHS releases.
 
 ## HPE System Cluster Management Software
