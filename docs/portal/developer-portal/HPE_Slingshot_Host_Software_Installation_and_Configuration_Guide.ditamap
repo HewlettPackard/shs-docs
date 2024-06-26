@@ -69,7 +69,7 @@
     </topichead>
     <topichead>
         <topicmeta>
-            <navtitle>configure Soft-Roce</navtitle>
+            <navtitle>Configure Soft-Roce</navtitle>
         </topicmeta>
         <topicref href="install/configure_softroce.md" format="mdita">
             <topicref href="install/softroce_on_HPE_Slingshot_200Gpbs_.md" format="mdita"/>
