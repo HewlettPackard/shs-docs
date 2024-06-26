@@ -1,7 +1,7 @@
 # Mellanox-based system install procedure
 
 This section is for systems using Mellanox NICs.
-For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proceed to the [HPE Slingshot 200Gbps CXI NIC system install procedure](HPE_Slingshot_200Gbps_cxi_nic_system_install_upgrade_procedure.md#hpe-slingshot-200gbps-cxi-nic-system-installupgrade-procedure).
+For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proceed to the [HPE Slingshot 200Gbps CXI NIC system install procedure](HPE_Slingshot_200Gbps_cxi_nic_system_install_upgrade_procedure.md#hpe-slingshot-200gbps-cxi-nic-system-install-procedure).
 
 1. Identify the target OS distribution, and distribution version for all compute targets in the cluster. Use this information to select the appropriate Mellanox OFED (MOFED) tarball to be used for install from the URL listed in the [External Vendor Software](compute_install_prereqs.md#external-vendor-software) table. The filename typically follows this pattern: `MLNX_OFED_LINUX-<version>-<OS distro>-<arch>.tgz`.
 
