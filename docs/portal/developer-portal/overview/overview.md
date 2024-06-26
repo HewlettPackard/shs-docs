@@ -12,4 +12,4 @@ For supported industry standard NICs, Libfabric is supplied is because it is req
 
 These components are installed on each node connected to the HPE Slingshot network, and should be integrated into the boot images.
 
-Note: **For upgrade instructions for SHS, please refer to the installation sections. Upgrading SHS involves installing a newer image, so specific upgrade instructions are not provided separately.**
+Note: **For upgrade instructions for SHS, see the installation sections. Upgrading SHS involves installing a newer image, so specific upgrade instructions are not provided separately.**
