@@ -1,5 +1,5 @@
 
-# Install compute codes
+# Install compute nodes
 
 Perform this procedure to install SHS on compute nodes. This procedure can be used for systems that use either Mellanox NICs or HPE Slingshot 200Gpbs NICs.
 
