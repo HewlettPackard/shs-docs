@@ -16,7 +16,7 @@ Installation and upgrade are aimed at discussing the process and procedure for i
 
 Migration is aimed at discussing how to replace the SHS networking software stack on an NCN with a different networking stack from SHS. Only migration from systems with Mellanox NICs to systems with HPE Slingshot 200Gbps NICs is supported at this time.
 
-## Install or upgrade with NCN personalization
+## Install with NCN personalization
 
 The following steps describe how to use the NCN personalization CFS configuration in conjunction with HPE Cray EX CFS software to install, update, and configure SHS provided content on NCN workers.
 
@@ -173,7 +173,7 @@ If other HPE Cray EX software products are not being installed at this time, con
 
 ## Migration
 
-If a fresh install of the NCN worker has occurred and SHS has never been installed before on the target node, see `Install/Upgrade` section above. If SHS has never been installed, then the node can be considered to be 'clean' and does not require uninstallation of the HPE Slingshot software stack with Mellanox NICs.
+If a fresh install of the NCN worker has occurred and SHS has never been installed before on the target node, see `install` section above. If SHS has never been installed, then the node can be considered to be 'clean' and does not require uninstallation of the HPE Slingshot software stack with Mellanox NICs.
 
 The following steps describe how to use the NCN personalization CFS configuration in conjunction with HPE Cray EX System Software CFS to migrate SHS provided content on NCN Workers from an installation with Mellanox NICs to an installation with HPE Slingshot 200Gbps NICs.
 These steps are necessary to provide the networking drivers, management software, and device firmware as required.

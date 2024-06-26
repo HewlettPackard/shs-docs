@@ -1,4 +1,4 @@
-# HPE Slingshot 200Gbps CXI NIC system install/upgrade procedure
+# HPE Slingshot 200Gbps CXI NIC system install procedure
 
 This section is for systems using HPE Slingshot 200Gbps CXI NICs.
 
