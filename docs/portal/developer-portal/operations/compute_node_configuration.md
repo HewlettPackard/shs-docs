@@ -51,7 +51,7 @@ NOTE: The `shs-integration-<version>` layer should precede the COS layer in the 
 
 ## Legacy compute node CFS procedure
 
-This step should not be executed until after COS install/upgrade has finished on the system. COS provides the instructions for creating a CFS configuration for compute nodes. The procedure in this section aims at updating the existing CFS configuration for compute nodes.
+This step should not be executed until after COS install has finished on the system. COS provides the instructions for creating a CFS configuration for compute nodes. The procedure in this section aims at updating the existing CFS configuration for compute nodes.
 
 The existing configuration will likely include other Cray EX product entries. The Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) provides guidance on how and when to update the entries for the other products.
 

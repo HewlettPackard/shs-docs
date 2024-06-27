@@ -11,7 +11,7 @@
     <topicref href="install/compute_install_prereqs.md" format="mdita"/>
     <topichead>
         <topicmeta>
-            <navtitle>Install or upgrade SHS for CSM</navtitle>
+            <navtitle>Install SHS for CSM</navtitle>
         </topicmeta>
         <topicref href="install/install_shs_on_csm_14_or_newer.md" format="mdita"/>
         <topicref href="install/install_shs_on_csm_13_or_prior.md" format="mdita">
@@ -35,11 +35,10 @@
                 <topicref href="install/install_notes.md" format="mdita"/>
             </topicref>
         </topicref>
-        <topicref href="install/configure_softroce.md" format="mdita"/>
     </topichead>
     <topichead>
         <topicmeta>
-            <navtitle>Install or upgrade SHS for HPCM</navtitle>
+            <navtitle>Install SHS for HPCM</navtitle>
         </topicmeta>
         <topicref href="install/install_or_upgrade_shs_on_hpcm_compute_nodes.md" format="mdita">
             <topicref href="install/mellanox_based_system_install_upgrade_procedure.md"
@@ -53,7 +52,7 @@
     </topichead>
     <topichead>
         <topicmeta>
-            <navtitle>Install or upgrade SHS for Bare Metal</navtitle>
+            <navtitle>Install SHS for Bare Metal</navtitle>
         </topicmeta>
         <topicref href="install/install_or_upgrade_compute_nodes.md" format="mdita">
             <topicref href="install/post_install_tasks.md" format="mdita">
@@ -67,6 +66,11 @@
             <topicref href="install/sysctl_configuration_example.md" format="mdita"/>
             <topicref href="install/install_200gbps_nic_host_software.md" format="mdita"/>
         </topicref>
+    </topichead>
+    <topichead>
+        <topicmeta>
+            <navtitle>Configure Soft-Roce</navtitle>
+        </topicmeta>
         <topicref href="install/configure_softroce.md" format="mdita">
             <topicref href="install/softroce_on_HPE_Slingshot_200Gpbs_.md" format="mdita"/>
             <topicref href="install/lustre_network_driver_lnd_ko2iblnd_configuration.md" format="mdita"/>

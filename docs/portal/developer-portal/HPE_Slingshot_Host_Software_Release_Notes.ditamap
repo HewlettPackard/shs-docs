@@ -15,7 +15,7 @@
     <topicref href="release_notes/knownissues.md" format="markdown"/>
     <topichead>
       <topicmeta>
-          <navtitle>System Software Requirements for Fabric Manager and Host Software</navtitle>
+          <navtitle>System Software Requirements for Host Software</navtitle>
        </topicmeta>
         <topicref href="release_notes/support_matrix.md" format="markdown"/>
     </topichead>
