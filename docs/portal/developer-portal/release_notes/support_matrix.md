@@ -80,3 +80,30 @@ Advisory: older platform targets (i.e. SLE 15 SP3, COS 2.4, CSM 1.3, RHEL 8.5) a
 | Cray Operating System    | COS 23.11.x w/ COS Base 3.0.1 ARM | NA           | 535.154.05   | 23.11      |
 | Cray Operating System    | COS 24.07.x w/ COS Base 3.1       | 6.1.0        | 550.54.15    | 24.03      |
 | Cray Operating System    | COS 24.07.x w/ COS Base 3.1   ARM | NA           | 550.54.15    | 24.03      |
+
+
+### Fabric Manager and Slingshot Host Software Release Compatibility
+
+|             |  2.1.0     | 2.1.1      | 2.1.3      | 2.2.0      | 2.2.1      | 2.3.0      | 3.0.0      |
+|:-----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
+| 2.1.0       | R-A-B      | Supported  | Supported  | Supported  | Supported  | Supported  | Supported  |
+| 2.1.2       | Supported  | R-A-B      | Supported  | Supported  | Supported  | Supported  | Supported  |
+| 2.1.3       | Supported  | Supported  | R-A-B      | Supported  | Supported  | Supported  | Supported  |
+| 2.2.0       | Supported  | Supported  | Supported  | R-A-B      | Supported  | Supported  | Supported  |
+| SHS-11.0.0  | Supported  | Supported  | Supported  | Validated  | R-A-B      | Supported  | Supported  |
+| SHS-11.1.0  | Supported  | Supported  | Supported  | Supported  | Supported  | Supported  | Supported  |
+| SHS-11.2.0  | Supported  | Supported  | Supported  | Supported  | Supported  | R-A-B      | Supported  |
+| SHS-12.0.0  | Supported  | Supported  | Supported  | Supported  | Supported  | Supported  | R-A-B      |
+
+X-Axis: Fabric Manager + Switch Agent version
+
+Y-Axis: SHS version
+
+**KEY:**
+| Label                       | Meaning                    |
+|-----------------------------|----------------------------|
+| R-A-B                       | Release As Bundle, Fully Supported and Tested |
+| Validated                   | Supported and Validated    |
+| Supported                   | Supported but not Tested   |
+| Not-Supported               | Not Supported              |
+
