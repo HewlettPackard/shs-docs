@@ -61,8 +61,10 @@ function build_html5(){
         -v $THIS_DIR:/src test-dita-ot-image:1.0 \
         -i /src/tmp/$STEM.ditamap \
         --root-chunk-override=to-content \
+	      --nav-toc=full \
         -o /src/build/html/$STEM/ \
         -f HPEscHtml5;
+        cp /$THIS_DIR/css/style.css build/html/$STEM/css;
 	    done
 }
 
