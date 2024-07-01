@@ -23,10 +23,4 @@ All material will be available via the source URLs provided below as part of the
 
 Libfabric-devel is required on any host that a user would be able to compile an application for use with `libfabric`.
 
-## External vendor software
 
-| Name                       | Contains                                    | Typical Install Target                  | Recommended Version | URL                                                                                            |
-|----------------------------|---------------------------------------------|-----------------------------------------|---------------------|------------------------------------------------------------------------------------------------|
-| Mellanox OFED distribution | Mellanox Networking Software Stack          | all compute nodes and user access nodes | 5.6-2.0.9.0         | [Mellanox OFED download](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed) |
-| HPC-X                      | Mellanox HPC Software Stack, containing UCX | all compute nodes and user access nodes | 2.7.0               | [Mellanox HPC-X download](https://www.mellanox.com/products/hpc-x-toolkit)                     |
-| Mellanox Device Firmware   | Mellanox NIC Firmware                       | all compute nodes                       | 16.28.2006          | Contact your Support or account team to obtain the recommended firmware                        |

@@ -43,23 +43,34 @@ Advisory: older platform targets (i.e. SLE 15 SP3, COS 2.4, CSM 1.3, RHEL 8.5) a
 
 ## NIC Support
 
-| Distribution             | Versions                        | Mellanox NIC | HPE Slingshot Ethernet 200Gb |
-|--------------------------|---------------------------------|--------------|------------------------------|
-| Red Hat Enterprise Linux | 8.8                             | Yes          | Yes                          |
-| Red Hat Enterprise Linux | 8.9                             | Yes          | Yes                          |
-| Red Hat Enterprise Linux | 8.10                            | Yes          | Yes                          |
-| Red Hat Enterprise Linux | 9.3                             | Yes          | Yes                          |
-| Red Hat Enterprise Linux | 9.3 ARM                         | No           | Yes                          |
-| Red Hat Enterprise Linux | 9.4                             | Yes          | Yes                          |
-| Red Hat Enterprise Linux | 9.4 ARM                         | No           | Yes                          |
-| SuSE Linux Enterprise 15 | SP4                             | Yes          | Yes                          |
-| SuSE Linux Enterprise 15 | SP5                             | Yes          | Yes                          |
-| SuSE Linux Enterprise 15 | SP5 ARM                         | No           | Yes                          |
-| Cray Operating System    | 2.5                             | Yes          | Yes                          |
-| Cray Operating System    | COS 23.11.x w/ COS Base 3.0     | Yes          | Yes                          |
-| Cray Operating System    | COS 23.11.x w/ COS Base 3.0 ARM | No           | Yes                          |
-| Cray Operating System    | COS 24.07.x w/ COS Base 3.1     | Yes          | Yes                          |
-| Cray Operating System    | COS 24.07.x w/ COS Base 3.1 ARM | No           | Yes                          |
+| Distribution             | Versions                        | Mellanox NIC | Mellanox Version |HPE Slingshot Ethernet 200Gb |
+|--------------------------|---------------------------------|--------------|------------------|------------------------------|
+| Red Hat Enterprise Linux | 8.8                             | Yes          | 23.0.4-1.1.3.0   | Yes                          |
+| Red Hat Enterprise Linux | 8.9                             | Yes          | 23.0.4-1.1.3.0   | Yes                          |
+| Red Hat Enterprise Linux | 8.10                            | Yes          | 23.0.4-1.1.3.0   | Yes                          |
+| Red Hat Enterprise Linux | 9.3                             | Yes          | 23.0.4-1.1.3.0   | Yes                          |
+| Red Hat Enterprise Linux | 9.3 ARM                         | No           | Not Supported    | Yes                          |
+| Red Hat Enterprise Linux | 9.4                             | Yes          | 23.0.4-1.1.3.0   | Yes                          |
+| Red Hat Enterprise Linux | 9.4 ARM                         | No           | Not Supported    | Yes                          |
+| SuSE Linux Enterprise 15 | SP4                             | Yes          | 5.6-2.0.9.0      | Yes                          |
+| SuSE Linux Enterprise 15 | SP5                             | Yes          | 23.0.4-1.1.3.0   | Yes                          |
+| SuSE Linux Enterprise 15 | SP5 ARM                         | No           | Not Supported    | Yes                          |
+| Cray Operating System    | 2.5                             | Yes          | 5.6-2.0.9.0*     | Yes                          |
+| Cray Operating System    | COS 23.11.x w/ COS Base 3.0     | Yes          | 23.0.4-1.1.3.0*  | Yes                          |
+| Cray Operating System    | COS 23.11.x w/ COS Base 3.0 ARM | No           | Not Supported    | Yes                          |
+| Cray Operating System    | COS 24.07.x w/ COS Base 3.1     | Yes          | 23.0.4-1.1.3.0*  | Yes                          |
+| Cray Operating System    | COS 24.07.x w/ COS Base 3.1 ARM | No           | Not Supported    | Yes                          |
+
+\* Items marked with an asterisk (*) are the only distributions for which Slingshot Host Software will provide the necessary Mellanox RPMs. For other distributions, please download the required software from the URLs listed below.
+
+### Mellanox External Vendor Software
+
+| Name                       | Contains                                    | Typical Install Target                  | Recommended Version | URL                                                                                            |
+|----------------------------|---------------------------------------------|-----------------------------------------|---------------------|------------------------------------------------------------------------------------------------|
+| Mellanox OFED distribution | Mellanox Networking Software Stack          | all compute nodes and user access nodes | Listed Above        | [Mellanox OFED download](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed) |
+| HPC-X                      | Mellanox HPC Software Stack, containing UCX | all compute nodes and user access nodes | 2.7.0               | [Mellanox HPC-X download](https://www.mellanox.com/products/hpc-x-toolkit)                     |
+| Mellanox Device Firmware   | Mellanox NIC Firmware                       | all compute nodes                       | 16.32.1010          | Contact your Support or account team to obtain the recommended firmware                        |
+
 
 ## AMD ROCM and Nvidia CUDA Versions
 
