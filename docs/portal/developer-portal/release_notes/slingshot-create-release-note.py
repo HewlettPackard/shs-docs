@@ -6,8 +6,11 @@ from requests.auth import HTTPBasicAuth
 import sys, getopt
 from datetime import datetime
 from typing import Any
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
-JIRA_HOST           = "https://jira-pro.its.hpecorp.net:8443"
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
+JIRA_HOST           = "https://jira-pro.it.hpe.com:8443"
 JIRA_API_ENDPOINT   = "/rest/api/2/search?jql="
 JIRA_FIELD_FIELDS   = 'fields'
 JIRA_FIELD_ISSUES   = 'issues'
@@ -50,12 +53,12 @@ MARKDOWN_PDF_SAFE_NL = MARKDOWN_SAFE_NL + WHITE_SPACE + WHITE_SPACE
 MISSING_JIRA_CONTENT     = "MISSING-JIRA-CONTENT-IN-FIELD:"
 UNSUPPORTED_JIRA_CONTENT = "UNSUPPORTED-JIRA-CONTENT-IN-FIELD:"
 
-QUERY_FILTERS = { NS_NEW_FEATURES     : 'filter = slingshot-2.1.2-release-notes-feature-complete',
-                  NS_RESOLVED_ISSUES  : 'filter = slingshot-2.1.2-release-notes-resolved-issues',
-                  NS_KNOWN_ISSUES     : 'filter = slingshot-2.1.2-release-notes-known-issues',
-                  NS_BREAKING_CHANGES : 'filter = slingshot-2.1.2-release-notes-breaking-change',
-                  NS_SECURITY_ISSUES  : 'filter = slingshot-2.1.2-release-notes-security',
-                  NS_SUMMARY          : 'filter = slingshot-2.1.2-release-notes-summary' }
+QUERY_FILTERS = { NS_NEW_FEATURES     : 'filter = shs-v11.0.0-release-notes-feature-complete',
+                  NS_RESOLVED_ISSUES  : 'filter = shs-v11.0.0-release-notes-resolved-issues',
+                  NS_KNOWN_ISSUES     : 'filter = shs-11.0.0-release-notes-known-issues',
+                  NS_BREAKING_CHANGES : 'filter = shs-v11.0.0-release-notes-breaking-changes',
+                  NS_SECURITY_ISSUES  : 'filter = shs-v11.0.0-release-notes-security-complete',
+                  NS_SUMMARY          : 'filter = slingshot-v11.0.0-release-notes-summary' }
 
 QUERY_FIELDS  = { NS_NEW_FEATURES     : [ JIRA_FIELD_ID, JIRA_FIELD_SUMMARY, JIRA_FIELD_RISK_AND_ISSUES, JIRA_FIELD_EVALUATED_PROBLEM_DESCRIPTION ],
                   NS_RESOLVED_ISSUES  : [ JIRA_FIELD_ID, JIRA_FIELD_SUMMARY, JIRA_FIELD_RISK_AND_ISSUES, JIRA_FIELD_COMPONENTS, JIRA_FIELD_AFFECTS_VERSIONS ],
