@@ -242,7 +242,7 @@ body.frmBody {
 main {
 	display: block;
 	margin: 0 auto;
-	width: 1000px;
+/*	width: 1200px; */
 	padding: 1em 0;
 }
 @media screen and (max-width:1020px) {
@@ -383,7 +383,7 @@ strong {
 
 /* Start preformatted font */
 
-kbd, pre, samp, .pre, .codeblock {
+kbd, pre, samp, .pre, .codeblock, .tt {
 	font-family: "Courier New", monospace !important;
 	font-size: 14px !important;
 	color: black !important;
@@ -407,7 +407,7 @@ kbd, pre, samp, .pre, .codeblock {
         word-wrap: break-word; 
 }
 table pre {
-	width: auto;
+	width: 1000px;
 	overflow-wrap: normal !important;
 	margin: 0px;
 }
@@ -690,7 +690,7 @@ ul.checklist li:hover:before {
 	font-size: 1.1em !important;
 	color:#333 !important;
 }
-.table tr:hover {
+.table, .simpletable tr:hover {
 	background-color: #eee;
 }
 td p {
@@ -715,7 +715,15 @@ td.entry {
 	line-height: inherit;
 	padding: 4px !important;
 }
-table, .table, .tablenoborder, .tableborder {
+td.stentry {
+	border-top: 1px solid #333 !important;
+	border-right: none;
+	/*! border-bottom: 1px solid #C6C9CA !important; */
+	border-left: none;
+	line-height: inherit;
+	padding: 4px !important;
+}
+table, .table, .simpletable, .tablenoborder, .tableborder {
 	border: 1px solid transparent !important;
 	max-width: 100% !important;
 	width: auto;
@@ -937,7 +945,7 @@ span.figcap {
 h1.masterbanner, .subtitle, .toc, .abstract, .desc, .pubsnumber, .publishedDate, .edition, .copyright {
 	display: block;
 	margin: 0 auto;
-	width: 1000px;
+/*	width: 1000px; */
 }
 .copyright {
 	margin: 20px auto;
@@ -1253,6 +1261,10 @@ tbody tr[isthead="nothead"]:first-child td.nocellnorowborder{
 tbody tr[isthead="thead"]{
 	border-top: 1px solid #333 !important;
 } */
+
+thead.sthead tr.strow th.stentry{
+	border-top: 3px solid white !important;
+}
 thead.thead tr.row th.entry{
 	border-top: 3px solid white !important;
 }
@@ -1263,6 +1275,9 @@ tbody.tbody[brand="HPE"]{
 	border-top: 5pt solid #000000 !important;
 }
 tbody.tbody{
+	border-top: 5pt solid #01A982 !important;
+}
+table.simpletable tbody{
 	border-top: 5pt solid #01A982 !important;
 }
 table[frame="border"] tbody.tbody tr:last-child{
@@ -1283,7 +1298,11 @@ table.column-rules tbody.tbody tr:last-child td {
 table[rules="cols"] tbody.tbody tr:last-child td{
 	border-bottom: 3pt solid #333 !important;
 }
-/* End mTS 1554 - Minor updates to HPE branded tables */
+table.simpletable tbody tr:last-child td{
+	border-bottom: 3pt solid #333 !important;
+}
+
+/* End mTS 1554 - Minor updates to HPE branded tables and additions for simpletables */
 
 /* Start mTS 1623 Make TOC display dynamic for single/multiple HTML*/
 .caret {
