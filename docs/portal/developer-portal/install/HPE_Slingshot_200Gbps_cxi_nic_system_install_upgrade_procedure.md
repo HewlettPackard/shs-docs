@@ -94,8 +94,6 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
            sl-driver-dkms
            cray-cxi-driver-dkms
            cray-kfabric-dkms
-           cray-rxe-driver-dkms
-           cray-rxe-driver-devel
        """ >> ./shs-cxi.rpmlist
        ```
 
