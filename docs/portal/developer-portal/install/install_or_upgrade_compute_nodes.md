@@ -6,8 +6,8 @@ Perform this procedure to install SHS on compute nodes. This procedure can be us
 The installation method will depend on what type of NIC is installed on the system.
 Select one of the following procedures depending on the NIC in use:
 
-- **Systems using Mellanox NICs**: Proceed to the [Prerequisites for Mellanox-based System Installation](install_or_upgrade_compute_nodes.md#install-or-upgrade-compute-nodes/prerequisites-for-mellanox-based-system-installation) procedure first.
-- **Systems using HPE Slingshot 200Gbps NICs**: Proceed directly to the [Install via Package Managers](install_or_upgrade_compute_nodes.md#install-or-upgrade-compute-nodes/install-via-package-managers-recommended) procedure.
+- **Systems using HPE Slingshot 200Gbps NICs**: Proceed directly to the [Install via Package Managers](install_or_upgrade_compute_nodes.md#install-via-package-managers-recommended) procedure.
+- **Systems using Mellanox NICs**: Proceed to the [Prerequisites for Mellanox-based System Installation](install_or_upgrade_compute_nodes.md#prerequisites-for-mellanox-based-system-installation) procedure first.
 
 NOTE: The upgrade process is nearly identical to the installation, and the proceeding instructions will note where the two processes diverge.
 
@@ -15,7 +15,7 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
 
 1. Identify the target OS distribution and version for all compute targets in the cluster. Use this information to select the appropriate Mellanox OFED (MOFED) tar file for installation from the URL listed in the "Mellanox External Vendor Software" section of the _HPE Slingshot Host Software Release Notes (S-9010)_. The filename typically follows this pattern: `MLNX_OFED_LINUX-<version>-<OS distro>-<arch>.tgz`.
 
-NOTE: We provide MOFED RPMs for all COS-based operating systems. For other distributions, download the OFED RPMs directly from Mellanox. The versions we support and download links can be found in the "NIC Support" section of the _HPE Slingshot Host Software Release Notes (S-9010)_.
+   NOTE: We provide MOFED RPMs for all COS-based operating systems. For other distributions, download the OFED RPMs directly from Mellanox. The versions we support and download links can be found in the "NIC Support" section of the _HPE Slingshot Host Software Release Notes (S-9010)_.
 
    For example, the `MLNX_OFED_LINUX-5.6-2.0.9.0-sles15sp4-x86_64.tgz` tar file would be used to install MOFED v5.6-2.0.9.0 stack on a SLES 15 SP4 x86_64 host or host OS image.
 
@@ -32,7 +32,7 @@ NOTE: We provide MOFED RPMs for all COS-based operating systems. For other distr
 
    - For upgrades: move the MOFED items directly to the existing `/opt/clmgr/repos/other/mellanox` directory.
 
-   NOTE: If the customer requires UCX on the system, then install the HPC-X solution using the recommended version provided by the "Mellanox External Vendor Software" section of the _HPE Slingshot Host Software Release Notes (S-9010)_. Ensure that the HPC-X tarball matches the installed version of Mellanox OFED. In the HPC-x package, installation instructions are provided by Mellanox.
+      NOTE: If the customer requires UCX on the system, then install the HPC-X solution using the recommended version provided by the "Mellanox External Vendor Software" section of the _HPE Slingshot Host Software Release Notes (S-9010)_. Ensure that the HPC-X tarball matches the installed version of Mellanox OFED. In the HPC-x package, installation instructions are provided by Mellanox.
 
 ## Install via package managers (recommended)
 

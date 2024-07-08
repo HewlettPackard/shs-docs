@@ -5,9 +5,9 @@ The 200Gbps NIC software stack includes drivers and libraries to support standar
 
 ## Prerequisites for compute node installs
 
-The 200Gbps NIC software stack must be installed after a base compute OS install has been completed. A list of 200Gbps NIC supported distribution installs can be found in the "Support Matrix" section under "Slingshot Host Software (SHS)" in the _HPE Slingshot Release Notes_ document. When those have been installed, then proceed with instructions for Installing 200Gbps NIC Host Software for that distribution.
+The 200Gbps NIC software stack must be installed after a base compute OS install has been completed. A list of 200Gbps NIC supported distribution installs can be found in the "Support Matrix" in the _HPE Slingshot Host Software Release Notes (S-9010)_ document. When those have been installed, then proceed with instructions for Installing 200Gbps NIC Host Software for that distribution.
 
-The following RPMs should be retrieved and installed using `zypper install`:
+The following RPMs should be retrieved and installed using the package manager for the distro in use (`zypper`, `yum`, or `dnf`):
 
 - `cray-hms-firmware`
 - `cray-slingshot-base-link-dkms`

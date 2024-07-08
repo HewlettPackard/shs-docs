@@ -1,7 +1,7 @@
 
-# Install SHS on CSM release 1.4 or newer - Install and Upgrade Framework
+# Install and Upgrade Framework (IUF)
 
-You can use IUF to automate installation or upgrading SHS.
+You can use IUF to automate installation or upgrading SHS for CSM release 1.4 or newer.
 
 The Slingshot Host Software (SHS) distribution provides firmware, diagnostics, and the network software stack for hosts which communicate using the HPE Slingshot network.
 

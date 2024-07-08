@@ -1,6 +1,9 @@
 
-# Install SHS on CSM release 1.3 or prior
+# Legacy CSM install
 
+NOTE: These steps will be deprecated in a future release. Ensure the version of CSM is supported with the version of SHS before proceeding.
+
+Install SHS on CSM release 1.3 or prior.
 If the CSM version is 1.3 or earlier, use `cne-install` to upgrade SHS, or use the product installation script to install SHS. 
 
 The SHS distribution provides firmware, diagnostics, and the network software stack for hosts which communicate using the HPE Slingshot network.

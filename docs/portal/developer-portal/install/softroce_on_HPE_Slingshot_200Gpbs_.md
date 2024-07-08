@@ -1,4 +1,4 @@
-# Soft-RoCE on HPE Slingshot 200Gbps NICs
+# Procedure
 
 ## Prerequisites
 

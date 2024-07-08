@@ -8,29 +8,31 @@
 			<data name="edition" value="SHS Software Release @product_version@"></data>
         </topicmeta>
     <topicref href="overview/overview.md" format="mdita"/>
-    <topicref href="install/compute_install_prereqs.md" format="mdita"/>
     <topichead>
         <topicmeta>
             <navtitle>Install SHS for CSM</navtitle>
         </topicmeta>
         <topicref href="install/install_shs_on_csm_14_or_newer.md" format="mdita"/>
+        <topicref href="operations/operational_activities_csm.md" format="mdita">
+            <topicref href="operations/shs_cfs_variable_reference.md" format="mdita"/>
+            <topicref href="operations/setup.md" format="mdita"/>
+            <topicref href="operations/authentication_credentials.md" format="mdita"/>
+            <topicref href="operations/find_targets.md" format="mdita"/>
+            <topicref href="operations/clone.md" format="mdita"/>
+            <topicref href="operations/references.md" format="mdita"/>
+            <topicref href="operations/target_shell_variables.md" format="mdita"/>
+        </topicref>
+        <topicref href="operations/ncn_personalization_and_image_customization.md" format="mdita">
+            <topicref href="operations/ncn_personalization.md" format="mdita"/>
+            <topicref href="operations/ncn_image_customization.md" format="mdita"/>
+        </topicref>
+        <topicref href="operations/compute_node_configuration.md" format="mdita"/>
+        <topicref href="operations/application_node_configuration.md" format="mdita"/>
+        <topicref href="operations/image_building.md" format="mdita"/>
+        <topicref href="install/post_install_operational_tasks.md" format="mdita">
+            <topicref href="operations/configure_qos_shs.md" format="mdita"/>
+        </topicref>
         <topicref href="install/install_shs_on_csm_13_or_prior.md" format="mdita">
-            <topicref href="operations/operational_activities_csm.md" format="mdita">
-                <topicref href="operations/shs_cfs_variable_reference.md" format="mdita"/>
-                <topicref href="operations/setup.md" format="mdita"/>
-                <topicref href="operations/authentication_credentials.md" format="mdita"/>
-                <topicref href="operations/find_targets.md" format="mdita"/>
-                <topicref href="operations/clone.md" format="mdita"/>
-                <topicref href="operations/references.md" format="mdita"/>
-                <topicref href="operations/target_shell_variables.md" format="mdita"/>
-                <topicref href="operations/ncn_personalization_and_image_customization.md" format="mdita"/>
-                <topicref href="operations/ncn_personalization.md" format="mdita"/>
-                <topicref href="operations/ncn_image_customization.md" format="mdita"/>
-                <topicref href="operations/compute_node_configuration.md" format="mdita"/>
-                <topicref href="operations/application_node_configuration.md" format="mdita"/>
-                <topicref href="operations/image_building.md" format="mdita"/>
-            </topicref>   
-            <topicref href="install/post_install_operational_tasks.md" format="mdita"/>
             <topicref href="install/legacy_install_procedure_for_non_cfs_based_installs.md" format="mdita">
                 <topicref href="install/install_notes.md" format="mdita"/>
             </topicref>
@@ -41,39 +43,36 @@
             <navtitle>Install SHS for HPCM</navtitle>
         </topicmeta>
         <topicref href="install/install_or_upgrade_shs_on_hpcm_compute_nodes.md" format="mdita">
-            <topicref href="install/mellanox_based_system_install_upgrade_procedure.md"
-                format="mdita"/>
-            <topicref
-                href="install/HPE_Slingshot_200Gbps_cxi_nic_system_install_upgrade_procedure.md"
-                format="mdita"/>
+            <topicref href="install/HPE_Slingshot_200Gbps_cxi_nic_system_install_upgrade_procedure.md" format="mdita"/>
+            <topicref href="install/mellanox_based_system_install_upgrade_procedure.md" format="mdita"/>
         </topicref>
         <topicref href="install/firmware_management.md" format="mdita"/>
         <topicref href="install/arp_settings.md" format="mdita"/>
+        <topicref href="operations/configure_qos_shs.md" format="mdita"/>
     </topichead>
     <topichead>
         <topicmeta>
             <navtitle>Install SHS for Bare Metal</navtitle>
         </topicmeta>
+        <topicref href="install/compute_install_prereqs.md" format="mdita"/>
         <topicref href="install/install_or_upgrade_compute_nodes.md" format="mdita">
-            <topicref href="install/post_install_tasks.md" format="mdita">
-                <topicref href="install/firmware_management_post_install.md" format="mdita"/>
-                <topicref href="install/generic_hpe_slingshot_configuration.md" format="mdita"/>
-                <topicref href="install/host_adapter_naming.md" format="mdita"/>
-                <topicref href="install/algorithmic_mac_address_mac_configuration.md" format="mdita"/>
-                <topicref href="install/multiple_network_adapters.md" format="mdita"/>
-                <topicref href="install/HPE_Slingshot_configuration_with_Mellanox_nics.md" format="mdita"/>
-            </topicref>    
-            <topicref href="install/sysctl_configuration_example.md" format="mdita"/>
             <topicref href="install/install_200gbps_nic_host_software.md" format="mdita"/>
+            <topicref href="install/HPE_Slingshot_configuration_with_Mellanox_nics.md" format="mdita"/>
         </topicref>
+        <topicref href="install/firmware_management.md" format="mdita"/>
+        <topicref href="install/generic_hpe_slingshot_configuration.md" format="mdita"/>
+        <topicref href="install/host_adapter_naming.md" format="mdita"/>
+        <topicref href="install/algorithmic_mac_address_mac_configuration.md" format="mdita"/>
+        <topicref href="install/multiple_network_adapters.md" format="mdita"/> 
+        <topicref href="install/sysctl_configuration_example.md" format="mdita"/>
+        <topicref href="operations/configure_qos_shs.md" format="mdita"/>
     </topichead>
     <topichead>
         <topicmeta>
-            <navtitle>Configure Soft-Roce</navtitle>
+            <navtitle>Soft-RoCE on HPE Slingshot 200Gbps NICs</navtitle>
         </topicmeta>
-        <topicref href="install/configure_softroce.md" format="mdita">
-            <topicref href="install/softroce_on_HPE_Slingshot_200Gpbs_.md" format="mdita"/>
-            <topicref href="install/lustre_network_driver_lnd_ko2iblnd_configuration.md" format="mdita"/>
-        </topicref>
+        <topicref href="install/configure_softroce.md" format="mdita"/>
+        <topicref href="install/softroce_on_HPE_Slingshot_200Gpbs_.md" format="mdita"/>
+        <topicref href="install/lustre_network_driver_lnd_ko2iblnd_configuration.md" format="mdita"/>
     </topichead>
 </map>
