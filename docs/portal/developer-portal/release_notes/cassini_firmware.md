@@ -7,5 +7,5 @@ cassini_fw_1.5.53.bin : Standard 200Gbps NIC firmware image
 cassini_fw_esm_1.5.53.bin : Extended Speed Mode (ESM) 200Gbps NIC firmware image used exclusively on HPE Cray EX235a compute blade
 ```
 
-The 200Gbps NIC firmware is flashed in-band after the nodes are booted. This is covered in the "Post-Install Tasks" section of the *HPE Slingshot Host Software Installation and Configuration Guide (S-9009)*.
+The 200Gbps NIC firmware is flashed in-band after the nodes are booted. This is covered in the "Firmware management" section of the *HPE Slingshot Host Software Installation and Configuration Guide (S-9009)*.
 Ensure that all HPE Slingshot SA220M Ethernet 200Gb 2-port Mezzanine NIC and HPE Slingshot SA210S Ethernet 200Gb 1-port PCIe NIC installed are updated appropriately.
