@@ -87,34 +87,57 @@ Advisory: older platform targets (i.e. SLE 15 SP3, COS 2.4, CSM 1.3, RHEL 8.5) a
 | SuSE Linux Enterprise 15 | SP5                               | 6.1.0        | 550.54.15    | 24.03      |
 | SuSE Linux Enterprise 15 | SP5 ARM                           | NA           | 550.54.15    | 24.03      |
 | Cray Operating System    | 2.5                               | 5.5.1        | 525.105.17   | 23.3       |
-| Cray Operating System    | COS 23.11.x w/ COS Base 3.0.1     | 6.0.0        | 535.154.05   | 23.11      |
-| Cray Operating System    | COS 23.11.x w/ COS Base 3.0.1 ARM | NA           | 535.154.05   | 23.11      |
+| Cray Operating System    | COS 23.11.x w/ COS Base 3.0.1     | 5.7.0        | 535.129.03   | 23.09      |
+| Cray Operating System    | COS 23.11.x w/ COS Base 3.0.1 ARM | NA           | 535.129.03   | 23.09      |
 | Cray Operating System    | COS 24.07.x w/ COS Base 3.1       | 6.1.0        | 550.54.15    | 24.03      |
 | Cray Operating System    | COS 24.07.x w/ COS Base 3.1   ARM | NA           | 550.54.15    | 24.03      |
 
 
+## Versioning Model for Slingshot Host Software Starting from Release 11.0.0
+
+### Versioning Model Overview
+
+Starting from Slingshot Host Software Release 11.0.0, the versioning model will follow an alternating Long-Term Support (LTS) and Standard-Term Support (STS) scheme.
+
+#### Designation:
+
+- **Even numbers**: LTS (Long-Term Support)
+- **Odd numbers**: STS (Standard-Term Support)
+
+### Version Format
+
+The version format is structured as follows:
+
+```
+<LTS/STS indicator>.<feature increment>.<patch/bugfix increment>
+```
+
+#### Example Versions
+
+- **11.0.0**: STS Release
+- **12.0.0**: LTS Release
+
+By following this versioning and branching model, customers can easily identify the type of release and plan their upgrade paths accordingly.
+
 ### Fabric Manager and Slingshot Host Software Release Compatibility
 
-|             |  2.1.0     | 2.1.1      | 2.1.3      | 2.2.0      | 2.2.1      | 2.3.0      | 3.0.0      |
-|:-----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
-| 2.1.0       | R-A-B      | Supported  | Supported  | Supported  | Supported  | Supported  | Supported  |
-| 2.1.2       | Supported  | R-A-B      | Supported  | Supported  | Supported  | Supported  | Supported  |
-| 2.1.3       | Supported  | Supported  | R-A-B      | Supported  | Supported  | Supported  | Supported  |
-| 2.2.0       | Supported  | Supported  | Supported  | R-A-B      | Supported  | Supported  | Supported  |
-| SHS-11.0.0  | Supported  | Supported  | Supported  | Validated  | R-A-B      | Supported  | Supported  |
-| SHS-11.1.0  | Supported  | Supported  | Supported  | Supported  | Supported  | Supported  | Supported  |
-| SHS-11.2.0  | Supported  | Supported  | Supported  | Supported  | Supported  | R-A-B      | Supported  |
-| SHS-12.0.0  | Supported  | Supported  | Supported  | Supported  | Supported  | Supported  | R-A-B      |
+|             |  2.1.0     | 2.1.1      | 2.2.0      |
+|:-----------:|:----------:|:----------:|:----------:|
+| 2.1.0       | R-A-B      | Supported  | Supported  |
+| 2.1.2       | Validated  | R-A-B      | Supported  |
+| 2.2.0       | Supported  | Supported  | R-A-B      |
+| SHS-11.0.0  | Supported  | Validated  | Validated  |
+
 
 X-Axis: Fabric Manager + Switch Agent version
 
 Y-Axis: SHS version
 
 **KEY:**
+
 | Label                       | Meaning                    |
 |-----------------------------|----------------------------|
 | R-A-B                       | Release As Bundle, Fully Supported and Tested |
 | Validated                   | Supported and Validated    |
 | Supported                   | Supported but not Tested   |
 | Not-Supported               | Not Supported              |
-
