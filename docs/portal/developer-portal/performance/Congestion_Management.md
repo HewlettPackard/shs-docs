@@ -1,6 +1,6 @@
 # Congestion Management
 
-Slingshot network uniquely addresses the congestion challenges of short-lived, small packet flows typical in HPC applications. Several hardware mechanisms are utilized to significantly reduce congestion within the network as well as to limit the saturation tree within the network when problems arise.
+The HPE Slingshot network uniquely addresses the congestion challenges of short-lived, small packet flows typical in HPC applications. Several hardware mechanisms are utilized to significantly reduce congestion within the network as well as to limit the saturation tree within the network when problems arise.
 
 In hardware, each switch detects congestion, identifies its causes, and provides real-time feedback to its peers. The system distinguishes perpetrators from victims of injection and limits the injection rate from the perpetrator until congestion clears. 
 
@@ -13,15 +13,15 @@ In hardware, each switch detects congestion, identifies its causes, and provides
 
 ## Congestion Measurement
 
-Measuring congestion is therefore critical in determining the course of action. Slingshot adopts multiple techniques to internally measure and dynamically adapt to congestion.
-Slingshot adopts real-time measurements of the congestion parameters mentioned. Appropriate actions are taken to avoid further congestion or to eliminate the congestion entirely.
+Measuring congestion is therefore critical in determining the course of action. HPE Slingshot adopts multiple techniques to internally measure and dynamically adapt to congestion.
+HPE Slingshot adopts real-time measurements of the congestion parameters mentioned. Appropriate actions are taken to avoid further congestion or to eliminate the congestion entirely.
 
 * Local congestion. This is congestion within a switch chip that can be observed through buffer utilization. It is also an indication of the link utilization of that local port.
 * Global congestion. This is understanding the global congestion picture and the “hot spots” that the traffic encountered on its path to the destination
 
 ## Congestion Information Distribution
 
-* Local congestion (that within a switch itself) is distributed to all the local inputs through on-board hardware. Slingshot adopts highly dynamic, low latency distribution mechanisms and allows for the route pipe to select a lightly loaded port for its egress when appropriate.
+* Local congestion (that within a switch itself) is distributed to all the local inputs through on-board hardware. HPE Slingshot adopts highly dynamic, low latency distribution mechanisms and allows for the route pipe to select a lightly loaded port for its egress when appropriate.
 * Switch to switch congestion information relays congestion of adjoining devices. This allows for a next-hop view of congestion to allow the adaptive routing mechanism to select a lightly loaded adjoining switch.
 * Global congestion information is relayed through the back-channel acknowledgments that accompany the flow channels. This information notifies the flow that congestion was encountered along the path.
 * In the case of inject vs. eject bandwidth mis-matches, the NIC itself must be throttled. This back pressure is a result of the back-channel acknowledgments and results in slowing the injection rate by the NIC to a suitable rate for the network to handle without congestion.
