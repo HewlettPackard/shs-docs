@@ -29,23 +29,21 @@
         <topicref href="performance/fabric_links_troubleshooting.md" format="mdita"/>
         <topicref href="performance/port_configuration.md" format="mdita"/>
         <topicref href="performance/fabric_health_diagnostics_overview.md" format="mdita">
-            <topicref href="performance/Congestion_Management.md" format="markdown">
-                <topicref href="performance/Explicit_Congestion_Notification.md.md"
-                    format="markdown"/>
+            <topicref href="performance/Congestion_Management.md" format="mdita">
+                <topicref href="performance/Explicit_Congestion_Notification.md.md" format="mdita"/>
             </topicref>
-            <topicref href="performance/Monitoring_Fabric_Health_and_Diagnostics.md"
-                format="markdown"/>
-            <topicref href="performance/Telemetry_Metrics_and_Counters.md.md" format="markdown">
+            <topicref href="performance/Monitoring_Fabric_Health_and_Diagnostics.md" format="mdita"/>
+            <topicref href="performance/Telemetry_Metrics_and_Counters.md.md" format="mdita">
                 <topicref href="performance/Accessing_Telemetry_data_using_OData_query.md"
-                    format="markdown"/>
+                    format="mdita"/>
             </topicref>
         </topicref>
         <topicref
             href="performance/Analyzing_Congestion_and_HSN_Fabric_with_STT_Slingshot_Topology_Tool_.md"
-            format="markdown"/>
+            format="mdita"/>
         <topicref
             href="performance/Analyzing_Congestion_and_Lossless_Frames_in_HSN_Fabric_with_the_Slingshot_Topology_Tool_STT.md"
-            format="markdown"/>
+            format="mdita"/>
         <topicref href="performance/TCP_performance_tuning.md" format="mdita"/>
     </topichead>
     <topicref href="operations/configure_qos_shs.md" format="mdita"/>
