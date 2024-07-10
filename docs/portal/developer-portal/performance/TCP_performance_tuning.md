@@ -4,11 +4,12 @@
 To achieve high TCP performance on the HPE Slingshot system, tune the following parameters:
 
 - **TCP window size**: TCP window size is the amount of received data that can be buffered during a connection. The size is calculated based on the latency bandwidth of the link speed and Round-Trip Time (RTT) using the following formula:
-</br>
 
+  ```
     $~~$ TCP window size = 2 (Throughput* RTT)
 
     $~~$ Where, expected throughput is in bits/sec and RTT in ms.
+  ```    
 
   NOTE: RTT is system dependent and measures the duration of end-to-end communication of data packet, include the latency introduced by a gateway when connecting to another network.
 
