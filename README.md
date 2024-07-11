@@ -39,6 +39,7 @@ Lightweight DITA (LwDITA) standard.
 - Cross-reference links within the same MDITA file **must** include a `./` between the `#` symbol and the header
 id (slug). For example, to link to the "Example" section in the same file, use [LINK_TEXT](#./example).
 - Currently, cross-reference links to other files must include the target file. You can optionally add the target header if you need to point to a specific section in the target file. The benefit is that DITA-OT will keep track of all cross-references no matter how the content is transformed (by assigning unique hashes to the source and target). Another benefit is that if the xref works in the Markdown source, it'll work in the output.
+- Generic, frequently used headings such as "Examples", "Overview", "Prerequisites", etc. **must not** be the top level (`#`) header. They can be level-two (`##`) headers. The top-level header becomes the topic id and duplicate topic ids within the same publication (map) cause errors during processing.
 
 ## Build docs locally with DITA-OT
 
