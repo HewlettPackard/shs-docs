@@ -135,7 +135,7 @@ hsn0 is CXI interface
 
 ## 200Gbps NIC firmware management
 
-See the [Firmware Management](firmware_management_post_install.md#firmware-management) section for more information on how to update firmware.
+See the [Firmware Management](firmware_management.md) section for more information on how to update firmware.
 
 Both `slingshot-firmware-cassini` and `slingshot-firmware-management` must be installed to successfully update 200Gbps NIC firmware.
 
