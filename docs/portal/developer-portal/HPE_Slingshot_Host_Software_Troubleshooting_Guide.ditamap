@@ -7,11 +7,7 @@
         <data name="pubsnumber" value="S-9011"/>
         <data name="edition" value="SHS Software Release @product_version@"></data>
     </topicmeta>
-    <topichead id="cxi-diagnostics-and-utilities">
-        <topicmeta>
-            <navtitle>CXI Diagnostics and Utilities</navtitle>
-        </topicmeta>
-        <topicref href="troubleshoot/cxi/cxi_diags_overview.md" format="mdita"/>
+    <topicref href="troubleshoot/cxi/cxi_diags_overview.md" format="mdita">
         <topicref href="troubleshoot/cxi/cxi_diags_dev_info.md" format="mdita"/>
         <topicref href="troubleshoot/cxi/cxi_diags_bandwidth.md" format="mdita"/>
         <topicref href="troubleshoot/cxi/cxi_diags_latency.md" format="mdita"/>
@@ -20,21 +16,35 @@
             <topicmeta>
                 <navtitle>Troubleshoot CXI Diagnostics and Utilities</navtitle>
             </topicmeta>
-            <topicref href="troubleshoot/cxi/cxi_diags_troubleshooting.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/Cannot_reach_server.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/No_server_running_at_remote_host.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/TCP_port_already_in_use.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/Incorrect_program_or_version_number.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/Insufficient_huge_pages.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/Unexpected_event_type.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/GPU_libraries.md" format="mdita"/>
         </topichead>
-    </topichead>
+    </topicref>
     <topichead id="cxi-healthcheck">
         <topicmeta>
             <navtitle>CXI HealthCheck</navtitle>
         </topicmeta>
-        <topicref href="troubleshoot/cxi/cxi_healthcheck.md" format="mdita"/>
+        <topicref href="troubleshoot/cxi/CXI_HealthCheck_Overview.md" format="mdita"/>
+        <topicref href="troubleshoot/cxi/Common_CXI_core_error_messages.md" format="mdita"/>
     </topichead>
     <topichead id="cxi-error-handling-guidance-and-recommendations">
         <topicmeta>
             <navtitle>CXI Error Handling Guidance and Recommendations</navtitle>
         </topicmeta>
         <topicref href="troubleshoot/cxi/cxi_logged_events.md" format="mdita">
-            <topicref href="troubleshoot/cxi/cxi_error_handling.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/Kernel_Severity_EMERG_0.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/Kernel_Severity_ALERT_1.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/Kernel_Severity_CRIT_2.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/Kernel_Severity_ERR_3.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/Kernel_Severity_WARNING_4.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/Kernel_Severity_NOTICE_5.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/Kernel_Severity_INFO_6.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/Kernel_Severity_DEBUG_7.md" format="mdita"/>
         </topicref>
     </topichead>
     <topichead id="network-diagnostics">
@@ -48,7 +58,6 @@
             </topicmeta>
             <topicref href="troubleshoot/net_diags/net_diags_dgnettest.md" format="mdita"/>
             <topicref href="troubleshoot/net_diags/dgnettest_run.md" format="mdita"/>
-            <topicref href="troubleshoot/net_diags/net_diags_dgnettest_examples.md" format="mdita"/>
             <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_dgnettest.md" format="mdita"/>
         </topichead>
         <topichead>
@@ -56,7 +65,6 @@
                 <navtitle>cxibwcheck.sh</navtitle>
             </topicmeta>
             <topicref href="troubleshoot/net_diags/net_diags_cxibwcheck.md" format="mdita"/>
-            <topicref href="troubleshoot/net_diags/net_diags_cxibwcheck_examples.md" format="mdita"/>
             <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_cxibwcheck.md" format="mdita"/>
         </topichead>
         <topichead>
@@ -64,7 +72,6 @@
                 <navtitle>bwcheck.sh</navtitle>
             </topicmeta>
             <topicref href="troubleshoot/net_diags/net_diags_bwcheck.md" format="mdita"/>
-            <topicref href="troubleshoot/net_diags/net_diags_bwcheck_examples.md" format="mdita"/>
             <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_bwcheck.md" format="mdita"/>
         </topichead>
         <topichead>
@@ -72,7 +79,6 @@
                 <navtitle>cxiberstat.sh</navtitle>
             </topicmeta>
         <topicref href="troubleshoot/net_diags/net_diags_cxiberstat.md" format="mdita"/>
-        <topicref href="troubleshoot/net_diags/net_diags_cxiberstat_examples.md" format="mdita"/>
         <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_cxiberstat.md" format="mdita"/>
         </topichead>
     </topichead>
@@ -105,6 +111,7 @@
         <topicref href="troubleshoot/cassini/200gbps_nic_errors.md" format="mdita"/>
         <topicref href="troubleshoot/cassini/pcie_interface_troubleshooting.md" format="mdita"/>
         <topicref href="troubleshoot/cassini/ethernet_interface_troubleshooting.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/RDMA_interface_troubleshooting.md" format="mdita"/>
     </topichead>
     <topichead id="hpe-slingshot-200Gbps-nic-firmware-troubleshooting">
         <topicmeta>
@@ -118,4 +125,5 @@
         <topicref href="troubleshoot/cassini/pause_too_long_fabric_recovery.md" format="mdita"/>
     </topicref>
     </topichead>
+    <topicref href="troubleshoot/cxi/High_rate_puts_and_internal_loopack.md" format="markdown"/>
 </map>

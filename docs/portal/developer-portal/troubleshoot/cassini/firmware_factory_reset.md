@@ -1,5 +1,5 @@
 
-# 200Gbps NIC firmware factory reset
+# HPE Slingshot 200Gbps NIC firmware factory reset
 
 If the firmware on a 200Gbps NIC adapter is corrupted, you can start the firmware factory reset procedure to recover.
 The factory reset can be initiated by configuring the DIP switches on the card to have the values in the following table and then power cycling the card.
