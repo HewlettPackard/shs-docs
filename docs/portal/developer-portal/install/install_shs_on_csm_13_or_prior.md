@@ -8,7 +8,7 @@ If the CSM version is 1.3 or earlier, use `cne-install` to upgrade SHS, or use t
 
 The SHS distribution provides firmware, diagnostics, and the network software stack for hosts which communicate using the HPE Slingshot network.
 
-For upgrades, the manual steps or the Compute Node Environment (CNE) installer tool can be used. See [SHS upgrade with CNE installer](#shs-upgrade-with-cne-installer) for more information on the `cne-install` method.
+For upgrades, the manual steps or the Compute Node Environment (CNE) installer tool can be used. See [SHS upgrade with CNE installer](#./shs-upgrade-with-cne-installer) for more information on the `cne-install` method.
 
 ## Common requirements of SHS
 
@@ -27,7 +27,7 @@ All image and node targets must be clear of software with dependencies on the ne
 
 ## SHS upgrade with CNE installer
 
-The CNE installer (`cne-install`) tool can only be used to upgrade SHS in this release. `cne-install` performs all the manual steps shown in the [Install product stream](#install-product-stream) and [Operational activities](../operations/operational_activities_csm.md#operational-activities) sections of the upgrade procedure.
+The CNE installer (`cne-install`) tool can only be used to upgrade SHS in this release. `cne-install` performs all the manual steps shown in the [Install product stream](#./install-product-stream) and [Operational activities](../operations/operational_activities_csm.md#operational-activities) sections of the upgrade procedure.
 
 See the "Compute Node Environment (CNE) Installer" section of the [HPE Cray EX System Software Getting Started Guide (S-8000)](https://www.hpe.com/support/ex-S-8000) for more information about the tool.
 
