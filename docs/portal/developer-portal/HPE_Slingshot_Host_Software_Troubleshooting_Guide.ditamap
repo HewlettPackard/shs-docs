@@ -125,5 +125,5 @@
         <topicref href="troubleshoot/cassini/pause_too_long_fabric_recovery.md" format="mdita"/>
     </topicref>
     </topichead>
-    <topicref href="troubleshoot/cxi/High_rate_puts_and_internal_loopack.md" format="markdown"/>
+    <topicref href="troubleshoot/cxi/High_rate_puts_and_internal_loopack.md" format="mdita"/>
 </map>
