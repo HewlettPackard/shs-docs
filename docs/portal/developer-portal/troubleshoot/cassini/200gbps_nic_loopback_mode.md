@@ -1,5 +1,5 @@
 
-# 200Gbps NIC loopback mode
+# HPE Slingshot 200Gbps NIC loopback mode
 
 The 200Gbps NIC has an internal-loopback feature that causes transmitted data to be looped back into the NIC, bypassing any attached cable and switch.
 

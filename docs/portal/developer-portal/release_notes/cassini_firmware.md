@@ -1,4 +1,4 @@
-# 200Gbps NIC Firmware Release Version
+# HPE Slingshot 200Gbps NIC Firmware Release Version
 
 The 200Gbps NIC firmware image version 1.5.53 is included in the Slingshot SHS 11.0.0 release. There are two firmware images contained in the slingshot-firmware-cassini-1.5.53-SSHOT* RPM file.
 

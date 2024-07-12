@@ -1,5 +1,5 @@
 
-# 200Gbps NIC Errors
+# HPE Slingshot 200Gbps NIC Errors
 
 Each block in the The 200Gbps NIC ASIC contains a set of error flags. Error flags are defined in section 13 of the 200Gbps Slingshot NIC Software Developer's Guide. Errors vary in severity. Certain types of errors, like an "invalid VNI" error, are expected after an application terminates abnormally. Others, like a multi-bit error, may signal the need for a NIC reset.
 

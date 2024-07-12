@@ -1,5 +1,5 @@
 
-# 200Gbps NIC firmware update failures
+# HPE Slingshot 200Gbps NIC firmware update failures
 
 If a 200Gbps NIC firmware update fails, a failure code is printed in the kernel log:
 
