@@ -1,5 +1,5 @@
 
-# Validate Slingshot Software/Firmware using HPE GPG or RPM Signature Verification
+# Validate HPE Slingshot Software/Firmware using HPE GPG or RPM Signature Verification
 
 ## HPE Code Signing Website
 
@@ -9,13 +9,13 @@ https://myenterpriselicense.hpe.com/cwp-ui/free-software/HPLinuxCodeSigning
 
 https://downloads.hpe.com/pub/keys/HPE-GPG-Public-Keys.tar.gz
 
-# Validate the SHA-256 checksum of Slingshot Software/Firmware
+# Validate the SHA-256 checksum of HPE Slingshot Software/Firmware
 
 ## Before you begin
 
-Check the `sha256.manifest` file which is uploaded with Slingshot Software.
+Check the `sha256.manifest` file which is uploaded with HPE Slingshot Software.
 
-After downloading the Slingshot Software, validate the SHA-256 checksum value
+After downloading the HPE Slingshot Software, validate the SHA-256 checksum value
 on TAR archive. Depending on operating system, use following procedure to
 verify the SHA-256 checksum value for every software component inside the archive.
 
