@@ -11,7 +11,7 @@ Here are the System Software Requirements for the Host Software release, detaili
 
 Advisory: older platform targets (i.e. SLE 15 SP3, COS 2.4, CSM 1.3, RHEL 8.5) are supported by earlier versions of SHS. Software for older platforms can be found in earlier SHS releases.
 
-### Fabric Manager and HPE Slingshot Host Software Release Compatibility
+## Fabric Manager and HPE Slingshot Host Software Release Compatibility
 
 
 X-Axis: Fabric Manager + Switch Agent version
