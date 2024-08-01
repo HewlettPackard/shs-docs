@@ -180,7 +180,7 @@ NOTE: We provide MOFED RPMs for all COS-based operating systems. For other distr
      - RHEL environment:
 
        ```screen
-       cm image yum -y install $(cat $(pwd)/shs-mlnx.rpmlist) --enablerepo=slingshot-host-software-repo-group
+       cm image dnf -y install $(cat $(pwd)/shs-mlnx.rpmlist) --enablerepo=slingshot-host-software-repo-group
        ```
 
 10. If using a tmpfs image, there are no additional steps. If not using a tmpfs image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.

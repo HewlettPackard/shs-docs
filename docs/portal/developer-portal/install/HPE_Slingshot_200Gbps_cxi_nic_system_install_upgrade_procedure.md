@@ -171,7 +171,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
      - RHEL environment:
 
        ```screen
-       cm image yum -y install $(cat $(pwd)/shs-cxi.rpmlist) --enablerepo=slingshot-host-software-repo-group
+       cm image dnf -y install $(cat $(pwd)/shs-cxi.rpmlist) --enablerepo=slingshot-host-software-repo-group
        ```
 
 7. On HPE Slingshot 200Gbps CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
