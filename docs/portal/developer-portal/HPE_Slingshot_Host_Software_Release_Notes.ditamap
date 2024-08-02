@@ -11,6 +11,7 @@
     <topicref href="release_notes/newfeatures.md" format="markdown"/>
     <topicref href="release_notes/interface_and_operational.md" format="markdown"/>
     <topicref href="release_notes/resolvedissues.md" format="markdown"/>
+    <topicref href="release_notes/component_map.md" format="markdown"/>
     <topicref href="release_notes/securityissues.md" format="markdown"/>
     <topicref href="release_notes/knownissues.md" format="markdown"/>
     <topichead>
