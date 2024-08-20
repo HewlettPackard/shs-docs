@@ -12,11 +12,10 @@ The following configuration is on the node image, and modifying the node image v
 
 Follow the relevant procedures to achieve the needed configuration. Contact a system administrator to set up these parameters.
 
-1. Modify the following kernel module parameters to enable Soft-RoCE to run optimally with good performance.
+1. Modify the following kernel boot extra command line parameter to enable Soft-RoCE to run optimally with good performance.
 
    ```bash
    cxi-eth.large_pkts_buf_count=10000
-   rdma_rxe.xmit_hard=y
    ```
 
 2. If Lustre is being used, modify the client and server parameters.
@@ -24,32 +23,18 @@ Follow the relevant procedures to achieve the needed configuration. Contact a sy
    Skip this step if Lustre is not being used.
    See the [Lustre configuration](lustre_network_driver_lnd_ko2iblnd_configuration.md#lustre-network-driver-lnd-ko2iblnd-configuration) procedure for more details.
 
-   The client and server parameters can be modified using one of the following methods:
+   Update the parameters on the client.
 
-   - Update the parameters on the client.
+   These parameters may be provided as kernel boot extra command line parameters.
+   The list is as follows:
 
-     These parameters may be provided as kernel boot extra command line parameters.
-     The list is as follows:
-
-     ```bash
-     ko2iblnd.conns_per_peer=4
-     ko2iblnd.concurrent_sends=84
-     ko2iblnd.ntx=2048
-     ko2iblnd.credits=1024
-     ko2iblnd.peer_credits=42
-     ```
-
-   - Create a `/etc/modprobe.d/rxe.conf` file.
-
-     Add the following contents to the file:
-
-     ```bash
-     options cxi-eth large_pkts_buf_count=10000
-     options rdma_rxe xmit_hard=Y
-     options ko2iblnd conns_per_peer=4 peer_credits=42 concurrent_sends=84 ntx=2048 credits=1024
-     ```
-
-     The file must be added to the compute node image for any nodes running Soft-RoCE.
+   ```bash
+   ko2iblnd.conns_per_peer=4
+   ko2iblnd.concurrent_sends=84
+   ko2iblnd.ntx=2048
+   ko2iblnd.credits=1024
+   ko2iblnd.peer_credits=42
+   ```
 
 3. Check if links are initialized and AMAs assigned.
 
@@ -62,17 +47,6 @@ Follow the relevant procedures to achieve the needed configuration. Contact a sy
 
    This script will create the `rxe0` device, and apply for the appropriate settings Soft-RoCE.
    If no devices list is provided, `rxe_init.sh` will use `hsn0` as the devices list.
-
-5. Check if `xmit_hard` is `Y` in the RXE parameters on all nodes.
-
-   The following example shows the check on one node, but this must be verified for all nodes.
-
-   ```console
-   node1# cat /sys/module/rdma_rxe/parameters/xmit_hard
-   Y
-   ```
-
-   If `xmit_hard` is set to `N`, then see step 1 to fix the issue or contact a system administrator.
 
 NOTE: Soft-RoCE device creation is not persistent across reboots.
 The `rxe_init.sh` script must be run on every boot after the HPE Slingshot 200Gbps NIC Ethernet device is fully programmed with links up and AMAs assigned.
