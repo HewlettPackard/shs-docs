@@ -48,6 +48,9 @@ prepends
 prepended
 repo
 runtime
+rxe0
+rxe1
+Soft-Roce
 subcommand
 subcommands
 subrole
@@ -62,6 +65,7 @@ versioned
 virtualization
 wildcard
 wildcards
+200Gbps
 #
 # Computer architecture types
 #
