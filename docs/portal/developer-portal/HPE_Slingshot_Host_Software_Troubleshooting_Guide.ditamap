@@ -22,7 +22,13 @@
             <topicref href="troubleshoot/cxi/Incorrect_program_or_version_number.md" format="mdita"/>
             <topicref href="troubleshoot/cxi/Insufficient_huge_pages.md" format="mdita"/>
             <topicref href="troubleshoot/cxi/Unexpected_event_type.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/High_rate_puts_and_internal_loopack.md" format="mdita"/>
             <topicref href="troubleshoot/cxi/GPU_libraries.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/low_bandwidth.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/list_entry_exhaustion.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/sync_timeout.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/semaphore_already_exists.md" format="mdita"/>
+            <topicref href="troubleshoot/cxi/failed_to_allocate_LNI.md" format="mdita"/>
         </topichead>
     </topicref>
     <topichead id="cxi-healthcheck">
