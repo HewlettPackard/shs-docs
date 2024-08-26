@@ -14,6 +14,8 @@ target write buffers, with the exception of `cxi_atomic_bw`.
 A summary of the run options is printed during initialization. The summary is followed by several
 columns of data, including the transaction size, number of transactions, measured bandwidth, and measured transaction rate.
 
+For troubleshooting information, see [Troubleshoot CXI Diagnostics and Utilities](Cannot_reach_server.md#cannot-reach-server).
+
 ## `cxi_write_bw`
 
 The `cxi_write_bw` utility measures one-sided RDMA write bandwidth. When using

@@ -5,11 +5,8 @@ In general, the bandwidth utilities and `cxi_heatsink_check` are expected to rea
 bandwidth using their default options. However, there are cases where this may
 not be true. The following may result in improved performance:
 
-- Pin processes to specific cores. This can be done to avoid core 0 and to
-assign the server and client to separate cores. When using a multisocket node,
-it is important to use the socket nearest to the NIC under test. `cxi_heatsink_check`
-attempts to intelligently set core affinities, but this can be overridden with
-the `--cpu-list` option.
+- Pin processes to specific CPU cores. Avoid using core 0 and preferably core 1, as these cores are often used by the OS, Kernel, and drivers, leading to potential process swapping and slowness. For multisocket nodes, use the socket nearest to the NIC under test. The `cxi_heatsink_check` tool attempts to intelligently set core affinities, but this can be overridden with the `--cpu-list` option.
+- Pin the diagnostic to the correct Non-Uniform Memory Access (NUMA) domain.
 - Use larger values for `--size`.
 - Use larger or smaller values for `--list-size` (called `--num-xfers` in
 `cxi_gpu_bw_loopback`). This option specifies the number of transactions that are

@@ -22,6 +22,8 @@ latency is printed. Finally several columns of data are printed, including the
 transaction size, number of transactions, the measured minimum, maximum, and
 average latencies, as well as the standard deviation.
 
+For troubleshooting information, see [Troubleshoot CXI Diagnostics and Utilities](Cannot_reach_server.md#cannot-reach-server).
+
 ## `cxi_write_lat`
 
 The `cxi_write_lat` utility measures one-sided RDMA write latency. When using

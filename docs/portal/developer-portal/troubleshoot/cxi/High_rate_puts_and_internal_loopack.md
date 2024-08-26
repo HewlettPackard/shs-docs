@@ -1,4 +1,4 @@
-# High rate puts and internal-loopack
+# High rate puts and internal-loopback
 
 A Slingshot switch acknowledges the high rate puts, not the target NIC, so
 they do not work when the NIC is configured in internal-loopback mode. The

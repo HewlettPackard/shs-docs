@@ -5,6 +5,8 @@ The `cxi_heatsink_check` utility is a thermal diagnostic intended to validate th
 heat is being dissipated properly. It stresses the ASIC by generating a large
 amount of small RDMA writes.
 
+For troubleshooting information, see [Troubleshoot CXI Diagnostics and Utilities](Cannot_reach_server.md#cannot-reach-server).
+
 ## Node configuration
 
 When testing a single-NIC device, only one instance of `cxi_heatsink_check` is

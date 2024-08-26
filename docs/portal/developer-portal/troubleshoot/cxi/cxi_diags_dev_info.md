@@ -1,6 +1,8 @@
 
 # Device information
 
+For troubleshooting information, see [Troubleshoot CXI Diagnostics and Utilities](Cannot_reach_server.md#cannot-reach-server).
+
 ## cxi_stat
 
 The cxi_stat utility displays a summary of information provided by the CXI

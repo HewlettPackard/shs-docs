@@ -12,7 +12,7 @@
         <topicref href="troubleshoot/cxi/cxi_diags_bandwidth.md" format="mdita"/>
         <topicref href="troubleshoot/cxi/cxi_diags_latency.md" format="mdita"/>
         <topicref href="troubleshoot/cxi/cxi_diags_thermal.md" format="mdita"/>
-        <topichead>
+        <topichead id="cxi-diags-troubleshoot" keys="cxi-diags-troubleshoot">
             <topicmeta>
                 <navtitle>Troubleshoot CXI Diagnostics and Utilities</navtitle>
             </topicmeta>
