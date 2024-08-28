@@ -29,6 +29,15 @@
         },
         {
             "pattern": "^https://www\\.hpe\\.com/support/ex-S-8000"
+        },
+        {
+            "pattern": "^https://www\\.hpe\\.com/support/ex-S-8052"
+        },
+        {
+            "pattern": "^https://downloads\\.hpe\\.com/pub/keys/HPE-GPG-Public-Keys\\.tar\\.gz"
+        },
+        {
+            "pattern": "^https://linux\\.die\\.net/man/8/lldptool#name"
         }
     ]
 }
