@@ -1,4 +1,3 @@
-
 # Post-install operational tasks
 
 The HPE Slingshot firmware must be updated with each new SHS install. The firmware can be updated using `slingshot-firmware` as provided by the `slingshot-firmware-management` package.
@@ -25,4 +24,3 @@ The HPE Slingshot firmware must be updated with each new SHS install. The firmwa
    ```
 
 3. Firmware updates do not take effect immediately. Firmware updates will only go into operation after the device has been power-cycled. Before putting the server back into operation, it must be rebooted or power-cycled according to the administration guide for the target server. Reference the COS documentation for Compute node maintenance procedures, and the CSM documentation for NCN and UAN maintenance procedures.
-

@@ -14,7 +14,7 @@ Follow the relevant procedures to achieve the needed configuration. Contact a sy
 
 1. Modify the following kernel boot extra command line parameter to enable Soft-RoCE to run optimally with good performance.
 
-   ```bash
+   ```screen
    cxi-eth.large_pkts_buf_count=10000
    ```
 
@@ -28,7 +28,7 @@ Follow the relevant procedures to achieve the needed configuration. Contact a sy
    These parameters may be provided as kernel boot extra command line parameters.
    The list is as follows:
 
-   ```bash
+   ```screen
    ko2iblnd.conns_per_peer=4
    ko2iblnd.concurrent_sends=84
    ko2iblnd.ntx=2048
@@ -50,4 +50,3 @@ Follow the relevant procedures to achieve the needed configuration. Contact a sy
 
 NOTE: Soft-RoCE device creation is not persistent across reboots.
 The `rxe_init.sh` script must be run on every boot after the HPE Slingshot 200Gbps NIC Ethernet device is fully programmed with links up and AMAs assigned.
-

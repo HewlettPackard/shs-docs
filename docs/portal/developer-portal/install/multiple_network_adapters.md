@@ -16,4 +16,3 @@ root@host ~# /usr/bin/slingshot-ifroute
 As a result of the script, new routing tables and policies should be created in the kernel network routing tables.
 
 The routing script should be run after all network adapters have been named by `systemd` or `udev`. As an alternative solution, the routing script can also be run as part of the `POST_UP` section of an `ifconfig` configuration file for the interface.
-

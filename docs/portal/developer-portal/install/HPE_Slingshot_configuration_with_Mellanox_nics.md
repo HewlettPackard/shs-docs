@@ -68,5 +68,3 @@ root@host ~# dracut --add slingshot-network-modprobe --verbose --rebuild /boot/i
 ```
 
 If the resulting initrd is used for booting the host over the network, such as with a pxeboot, then the resultant initrd from the final step in the example should be used to boot the new image with.
-
-

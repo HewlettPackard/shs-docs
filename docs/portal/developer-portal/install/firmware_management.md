@@ -53,7 +53,7 @@ The `slingshot-firmware` utility limits firmware management to devices specified
 `query` is the action associated with device discovery, and device attribute discovery. The `query` action allows a user to query specific device attributes from a device. The list of supported attributes is given as follows:
 
 | Field   | Description                               |
-|---------|-------------------------------------------|
+| ------- | ----------------------------------------- |
 | version | firmware version of the network interface |
 
 An example of the use of this action is provided:
