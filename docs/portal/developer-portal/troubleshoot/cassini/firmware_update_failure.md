@@ -1,4 +1,3 @@
-
 # HPE Slingshot 200Gbps NIC firmware update failures
 
 If a 200Gbps NIC firmware update fails, a failure code is printed in the kernel log:
@@ -18,8 +17,7 @@ The error codes and their meaning are available in the following table:
 | 0x86       | Firmware flash failed              | Retry firmware update before rebooting host to avoid firmware corruption |
 | 0x87       | Firmware flash verification failed | Retry firmware update before rebooting host to avoid firmware corruption |
 
-When a firmware update fails, you can update the firmware again by running the `slingshot-firmware`
-command. If the failure persists, reset the microcontroller before you update the firmware:
+When a firmware update fails, you can update the firmware again by running the `slingshot-firmware` command. If the failure persists, reset the microcontroller before you update the firmware:
 
 ```screen
 echo 1789 > /sys/class/net/hsn${HSN_NUMBER}/device/uc/reset

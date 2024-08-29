@@ -1,4 +1,3 @@
-
 # Fabric Recovery
 
 When the HPE Slingshot switch ASIC detects `pause too long` condition, the Slingshot switch driver asserts an alert to indicate link is in `pause too long` state. Then the driver removes the load on the node to recover the link from `pause too long` state while allowing the link to stay up.

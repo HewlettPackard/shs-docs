@@ -1,4 +1,3 @@
-
 # HPE Slingshot 200Gbps NIC Errors
 
 Each block in the The 200Gbps NIC ASIC contains a set of error flags. Error flags are defined in section 13 of the 200Gbps Slingshot NIC Software Developer's Guide. Errors vary in severity. Certain types of errors, like an "invalid VNI" error, are expected after an application terminates abnormally. Others, like a multi-bit error, may signal the need for a NIC reset.
@@ -7,12 +6,10 @@ An interrupt is generated when an error is raised. The 200Gbps NIC driver handle
 
 Error events are sent to multiple locations:
 
-* The kernel console
-* Kernel trace events (as used by rasdaemon)
-* Netlink sockets
-* Error events are rate-limited to avoid overwhelming the
-  console. The driver will mask an error interrupt bit if its rate
-  becomes too high.
+- The kernel console
+- Kernel trace events (as used by rasdaemon)
+- Netlink sockets
+- Error events are rate-limited to avoid overwhelming the console. The driver will mask an error interrupt bit if its rate becomes too high.
 
 An example of an error reported to the kernel console is shown below.
 
