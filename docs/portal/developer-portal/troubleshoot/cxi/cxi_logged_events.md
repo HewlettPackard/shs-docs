@@ -1,4 +1,3 @@
-
 # CXI logged events
 
 The 200Gbps NIC driver will report errors, events, and alerts to the kernel ring buffer. The following sections show the kernel severity level and the errors, events, and alerts from the three 200Gbps NIC sources.

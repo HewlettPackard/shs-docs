@@ -2,7 +2,7 @@
 
 This section helps to understand some common CXI core error messages.
 
-**Note**: This section applies to HPE Cray EX Supercomputer and HPE Cray Supercomputer systems that are configured with HPE Slingshot 200 GbE NICs and are only to be used in understanding HPE Slingshot Cassini error messages.
+**Note:** This section applies to HPE Cray EX Supercomputer and HPE Cray Supercomputer systems that are configured with HPE Slingshot 200 GbE NICs and are only to be used in understanding HPE Slingshot Cassini error messages.
 
 ## rbyp_abort errors
 
@@ -14,7 +14,7 @@ PCIe-correctable errors are expected and are only a concern when the correctable
 
 2. The CXI core actively monitors PCIe-correctable errors outside of any PCIe AER support, and it logs a message to the kernel ring buffer if the error rate exceeds PCIe specifications. Such messages will have `cxi_core` and `PCIe error` in the same line.
 
-**Examples**:
+**Examples:**
 
 - `cxi_core 0000:41:00.0: cxi0[hsn0]: C_EC_CRIT: C_PI_IPD_EXT error: pri_rbyp_abort (44)`
 - `cxi_core 0000:41:00.0: cxi0[hsn0]: C_EC_INFO: C_PI_EXT error: pri_rarb_xlat_rbyp_abort_error (35) (was first error at 1675485830:078202793)`
@@ -39,7 +39,7 @@ echo "00001000,00000000" > /sys/class/cxi/cxi0/device/err_flgs_irqa/pi_ipd/no_pr
 
 `pcs_link_down` errors occur when the HSN link transitions from an up to a down state.
 
-**Example**:
+**Example:**
 
 ```screen
 cxi_core 0000:41:00.0: cxi0[hsn0]: C_EC_TRNSNT_NS: C1_HNI_PML error: pcs_link_down (48) (was first error at 1675518045:993752891)
@@ -53,13 +53,13 @@ To disable `pcs_link_down` reporting, bit 48 must be set in the `sysfs CXI HNI P
 echo "e0010003,00000000" > /sys/class/cxi/cxi0/device/err_flgs_irqa/hni_pml/no_print_mask
 ```
 
-**Note**: To disable the reporting of `pcs_tx_dp_err`, `llr_ack_nack_error`, or `mac_rx_frame_err` errors, bits 31, 35, or 58 must be included with bit 48.
+**Note:** To disable the reporting of `pcs_tx_dp_err`, `llr_ack_nack_error`, or `mac_rx_frame_err` errors, bits 31, 35, or 58 must be included with bit 48.
 
 ## pcs_tx_dp_err errors
 
 Typically, `pcs_tx_dp_err` is associated with a `CXI_EVENT_LINK_DOWN` message.
 
-**Examples**:
+**Examples:**
 
 - `cxi_core 0000:03:00.0: cxi0[hsn0] CXI_EVENT_LINK_DOWN`
 - `cxi_core 0000:03:00.0: cxi0[hsn0]: C_EC_TRNSNT_NS: C1_HNI_PML error: pcs_tx_dp_err (35) (was first error at 1675702370:147232867)`
@@ -73,7 +73,7 @@ To disable `pcs_tx_dp_err` reporting, bit 35 must be set in the `sysfs CXI HNI P
 echo "e000000b,00000000" > /sys/class/cxi/cxi0/device/err_flgs_irqa/hni_pml/no_print_mask
 ```
 
-**Note**: To disable the reporting of `llr_ack_nack_error`, `pcs_link_down`, or `mac_rx_frame_err errors`, bits 31, 48, or 58 must be included with bit 35.
+**Note:** To disable the reporting of `llr_ack_nack_error`, `pcs_link_down`, or `mac_rx_frame_err errors`, bits 31, 48, or 58 must be included with bit 35.
 
 ## llr_eopb, llr_ack_nack_error, and mac_rx_frame_err errors
 
@@ -106,7 +106,7 @@ To disable `llr_ack_nack_error` or `mac_rx_frame_err` reporting, bits 31 or 58 m
 echo "e4000003,80000000" > /sys/class/cxi/cxi0/device/err_flgs_irqa/hni_pml/no_print_mask
 ```
 
-**Note**: To disable the reporting of `pcs_tx_dp_err` or `pcs_link_down`, bits 35 or 48 must be included with bits 31 or 58.
+**Note:** To disable the reporting of `pcs_tx_dp_err` or `pcs_link_down`, bits 35 or 48 must be included with bits 31 or 58.
 
 ## tct_tbl_dealloc errors
 
@@ -120,7 +120,7 @@ The following is an example of this error:
 
 Once CXI core reports this error, the NIC has issues communicating with other NICs using the native Slingshot HPC protocol. Ethernet functionality is not impacted. Recovery from this state requires a node reboot.
 
-**Important**: Disabling the reporting of this error message must be avoided.
+**Important:** Disabling the reporting of this error message must be avoided.
 
 ## ptl_invld_vni errors
 

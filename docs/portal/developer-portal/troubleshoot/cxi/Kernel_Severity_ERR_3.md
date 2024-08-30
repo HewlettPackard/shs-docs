@@ -1,13 +1,13 @@
-# Kernel Severity:  ERR (3)
+# Kernel Severity: ERR (3)
 
 ## Errors, Events, and Alerts
 
-* ASIC
-  * EC_DEGRD_NS
-* SBL
-  * None
-* uC
-  * None
+- ASIC
+  - EC_DEGRD_NS
+- SBL
+  - None
+- uC
+  - None
 
 ## 200Gbps NIC State
 

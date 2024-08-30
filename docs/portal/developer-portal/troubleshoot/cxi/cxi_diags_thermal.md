@@ -1,33 +1,24 @@
-
 # Thermal diagnostic
 
-The `cxi_heatsink_check` utility is a thermal diagnostic intended to validate that
-heat is being dissipated properly. It stresses the ASIC by generating a large
-amount of small RDMA writes.
+The `cxi_heatsink_check` utility is a thermal diagnostic intended to validate that heat is being dissipated properly. It stresses the ASIC by generating a large amount of small RDMA writes.
 
 For troubleshooting information, see [Troubleshoot CXI Diagnostics and Utilities](Cannot_reach_server.md#cannot-reach-server).
 
 ## Node configuration
 
-When testing a single-NIC device, only one instance of `cxi_heatsink_check` is
-needed. However, when testing a dual-NIC device, two instances of the diagnostic
-must run simultaneously, each targeting one of the two NICs. Dual-NIC pairs can
-be determined by using cxi_stat to obtain NIC serial numbers. NICs of the same
-device will have identical serial numbers.
+When testing a single-NIC device, only one instance of `cxi_heatsink_check` is needed. However, when testing a dual-NIC device, two instances of the diagnostic must run simultaneously, each targeting one of the two NICs. Dual-NIC pairs can be determined by using cxi_stat to obtai NIC serial numbers. NICs of the same device will have identical serial numbers.
 
-**Note:** In some compute blades, each NIC of a dual-NIC device belongs to a
-separate node.
+**Note:** In some compute blades, each NIC of a dual-NIC device belongs to a separate node.
 
-To generate the most heat, the HSN link should be configured in mission-mode.
-Internal-loopback does not fully exercise the SerDes.
+To generate the most heat, the HSN link should be configured in mission-mode. Internal-loopback does not fully exercise the SerDes.
 
 ## Running the diagnostic
 
 Running `cxi_heatsink_check` requires root privileges.
 
-**Usage**
+_**Usage**_
 
-```bash
+```screen
 Monitor 200Gbps NIC temperature and power consumption while stressing
 the chip with RDMA writes.
 Requirements:
@@ -70,10 +61,9 @@ Options:
 
 **Example of a successful run:**
 
-In this example, the `cxi_heatsink_check` diagnostic utility successfully executed
-and all tests passed as expected.
+In this example, the `cxi_heatsink_check` diagnostic utility successfully executed and all tests passed as expected.
 
-```bash
+```screen
 # cxi_heatsink_check -D 60
 ------------------------------------------------------------
     CXI Heatsink Test
@@ -108,10 +98,9 @@ Average BW over 19 GB/s:                     21.94 GB/s  PASS
 
 **Example bandwidth target failures:**
 
-This example shows a single failure (**Average BW over 19 GB/s**) that indicates
-that the target bandwidth was not reached.
+This example shows a single failure (**Average BW over 19 GB/s**) that indicates that the target bandwidth was not reached.
 
-```bash
+```screen
 # cxi_heatsink_check -D 60 -P 1
 ------------------------------------------------------------
     CXI Heatsink Test
@@ -146,14 +135,9 @@ Average BW over 19 GB/s:                     10.31 GB/s  FAIL
 
 **Example high temperature failure:**
 
-This example shows a single failure (**200Gbps NIC 0 Temperature (ASIC_0) under
-85°C**). The 200Gbps NIC temperature rose higher than expected, which indicates that
-heat is not being dissipated properly. In this case the 200Gbps NIC card should
-be inspected to ensure that the heatsink is properly installed and that the
-cabinet has adequate cooling. If the problem persists and is local to only one
-card within the cabinet, then the 200Gbps NIC card should be replaced.
+This example shows a single failure (**200Gbps NIC 0 Temperature (ASIC_0) under 85°C**). The 200Gbps NIC temperature rose higher than expected, which indicates that heat is not being dissipated properly. In this case the 200Gbps NIC card should be inspected to ensure that the heatsink is properly installed and that the cabinet has adequate cooling. If the problem persists and is local to only one card within the cabinet, then the 200Gbps NIC card should be replaced.
 
-```bash
+```screen
 # cxi_heatsink_check -D 12 -i 2
 ------------------------------------------------------------
     CXI Heatsink Test
@@ -188,14 +172,9 @@ Average BW over 19 GB/s:                     21.55 GB/s  PASS
 
 **Example early stop:**
 
-This example illustrates an early exit due to the 200Gbps NIC 0 temperature
-continuing to climb into an unsafe range. In this case the test is stopped
-immediately. If the temperature was allowed to continue to climb, the 200Gbps NIC card would execute an Emergency Power Off (EPO). The 200Gbps NIC card should
-be inspected to ensure that the heatsink is properly installed and that the
-cabinet has adequate cooling. If the problem persists and is local to only one
-card within the cabinet, then the 200Gbps NIC card should be replaced.
+This example illustrates an early exit due to the 200Gbps NIC 0 temperature continuing to climb into an unsafe range. In this case the test is stopped immediately. If the temperature was allowed to continue to climb, the 200Gbps NIC card would execute an Emergency Power Off (EPO). The 200Gbps NIC card should be inspected to ensure that the heatsink is properly installed and that the cabinet has adequate cooling. If the problem persists and is local to only one card within the cabinet, then the 200Gbps NIC card should be replaced.
 
-```bash
+```screen
 # cxi_heatsink_check -D 12 -i 1
 ------------------------------------------------------------
     CXI Heatsink Test

@@ -2,12 +2,12 @@
 
 ## Errors, Events, and Alerts
 
-* ASIC
-  * None
-* SBL
-  * None
-* uC
-  * ATT1_ASIC_PWR_UP_DONE
+- ASIC
+  - None
+- SBL
+  - None
+- uC
+  - ATT1_ASIC_PWR_UP_DONE
 
 ## 200Gbps NIC State
 
