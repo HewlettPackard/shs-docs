@@ -4,13 +4,11 @@
 
 ethtool is a standard tool that can be used on the host side to analyze and troubleshoot performance issues on the host side.
 
-Consider the following example.
 **Example:**
 
 A Storage server (E1000) is connected with a Mellanox CX6 (200G) connected to the Slingshot Fabric. Clients are connected to the Slingshot Fabric accessing the data from the Storage server. Both the Client and servers are in different Slingshot group. The server is able to produce expected READ performance (200gbit/sec) but the write performance is below the expected level.(lower than the expected~200gb/sec)
 
-In the READ scenario, Clients are requesting for data from the Storage server and the Storage server is pushing the data out to the clients.
-In the WRITE scenario, Clients are sending write requests and write directly to the buffer provided by the Storage server that is pushing the data to the Storage server.
+In the READ scenario, Clients are requesting for data from the Storage server and the Storage server is pushing the data out to the clients. In the WRITE scenario, Clients are sending write requests and write directly to the buffer provided by the Storage server that is pushing the data to the Storage server.
 
 1. Capture ethtool data on the Storage Server for the CX6 NIC before the test.
 
@@ -36,21 +34,21 @@ In the WRITE scenario, Clients are sending write requests and write directly to 
 
    ```screen
    rx_pause_ctrl_phy:              217995731 , 217995731  delta: 0
-       tx_pause_ctrl_phy:        130836637 ,141797735  	delta: 10961098
-       rx_global_pause:       217995731 , 217995731 	delta: 0
-   rx_global_pause_duration:        56514674 , 56514674  	delta: 0
-       tx_global_pause:       130836637 , 141797735  	delta: 10961098
+       tx_pause_ctrl_phy:        130836637 ,141797735    delta: 10961098
+       rx_global_pause:       217995731 , 217995731   delta: 0
+   rx_global_pause_duration:        56514674 , 56514674      delta: 0
+       tx_global_pause:       130836637 , 141797735   delta: 10961098
    tx_global_pause_duration:      3435047420 , 3734351900  delta: 299304480
-   rx_global_pause_transition:    108841435 ,  108841435  	delta: 0
-   tx_pause_storm_warning_events:       0 ,       0  	delta: 0
-   tx_pause_storm_error_events:         0 ,        0  	delta: 0
+   rx_global_pause_transition:    108841435 ,  108841435    delta: 0
+   tx_pause_storm_warning_events:       0 ,       0   delta: 0
+   tx_pause_storm_error_events:         0 ,        0      delta: 0
    ```
 
-In the output shown above, there is a significant pause that is generated for transmit (tx) which is an indication that the host side NIC is unable to consume the incoming data rate.
+## Troubleshooting TX pauses
 
-Possible causes for the same include:
+In the output shown above, there is a significant pause that is generated for transmit (tx) which is an indication that the host side NIC is unable to consume the incoming data rate. Possible causes for the same include:
 
-**Incorrect NIC Configuration**
+_**Incorrect NIC Configuration**_
 
 ```screen
       grep rx_err delta.out
@@ -61,7 +59,7 @@ Possible causes for the same include:
 
 ```
 
-In this specific example, the errors were generated because the recommended PCI relaxed ordering was not set for the CX6 Adapter.  Enabling PCI relaxed ordering increased the performance
+In this specific example, the errors were generated because the recommended PCI relaxed ordering was not set for the CX6 Adapter. Enabling PCI relaxed ordering increased the performance
 
 Relaxed ordering is a PCIe feature which allows flexibility in the transaction order over the PCIe. This reduces the number of retransmissions on the lane, and increases performance up to four times. By default, mlx5e buffers are created with Relaxed Ordering support when firmware capabilities are on and the PCI subsystem reports that the CPU is not on the kernel's blocklist. `cx_tool.py` is a config script provided for the Mellanox CX6 adapter for configuring the NIC on Storage server (E1000) with the required optimal settings
 
@@ -77,7 +75,7 @@ Configurations:                      Default            Current          Next Bo
 The '*' shows parameters with next value different from default/current value.
 ```
 
-**Limited sizing of ring buffers**
+_**Limited sizing of ring buffers**_
 
 ```screen
 ethtool -g heth0
@@ -95,6 +93,6 @@ TX: 1024
 ethtool --set-ring heth0 rx 8192 rx-mini 0 rx-jumbo 0 tx 8192
 ```
 
-**Hardware errors like Memory, PCI errors (look for errors in syslog)**
+_**Hardware errors like Memory, PCI errors (look for errors in syslog)**_
 
-**Note**: If the host side does not exhibit any of the above symptoms, look for errors at the fabric level as mentioned in earlier sections.
+**Note:** If the host side does not exhibit any of the above symptoms, look for errors at the fabric level as mentioned in earlier sections.
