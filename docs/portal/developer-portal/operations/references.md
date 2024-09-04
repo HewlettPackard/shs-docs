@@ -1,4 +1,3 @@
-
 # References
 
 Examine the references in the local SHS git working directory using the following command. Keep this information at hand.

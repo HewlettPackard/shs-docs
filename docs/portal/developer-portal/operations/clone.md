@@ -1,4 +1,3 @@
-
 # Clone the `slingshot-host-software-config-management` repository
 
 Create a local copy of the SHS configuration management repository to store the system-specific configuration details.

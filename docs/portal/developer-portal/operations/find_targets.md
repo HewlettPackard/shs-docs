@@ -1,8 +1,6 @@
-
 # Find targets
 
-Obtain the SHS `release` and `import_branch` from the `cray-product-catalog`.
-where `<release>` is the full or partial release version.
+Obtain the SHS `release` and `import_branch` from the `cray-product-catalog`, where `<release>` is the full or partial release version.
 
 ```screen
 ncn-m001# kubectl get cm cray-product-catalog -n services -o yaml \
