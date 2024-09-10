@@ -55,3 +55,46 @@ Different Makefile targets produce different outputs:
 ## Build docs automatically with DITA-OT
 
 Same Jenkinsfile configuration as with the mds-file-and-Pandoc build process, except that you must replace the current Makefile target(s) with one or more of the above for automated Hummingbird builds.
+
+## Build and publish the HPESC managed bundles
+
+Follow these steps build and publish SHS documentation to HPESC.
+
+1. Navigate to the hpc-shs-docs repository.
+
+   ```
+   cd /path/to/hpc-shs-docs
+   ```
+
+2. Checkout the desired release branch.
+
+   ```
+   git checkout release/shs-<version>
+   ```
+
+3. (Optional) Install the `zip` command.
+
+   Skip this step if `zip` is install already.
+
+   ```
+   sudo apt install zip
+   ```
+
+4. Navigate to the `/docs/portal/developer-portal` directory.
+
+   ```
+   cd docs/portal/developer-portal
+   ```
+
+5. Build the HPESC bundle.
+
+   ```
+   make hpesc_build
+   ```
+
+   **Troubleshooting:** If this step fails, it is likely because Docker is not installed or running. Ensure Docker is set up correctly.
+
+6. Perform the [direct publishing process](https://rndwiki-pro.its.hpecorp.net/display/HPCTechPubs/Direct+publish+PDFs+to+the+HPESC).
+
+   - When selecting the file type, choose "managed bundle" instead of "PDF".
+   - Select the appropriate `.zip` file located in the build directory for the guide.
