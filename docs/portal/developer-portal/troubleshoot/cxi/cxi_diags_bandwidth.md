@@ -1,27 +1,20 @@
 # Bandwidth
 
-Bandwidth is calculated using the frame payload. The client/server
-diagnostics can measure uni-directionally or bidirectionally. Uni-directional
-bandwidth is measured by the client, shared with the server, and reported by
-both. Bidirectional bandwidth is measured by both the client and server; they share their results and report the combined value.
+Bandwidth is calculated using the frame payload. The client/server diagnostics can measure uni-directionally or bidirectionally. Uni-directional bandwidth is measured by the client, shared with the server, and reported by both. Bidirectional bandwidth is measured by both the client and server; they share their results and report the combined value.
 
 - The diagnostics can be run for a number of iterations or for a duration of time.
-- They can be configured to use a single size or a range of sizes, with the
-exception of `cxi_gpu_bw_loopback` which does not support ranges.
-- They can be configured to use either system memory or GPU memory for the initiator and
-target write buffers, with the exception of `cxi_atomic_bw`. 
+- They can be configured to use a single size or a range of sizes, with the exception of `cxi_gpu_bw_loopback` which does not support ranges.
+- They can be configured to use either system memory or GPU memory for the initiator and target write buffers, with the exception of `cxi_atomic_bw`.
 
-A summary of the run options is printed during initialization. The summary is followed by several
-columns of data, including the transaction size, number of transactions, measured bandwidth, and measured transaction rate.
+A summary of the run options is printed during initialization. The summary is followed by several columns of data, including the transaction size, number of transactions, measured bandwidth, and measured transaction rate.
 
 For troubleshooting information, see [Troubleshoot CXI Diagnostics and Utilities](Cannot_reach_server.md#cannot-reach-server).
 
 ## `cxi_write_bw`
 
-The `cxi_write_bw` utility measures one-sided RDMA write bandwidth. When using
-system memory, it can be configured to use huge pages.
+The `cxi_write_bw` utility measures one-sided RDMA write bandwidth. When using system memory, it can be configured to use huge pages.
 
-**Usage**
+_**Usage**_
 
 ```screen
 Usage:
@@ -59,12 +52,11 @@ Options:
   -V, --version          Print the version and exit
 ```
 
-**Example**
+_**Example**_
 
-This example shows a bidirectional run over a range of sizes for five seconds
-each.
+This example shows a bidirectional run over a range of sizes for five seconds each.
 
-*Server*
+_Server:_
 
 ```screen
 $ cxi_write_bw
@@ -100,7 +92,7 @@ RDMA Size[B]      Writes  BW[MB/s]  PktRate[Mpkt/s]
 ---------------------------------------------------
 ```
 
-*Client*
+_Client:_
 
 ```screen
 $ cxi_write_bw 10.1.1.8 -D 5 -s 1024:65536 -b
@@ -137,10 +129,9 @@ RDMA Size[B]      Writes  BW[MB/s]  PktRate[Mpkt/s]
 
 ## `cxi_read_bw`
 
-The `cxi_read_bw` utility measures one-sided RDMA read bandwidth. When using
-system memory, it can be configured to use huge pages.
+The `cxi_read_bw` utility measures one-sided RDMA read bandwidth. When using system memory, it can be configured to use huge pages.
 
-**Usage**
+_**Usage**_
 
 ```screen
 Usage:
@@ -176,11 +167,11 @@ Options:
   -V, --version          Print the version and exit
 ```
 
-**Example**
+_**Example**_
 
 This example shows a quick run using the default options.
 
-*Server*
+_Server:_
 
 ```screen
 $ cxi_read_bw
@@ -207,7 +198,7 @@ RDMA Size[B]       Reads  BW[MB/s]  PktRate[Mpkt/s]
 ---------------------------------------------------
 ```
 
-*Client*
+_Client:_
 
 ```screen
 $ cxi_read_bw nid000018
@@ -235,11 +226,9 @@ RDMA Size[B]       Reads  BW[MB/s]  PktRate[Mpkt/s]
 
 ## `cxi_send_bw`
 
-The `cxi_send_bw` utility measures two-sided message bandwidth. It can be
-configured to use eager or rendezvous transactions. When using system memory, it
-can be configured to use huge pages.
+The `cxi_send_bw` utility measures two-sided message bandwidth. It can be configured to use eager or rendezvous transactions. When using system memory, it can be configured to use huge pages.
 
-**Usage**
+_**Usage**_
 
 ```screen
 Usage:
@@ -276,11 +265,11 @@ Options:
   -V, --version          Print the version and exit
 ```
 
-**Example**
+_**Example**_
 
 This example shows a quick run using the default options.
 
-*Server*
+_Server:_
 
 ```screen
 $ cxi_send_bw
@@ -308,7 +297,7 @@ Send Size[B]       Sends  BW[MB/s]  PktRate[Mpkt/s]
 ---------------------------------------------------
 ```
 
-*Client*
+_Client:_
 
 ```screen
 $ cxi_send_bw 192.168.1.1
@@ -337,12 +326,9 @@ Send Size[B]       Sends  BW[MB/s]  PktRate[Mpkt/s]
 
 ## `cxi_atomic_bw`
 
-The `cxi_atomic_bw` utility measures one-sided AMO bandwidth. It can be configured
-to use a specific atomic operation and data type. Where possible, target buffer
-writes are ensured to occur with every AMO. The utility works with or without
-CPU offload, but enabling that feature in the NIC is left to the user.
+The `cxi_atomic_bw` utility measures one-sided AMO bandwidth. It can be configured to use a specific atomic operation and data type. Where possible, target buffer writes are ensured to occur with every AMO. The utility works with or without CPU offload, but enabling that feature in the NIC is left to the user.
 
-**Usage**
+_**Usage**_
 
 ```screen
 Usage:
@@ -382,12 +368,11 @@ Atomic Types:
   FLOAT_COMPLEX, DOUBLE_COMPLEX, UINT128
 ```
 
-**Example**
+_**Example**_
 
-This example shows a two-second bidirectional run using the CSWAP EQ operation
-with uint128 data.
+This example shows a two-second bidirectional run using the CSWAP EQ operation with uint128 data.
 
-*Server*
+_Server:_
 
 ```screen
 $ cxi_atomic_bw -p 42000
@@ -414,7 +399,7 @@ AMO Size[B]         Ops  BW[MB/s]    OpRate[M/s]
 ------------------------------------------------
 ```
 
-*Client*
+_Client:_
 
 ```screen
 $ cxi_atomic_bw cxi-nid0 -p 42000 -A cswap -C eq -T uint128 -D 2 -b
@@ -442,10 +427,9 @@ AMO Size[B]         Ops  BW[MB/s]    OpRate[M/s]
 
 ## `cxi_gpu_bw_loopback`
 
-The `cxi_gpu_bw_loopback` utility measures one-sided RDMA write bandwidth. When
-using system memory, it can be configured to use huge pages.
+The `cxi_gpu_bw_loopback` utility measures one-sided RDMA write bandwidth. When using system memory, it can be configured to use huge pages.
 
-**Usage**
+_**Usage**_
 
 ```screen
 Usage:
@@ -472,7 +456,7 @@ Options:
   -V, --version          Print the version and exit
 ```
 
-**Example**
+_**Example**_
 
 This example shows a run using GPU memory for both the initiator and target
 buffers.

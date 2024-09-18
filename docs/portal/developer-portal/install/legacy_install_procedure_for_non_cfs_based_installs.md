@@ -50,13 +50,13 @@ For systems equipped with Mellanox NICs, follow the instructions in 1. below. Fo
 
    For example, replace the following line:
 
-   ```bash
+   ```screen
    zypper addrepo --priority 2 https://packages.local/repository/slingshot-host-software-2.0-cos-2.4 slingshot-host-software-2.0-cos-2.4
    ```
 
    with:
 
-   ```bash
+   ```screen
    zypper addrepo --priority 2 https://packages.local/repository/slingshot-host-software-<slingshot-version>-cos-2.4 \
    slingshot-host-software-<slingshot-version>-cos-2.4
    ```
@@ -129,13 +129,13 @@ For systems equipped with Mellanox NICs, follow the instructions in 1. below. Fo
 
    For both compute and UAN image recipes, in the recipe object, update references to the slingshot-host-software URL in the file `root/root/bin/zypper-addrepo.sh`. For example, replace the following line:
 
-   ```bash
+   ```screen
    zypper addrepo --priority 2 https://packages.local/repository/slingshot-host-software-2.0-cos-2.4 slingshot-host-software-2.0-cos-2.4
    ```
 
    with:
 
-   ```bash
+   ```screen
    zypper addrepo --priority 2 https://packages.local/repository/slingshot-host-software-cassini-<slingshot-version>-cos-2.4 \
    slingshot-host-software-cassini-<slingshot-version>-cos-2.4
    ```
@@ -144,14 +144,14 @@ For systems equipped with Mellanox NICs, follow the instructions in 1. below. Fo
 
    - If building using SLES15sp4, execute the following:
 
-     ```bash
+     ```screen
      chroot /mnt/image/image-root
      sed -i 's/^allow_unsupported_modules 0/allow_unsupported_modules 1/' /lib/modprobe.d/10-unsupported-modules.conf
      ```
 
    - Otherwise, execute the following:
 
-     ```bash
+     ```screen
      chroot /mnt/image/image-root
      sed -i 's/^allow_unsupported_modules 0/allow_unsupported_modules 1/' /etc/modprobe.d/10-unsupported-modules.conf
      ```

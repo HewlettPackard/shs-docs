@@ -1,16 +1,13 @@
-
 # Device information
 
 For troubleshooting information, see [Troubleshoot CXI Diagnostics and Utilities](Cannot_reach_server.md#cannot-reach-server).
 
 ## cxi_stat
 
-The cxi_stat utility displays a summary of information provided by the CXI
-driver. By default it displays information for all available devices. It can be
-limited to a single device with the `--device` option. Additional HSN link error
+The cxi_stat utility displays a summary of information provided by the CXI driver. By default it displays information for all available devices. It can be limited to a single device with the `--device` option. Additional HSN link error
 rate and pause information can be shown with the `--rates` option.
 
-**Usage**
+_**Usage**_
 
 ```screen
 cxi_stat - CXI device status utility
@@ -24,7 +21,7 @@ Usage: -hlm
  -V --version          Print the version and exit
 ```
 
-**Example**
+_**Example**_
 
 ```screen
 $ cxi_stat -r

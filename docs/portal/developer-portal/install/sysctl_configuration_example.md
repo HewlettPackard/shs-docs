@@ -1,9 +1,8 @@
-
 # `sysctl` configuration example
 
 The `slingshot-network-config` RPM contains an example `sysctl` configuration file shown here:
 
-```bash
+```screen
 ####
 #
 # /etc/sysctl.conf is meant for local sysctl settings
@@ -47,7 +46,7 @@ net.ipv4.neigh.default.gc_stale_time=240
 
 The following settings were recommended by Mellanox in their online documentation for RoCE networks and were tested internally for the Slingshot product. These settings are also recommended by this document.
 
-```bash
+```screen
 # NIC performance tuning options
 net.core.netdev_max_backlog=250000
 net.core.rmem_max=16777216

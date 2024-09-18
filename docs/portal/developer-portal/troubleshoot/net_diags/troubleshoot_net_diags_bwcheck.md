@@ -1,10 +1,8 @@
-
 # Troubleshoot the `bwcheck.sh` script
 
 ## No remote copies of `bwcheck.sh`
 
-Running the `bwcheck.sh` script requires that a copy of the script is present on each
-node. The following error indicates that the script has not been installed. You can resolve this issue by installing the cray-diags-fabric package on each node.
+Running the `bwcheck.sh` script requires that a copy of the script is present on each node. The following error indicates that the script has not been installed. You can resolve this issue by installing the cray-diags-fabric package on each node.
 
 ```screen
 nid000008: bash: ./bwcheck.sh: No such file or directory
@@ -13,8 +11,7 @@ pdsh@uan: nid000008: ssh exited with exit code 127
 
 ## No remote copies of `ib_write_bw`
 
-`bwcheck.sh` uses the Perftest diagnostic `ib_write_bw` to measure bandwidth. This
-is provided by the infiniband-diags package.
+`bwcheck.sh` uses the Perftest diagnostic `ib_write_bw` to measure bandwidth. This is provided by the infiniband-diags package.
 
 ```screen
 nid000008: taskset: failed to execute /usr/bin/ib_write_bw: No such file or directory
@@ -27,8 +24,7 @@ nid000008: mlx5_1: test failed (logfile is nid000008:/tmp/bwcheck.sh.errlog.2132
 
 ## Errors in nodelist
 
-Before running the test, the node list is verified. If a node cannot be reached,
-or if SSH key verification fails, an error is printed.
+Before running the test, the node list is verified. If a node cannot be reached, or if SSH key verification fails, an error is printed.
 
 ```screen
 nid000008: Host key verification failed.
@@ -60,9 +56,7 @@ nid000008: IP address check failed for eth4: Configured: 10.150.0.189 Lookup: 10
 
 ## Low bandwidth
 
-If any NIC bandwidth falls far below the mean, they are listed at the end
-of the test and the test fails. Low bandwidths indicate NIC or network
-issues. To rectify this issue, do one or more of the following actions:
+If any NIC bandwidth falls far below the mean, they are listed at the end of the test and the test fails. Low bandwidths indicate NIC or network issues. To rectify this issue, do one or more of the following actions:
 
 - Verify the cabling and link stability
 - Verify the switch routing and QoS settings

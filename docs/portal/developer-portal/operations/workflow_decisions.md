@@ -1,15 +1,14 @@
-
 # Workflow decisions
 
 At this point, some workflow decisions must be made. These decisions depend on repository findings and which goals are to be achieved.
 
-- If an `integration-<RELEASE>` branch for the targeted release exists then do
+- If an `integration-<RELEASE>` branch for the targeted release exists then do:
 
   ```screen
   ncn-m001# git checkout -b ${BRANCH} refs/remotes/origin/${BRANCH}
   ```
 
-- Else if `integration-<RELEASE>` branch for the targeted release does not exist _and_ no changes from previous `integration*` branches are to be brought forward
+- Else, if `integration-<RELEASE>` branch for the targeted release does not exist _and_ no changes from previous `integration*` branches are to be brought forward, do:
 
   ```screen
   ncn-m001# git branch --no-track ${BRANCH} ${IMPORT_BRANCH_REF}
@@ -17,9 +16,9 @@ At this point, some workflow decisions must be made. These decisions depend on r
   ncn-m001# git checkout ${BRANCH}
   ```
 
-- Else if `integration-<RELEASE>` branch for the targeted release does not exist _and_ the changes from previous `integration-*` branches should be applied into the new branch
+- Else, if `integration-<RELEASE>` branch for the targeted release does not exist _and_ the changes from previous `integration-*` branches should be applied into the new branch, do:
 
-  - If there are one or more `integration-<RELEASE>` branches for previous releases. Find the most recent (highest) release number from the old `integration-<RELEASE>` branches.
+  - If there are one or more `integration-<RELEASE>` branches for previous releases, find the most recent (highest) release number from the old `integration-<RELEASE>` branches.
 
     ```screen
     ncn-m001# OLD_RELEASE=<OLD-RELEASE>
@@ -35,14 +34,13 @@ At this point, some workflow decisions must be made. These decisions depend on r
     ncn-m001# OLD_IMPORT_BRANCH_REF=refs/remotes/origin/cray/slingshot-host-software/${OLD_RELEASE}
     ```
 
-  - Else if there are no `integration-*` branches, but there is an integration branch with no `-<RELEASE>` suffix, determine what the release integration was based on by running the `git log` command.
-  - This finds the newest commit in the output (the commit closest to the top) which contains a message similar to, "Import of 'slingshot-host-software' product version `<OLD-RELEASE>`".
+  - Else if there are no `integration-*` branches, but there is an integration branch with no `-<RELEASE>` suffix, determine what the release integration was based on by running the `git log` command.This finds the newest commit in the output (the commit closest to the top), which contains a message similar to "Import of 'slingshot-host-software' product version `<OLD-RELEASE>`".
 
     ```screen
     ncn-m001# git log --topo-order refs/remotes/origin/integration | less
     ```
 
-    Then, use `<OLD-RELEASE>` to fill the following:
+    Then use `<OLD-RELEASE>` to fill the following:
 
     ```screen
     ncn-m001# OLD_RELEASE=<OLD-RELEASE>
@@ -58,7 +56,7 @@ At this point, some workflow decisions must be made. These decisions depend on r
     ncn-m001# OLD_IMPORT_BRANCH_REF=refs/remotes/origin/cray/slingshot-host-software/${OLD_RELEASE}
     ```
 
-  - Finally, create the new integration branch and bring in content from the relevant previous integration branch.
+  - Finally, create the new integration branch and bring in content from the relevant previous integration branch:
 
     ```screen
     ncn-m001# git branch --no-track ${BRANCH} ${OLD_BRANCH_REF}
@@ -72,14 +70,11 @@ At this point, some workflow decisions must be made. These decisions depend on r
 
 ## Apply customizations
 
-Apply any customizations and modifications to the Ansible configuration, if required.
-These customizations should never be made to the base release branch.
+Apply any customizations and modifications to the Ansible configuration, if required. These customizations should never be made to the base release branch.
 
-It is **highly recommended** to set specific variables for node groups.
-This can be done through `group_vars`, or other mechanisms for setting variables in Ansible.
-Defaults are provided for all variables.
+It is **highly recommended** to set specific variables for node groups. This can be done through `group_vars`, or other mechanisms for setting variables in Ansible. Defaults are provided for all variables.
 
-**_If there are any modifications, then commit the changes and push the changes to the integration branch of the SHS repository in VCS._**
+**_If there are any modifications, commit the changes and push the changes to the integration branch of the SHS repository in VCS._**
 
 ```screen
 ncn-m001# git add <files to be committed>
@@ -89,8 +84,7 @@ ncn-m001# git push origin ${BRANCH}
 
 ## Identify commit hash
 
-Identify the commit hash for this branch and store it for later use.
-This will be used when creating the CFS configuration layer.
+Identify the commit hash for this branch and store it for later use. This will be used when creating the CFS configuration layer.
 
 ```screen
 ncn-m001# export SHS_CONFIG_COMMIT_HASH=$(git rev-parse --verify HEAD)
@@ -98,17 +92,13 @@ ncn-m001# export SHS_CONFIG_COMMIT_HASH=$(git rev-parse --verify HEAD)
 
 ## Configuration data defined
 
-SHS configuration data is now defined in the appropriate integration branch of the slingshot-host-software-config-management repository in VCS.
-It will be used when performing the operations described in the following sections.
+SHS configuration data is now defined in the appropriate integration branch of the slingshot-host-software-config-management repository in VCS. It will be used when performing the operations described in the following sections.
 
 ## Recommendations
 
-SHS ships a single configuration for all releases, and this may result in default values that are not usable for the installed release.
-Defaults are based on the primary development platform at the time of release, so these values are subject to change over time.
+SHS ships a single configuration for all releases, and this may result in default values that are not usable for the installed release. Defaults are based on the primary development platform at the time of release, so these values are subject to change over time.
 
-It is highly recommended to set the following variables in the playbook, a group var, or some Ansible play.
-SHS playbooks are written to accept any externally defined variables over the defaults provided with the CFS configuration.
-This makes the playbook highly configurable and adaptable to other environments.
+It is highly recommended to set the following variables in the playbook, a group var, or some Ansible play. SHS playbooks are written to accept any externally defined variables over the defaults provided with the CFS configuration. This makes the playbook highly configurable and adaptable to other environments.
 
 The following variables **must** be defined:
 
@@ -118,10 +108,10 @@ The following variables **must** be defined:
 
 Failure to define any of the three variables above may result in install, upgrade, or image build failures due to missing or invalid RPMs for the target node or image type.
 
-If group variable files are used, then a file must be defined for each target node type. Three groups of nodes are supported
+If group variable files are used, then a file must be defined for each target node type. Three groups of nodes are supported:
 
-| Node Type          | Product | Target Kernel Distribution                           | Group Variable File Name      |
-| ------------------ | ------- | ---------------------------------------------------- | ----------------------------- |
+| Node Type          | Product | Target Kernel Distribution                      | Group Variable File Name      |
+| ------------------ | ------- | ----------------------------------------------- | ----------------------------- |
 | Compute            | COS     | COS (see COS installation for target OS kernel) | Compute/default.yml           |
 | User Access/Login  | UAN     | COS (see COS installation for target OS kernel) | Application/default.yml       |
 | Non-compute Worker | CSM     | CSM (see CSM installation for target OS kernel) | Management_Worker/default.yml |
@@ -153,5 +143,4 @@ shs_target_distro: "sle15-sp3"
 shs_target_platform: "csm-1.3.0"
 ```
 
-These variables can be defined in multiple ways according to customer or administrator requirements.
-If they are left undefined, they will be defined by CFS plays using defaults provided in `ansible/roles/setup/defaults/main.yml`, and set by `roles/setup/tasks.yml`.
+These variables can be defined in multiple ways according to customer or administrator requirements. If they are left undefined, they will be defined by CFS plays using defaults provided in `ansible/roles/setup/defaults/main.yml`, and set by `roles/setup/tasks.yml`.

@@ -1,4 +1,3 @@
-
 # Security Issues Resolved
 
-<br>N/A<br>
+N/A

@@ -1,20 +1,20 @@
-# Kernel Severity:  WARNING (4)
+# Kernel Severity: WARNING (4)
 
 ## Errors, Events, and Alerts
 
-* ASIC
-  * EC_BADCON_NS
-  * EC_BADCON_S
-  * EC_COR
-* SBL
-  * SBL_ASYNC_ALERT_LINK_DOWN
-  * CXI_EVENT_LINK_DOWN
-  * CXI_EVENT_LINK_UP
-* uC
-  * ATT1_QSFP_INSERT
-  * ATT1_QSFP_REMOVE
-  * ATT1_SENSOR_ALERT - Warning
-  * ATT1_SENSOR_ALERT - Critical
+- ASIC
+  - EC_BADCON_NS
+  - EC_BADCON_S
+  - EC_COR
+- SBL
+  - SBL_ASYNC_ALERT_LINK_DOWN
+  - CXI_EVENT_LINK_DOWN
+  - CXI_EVENT_LINK_UP
+- uC
+  - ATT1_QSFP_INSERT
+  - ATT1_QSFP_REMOVE
+  - ATT1_SENSOR_ALERT - Warning
+  - ATT1_SENSOR_ALERT - Critical
 
 ## 200Gbps NIC State
 

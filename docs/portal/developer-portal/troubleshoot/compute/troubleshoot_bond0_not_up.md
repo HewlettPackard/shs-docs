@@ -1,4 +1,3 @@
-
 # Troubleshoot Bond0 interface on FMN
 
 On some systems, a system may require that they bond their 1G interfaces for redundancy and/or better performance.
@@ -80,7 +79,6 @@ BONDING_OPTS='mode=802.3ad xmit_hash_policy=layer2+3 miimon=100'
        valid_lft forever preferred_lft forever
 ```
 
-
 ```screen
 # dmesg | grep -i bond
 [   13.627090] Ethernet Channel Bonding Driver: v3.7.1 (April 27, 2011)
@@ -99,7 +97,6 @@ BONDING_OPTS='mode=802.3ad xmit_hash_policy=layer2+3 miimon=100'
 [14154.247443] bond0: option ad_actor_system: invalid value (00:00:00:00:00:00)
 [14154.255442] IPv6: ADDRCONF(NETDEV_UP): bond0: link is not ready
 ```
-
 
 ```screen
 # dmesg | grep enp
@@ -232,7 +229,7 @@ BONDING_OPTS='mode=802.3ad xmit_hash_policy=layer2+3 miimon=1000'
        valid_lft forever preferred_lft forever
 ```
 
-**Ping from Admin Node**
+## Ping from Admin Node
 
 ```screen
 <ADMIN>:~ # ping <hostname>
@@ -241,7 +238,7 @@ PING <hostname> (10.xxx.x.x) 56(84) bytes of data.
 64 bytes from <hostname> (10.xxx.x.x): icmp_seq=2 ttl=64 time=0.295 ms
 ```
 
-**SSH into FMN**
+## SSH into FMN
 
 ```screen
 <ADMIN>:~ # ssh root@<hostname>

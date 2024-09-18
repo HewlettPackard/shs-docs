@@ -1,7 +1,6 @@
 # CXI HealthCheck Overview
 
-The HPE Slingshot 200Gbps NIC software stack includes the `pycxi-utils` package, which contains a health and diagnostic utility that was developed using the `pycxi` library.
-This utility can be used to monitor the health and troubleshoot HPE Slingshot 200GB NIC issues.
+The HPE Slingshot 200Gbps NIC software stack includes the `pycxi-utils` package, which contains a health and diagnostic utility that was developed using the `pycxi` library. This utility can be used to monitor the health and troubleshoot HPE Slingshot 200GB NIC issues.
 
 ## `cxi_healthcheck`
 
@@ -21,15 +20,15 @@ It checks the following items:
 - Resource and retry handler leak detection
 - Successful ping from HPE Slingshot 200 GB NIC interface to an external host / interface (optional)
 - Good, corrected, and uncorrected codeword rate check
-- Firmware revision check (optional)  
+- Firmware revision check (optional)
 
-This utility is found in the `pycxi-utils` package and must be run as a privileged user.  
+This utility is found in the `pycxi-utils` package and must be run as a privileged user.
 
 ## Running the diagnostic
 
-Running cxi_healthcheck requires root privileges. It runs on compute nodes only.  The '--not_idle' option must be used when running `cxi_healthcheck` on a non-idle system where traffic is flowing. This helps to avoid false positives that may occur when a system is in a non-idle state.
+Running cxi_healthcheck requires root privileges. It runs on compute nodes only. The '--not_idle' option must be used when running `cxi_healthcheck` on a non-idle system where traffic is flowing. This helps to avoid false positives that may occur when a system is in a non-idle state.
 
-**Usage**
+_**Usage**_
 
 ```screen
 usage: cxi_healthcheck [-h] [--devices DEVICES] [--drain_precheck] [--drain]
@@ -37,13 +36,13 @@ usage: cxi_healthcheck [-h] [--devices DEVICES] [--drain_precheck] [--drain]
                        [--ping_host PING_HOST] [--ping_ifaces [PING_IFACES]]
                        [--services [SERVICES]] [--mac_addr [MAC_ADDR]]
                        [--fw [FW]] [-v] [--not_idle]
- 
+
 This script provides a number of checks to verify the health of a Cassini
 interface. It can be run as a standalone script or invoked via a wrapper
 script using Slurm's Prolog, Epilog, or HealthCheckProgram options. This
 script typically completes in a few seconds, but it may take up to ~60 seconds
 when additional time is required for the devices to be in a quiesced state.
- 
+
 optional arguments:
   -h, --help            show this help message and exit
   --devices DEVICES     Comma separated list of device numbers to check
@@ -115,7 +114,7 @@ Check: fw_version_check  Result: Skip
 In this example, the `cxi_healthcheck` utility runs with all checks enabled on interface cxi0:
 
 ```screen
-system:/ # cxi_healthcheck --device 0 --mac_addr --ping_ifaces 
+system:/ # cxi_healthcheck --device 0 --mac_addr --ping_ifaces
 --ping_host 10.150.0.99 --fw 1.5.41
 ---------- Health Check Summary ----------
 Check: pci_check  Result: Pass

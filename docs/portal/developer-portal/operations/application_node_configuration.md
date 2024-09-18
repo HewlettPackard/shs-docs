@@ -1,4 +1,3 @@
-
 # Application node configuration
 
 Follow these steps to add SHS content to User Access Node (UAN) images using CFS.

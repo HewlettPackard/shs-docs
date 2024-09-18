@@ -1,4 +1,3 @@
-
 # Install and Upgrade Framework (IUF)
 
 You can use IUF to automate installation or upgrading SHS for CSM release 1.4 or newer.

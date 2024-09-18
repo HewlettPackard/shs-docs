@@ -8,38 +8,38 @@ Tuning on compute node can be achieved in two ways. Follow the steps that work b
 
 1. Change the kernel module parameters.
 
-   Follow the [Soft-RoCE Configuration](softroce_on_HPE_Slingshot_200Gpbs_.md#configuration) section to use kernel module parameter change.
+   Follow the [Soft-RoCE Configuration](./softroce_on_HPE_Slingshot_200Gbps.md#configuration) section to use kernel module parameter change.
 
 2. Use `modprobe.d` to tune compute nodes for Soft-RoCE.
 
-   1. On the admin node, create a file with the following command with the following line.
+   a. On the admin node, create a file with the following command with the following line.
 
-      ```bash
+      ```screen
       vim ~/ko2iblnd.conf
       options ko2iblnd conns_per_peer=4 peer_credits=42 concurrent_sends=84 ntx=2048 credits=1024
       ```
 
-   2. Copy this file from admin node to all compute nodes as root.
+   b. Copy this file from admin node to all compute nodes as root.
 
-      ```bash
+      ```screen
       pdcp -w <compute_nodes_list> ~/ko2iblnd.conf /etc/modprobe.d/ko2iblnd.conf
       ```
 
-   3. Unload Lustre modules on all compute nodes.
+   c. Unload Lustre modules on all compute nodes.
 
-      ```bash
+      ```screen
       pdsh -w <compute_nodes_list> lustre_rmmod
       ```
 
-   4. Reload Lustre modules on all compute nodes.
+   d. Reload Lustre modules on all compute nodes.
 
-      ```bash
+      ```screen
       pdsh -w <compute_nodes_list> modprobe lustre
       ```
 
-   5. Check the ko2iblnd tunings are in place on all compute nodes.
+   e. Check the ko2iblnd tunings are in place on all compute nodes.
 
-      ```bash
+      ```screen
       pdsh -w <compute_nodes_list> 'egrep "" /sys/module/ko2iblnd/parameters/*' | dshbak -c
       ```
 
@@ -84,7 +84,7 @@ NOTE: These changes will not persist on file system upgrade and should be reappl
 
 2. `sudo` as root on the primary management server.
 
-   ```bash
+   ```screen
    [admin@hpelus1n00 ~]$ sudo su -
    ```
 

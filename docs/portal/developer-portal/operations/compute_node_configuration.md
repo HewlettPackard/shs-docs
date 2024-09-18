@@ -1,7 +1,6 @@
-
 # Compute node configuration
 
-This section provides detailed instructions on how to modify Compute CFS configurations to support SHS installation use cases on HPE Cray EX systems. 
+This section provides detailed instructions on how to modify Compute CFS configurations to support SHS installation use cases on HPE Cray EX systems.
 
 There are two options for modifying those configurations:
 
@@ -18,7 +17,7 @@ If `sat bootprep` is available, then follow the instructions in the "SAT Bootpre
 
 The "SAT Bootprep" section of the _HPE Cray EX System Admin Toolkit (SAT) Guide_ provides information on how to use `sat bootprep` to create CFS configurations, build images with IMS, and create BOS session templates. To include SHS software and configuration data in these operations, ensure that the `sat bootprep` input file includes content similar to that described in the following subsections.
 
-NOTE: The `sat bootprep` input file will contain content for additional HPE Cray EX software products and not only SHS. The following examples focus on SHS entries only.
+**Note:** The `sat bootprep` input file will contain content for additional HPE Cray EX software products and not only SHS. The following examples focus on SHS entries only.
 
 ## SHS configuration content
 
@@ -30,7 +29,7 @@ For the examples below,
 - Replace `<playbook>` with the SHS ansible playbook that should be used
 - Replace `ims_require_dkms: true` with `ims_require_dkms: false` if pre-built kernel binaries should be used instead of DKMS kernel packages. NOTE: This setting only exists with CSM 1.5 and later deployments.
 
-NOTE: `shs_mellanox_install.yml` should be used if the Mellanox NIC is installed. `shs_cassini_install.yml` should be used if the HPE Slingshot 200Gbps NIC is installed.
+**Note:** `shs_mellanox_install.yml` should be used if the Mellanox NIC is installed. `shs_cassini_install.yml` should be used if the HPE Slingshot 200Gbps NIC is installed.
 
 ```yaml
 configurations:
@@ -47,7 +46,7 @@ configurations:
   ...
 ```
 
-NOTE: The `shs-integration-<version>` layer should precede the COS layer in the `sat bootprep` input file.
+**Note:** The `shs-integration-<version>` layer should precede the COS layer in the `sat bootprep` input file.
 
 ## Legacy compute node CFS procedure
 

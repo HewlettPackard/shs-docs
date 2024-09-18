@@ -4,24 +4,18 @@ This section describes how to monitor the health of the 200Gbps NIC RDMA interfa
 
 ## Libcxi utilities
 
-The libcxi utility package contains a set of diagnostic tools that has been developed
-for troubleshooting 200Gbps NIC RMDA issues without using libfabric. These include a
-tool to display device information and status, a number of bandwidth and latency
-benchmarks, and a thermal diagnostic. For more information, see the CXI Diagnostics and Utilities Guide.
+The libcxi utility package contains a set of diagnostic tools that has been developed for troubleshooting 200Gbps NIC RMDA issues without using libfabric. These include a tool to display device information and status, a number of bandwidth and latency benchmarks, and a thermal diagnostic. For more information, see the CXI Diagnostics and Utilities Guide.
 
 ## Libfabric utilities
 
-The following subsections address the utilities provided with libfabric package to
-troubleshoot libfabric over 200Gbps NIC RDMA issues.
+The following subsections address the utilities provided with libfabric package to troubleshoot libfabric over 200Gbps NIC RDMA issues.
 
-* `fi_info`
-* `fi_pingpong`
+- `fi_info`
+- `fi_pingpong`
 
 **fi_info:**
 
-The `fi_info` utility is provided in the libfabric package. This tool queries
-available libfabric interfaces. The following output shows a node with one
-200Gbps NIC (CXI) interface available:
+The `fi_info` utility is provided in the libfabric package. This tool queries available libfabric interfaces. The following output shows a node with one 200Gbps NIC (CXI) interface available:
 
 ```screen
 # fi_info -p cxi
@@ -35,24 +29,18 @@ provider: cxi
             state: FI_LINK_UP
 ```
 
-The availability of a CXI interface indicates several key signs of health. An
-interface is not made available unless it meets the following criteria:
+The availability of a CXI interface indicates several key signs of health. An interface is not made available unless it meets the following criteria:
 
-* The interface retry handler is running
-* A matching L2 interface is available
-* The L1 interface has a temporary, locally administered, unicast address
-    assigned to it. This is presumed to be an AMA applied by the fabric manager.
-* The L1 link state is reported if verbosity is enabled. L1 link state reported 
-    by `fi_info` will match the state reported by the L2 device through the ip tool.
+- The interface retry handler is running
+- A matching L2 interface is available
+- The L1 interface has a temporary, locally administered, unicast address assigned to it. This is presumed to be an AMA applied by the fabric manager.
+- The L1 link state is reported if verbosity is enabled. L1 link state reported by `fi_info` will match the state reported by the L2 device through the ip tool.
 
-All these checks together make `fi_inf0` an excellent first tool to use to check
-the general health of 200Gbps NIC RDMA interfaces.
+All these checks together make `fi_inf0` an excellent first tool to use to check the general health of 200Gbps NIC RDMA interfaces.
 
 **fi_pingpong:**
 
-The `fi_pingpong` utility is also provided with libfabric. This is a
-basic client-server RDMA test. This is a quick and easy tool to use to validate
-end-to-end RDMA functionality.
+The `fi_pingpong` utility is also provided with libfabric. This is a basic client-server RDMA test. This is a quick and easy tool to use to validate end-to-end RDMA functionality.
 
 ```screen
 // start server:
@@ -75,11 +63,6 @@ bytes   #sent   #ack     total       time     MB/sec    usec/xfer   Mxfers/sec
 1m      10k     =10k     19g         0.99s  21236.47      49.38       0.02
 ```
 
-This tool can use any IP interface for bootstrapping the RDMA communication.
-The ping-pong communication pattern does not achieve the best bandwidth
-results, however, the 1M transfer size should achieve high enough bandwidth to
-make the link operate at the expected 200Gbps speed.
+This tool can use any IP interface for bootstrapping the RDMA communication. The ping-pong communication pattern does not achieve the best bandwidth results, however, the 1M transfer size should achieve high enough bandwidth to make the link operate at the expected 200Gbps speed.
 
-This tool can be used between any two endpoints on a fabric or looped back to
-the same device.
-
+This tool can be used between any two endpoints on a fabric or looped back to the same device.

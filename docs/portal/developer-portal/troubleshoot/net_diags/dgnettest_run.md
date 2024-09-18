@@ -1,33 +1,21 @@
-
 # `dgnettest_run.sh`
 
-While `dgnettest` can be run as a standalone test for troubleshooting specific
-issues, it must run multiple times to get a full picture of the
-state of a system. The script `dgnettest_run.sh` makes this easier by running the
-`dgnettest` in a number of configurations. There are four test configurations that
-`dgnettest_run.sh` runs.
+While `dgnettest` can be run as a standalone test for troubleshooting specific issues, it must run multiple times to get a full picture of the state of a system. The script `dgnettest_run.sh` makes this easier by running the `dgnettest` in a number of configurations. There are four test configurations that `dgnettest_run.sh` runs.
 
 **Loopback:** This configuration runs the loopback bandwidth test.
 
-**Latency:** This configuration runs the latency test. By default, it is
-excluded from the test list. It can be included by providing `dgnettest_run.sh`
-with test list arguments that include `latency`. Note that specifying the test
+**Latency:** This configuration runs the latency test. By default, it is excluded from the test list. It can be included by providing `dgnettest_run.sh` with test list arguments that include `latency`. Note that specifying the test
 list requires supplying a set size value with `-s` as well.
 
-**Switch:** This configuration runs the bisect bandwidth and all2all tests
-using the `dgnettest` option `-S` to display statistics. The set size is the
-number of edge ports on a switch, which is chosen based on the network class
-of the system, optionally specified with the `dgnettest_run.sh` option `-c`.
+**Switch:** This configuration runs the bisect bandwidth and all2all tests using the `dgnettest` option `-S` to display statistics. The set size is the number of edge ports on a switch, which is chosen based on the network class of the system, optionally specified with the `dgnettest_run.sh` option `-c`.
 
-**Group:** This configuration runs the bisect bandwidth and all2all tests
-using the `dgnettest` option `-S` to display statistics. The set size is 512,
-which is the number of nodes in a high-density cabinet.
+**Group:** This configuration runs the bisect bandwidth and all2all tests using the `dgnettest` option `-S` to display statistics. The set size is 512, which is the number of nodes in a high-density cabinet.
 
 ## Examples
 
 - Typical run on dual-NIC system:
 
-  ```bash
+  ```screen
   $ dgnettest_run.sh -n nid[000013-000028]
   Running loopback tests on NIC 0 over : nid[000013-000028]
   Using NIC 0
@@ -145,10 +133,9 @@ which is the number of nodes in a high-density cabinet.
 
 - Running with a subset of tests:
 
-  A list of tests to run can be passed to `dgnettest_run.sh`. When a test list is
-provided, the set-size must be specified with `-s` or the test list is ignored.
+  A list of tests to run can be passed to `dgnettest_run.sh`. When a test list is provided, the set-size must be specified with `-s` or the test list is ignored.
 
-  ```bash
+  ```screen
   $ dgnettest_run.sh -n nid[000022-000028] -s 16 latency bisect
   Running tests over : nid[000022-000028]
   nprocs=56 sets=2 maxbytes=131072 ppn=8 (Warning: no PMI set manually)
@@ -170,7 +157,7 @@ provided, the set-size must be specified with `-s` or the test list is ignored.
 
   The loopback test is always executed separately for each NIC number.
 
-  ```bash
+  ```screen
   $ dgnettest_run.sh -n nid[001128-001163] -C
   Running loopback tests on NIC 0 over : nid[001128-001163]
   nprocs=288 sets=1 maxbytes=131072 ppn=8 (Warning: no PMI set manually)
@@ -230,25 +217,21 @@ provided, the set-size must be specified with `-s` or the test list is ignored.
 
 - Custom NIC mapping:
 
-  By default, NICs are divided and mapped evenly across the NUMA nodes. You can
-override it with custom mapping of threads to NICs.
+  By default, NICs are divided and mapped evenly across the NUMA nodes. You can override it with custom mapping of threads to NICs.
 
-  If `dgnettest` is run directly, several MPICH environment variables
-must be set. The `dgnettest_run.sh` script does this automatically when a custom
-mapping is provided. For example, two NICs can be split so NIC 0 is mapped to
-the even ranks and NIC 1 is mapped to the odd ranks.
+  If `dgnettest` is run directly, several MPICH environment variables must be set. The `dgnettest_run.sh` script does this automatically when a custom mapping is provided. For example, two NICs can be split so NIC 0 is mapped to the even ranks and NIC 1 is mapped to the odd ranks.
 
-  ```bash
-  $ export MPICH_OFI_NUM_NICS=2
-  $ export MPICH_OFI_NIC_POLICY="USER"
-  $ export MPICH_OFI_NIC_MAPPING="0:0,2,4,6;1:1,3,5,7"
+  ```screen
+  export MPICH_OFI_NUM_NICS=2
+  export MPICH_OFI_NIC_POLICY="USER"
+  export MPICH_OFI_NIC_MAPPING="0:0,2,4,6;1:1,3,5,7"
   ```
 
   The mapping should be provided to `dgnettest` and `dgnettest_run.sh` with the `-N` option.
 
   **Note:** Results are not guaranteed to be valid when using a custom mapping. You must ensure to validate any errors with a re-run of `dgnettest` with the default settings.
 
-  ```bash
+  ```screen
   $ dgnettest_run.sh -n nid[000022-000028] -C -N "0:0,2,4,6;1:1,3,5,7"
   Running loopback tests on NIC 0 over : nid[000022-000028]
   Using NIC 0

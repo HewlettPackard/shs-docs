@@ -1,4 +1,3 @@
-
 # SHS CFS variable reference
 
 These Ansible variables are publicly exposed for use by customers or administrators with SHS CFS playbooks:
@@ -27,4 +26,3 @@ These Ansible variables are publicly exposed for use by customers or administrat
 - name: `shs_target_platform`
   type: `string`
   description: sets the target platform to use when defining repository URIs. Available choices are one of (`cos-2.4`, `cos-2.5`, `cos-2.6`, `csm-1.3`, `csm-1.4`, `csm-1.5`)
-

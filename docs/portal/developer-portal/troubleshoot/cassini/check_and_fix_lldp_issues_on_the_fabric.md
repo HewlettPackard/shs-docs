@@ -1,4 +1,3 @@
-
 # Check and fix LLDP issues on the fabric
 
 This procedure only works for ports that are up and connected to nodes that are online. Verify if the interface is up and doesn't have an IP address assigned.
@@ -60,14 +59,11 @@ x1001c4r1b0
 #
 ```
 
-Every x100x Series switch should be followed by 16 bit IP addresses.
-If you see any switch that are not followed by 16 bit IP addresses, the might have a problem.
-Complete the following steps to resolve the problem.
+Every x100x Series switch should be followed by 16 bit IP addresses. If you see any switch that are not followed by 16 bit IP addresses, the might have a problem. Complete the following steps to resolve the problem.
 
 ## Fix LLDP TLV settings on a switch
 
-To reconfigure a switch that has lost it's LLDP TLV settings, run the following
-script on the FMN, against that switch:
+To reconfigure a switch that has lost it's LLDP TLV settings, run the following script on the FMN, against that switch:
 
 ```screen
 # cd SWITCHES/

@@ -1,14 +1,13 @@
-
 # Legacy CSM install
 
 NOTE: These steps will be deprecated in a future release. Ensure the version of CSM is supported with the version of SHS before proceeding.
 
 Install SHS on CSM release 1.3 or prior.
-If the CSM version is 1.3 or earlier, use `cne-install` to upgrade SHS, or use the product installation script to install SHS. 
+If the CSM version is 1.3 or earlier, use `cne-install` to upgrade SHS, or use the product installation script to install SHS.
 
 The SHS distribution provides firmware, diagnostics, and the network software stack for hosts which communicate using the HPE Slingshot network.
 
-For upgrades, the manual steps or the Compute Node Environment (CNE) installer tool can be used. See [SHS upgrade with CNE installer](#./shs-upgrade-with-cne-installer) for more information on the `cne-install` method.
+For upgrades, the manual steps or the Compute Node Environment (CNE) installer tool can be used. See [SHS upgrade with CNE installer](#shs-upgrade-with-cne-installer)for more information on the `cne-install` method.
 
 ## Common requirements of SHS
 
@@ -27,7 +26,7 @@ All image and node targets must be clear of software with dependencies on the ne
 
 ## SHS upgrade with CNE installer
 
-The CNE installer (`cne-install`) tool can only be used to upgrade SHS in this release. `cne-install` performs all the manual steps shown in the [Install product stream](#./install-product-stream) and [Operational activities](../operations/operational_activities_csm.md#operational-activities) sections of the upgrade procedure.
+The CNE installer (`cne-install`) tool can only be used to upgrade SHS in this release. `cne-install` performs all the manual steps shown in the [Install product stream](#install-product-stream) and [Operational activities](../operations/operational_activities_csm.md#operational-activities) sections of the upgrade procedure.
 
 See the "Compute Node Environment (CNE) Installer" section of the [HPE Cray EX System Software Getting Started Guide (S-8000)](https://www.hpe.com/support/ex-S-8000) for more information about the tool.
 
@@ -129,4 +128,3 @@ See the "Compute Node Environment (CNE) Installer" section of the [HPE Cray EX S
    ```
 
 SHS now supports installation through HPE Cray EX System Software CFS. Proceed to the next section to install the software through HPE Cray EX System Software CFS. Otherwise, proceed to the [Legacy Install Procedure for non-CFS based installs](legacy_install_procedure_for_non_cfs_based_installs.md#legacy-install-procedure-for-non-cfs-based-installs) section.
-

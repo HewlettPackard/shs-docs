@@ -1,19 +1,17 @@
-
 # Perftest
 
-The perftest package is a collection of tests written over uverbs intended for use as a performance micro-benchmark.
-The tests may be used for tuning as well as for functional testing (https://community.mellanox.com/s/article/perftest-package).
+The \[[perftest package](https://community.mellanox.com/s/article/perftest-package)\] is a collection of tests written over uverbs intended for use as a performance micro-benchmark. The tests may be used for tuning as well as for functional testing.
 
 The perftest package contains a set of bandwidth and latency benchmark for RoCE:
 
-* `ib_send_bw`
-* `ib_send_lat`
-* `ib_write_bw`
-* `ib_write_lat`
-* `ib_read_bw`
-* `ib_read_lat`
-* `ib_atomic_bw`
-* `ib_atomic_lat`
+- `ib_send_bw`
+- `ib_send_lat`
+- `ib_write_bw`
+- `ib_write_lat`
+- `ib_read_bw`
+- `ib_read_lat`
+- `ib_atomic_bw`
+- `ib_atomic_lat`
 
 ## Enable perftest package
 
@@ -163,30 +161,24 @@ Option `R` can be used to validate rdma_cm
 
 ## Perftest results
 
-Successful execution of the tests with a bandwidth `~98 Gb/sec` implies that the HSN link
-between the client and server is functional.
+Successful execution of the tests with a bandwidth `~98 Gb/sec` implies that the HSN link between the client and server is functional.
 
-Failure would imply one of the following
+Failure would imply one of the following:
 
-* Ports are not configured properly
-* Edge ports are down
-* AMA is not configured on the HSN NICs or slingshot switches
-* HSN links between the nodes are down
+- Ports are not configured properly
+- Edge ports are down
+- AMA is not configured on the HSN NICs or slingshot switches
+- HSN links between the nodes are down
 
-
-These tests can be used to validate connection between Client and Storage nodes connected to Slingshot switch.
-These tests are initial low level tests which can be run before running other high level tests like
-OSU, MPI, DgNetTest.
+These tests can be used to validate connection between Client and Storage nodes connected to Slingshot switch. These tests are initial low level tests which can be run before running other high level tests like OSU, MPI, DgNetTest.
 
 ## Scaling perftest
 
-Perftest can be executed from UAN with access to compute nodes and with `pdsh` servers can be initiated
-on compute nodes.
-From one of the compute nodes , client connection can be initiated to the servers.
+Perftest can be executed from UAN with access to compute nodes and with `pdsh` servers can be initiated on compute nodes. From one of the compute nodes, client connection can be initiated to the servers.
 
 **Example**: Scaling perftest for a set of compute nodes
 
-```bash
+```screen
 # Initiate servers
 [UAN ~] pdsh -w <system_name>n[001-009]  ib_write_bw -i 1 -d mlx5_0 -D 5 -R  --report_gbit
 

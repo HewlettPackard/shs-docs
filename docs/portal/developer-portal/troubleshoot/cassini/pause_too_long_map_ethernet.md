@@ -1,17 +1,10 @@
-
 # Map Ethernet TX/RX queues to CPUs
 
-The following sub-sections outline how to map Ethernet TX and RX queues to
-CPUs.
+The following sub-sections outline how to map Ethernet TX and RX queues to CPUs.
 
 ## Generate Ethernet TX/RX queue EQ list
 
-Each Ethernet TX and RX queue are assigned to a unique event queue (EQ). The
-EQs are then optionally assigned to an IRQ.
-
-The EQ ID is assigned to which TX/RX queue can be retrieved through debugfs.
-The following provides an example of this for an Ethernet interface using CXI
-device cxi0.
+Each Ethernet TX and RX queue are assigned to a unique event queue (EQ). The EQs are then optionally assigned to an IRQ. The EQ ID is assigned to which TX/RX queue can be retrieved through debugfs. The following provides an example of this for an Ethernet interface using CXI device cxi0.
 
 ```screen
 # cat /sys/kernel/debug/cxi_eth/cxi0
@@ -153,20 +146,17 @@ ALL buckets for RX napi_schedule
       higher          0
 ```
 
-From the above, we get the following TX/RX queue to EQ ID mapping.
+From the above, we get the following TX/RX queue to EQ ID mapping:
 
-* RX Queue 0: EQ 3
-* PTP RX Queue 16: EQ 4
-* TX Queue 0: EQ 5
+- RX Queue 0: EQ 3
+- PTP RX Queue 16: EQ 4
+- TX Queue 0: EQ 5
 
-NOTE: The above example has an Ethernet interface configured with only one
-TX and RX queue.
+**Note:** The above example has an Ethernet interface configured with only one TX and RX queue.
 
 ## Map CXI EQs to IRQ name
 
-For each currently configured EQ, a per device EQ entry will be created in
-debugfs. The following is for CXI device cxi0 EQ 3 (i.e. `cxi-eth` cxi0 RX queue
-0).
+For each currently configured EQ, a per device EQ entry will be created in debugfs. The following is for CXI device cxi0 EQ 3 (i.e. `cxi-eth` cxi0 RX queue 0).
 
 ```screen
 # cat /sys/kernel/debug/cxi/cxi0/eq/3
@@ -177,20 +167,17 @@ slots: 33344
 flags: 2
 ```
 
-Looking at the `event MSI vector` field, EQ 3 is using the Linux IRQ with the
-name `cxi0_comp0`.
+Looking at the `event MSI vector` field, EQ 3 is using the Linux IRQ with the name `cxi0_comp0`.
 
-Repeating this process for the other EQs, we get the following map.
+Repeating this process for the other EQs, we get the following map:
 
-* RX Queue 0: cxi0_comp0
-* PTP RX Queue 16: cxi0_comp2
-* TX Queue 0: cxi0_comp128
+- RX Queue 0: cxi0_comp0
+- PTP RX Queue 16: cxi0_comp2
+- TX Queue 0: cxi0_comp128
 
 ## Map IRQ name to IRQ number
 
-The IRQ name collected in the previous step will be reported as a directory in
-`/proc/irq/<num>/<name>`. A walk of `/proc/irq/` is required to map IRQ name to
-IRQ number. For example:
+The IRQ name collected in the previous step will be reported as a directory in `/proc/irq/<num>/<name>`. A walk of `/proc/irq/` is required to map IRQ name to IRQ number. For example:
 
 ```screen
 # find /proc/irq/ -name cxi0_comp0
@@ -199,16 +186,15 @@ IRQ number. For example:
 
 `cxi0_comp0` maps to IRQ 112.
 
-Repeating this process for the other IRQ names, we get the following map.
+Repeating this process for the other IRQ names, we get the following map:
 
-* RX Queue 0: IRQ 112
-* PTP RX Queue 16: IRQ 114
-* TX Queue 0: IRQ 240
+- RX Queue 0: IRQ 112
+- PTP RX Queue 16: IRQ 114
+- TX Queue 0: IRQ 240
 
 ## Map IRQ number to effective affinity CPU
 
-Once the IRQ number has been found, the effective affinity can be found in
-`/proc/irq/<num>/effective_affinity_list`. The following is an example of this.
+Once the IRQ number has been found, the effective affinity can be found in `/proc/irq/<num>/effective_affinity_list`. The following is an example of this:
 
 ```screen
 # cat /proc/irq/112/effective_affinity_list
@@ -217,11 +203,10 @@ Once the IRQ number has been found, the effective affinity can be found in
 
 IRQ 112 interrupts will be occurring on CPU 32.
 
-Repeating this process for the other IRQ numbers, we get the following map.
+Repeating this process for the other IRQ numbers, we get the following map:
 
-* RX Queue 0: CPU 32
-* PTP RX Queue 16: CPU 34
-* TX Queue 0: IRQ CPU 32
+- RX Queue 0: CPU 32
+- PTP RX Queue 16: CPU 34
+- TX Queue 0: IRQ CPU 32
 
-At a minimum, kernel services should avoid CPUs used by RX queues. In this
-example, it is only CPU 32.
+At a minimum, kernel services should avoid CPUs used by RX queues. In this example, it is only CPU 32.

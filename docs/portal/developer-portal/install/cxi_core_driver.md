@@ -1,4 +1,3 @@
-
 # CXI core driver
 
 ## GPU Direct RDMA overview
@@ -13,7 +12,7 @@ GPU Direct RDMA allows a PCIe device (the HPE Slingshot 200GbE NIC in this case)
 
 ## Special considerations
 
-### NVIDIA driver
+___NVIDIA driver___
 
 The NVIDIA driver contains a feature called Persistent Memory. It does not release pinned pages when device memory is freed unless explicitly directed by the NIC driver or upon job completion.
 

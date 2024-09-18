@@ -1,14 +1,14 @@
 # HSN performance benchmarking
 
-The performance benchmarking exercise for HSN fabric is an exercise to verify that the HSN is able to deliver the required performance level so that HPC Applications can run with the desired performance and produce the expected outcome
+The performance benchmarking exercise for HSN fabric is an exercise to verify that the HSN is able to deliver the required performance level so that HPC Applications can run with the desired performance and produce the expected outcome.
 
-It is required to progress in a systematic and hierarchical way to validate the HSN fabric health prior to performance benchmarking. Here is a pre-flight checklist that can be used towards the same
+It is required to progress in a systematic and hierarchical way to validate the HSN fabric health prior to performance benchmarking. A pre-flight checklist that can be used towards the same is provided below:
 
-* All Edge links are up and able to achieve line rate with the loopback tests. HSN (hsn_traffic roce_perf_check_loopback command in STT can be used)
-* All Nodes are able to successfully ping each other through the HSN (how hsn_traffic ping-all-to-all can be used to validate the same)
-* All Nodes are rightly sized for the ARP Table Cache
-* All the Local and Global Fabric Links are up and healthy.
-* Health of Compute node HSN NICs has been verified. `fmn-update-compute-hsn-health` command can be used to verify HSN NICs of all compute nodes. This command will verify the following aspects:
+- All Edge links are up and able to achieve line rate with the loopback tests. HSN (hsn_traffic roce_perf_check_loopback command in STT can be used)
+- All Nodes are able to successfully ping each other through the HSN (how hsn_traffic ping-all-to-all can be used to validate the same)
+- All Nodes are rightly sized for the ARP Table Cache
+- All the Local and Global Fabric Links are up and healthy.
+- Health of Compute node HSN NICs has been verified. `fmn-update-compute-hsn-health` command can be used to verify HSN NICs of all compute nodes. This command will verify the following aspects:
 
   1. Compute node has valid lldp configuration
   2. HSN NIC has Algorithmic MAC (AMA) configured as the MAC address
@@ -20,7 +20,7 @@ It is required to progress in a systematic and hierarchical way to validate the 
 
 ## Edge performance (test between compute Nodes connected the same switch)
 
-The following is an example test that provides a sample OSU one-side Performance results between two nodes with HSN Fabric in same group and connected to the same switch. The actual results expected results.
+The following is an example test that provides sample OSU one-side Performance results between two nodes with HSN Fabric in the same group and connected to the same switch. The actual results expected results.
 
 ```screen
 mpirun --host <system_name>n001,<system_name>n003 ./one-sided/osu_get_bw
@@ -55,9 +55,9 @@ mpirun --host <system_name>n001,<system_name>n003 ./one-sided/osu_get_bw
 
 ## Local performance test (tests between nodes in the same group)
 
-The following is an example test that provides a sample OSU pt2pt mbw  performance results between two nodes with HSN Fabric in same group and connected to the same switch. The actual results expected results. In this Particular topology there are 2 Switches in the Groups and 2 groups in this topology. The tests  verifies the health of the local links and performance between the nodes within the group
+The following are example tests providing sample OSU pt2pt mbw performance results between two nodes with HSN Fabric in the same group and connected to the same switch. The actual results expected results. In this particular topology there are two switches in the groups and two groups in this topology. The tests verifies the health of the local links and performance between the nodes within the group.
 
-**Group 1**
+_**Group 1**_
 
 ```screen
 mpirun -npernode 20 -np 1240  --hostfile <system_name>_group_1  ./pt2pt/osu_mbw_mr
@@ -92,7 +92,7 @@ mpirun -npernode 20 -np 1240  --hostfile <system_name>_group_1  ./pt2pt/osu_mbw_
 Total Number of Node pairs 31
 Peak BW/Node : 12195 MB/s
 
-**Group 2**
+_**Group 2**_
 
 ```screen
 # OSU MPI Multiple Bandwidth / Message Rate Test v5.7
@@ -128,7 +128,7 @@ Peak BW/Node : 12081 MB/
 
 ## Global performance test (tests between nodes in the different group)
 
-The following is an example test that provides a sample OSU pt2pt mbw  performance results between two nodes with HSN Fabric in same group and connected to the same switch. The actual results expected results. In this Particular topology there are 2 Switches in the Groups and 2 groups in this topology. The tests  verifies the health of the local links, global links and performance between the nodes in different group
+The following is an example test that provides a sample OSU pt2pt mbw performance results between two nodes with HSN Fabric in the same group and connected to the same switch. The actual results expected results. In this particular topology there are two switches in the groups and two groups in this topology.
 
 ```screen
 # OSU MPI Multiple Bandwidth / Message Rate Test v5.7
@@ -164,8 +164,7 @@ Performance per Node (Global BW): 9271 MB/s
 
 ## Running MPI tests in a Slurm Workload Manager environment
 
-Admin can automate the tests (osu) that can be run on all nids connected to a switch (edge) or at
-local level or at global level. This automation enables efficient performance benchmarking and also to quickly isolate and rectify performance related problems in
+Admins can automate OSU tests that can be run on all nids connected to a switch (edge) or at local level or at global level. This automation enables efficient performance benchmarking and also quickly isolates and rectifies performance-related problems in the
 fabric.
 
 1. Create a host file with compute nodes connected to switch.
@@ -200,8 +199,7 @@ fabric.
 
 2. Execute MPI benchmark programs using Slurm workload manager.
 
-   The host file produced in step 1 can be used to run MPI integrating with slurm workload manager
-   to identify a set of free nodes and allocating them and trigger the MPI tests
+   Use the input of the host file produced in Step 1 to identify a set of free nodes, allocate them, and trigger the MPI tests.
 
    ```screen
    #!/bin/bash
@@ -262,7 +260,7 @@ fabric.
 
 ## MPI example programs (tests between nodes)
 
-The following is a sample program that can be used to run MPI tests between two nodes.
+The following is a sample program that can be used to run MPI tests between two nodes:
 
 ```screen
 /*******************************************************************
@@ -521,21 +519,21 @@ mpicc  bisec_bw.c -o bisec_bw
 
 ## Fabric diagnostics during performance benchmarks
 
-Some of the problems that can impact the performance of OSU pt2pt performance include at Local and Global Level
+Some of the problems that can impact the performance of OSU pt2pt performance (at both local and global levels) include:
 
-* Incorrect AMA
-* ARP Issue
-* Local Links Flapping
-* Global Link Flapping
-* Hardware Cable Issues
-* Global Bundle Sizing (Pairs of cables used for Connectivity between groups)
-* Congestion in the network
+- Incorrect AMA
+- ARP issues
+- Local links flapping
+- Global link flapping
+- Hardware cable issues
+- Global bundle sizing (pairs of cables used for connectivity between groups)
+- Congestion in the network
 
-It is recommended to use Slingshot Topology Tool (STT) and refer to the sections that describes on analyzing link flaps and Cable Hardware problems.
+It is recommended to use the Slingshot Topology Tool (STT) and refer to the sections describing link flap analysis and cable hardware problems.
 
-The following commands are recommended for analyzing the performance variations:
+The following commands are recommended for analyzing performance variations:
 
-* `show switches`
-* `show switch ports`
-* `show fabric`
-* `show flaps`
+- `show switches`
+- `show switch ports`
+- `show fabric`
+- `show flaps`

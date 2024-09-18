@@ -1,4 +1,3 @@
-
 # Install compute nodes
 
 Perform this procedure to install SHS on compute nodes. This procedure can be used for systems that use either Mellanox NICs or HPE Slingshot 200Gpbs NICs.
@@ -32,7 +31,7 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
 
    - For upgrades: move the MOFED items directly to the existing `/opt/clmgr/repos/other/mellanox` directory.
 
-      NOTE: If the customer requires UCX on the system, then install the HPC-X solution using the recommended version provided by the "Mellanox External Vendor Software" section of the _HPE Slingshot Host Software Release Notes (S-9010)_. Ensure that the HPC-X tarball matches the installed version of Mellanox OFED. In the HPC-x package, installation instructions are provided by Mellanox.
+     **Note:** If the customer requires UCX on the system, then install the HPC-X solution using the recommended version provided by the "Mellanox External Vendor Software" section of the _HPE Slingshot Host Software Release Notes (S-9010)_. Ensure that the HPC-X tarball matches the installed version of Mellanox OFED. In the HPC-x package, installation instructions are provided by Mellanox.
 
 ## Install via package managers (recommended)
 
@@ -85,35 +84,35 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
    a. If the host or host OS image is a compute node, install the compute-required RPMs:
    NOTE: For COS 2.x images, use the HPE Slingshot version as provided/specified in the COS image recipe.
 
-    - For installs, run:
+   - For installs, run:
 
-      ```screen
-      root@host: ~# zypper install slingshot-network-config slingshot-utils libfabric
-      ... <output from zypper>
-      ```
+   ```screen
+   root@host: ~# zypper install slingshot-network-config slingshot-utils libfabric
+   ... <output from zypper>
+   ```
 
-    - For upgrades, replace the `zypper install` command with `zypper upgrade`:
+   - For upgrades, replace the `zypper install` command with `zypper upgrade`:
 
-      ```screen
-      root@host: ~# zypper upgrade slingshot-network-config slingshot-utils libfabric
-      ... <output from zypper>
-      ```
+   ```screen
+   root@host: ~# zypper upgrade slingshot-network-config slingshot-utils libfabric
+   ... <output from zypper>
+   ```
 
    b. If the host or host OS image is a user access node, install the user access node-required RPMs:
 
-     - For installs, run:
+   - For installs, run:
 
-       ```screen
-       root@host: ~# zypper install libfabric-devel
-       ... <output from zypper>
-       ```
+     ```screen
+     root@host: ~# zypper install libfabric-devel
+     ... <output from zypper>
+     ```
 
-     - For upgrades, replace the `zypper install` command with `zypper upgrade`:
+   - For upgrades, replace the `zypper install` command with `zypper upgrade`:
 
-       ```screen
-       root@host: ~# zypper upgrade libfabric-devel
-       ... <output from zypper>
-       ```
+     ```screen
+     root@host: ~# zypper upgrade libfabric-devel
+     ... <output from zypper>
+     ```
 
    c. If the host is a compute node, and a user access node, perform steps 1 and 2, otherwise skip this step.
 
@@ -129,7 +128,7 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
 
    As an example, assume the following RPMs were downloaded.
 
-   ```bash
+   ```screen
    libfabric-<version>_<hash>.x86_64.rpm
    libfabric-devel-<version>_<hash>.x86_64.rpm
    slingshot-network-config-<version>_<hash>.x86_64.rpm
@@ -139,7 +138,7 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
 
    Additionally, for the sake of the example, assume that the RPMs were downloaded to the following location on the host, or within the host OS image:
 
-   ```bash
+   ```screen
    root@host> ls /share/slingshot-rpms
    libfabric-<version>_<hash>.x86_64.rpm
    libfabric-devel-<version>_<hash>.x86_64.rpm
@@ -150,7 +149,7 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
 
    Then as an example, install the RPMs using the following example commands:
 
-   ```bash
+   ```screen
    root@host> rpm -ivf /share/slingshot-rpms/slingshot-network-config-<version>_<hash>.x86_64.rpm
    root@host> rpm -ivf /share/slingshot-rpms/slingshot-utils-<version>_<hash>.x86_64.rpm
    root@host> rpm -ivf /share/slingshot-rpms/shs-version-<version>.noarch.rpm

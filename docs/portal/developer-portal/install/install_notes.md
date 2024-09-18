@@ -1,4 +1,3 @@
-
 # Notes
 
 Perform these steps to build compute and UAN/UAI images prior to boot with the updated HPE Slingshot components.
@@ -21,4 +20,3 @@ Perform these steps to build compute and UAN/UAI images prior to boot with the u
 At this point, the SHS product has been installed.
 
 If you are installing multiple products, return to the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) for next steps.
-
