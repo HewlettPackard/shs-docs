@@ -54,13 +54,13 @@ Follow these steps build and publish SHS documentation to HPESC.
 
 1. Navigate to the hpc-shs-docs repository.
 
-   ```
+   ```screen
    cd /path/to/hpc-shs-docs
    ```
 
 2. Checkout the desired release branch.
 
-   ```
+   ```screen
    git checkout release/shs-<version>
    ```
 
@@ -68,19 +68,19 @@ Follow these steps build and publish SHS documentation to HPESC.
 
    Skip this step if `zip` is install already.
 
-   ```
+   ```screen
    sudo apt install zip
    ```
 
 4. Navigate to the `/docs/portal/developer-portal` directory.
 
-   ```
+   ```screen
    cd docs/portal/developer-portal
    ```
 
 5. Build the HPESC bundle.
 
-   ```
+   ```screen
    make hpesc_build
    ```
 
