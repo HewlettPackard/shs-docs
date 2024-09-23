@@ -32,11 +32,6 @@
         <topicref href="install/post_install_operational_tasks.md" format="mdita">
             <topicref href="operations/configure_qos_shs.md" format="mdita"/>
         </topicref>
-        <topicref href="install/install_shs_on_csm_13_or_prior.md" format="mdita">
-            <topicref href="install/legacy_install_procedure_for_non_cfs_based_installs.md" format="mdita">
-                <topicref href="install/install_notes.md" format="mdita"/>
-            </topicref>
-        </topicref>
     </topichead>
     <topichead>
         <topicmeta>
