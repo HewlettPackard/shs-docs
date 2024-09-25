@@ -34,10 +34,10 @@ Failed to get initiator ACK TRIGGERED_OP event: No message of desired type
 ```
 
 ```screen
-[ 1451.997298] cxi_core 0000:21:00.0: HNI error: pfc_fifo_oflw (40)
-[ 1452.002035] cxi_core 0000:21:00.0:   pfc_fifo_oflw_cntr: 218
-[ 1452.005821] cxi_core 0000:21:00.0: IXE error: pbuf_rd_err (48)
-[ 1452.009456] cxi_core 0000:21:00.0:   pbuf_rd_errors: 105
+[ 1451.997298] cxi_ss1 0000:21:00.0: HNI error: pfc_fifo_oflw (40)
+[ 1452.002035] cxi_ss1 0000:21:00.0:   pfc_fifo_oflw_cntr: 218
+[ 1452.005821] cxi_ss1 0000:21:00.0: IXE error: pbuf_rd_err (48)
+[ 1452.009456] cxi_ss1 0000:21:00.0:   pbuf_rd_errors: 105
 ```
 
 These errors indicate that the link is not up or something is incorrectly configured.

@@ -92,10 +92,10 @@ VLAN tagged Ethernet frames (IEEE 802.1Q) have a PCP field which both 200Gbps HP
 The following error message on the host can be reported if the 200Gbps NIC and HPE Slingshot switch have misconfigured PCP values:
 
 ```screen
-[ 6283.556807] cxi_core 0000:c1:00.0: HNI error: pfc_fifo_oflw (46) (was first error at 1686:713898606)
-[ 6283.565937] cxi_core 0000:c1:00.0:   pfc_fifo_oflw_cntr: 383
-[ 6283.571602] cxi_core 0000:c1:00.0: IXE error: pbuf_rd_err (48) (was first error at 1686:713903420)
-[ 6283.580551] cxi_core 0000:c1:00.0:   pbuf_rd_errors: 219
+[ 6283.556807] cxi_ss1 0000:c1:00.0: HNI error: pfc_fifo_oflw (46) (was first error at 1686:713898606)
+[ 6283.565937] cxi_ss1 0000:c1:00.0:   pfc_fifo_oflw_cntr: 383
+[ 6283.571602] cxi_ss1 0000:c1:00.0: IXE error: pbuf_rd_err (48) (was first error at 1686:713903420)
+[ 6283.580551] cxi_ss1 0000:c1:00.0:   pbuf_rd_errors: 219
 ```
 
 **Note:** The above errors, specifically `pfc_fifo_oflw` errors, can also occur if the Fabric Manager is not configured with 200Gbps NIC QoS settings.

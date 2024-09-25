@@ -22,7 +22,7 @@ If the retry handler failed to start, verify that the corresponding `/dev/cxi<n>
 ```
 
 ```screen
-# journalctl | grep cxi_core
+# journalctl | grep cxi_ss1
 or
 # dmesg -T |grep cxi
 ```

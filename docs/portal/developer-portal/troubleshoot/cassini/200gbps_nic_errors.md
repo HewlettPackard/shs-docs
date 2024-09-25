@@ -16,8 +16,8 @@ An example of an error reported to the kernel console is shown below.
 ```screen
 # dmesg -T |grep cxi
 ...
-[Fri Feb 19 16:04:20 2021] cxi_core 0000:21:00.0: EE error: eq_rsrvn_uflw (38)
-[Fri Feb 19 16:04:20 2021] cxi_core 0000:21:00.0:   C_EE_ERR_INFO_RSRVN_UFLW 1000000001430100
-[Fri Feb 19 16:04:20 2021] cxi_core 0000:21:00.0:   eq_rsrvn_uflw_err_cntr: 12
+[Fri Feb 19 16:04:20 2021] cxi_ss1 0000:21:00.0: EE error: eq_rsrvn_uflw (38)
+[Fri Feb 19 16:04:20 2021] cxi_ss1 0000:21:00.0:   C_EE_ERR_INFO_RSRVN_UFLW 1000000001430100
+[Fri Feb 19 16:04:20 2021] cxi_ss1 0000:21:00.0:   eq_rsrvn_uflw_err_cntr: 12
 ...
 ```
