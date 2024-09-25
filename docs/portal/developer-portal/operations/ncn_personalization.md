@@ -152,7 +152,7 @@ The following steps describe how to use the NCN personalization CFS configuratio
    ```screen
    ncn-w001# lsmod | grep -P 'mlx|cxi'
    ncn-w001# modinfo mlx5_core  # if the Mellanox software stack is installed
-   ncn-w001# modinfo cxi_core   # if the HPE Slingshot 200Gbps NIC software stack is installed
+   ncn-w001# modinfo cxi_ss1   # if the HPE Slingshot 200Gbps NIC software stack is installed
    ncn-w001# slingshot-diag     # if performing an upgrade with a live Slingshot fabric
    ```
 

@@ -3,7 +3,7 @@
 If a 200Gbps NIC firmware update fails, a failure code is printed in the kernel log:
 
 ```screen
-[55777.130299] cxi_core 0000:21:00.0: cxi0[hsn0] Firmware flashing failed: 0x84
+[55777.130299] cxi_ss1 0000:21:00.0: cxi0[hsn0] Firmware flashing failed: 0x84
 ```
 
 The error codes and their meaning are available in the following table:

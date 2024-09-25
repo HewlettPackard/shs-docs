@@ -4,7 +4,7 @@ Each HPE Slingshot 200Gbps NIC must have a Retry Handler daemon running and they
 
 **Note:** These instructions refer to `cxi0` in the example.
 
-If the retry handler crashes for some reason, the node must be rebooted. Due to the crash, an unpredictable state (missing traffic that requires retry) may be reached, which can result in putting the fabric into a bad state. In addition, restarting the retry handler with any amount of traffic flowing, regardless if it would generate a PCT event, is not a safe operation. This must be avoided. If you want to deploy a new retry handler configuration, reload `cxi-core` or reboot the node.
+If the retry handler crashes for some reason, the node must be rebooted. Due to the crash, an unpredictable state (missing traffic that requires retry) may be reached, which can result in putting the fabric into a bad state. In addition, restarting the retry handler with any amount of traffic flowing, regardless if it would generate a PCT event, is not a safe operation. This must be avoided. If you want to deploy a new retry handler configuration, reload `cxi-ss1` or reboot the node.
 
 `systemd` and `udev` must automatically handle starting the retry handler, but in case of issues, verify handlers:
 
@@ -22,7 +22,7 @@ If the retry handler failed to start, verify that the corresponding `/dev/cxi<n>
 ```
 
 ```screen
-# journalctl | grep cxi_core
+# journalctl | grep cxi_ss1
 or
 # dmesg -T |grep cxi
 ```

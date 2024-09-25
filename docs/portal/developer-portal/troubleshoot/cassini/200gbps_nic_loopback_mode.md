@@ -14,6 +14,6 @@ To exit loopback mode, either restart the node, or reload the 200Gbps NIC driver
 
 ```screen
 systemctl stop 'cxi_rh@cxi*.service'
-modprobe -r -a cxi-eth cxi-user cxi-core sbl
-modprobe -a sbl cxi-core cxi-user cxi-eth
+modprobe -r -a cxi-eth cxi-user cxi-ss1 sbl
+modprobe -a sbl cxi-ss1 cxi-user cxi-eth
 ```

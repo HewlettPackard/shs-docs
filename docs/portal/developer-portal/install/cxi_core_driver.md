@@ -16,8 +16,8 @@ ___NVIDIA driver___
 
 The NVIDIA driver contains a feature called Persistent Memory. It does not release pinned pages when device memory is freed unless explicitly directed by the NIC driver or upon job completion.
 
-A cxi-core parameter `nv_p2p_persistent` is used to enable Persistent Memory. The default is enabled.
+A cxi-ss1 parameter `nv_p2p_persistent` is used to enable Persistent Memory. The default is enabled.
 
-The `nv_p2p_persistent` parameter can be disabled by setting it to 0 in the `modprobe cxi-core` command.
+The `nv_p2p_persistent` parameter can be disabled by setting it to 0 in the `modprobe cxi-ss1` command.
 
-`modprobe cxi-core nv_p2p_persistent=0`
+`modprobe cxi-ss1 nv_p2p_persistent=0`

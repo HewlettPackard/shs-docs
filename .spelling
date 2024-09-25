@@ -59,7 +59,7 @@ cxi-eth
 cxi-nid0
 cxi_atomic_bw
 cxi_atomic_lat
-cxi_core
+cxi_ss1
 cxi_gpu_bw_loopback
 cxi_heatsink_check
 cxi_healthcheck
