@@ -29,4 +29,15 @@
         <topicref href="performance/TCP_performance_tuning.md" format="mdita"/>
     </topichead>
     <topicref href="operations/configure_qos_shs.md" format="mdita"/>
+    <topichead>
+        <topicmeta>
+             <navtitle>Cassini Retry Handler (cxi_rh)</navtitle>
+        </topicmeta>
+        <topicref href="operations/cassini_retry_handler.md" format="mdita"/>
+        <topicref href="operations/cassini_retry_handler_configuration.md" format="mdita"/>
+        <topicref href="operations/cassini_retry_handler_usage.md" format="mdita"/>
+        <topicref href="operations/cassini_retry_handler_logging.md" format="mdita"/>
+        <topicref href="operations/cassini_retry_handler_monitoring_and_telemetry.md" format="mdita"/>
+        <topicref href="operations/cassini_retry_handler_troubleshooting.md" format="mdita"/>
+    </topichead>
 </map>
