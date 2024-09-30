@@ -90,3 +90,50 @@ Follow these steps build and publish SHS documentation to HPESC.
 
    - When selecting the file type, choose "managed bundle" instead of "PDF".
    - Select the appropriate `.zip` file located in the build directory for the guide.
+
+## Run GitHub Actions locally
+
+The spell, link, and style checks that are setup via GitHub Actions can be run locally.
+
+### Prerequisites
+
+- **Docker installed**: Ensure that Docker is installed on your machine.
+- **Repository cloned**: Ensure you have cloned the repository containing your markdown files and the script. 
+
+### Instructions
+
+1. Navigate to the following directory in the repository.
+
+   ```screen
+   # cd docs/portal/developer-portal
+   ```
+
+2. Ensure that the script is executable.
+
+   ```screen
+   chmod +x md_checks.sh
+   ```
+
+3. Run the script.
+
+   NOTE: Cancel any running check using **ctrl** + **c**.
+
+   There are a couple of options for running the script.
+
+   - Run on a single markdown file:
+
+     ```screen
+     ./md_checks.sh path/to/markdownfile1.md
+     ```
+
+   - Run on a single directory:
+
+     ```screen
+     ./md_checks.sh path/to/directory
+     ```
+
+   - Run on a combination of markdown files or directories:
+
+     ```screen
+     ./md_checks.sh path/to/markdownfile1.md path/to/markdownfile2.md path/to/directory
+     ```
