@@ -98,7 +98,7 @@ The spell, link, and style checks that are setup via GitHub Actions can be run l
 ### Prerequisites
 
 - **Docker installed**: Ensure that Docker is installed on your machine.
-- **Repository cloned**: Ensure you have cloned the repository containing your markdown files and the script. 
+- **Repository cloned**: Ensure you have cloned the repository containing your markdown files and the script.
 
 ### Instructions
 

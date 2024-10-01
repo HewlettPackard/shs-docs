@@ -64,11 +64,12 @@ cli
 client-server
 cm-cli
 COCN
+conditionalization
 Config
 config
 ConfigMap
-Containerd
 config.xml
+Containerd
 COS
 COS Base
 CN
@@ -80,6 +81,7 @@ cray-diags-fabric
 cray-libcxi-utils
 cray-product-catalog
 craype
+ctrl
 Cuda
 CUDA
 CX-5
@@ -116,6 +118,9 @@ default.yml
 defragmented
 dgnettest
 diskless
+DITA-OT
+ditamap
+ditamaps
 DKMS
 dkms
 dmabuf
@@ -155,6 +160,7 @@ Failback
 failover
 fi_info
 fi_pingpong
+Flavored
 FM
 FMN
 GbE
@@ -179,8 +185,11 @@ honor
 hostname
 hostnames
 HPCM
+hpc-shs-docs
 HPC-X
 HPC-x
+HPE-styled
+HPESC-required
 HRP_RSP_DISCARD
 hsn
 hsn0
@@ -188,6 +197,7 @@ hsn1
 hsn_traffic
 hugepages
 Hugepages
+Jenkinsfile
 IBM
 ifcfg
 IMAGE_NAME
@@ -250,11 +260,13 @@ Lustre
 lustre-client
 lustre_config
 lustre_tuning
+LwDITA
 manpage
 manpages
 man-page-db
 major.minor
 max_rss_queues
+mds-file-and-Pandoc
 Mellanox
 metadata
 modprobe
@@ -369,6 +381,7 @@ RPM
 RPMs
 rpmlist
 rpmlists
+rST
 rsyslog
 rss_indir_size
 runtime
@@ -392,6 +405,7 @@ serdes
 shadow
 SharePoint
 SHS
+shs-docs
 shs-version
 slingshot_compute_sle15_sp4
 slingshot-host-software-config-management
@@ -466,6 +480,7 @@ Xname
 xnames
 Xnames
 xpmem
+xref
 Zypper
 
 
