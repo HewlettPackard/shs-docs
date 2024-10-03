@@ -332,8 +332,6 @@ pipeline {
             script {
                 currentBuild.result = currentBuild.result == null ? "SUCCESS" : currentBuild.result
             }
-            //findAndTransferArtifacts()
-            logstashSend failBuild: false, maxLines: 3000
             script {
                      
                 sh """
