@@ -48,6 +48,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
       cray-cassini-headers-user
       cray-cxi-driver-devel
       cray-cxi-driver-udev
+      cray-diags-fabric
       cray-hms-firmware
       cray-kfabric-devel
       cray-kfabric-dracut
@@ -58,6 +59,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
       cray-libcxi-retry-handler
       cray-slingshot-base-link-devel
       pycxi
+      pycxi-diags
       pycxi-utils
       shs-version
 
