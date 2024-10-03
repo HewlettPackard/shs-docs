@@ -46,7 +46,7 @@ link/ether a4:bf:01:3e:fb:8b brd ff:ff:ff:ff:ff:ff
 
 To find out if an HSN interface is connected correctly, we first need to get a list of TLVs being advertised by the peer on the interface using the following command: `lldptool -n -i -t`
 
-The first step is to confirm the AMA is set up properly on nodes. Do this by executing the 'lldptool' command for high speed interface:
+The first step is to confirm the AMA is set up properly on nodes. Do this by executing the `lldptool` command for high speed interface:
 
 ```screen
 ...uan01-nmn:~ # lldptool -n -i hsn0 -t
@@ -96,7 +96,7 @@ For the given computes and hsn device name this command will validate the follow
 - HSN NIC has Algorithmic MAC (AMA) configured as the MAC address
 - HSN NIC state is in desired configuration (UP)
 - IP Address is assigned for HSN NIC
-- nslookup for the IP address is verified as
+- `nslookup` for the IP address is verified as
 - Nodes management network reachable/unreachable
 
 Executing on FMN, this command will create a health event if any of the above assertion results in failure. In the following example, the command is executed to verify the `hsn0` from nodes nid003048 to nid006859:
@@ -110,7 +110,7 @@ hsn_no_ip:0 nslookup_failure:0 mgmt_network_unreachable:292
 Check result /tmp/compute-health-2021-07-26_06-27-07.txt
 ```
 
-In the above example, out of 3812 compute nodes checked for `hsn0`, following conditions were detected
+In the previous example, out of 3812 compute nodes checked for `hsn0`, the following conditions were detected:
 
 - 84 nodes have failed with NO-CARRIER for compute nodes
 - 1 node has AMA mismatch

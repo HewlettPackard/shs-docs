@@ -1,4 +1,4 @@
-# HSN NIC Performance Tuning
+# HSN NIC performance tuning
 
 ## Performance analysis using ethtool
 
@@ -6,7 +6,7 @@ ethtool is a standard tool that can be used on the host side to analyze and trou
 
 **Example:**
 
-A Storage server (E1000) is connected with a Mellanox CX6 (200G) connected to the Slingshot Fabric. Clients are connected to the Slingshot Fabric accessing the data from the Storage server. Both the Client and servers are in different Slingshot group. The server is able to produce expected READ performance (200gbit/sec) but the write performance is below the expected level.(lower than the expected~200gb/sec)
+A storage server (E1000) is connected with a Mellanox CX6 (200G) connected to the HPE Slingshot fabric. Clients are connected to the HPE Slingshot fabric accessing the data from the Storage server. Both the Client and servers are in different HPE Slingshot group. The server is able to produce expected READ performance (200gbit/sec) but the write performance is below the expected level.(lower than the expected~200gb/sec)
 
 In the READ scenario, Clients are requesting for data from the Storage server and the Storage server is pushing the data out to the clients. In the WRITE scenario, Clients are sending write requests and write directly to the buffer provided by the Storage server that is pushing the data to the Storage server.
 

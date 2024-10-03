@@ -1,3 +1,6 @@
 # OpenMPI
 
-The Open MPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners. Some of the features include compliance to Full MPI-3.1 standards conformance ,Thread safety and concurrency ,Dynamic process spawning
+The Open MPI Project is an open-source implementation of the Message Passing Interface (MPI).
+It is developed and maintained by a consortium of academic, research, and industry partners.
+
+Key features of Open MPI include full compliance with the MPI-3.1 standards, thread safety and concurrency, and support for dynamic process spawning.

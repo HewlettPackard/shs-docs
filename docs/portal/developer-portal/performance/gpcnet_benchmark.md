@@ -1,4 +1,4 @@
-# GPCNeT Benchmark
+# GPCNeT benchmark
 
 GPCNeT benchmark provides the following capabilities:
 

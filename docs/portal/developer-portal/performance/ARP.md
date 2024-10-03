@@ -43,16 +43,16 @@ Additional recommended ARP settings for large clusters:
 
 **`net.ipv4.neigh.hsn<index>.base_reachable_time_ms=1500000`**
 
-- Set `base_reachable_time_ms` to a very high value to avoids ARP thrash
+- Set `base_reachable_time_ms` to a very high value to avoid ARP thrash
 - Recommended: 1500000; Default: 30000
 
-NOTE: It is important to keep in consideration that multiplying by the number of physical adapters on each compute may increase the cache well beyond what is needed. For context, the recommended values above are given as guidance for approximately 2000 nodes with two adapters per node. Sizing parameters for the ARP tables depend on the size of the fabric and the number of endpoints. Improper sizing will lead to jobs failing to start and not being able to complete -- too few entries may cause connectivity problems, while too many entries may strand kernel memory and negatively impact other services.
+NOTE: Multiplying by the number of physical adapters on each compute may increase the cache well beyond what is needed. For context, the recommended values above are given as guidance for approximately 2000 nodes with two adapters per node. Sizing parameters for the ARP tables depend on the size of the fabric and the number of endpoints. Improper sizing will lead to jobs failing to start and not being able to complete -- too few entries may cause connectivity problems, while too many entries may strand kernel memory and negatively impact other services.
 
 ## ARP lookup and MPI jobs
 
-MPI jobs depend on ARP table for establishing TCP/IP connection for setup and tear down information. It is required that the ARP tables are populated with the HSN IP/MAC entries for this connection establishment to be successful. If MPI jobs fail with _Transport retry count exceeded_ errors, that could be a result of connectivity issues. Hence it is required to validate HSN connectivity and ARP table as explained below.
+MPI jobs depend on ARP table for establishing TCP/IP connection for setup and tear down information. It is required that the ARP tables are populated with the HSN IP/MAC entries for this connection establishment to be successful. If MPI jobs fail with _Transport retry count exceeded_ errors that could be a result of connectivity issues. Hence it is required to validate HSN connectivity and ARP table as explained in the following example.
 
-The following steps are recommended before initiating MPI jobs to validate ARP Table.
+The following steps are recommended before initiating MPI jobs to validate the ARP Table.
 
 **Ping all-to-all tests:** Perform a ping on all-to-all tests to ensure the connectivity between the compute nodes using HSN NICs. This can be done by one of the methods described below:
 
@@ -70,9 +70,9 @@ Example:
                    > do ping -W 1 -c 1 nid00$i | grep packet ; done' | dshbak -c
 ```
 
-**Static/Permanent ARP entries:** In environments where the IP address to MAC mapping is constant, it is recommended to load the ARP entries of all compute nodes HSN IPs as static/permanent entries in all compute nodes. The will result in ARP entries to be not invalidated. This can be done as a part of the compute node boot sequence.
+**Static/Permanent ARP entries:** In environments where the IP address to MAC mapping is constant, it is recommended to load the ARP entries of all compute nodes HSN IP addresses as static/permanent entries in all compute nodes. The will result in ARP entries to be not invalidated. This can be done as a part of the compute node boot sequence.
 
-The following illustrates an example of adding a permanent entry to ARP cache:
+The following illustrates an example of adding a permanent entry to an ARP cache:
 
 ```screen
 [root@apollo-1 ~]# ip neigh add 192.168.0.220 dev ens801 lladdr \
