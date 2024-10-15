@@ -7,6 +7,7 @@
         <data name="pubsnumber" value="S-9012"/>
         <data name="edition" value="SHS Software Release @product_version@"></data>
     </topicmeta>
+    <topicref href="VeRsIoN.md" format="mdita"/>
     <topichead>
         <topicmeta>
              <navtitle>HSN Performance</navtitle>
