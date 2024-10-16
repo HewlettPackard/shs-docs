@@ -145,7 +145,9 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
 
 9. Create or update image.
 
-   SHS does not support installing software as a single command on HPCM systems with `cm image create` with the COS 3.0 and later. Installation of SHS with COS and the GPU sub-products must be performed as a series of steps. SHS requires that COS and GPU software provided by the COS and USS products must be installed prior to installing SHS. In this case, SHS must be installed via the 'If updating an image' workflow instead of the 'If creating an image' workflow.
+   SHS does not support installing software as a single command on HPCM systems with `cm image create` with COS 3.0 and later.
+   Installation of SHS with COS and the GPU sub-products must be performed as a series of steps. SHS requires that COS and GPU software provided by the COS and USS products must be installed prior to installing SHS.
+   In this case, SHS must be installed via the 'If updating an image' workflow instead of the 'If creating an image' workflow.
 
    - If creating an image:
 
@@ -183,10 +185,10 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
        cm image dnf -y install $(cat $(pwd)/shs-mlnx.rpmlist) --enablerepo=slingshot-host-software-repo-group
        ```
 
-10. If using a tmpfs image, there are no additional steps. If not using a tmpfs image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
+10. If using a `tmpfs` image, there are no additional steps. If not using a `tmpfs` image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
 
 11. Boot the new image when it is ready.
 
-12. Apply the post-boot firmware and firmware configuration. General instructions are in the "Install compute nodes" section of the _HPE Slingshot Installation Guide for Bare Metal_.
+## Post-install
 
-13. Proceed directly to the [Firmware management](firmware_management.md#firmware-management) and [ARP settings](arp_settings.md#arp-settings) sections of this document to complete SHS compute install.
+Follow the "Update firmware for HPCM and bare metal" and "ARP settings" procedures in the _HPE Slingshot Host Software Administration Guide_.

@@ -1,4 +1,4 @@
-# Firmware management
+# Update firmware for HPCM and bare metal
 
 HPE Slingshot 200Gbps and Mellanox NICs system firmware management is done through the `slingshot-firmware` utility.
 `slingshot-firmware` is a tool for managing the firmware of a network interface.

@@ -1,4 +1,4 @@
-# Post-install operational tasks
+# Update firmware for CSM
 
 The HPE Slingshot firmware must be updated with each new SHS install. The firmware can be updated using `slingshot-firmware` as provided by the `slingshot-firmware-management` package.
 

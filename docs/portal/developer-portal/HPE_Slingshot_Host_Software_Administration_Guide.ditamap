@@ -8,9 +8,34 @@
         <data name="edition" value="SHS Software Release @product_version@"></data>
     </topicmeta>
     <topicref href="VeRsIoN.md" format="mdita"/>
+    <topicref href="overview/overview_admin.md" format="mdita"/>
     <topichead>
         <topicmeta>
-             <navtitle>HSN Performance</navtitle>
+            <navtitle>Common operational tasks</navtitle>
+        </topicmeta>
+        <topicref href="install/generic_hpe_slingshot_configuration.md" format="mdita"/>
+        <topicref href="install/host_adapter_naming.md" format="mdita"/>
+        <topicref href="install/algorithmic_mac_address_mac_configuration.md" format="mdita"/>
+        <topicref href="install/multiple_network_adapters.md" format="mdita"/> 
+        <topicref href="install/sysctl_configuration_example.md" format="mdita"/>
+        <topicref href="install/arp_settings.md" format="mdita"/>
+    </topichead>
+    <topichead>
+        <topicmeta>
+            <navtitle>Firmware management</navtitle>
+        </topicmeta>
+        <topicref href="operations/update_firmware_hpcm_metal.md" format="mdita"/>
+        <topicref href="operations/update_firmware_csm.md" format="mdita"/>
+    </topichead>
+    <topichead>
+        <topicmeta>
+            <navtitle>Quality of Service (QoS)</navtitle>
+        </topicmeta>
+        <topicref href="operations/configure_qos_shs.md" format="mdita"/>
+    </topichead>
+    <topichead>
+        <topicmeta>
+             <navtitle>HSN performance</navtitle>
         </topicmeta>
         <topicref href="performance/performance_overview.md" format="mdita"/>
         <topicref href="performance/gpcnet_benchmark.md" format="mdita"/>
@@ -20,7 +45,7 @@
         <topicref href="performance/perftest.md" format="mdita"/>
         <topichead>
             <topicmeta>
-                <navtitle>HSN Performance Benchmark Tools</navtitle>
+                <navtitle>HSN performance benchmark tools</navtitle>
             </topicmeta>
             <topicref href="performance/HSN_performance_benchmarking.md" format="mdita"/>
             </topichead>
@@ -29,7 +54,6 @@
         <topicref href="performance/AMA.md" format="mdita"/>
         <topicref href="performance/TCP_performance_tuning.md" format="mdita"/>
     </topichead>
-    <topicref href="operations/configure_qos_shs.md" format="mdita"/>
     <topichead>
         <topicmeta>
              <navtitle>Cassini Retry Handler (cxi_rh)</navtitle>

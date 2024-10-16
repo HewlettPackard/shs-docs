@@ -30,9 +30,6 @@
         <topicref href="operations/compute_node_configuration.md" format="mdita"/>
         <topicref href="operations/application_node_configuration.md" format="mdita"/>
         <topicref href="operations/image_building.md" format="mdita"/>
-        <topicref href="install/post_install_operational_tasks.md" format="mdita">
-            <topicref href="operations/configure_qos_shs.md" format="mdita"/>
-        </topicref>
     </topichead>
     <topichead>
         <topicmeta>
@@ -42,26 +39,16 @@
             <topicref href="install/HPE_Slingshot_200Gbps_cxi_nic_system_install_upgrade_procedure.md" format="mdita"/>
             <topicref href="install/mellanox_based_system_install_upgrade_procedure.md" format="mdita"/>
         </topicref>
-        <topicref href="install/firmware_management.md" format="mdita"/>
-        <topicref href="install/arp_settings.md" format="mdita"/>
-        <topicref href="operations/configure_qos_shs.md" format="mdita"/>
     </topichead>
     <topichead>
         <topicmeta>
-            <navtitle>Install SHS for Bare Metal</navtitle>
+            <navtitle>Install SHS for bare metal</navtitle>
         </topicmeta>
         <topicref href="install/compute_install_prereqs.md" format="mdita"/>
         <topicref href="install/install_or_upgrade_compute_nodes.md" format="mdita">
             <topicref href="install/install_200gbps_nic_host_software.md" format="mdita"/>
             <topicref href="install/HPE_Slingshot_configuration_with_Mellanox_nics.md" format="mdita"/>
         </topicref>
-        <topicref href="install/firmware_management.md" format="mdita"/>
-        <topicref href="install/generic_hpe_slingshot_configuration.md" format="mdita"/>
-        <topicref href="install/host_adapter_naming.md" format="mdita"/>
-        <topicref href="install/algorithmic_mac_address_mac_configuration.md" format="mdita"/>
-        <topicref href="install/multiple_network_adapters.md" format="mdita"/> 
-        <topicref href="install/sysctl_configuration_example.md" format="mdita"/>
-        <topicref href="operations/configure_qos_shs.md" format="mdita"/>
     </topichead>
     <topichead>
         <topicmeta>

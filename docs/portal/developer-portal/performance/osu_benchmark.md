@@ -1,10 +1,10 @@
-# OSU Benchmark
+# OSU benchmark
 
-OSU Benchmark is a collection of MPI test suites collecting key performance metrics (bandwidth, latency) for HPC Fabrics, and is supported on standard MPI implementations.
+OSU benchmark is a collection of MPI test suites collecting key performance metrics (bandwidth, latency) for HPC Fabrics, and is supported on standard MPI implementations.
 
-OSU Micro-Benchmarks provides the following tests to measure HPC network performance:
+OSU micro-benchmarks provides the following tests to measure HPC network performance:
 
-**Point-to-Point MPI Benchmarks:**
+**Point-to-point MPI benchmarks:**
 
 - Latency
 - Multi-threaded latency
@@ -12,7 +12,7 @@ OSU Micro-Benchmarks provides the following tests to measure HPC network perform
 - Multiple bandwidth / message rate test bandwidth
 - Bidirectional bandwidth
 
-**One-sided MPI Benchmarks:**
+**One-sided MPI benchmarks:**
 
 - One-sided put latency
 - One-sided put bandwidth
