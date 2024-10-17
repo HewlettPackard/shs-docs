@@ -75,48 +75,22 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    """ >> ./shs-cxi.rpmlist
    ```
 
-   - For HPE Slingshot 200Gbps CXI NIC systems running SLES or a SLES derivative such as COS, append these additional packages:
+   For HPE Slingshot 200Gbps CXI NIC systems, append these additional packages, regardless of the operating system or architecture:
 
-     - If installing aarch64, use the following packages:
-
-       ```screen
-       echo -e """\
-           cray-slingshot-base-link-dkms
-           sl-driver-dkms
-           cray-cxi-driver-dkms
-           cray-kfabric-dkms
-       """ >> ./shs-cxi.rpmlist
-       ```
-
-     - Otherwise, use the following packages:
-
-       ```screen
-       echo -e """\
-           cray-slingshot-base-link-dkms
-           sl-driver-dkms
-           cray-cxi-driver-dkms
-           cray-kfabric-dkms
-       """ >> ./shs-cxi.rpmlist
-       ```
-
-   - For HPE Slingshot 200Gbps CXI NIC systems running RHEL, append these additional packages:
-
-     ```screen
-     echo -e """\
-        cray-slingshot-base-link-dkms
-        sl-driver-dkms
-        cray-cxi-driver-dkms
-        cray-kfabric-dkms
-     """ >> ./shs-cxi.rpmlist
-     ```
+   ```screen
+   echo -e """\
+      cray-slingshot-base-link-dkms
+      sl-driver-dkms
+      cray-cxi-driver-dkms
+      cray-kfabric-dkms
+   """ >> ./shs-cxi.rpmlist
+   ```
 
    NOTE: SHS supports DKMS as the default installation mechanism for the kernel driver.
    Pre-built binaries are provided with distributed binary builds. To use the pre-built kernel binaries, substitute the pre-built binary packages for the DKMS packages.
    This can be done by replacing the DKMS packages with the `*-kmp-[default,cray_shasta_c,cray_shasta_c_64k]` or `kmod-*` variants of each DKMS package.
 
-   An example of this is given below:
-
-   Example: If installing pre-built binary kernel modules instead of DKMS package on SLE 15 SP5 with the default kernel, then replace the following packages:
+   For example: If installing pre-built binary kernel modules instead of DKMS package on SLE 15 SP5 with the default kernel, then replace the following packages:
 
    ```screen
    cray-cxi-driver-dkms
