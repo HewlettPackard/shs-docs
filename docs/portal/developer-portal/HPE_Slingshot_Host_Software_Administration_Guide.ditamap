@@ -65,4 +65,10 @@
         <topicref href="operations/cassini_retry_handler_monitoring_and_telemetry.md" format="mdita"/>
         <topicref href="operations/cassini_retry_handler_troubleshooting.md" format="mdita"/>
     </topichead>
+    <topichead>
+        <topicmeta>
+             <navtitle>kdreg2</navtitle>
+        </topicmeta>
+        <topicref href="operations/kdreg2_configuration.md" format="mdita"/>
+    </topichead>
 </map>

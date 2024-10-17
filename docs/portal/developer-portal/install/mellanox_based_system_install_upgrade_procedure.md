@@ -143,51 +143,54 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
      """ >> ./shs-mlnx.rpmlist
      ```
 
-9. Create or update image.
+9. (Optional) Install kdreg2 as an additional memory cache monitor.
+   See [Install kdreg2](kdreg2_install.md#install-procedure) for more information.
 
-   SHS does not support installing software as a single command on HPCM systems with `cm image create` with COS 3.0 and later.
-   Installation of SHS with COS and the GPU sub-products must be performed as a series of steps. SHS requires that COS and GPU software provided by the COS and USS products must be installed prior to installing SHS.
-   In this case, SHS must be installed via the 'If updating an image' workflow instead of the 'If creating an image' workflow.
+10. Create or update image.
 
-   - If creating an image:
+    SHS does not support installing software as a single command on HPCM systems with `cm image create` with COS 3.0 and later.
+    Installation of SHS with COS and the GPU sub-products must be performed as a series of steps. SHS requires that COS and GPU software provided by the COS and USS products must be installed prior to installing SHS.
+    In this case, SHS must be installed via the 'If updating an image' workflow instead of the 'If creating an image' workflow.
 
-     - Create an image.rpmlist from generated rpmlists in step 7.
+    - If creating an image:
 
-       ```screen
-       cp /opt/clmgr/image/rpmlists/generated/generated-group-slingshot-host-software-repo-group.rpmlist image.rpmlist
-       ```
+      - Create an image.rpmlist from generated rpmlists in step 7.
 
-     - Add the .rpmlist generated in step 8 to the image.rpmlist.
+         ```screen
+         cp /opt/clmgr/image/rpmlists/generated/generated-group-slingshot-host-software-repo-group.rpmlist image.rpmlist
+         ```
 
-       ```screen
-       cat ./shs-mlnx.rpmlist >> image.rpmlist
-       ```
+      - Add the .rpmlist generated in step 8 to the image.rpmlist.
 
-     - Create the image.
+         ```screen
+         cat ./shs-mlnx.rpmlist >> image.rpmlist
+         ```
 
-       ```screen
-       IMAGE_NAME=${DIST}_hpcm_ss
-       cm image create -i ${IMAGE_NAME} --repo-group slingshot-host-software-repo-group --rpmlist $(pwd)/image.rpmlist
-       ```
+      - Create the image.
 
-   - If updating an image:
+         ```screen
+         IMAGE_NAME=${DIST}_hpcm_ss
+         cm image create -i ${IMAGE_NAME} --repo-group slingshot-host-software-repo-group --rpmlist $(pwd)/image.rpmlist
+         ```
 
-     - SLES/COS environment:
+    - If updating an image:
 
-       ```screen
-       IMAGE_NAME=${DIST}_hpcm_ss
-       cm image zypper -i ${IMAGE_NAME} --repo-group slingshot-host-software-repo-group install $(cat $(pwd)/shs-mlnx.rpmlist)
-       ```
+      - SLES/COS environment:
 
-     - RHEL environment:
+         ```screen
+         IMAGE_NAME=${DIST}_hpcm_ss
+         cm image zypper -i ${IMAGE_NAME} --repo-group slingshot-host-software-repo-group install $(cat $(pwd)/shs-mlnx.rpmlist)
+         ```
 
-       ```screen
-       cm image dnf -y install $(cat $(pwd)/shs-mlnx.rpmlist) --enablerepo=slingshot-host-software-repo-group
-       ```
+      - RHEL environment:
 
-10. If using a `tmpfs` image, there are no additional steps. If not using a `tmpfs` image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
+         ```screen
+         cm image dnf -y install $(cat $(pwd)/shs-mlnx.rpmlist) --enablerepo=slingshot-host-software-repo-group
+         ```
 
-11. Boot the new image when it is ready.
+11. If using a `tmpfs` image, there are no additional steps. If not using a `tmpfs` image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
+
+12. Boot the new image when it is ready.
 
 ## Post-install
 

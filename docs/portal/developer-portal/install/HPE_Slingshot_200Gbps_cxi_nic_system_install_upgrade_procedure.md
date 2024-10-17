@@ -108,7 +108,10 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    cray-kfabric-kmp-default
    ```
 
-6. Create or update image.
+6. (Optional) Install kdreg2 as an additional memory cache monitor.
+   See [Install kdreg2](kdreg2_install.md#install-procedure) for more information.
+
+7. Create or update image.
 
    SHS does not support installing software as a single command on HPCM systems with `cm image create` with the COS 3.0 and later.
    Installation of SHS with COS and the GPU sub-products must be performed as a series of steps. SHS requires that COS and GPU software provided by the COS and USS products must be installed prior to installing SHS.
@@ -150,7 +153,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
        cm image dnf -y install $(cat $(pwd)/shs-cxi.rpmlist) --enablerepo=slingshot-host-software-repo-group
        ```
 
-7. On HPE Slingshot 200Gbps CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
+8. On HPE Slingshot 200Gbps CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
 
    ```screen
    sed -i 's/allow_unsupported_modules 0/allow_unsupported_modules 1/' \
@@ -164,8 +167,8 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    /opt/clmgr/image/images/${IMAGE_NAME}/etc/modprobe.d/10-unsupported-modules.conf
    ```
 
-8. If using a tmpfs image, there are no additional steps. If not using a tmpfs image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
+9.  If using a tmpfs image, there are no additional steps. If not using a tmpfs image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
 
-9. Boot the new image when it is ready.
+10. Boot the new image when it is ready.
 
-10. Apply the post-boot firmware and firmware configuration. General instructions are in the "Install compute nodes" section of the _HPE Slingshot Installation Guide for Bare Metal_.
+11. Apply the post-boot firmware and firmware configuration. General instructions are in the "Install compute nodes" section of the _HPE Slingshot Installation Guide for Bare Metal_.

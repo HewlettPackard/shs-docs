@@ -15,6 +15,7 @@
         </topicmeta>
         <topicref href="install/install_shs_on_csm_14_or_newer.md" format="mdita"/>
         <topicref href="operations/operational_activities_csm.md" format="mdita">
+            <topicref href="install/kdreg2_csm.md" format="mdita"/>
             <topicref href="operations/shs_cfs_variable_reference.md" format="mdita"/>
             <topicref href="operations/setup.md" format="mdita"/>
             <topicref href="operations/authentication_credentials.md" format="mdita"/>
@@ -49,6 +50,13 @@
             <topicref href="install/install_200gbps_nic_host_software.md" format="mdita"/>
             <topicref href="install/HPE_Slingshot_configuration_with_Mellanox_nics.md" format="mdita"/>
         </topicref>
+    </topichead>
+    <topichead>
+        <topicmeta>
+            <navtitle>Install kdreg2</navtitle>
+        </topicmeta>
+        <topicref href="install/kdreg2_introduction.md" format="mdita"/>
+        <topicref href="install/kdreg2_install.md" format="mdita"/>
     </topichead>
     <topichead>
         <topicmeta>

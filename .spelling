@@ -113,6 +113,7 @@ cxi_healthcheckcxirh
 cxibwcheck.sh
 daemonless
 datacenter
+deallocation
 debugfs
 default.yml
 defragmented
@@ -218,6 +219,7 @@ JSON
 jwt
 JWT
 kdump
+kdreg2
 Keycloak
 keycloak_group
 keycloak_passwd
@@ -268,6 +270,8 @@ major.minor
 max_rss_queues
 mds-file-and-Pandoc
 Mellanox
+memhooks
+Memhooks
 metadata
 modprobe
 mountpoints
@@ -371,6 +375,7 @@ Redfish
 RedHat
 release-rpms
 repo
+RHEL-based
 RoCE
 roce_perf_check_loopback
 ROCm
@@ -459,6 +464,8 @@ untar
 update-cfs-config
 update-vcs-config
 URIs
+Userfaultfd
+userfaultfd
 USS
 v2
 versioned
