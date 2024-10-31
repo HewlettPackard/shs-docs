@@ -40,6 +40,7 @@
             <topicref href="install/HPE_Slingshot_200Gbps_cxi_nic_system_install_upgrade_procedure.md" format="mdita"/>
             <topicref href="install/mellanox_based_system_install_upgrade_procedure.md" format="mdita"/>
         </topicref>
+        <topicref href="install/ama_hpcm.md" format="mdita"/>
     </topichead>
     <topichead>
         <topicmeta>
