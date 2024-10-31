@@ -135,7 +135,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
 
        ```screen
        IMAGE_NAME=${DIST}_hpcm_ss
-       cm image create -i ${IMAGE_NAME} --repo-group slingshot-host-software-repo-group --rpmlist $(pwd)/image.rpmlist
+       autoinstall_all_kernels=y cm image create -i ${IMAGE_NAME} --repo-group slingshot-host-software-repo-group --rpmlist $(pwd)/image.rpmlist
        ```
 
    - If updating an image:
@@ -144,14 +144,16 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
 
        ```screen
        IMAGE_NAME=${DIST}_hpcm_ss
-       cm image zypper -i ${IMAGE_NAME} --repo-group slingshot-host-software-repo-group install $(cat $(pwd)/shs-cxi.rpmlist)
+       autoinstall_all_kernels=y cm image zypper -i ${IMAGE_NAME} --repo-group slingshot-host-software-repo-group install $(cat $(pwd)/shs-cxi.rpmlist)
        ```
 
      - RHEL environment:
 
        ```screen
-       cm image dnf -y install $(cat $(pwd)/shs-cxi.rpmlist) --enablerepo=slingshot-host-software-repo-group
+       autoinstall_all_kernels=y cm image dnf -y install $(cat $(pwd)/shs-cxi.rpmlist) --enablerepo=slingshot-host-software-repo-group
        ```
+
+   **Note:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is required for COS installations with Nvidia software, but it is generally recommended to avoid problems when building in a chroot environment.
 
 8. On HPE Slingshot 200Gbps CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
 
