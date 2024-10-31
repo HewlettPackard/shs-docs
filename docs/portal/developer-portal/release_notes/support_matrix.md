@@ -58,12 +58,12 @@ Y-Axis: SHS version
 
 | Distribution             | Versions                        | Mellanox NIC | Mellanox Version | HPE Slingshot Ethernet 200Gb |
 | ------------------------ | ------------------------------- | ------------ | ---------------- | ---------------------------- |
-| Red Hat Enterprise Linux | 8.9                             | Yes          | 23.0.4-1.1.3.0   | Yes                          |
-| Red Hat Enterprise Linux | 8.10                            | Yes          | 23.0.4-1.1.3.0   | Yes                          |
-| Red Hat Enterprise Linux | 9.4                             | Yes          | 23.0.4-1.1.3.0   | Yes                          |
+| Red Hat Enterprise Linux | 8.9                             | Yes          | 23.10-3.2.2.0    | Yes                          |
+| Red Hat Enterprise Linux | 8.10                            | Yes          | 23.10-3.2.2.0    | Yes                          |
+| Red Hat Enterprise Linux | 9.4                             | Yes          | 23.10-3.2.2.0    | Yes                          |
 | Red Hat Enterprise Linux | 9.4 ARM                         | No           | Not Supported    | Yes                          |
-| SuSE Linux Enterprise 15 | SP4                             | Yes          | 5.6-2.0.9.0      | Yes                          |
-| SuSE Linux Enterprise 15 | SP5                             | Yes          | 23.0.4-1.1.3.0   | Yes                          |
+| SuSE Linux Enterprise 15 | SP4                             | Yes          | 23.0.4-1.1.3.0   | Yes                          |
+| SuSE Linux Enterprise 15 | SP5                             | Yes          | 23.10-3.2.2.0    | Yes                          |
 | SuSE Linux Enterprise 15 | SP5 ARM                         | No           | Not Supported    | Yes                          |
 | SuSE Linux Enterprise 15 | SP6                             | Yes          | 23.10-3.2.2.0    | Yes                          |
 | SuSE Linux Enterprise 15 | SP6 ARM                         | No           | Not Supported    | Yes                          |
@@ -80,7 +80,6 @@ _**Mellanox External Vendor Software**_
 | Name                       | Contains                                    | Typical Install Target                  | Recommended Version | URL                                                                                            |
 | -------------------------- | ------------------------------------------- | --------------------------------------- | ------------------- | ---------------------------------------------------------------------------------------------- |
 | Mellanox OFED distribution | Mellanox Networking Software Stack          | all compute nodes and user access nodes | Listed Above        | [Mellanox OFED download](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed) |
-| HPC-X                      | Mellanox HPC Software Stack, containing UCX | all compute nodes and user access nodes | 2.7.0               | [Mellanox HPC-X download](https://www.mellanox.com/products/hpc-x-toolkit)                     |
 | Mellanox Device Firmware   | Mellanox NIC Firmware                       | all compute nodes                       | 16.32.1010          | Contact your Support or account team to obtain the recommended firmware                        |
 
 ## Libfabric Versions
