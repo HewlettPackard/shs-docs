@@ -107,3 +107,7 @@ This might be necessary in some cases to ensure proper network functionality.
   ```
 
   Replace `hsn<index>` with your hsn interface identifier (for example, hsn0).
+
+## Troubleshooting
+
+See "Troubleshoot NICs not properly reporting their MAC addresses via LLDP" in the _HPE Slingshot Host Software Troubleshooting Guide_ if the LLDP neighbor information does not reflect the correct MAC addresses assigned to the interfaces.

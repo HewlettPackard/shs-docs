@@ -106,6 +106,7 @@
             </topicmeta>
             <topicref href="troubleshoot/cassini/check_and_fix_misconfigured_nonvlan_tagged_ethernet_pcp_settings.md" format="mdita"/>
             <topicref href="troubleshoot/cassini/check_and_fix_lldp_issues_on_the_fabric.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/lldp_mac_address_issue.md" format="mdita"/>
         </topichead>
         <topichead id="hpe-slingshot-200Gbps-nic-host-troubleshooting">
         <topicmeta>
