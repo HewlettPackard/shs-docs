@@ -51,7 +51,6 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
       cray-diags-fabric
       cray-hms-firmware
       cray-kfabric-devel
-      cray-kfabric-dracut
       cray-kfabric-udev
       cray-libcxi
       cray-libcxi-devel

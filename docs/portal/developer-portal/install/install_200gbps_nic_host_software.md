@@ -30,9 +30,7 @@ After installing the above RPMs, the system must be configured to allow
 `/etc/modprobe.d/10-unsupported-modules.conf` to allow unsupported modules:
 
 ```screen
-# sed -i -e \
-'s/^allow_unsupported_modules 0/allow_unsupported_modules 1/' \
-/etc/modprobe.d/10-unsupported-modules.conf
+# echo "allow_unsupported_modules 1" > /etc/modprobe.d/10-unsupported-modules.conf
 ```
 
 The drivers will be automatically loaded on the next restart, or they can be
@@ -49,8 +47,8 @@ Address configuration.
 
 If traffic must be passed over the 200Gbps NIC prior to the root filesystem
 being mounted (for example, for a network root filesystem using the 200Gbps NIC),
-the optional `cray-libcxi-dracut` RPM must be installed. This package causes the
-200Gbps NIC retry handler and drivers to be installed in the initramfs and started
+the optional `cray-libcxi-dracut` RPM must be installed.
+This package cause the 200Gbps NIC retry handler and drivers to be installed in the `initramfs` and start
 in early boot.
 
 SystemD units that depend on the retry handler running (such as filesystem
