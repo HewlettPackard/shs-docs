@@ -169,7 +169,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    /opt/clmgr/image/images/${IMAGE_NAME}/etc/modprobe.d/10-unsupported-modules.conf
    ```
 
-9.  If using a tmpfs image, there are no additional steps. If not using a tmpfs image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
+9. If using a tmpfs image, there are no additional steps. If not using a tmpfs image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
 
 10. Boot the new image when it is ready.
 
