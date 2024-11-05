@@ -2,7 +2,6 @@
 Hewlett-Packard Company
 Copyright 2015-2018 Hewlett Packard Enterprise Development LP
 Written for Hewlett Packard Enterprise, Knowledge Management
-
 ===========
 TOC
 ===========
@@ -13,7 +12,6 @@ Standard body stuff
 Block elements
 Inline elements
 Tables
-
 ===========
 Color palette
 ===========
@@ -21,7 +19,6 @@ Primary
 #01A982 - HPE green
 #000000 - Font color
 #FFFFFF - Background
-
 Secondary
 Neutrals
 #425563 - HPE Slate
@@ -38,6 +35,49 @@ Change:
 mTS1183: Removed hpefonts.css import */
 /* @import url(hpefonts.css); */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+/* MDITA ToCs */
+
+nav {
+	counter-reset: toc1;
+}
+
+nav ul.map li.topicref::before {
+	content: counter(toc1)" ";
+	counter-increment: toc1;
+	counter-reset: toc2;
+}
+
+nav ul.map li.topicref li.topicref::before {
+	content: counter(toc1)"."counter(toc2)" ";
+	counter-increment: toc2;
+	counter-reset: toc3;
+}
+
+nav ul.map li.topicref li.topicref li.topicref::before {
+	content: counter(toc1)"."counter(toc2)"."counter(toc3)" ";
+	counter-increment: toc3;
+	counter-reset: toc4;
+}
+
+nav ul.map li.topicref li.topicref li.topicref li.topicref::before {
+	content: counter(toc1)"."counter(toc2)"."counter(toc3)"." counter(toc4)" ";
+	counter-increment: toc4;
+	counter-reset: toc5;
+}
+
+/* End MDITA ToC */
+
+/* hide map title because we use title in header file */
+
+main h1 {
+	font-size: 0%;
+	color:#ffffff
+}
+
+main {
+	counter-reset: heading;
+}
 
 button, hr, input {
 	overflow: visible
@@ -59,9 +99,15 @@ body {
 menu, article, aside, details, footer, header, nav, section {
 	display: block
 }
-h1 {
+article h1:before {
+	content: counter(heading)" ";
+	counter-increment: heading;
+}
+
+article h1 {
 	font-size: 2em;
-	margin: .67em 0
+	margin: .67em 0;
+	counter-reset: subheading;
 }
 figcaption, figure, main {
 	display: block
@@ -328,18 +374,40 @@ h1 {
   font-weight: 700;
   color: #333 !important;
   margin: 30px 0px 20px 0px;
-  line-height: 30px; }
-h2 {
+  line-height: 30px; 
+}
+article h2:not(.sectiontitle):before {
+	content: counter(heading)"." counter(subheading)" ";
+	counter-increment: subheading;
+}
+article h2:not(.sectiontitle) {
+	counter-reset: subsubheading;
+}  
+article h2 {
   font-size: 21px;
   font-weight: 700;
   color: #333 !important;
   margin: 20px 0px 10px 0px; }
-h3 {
+article h3:not(.sectiontitle):before {
+	content: counter(heading)"." counter(subheading)"." counter(subsubheading)" ";
+	counter-increment: subsubheading;
+}
+article h3:not(.sectiontitle) {
+	counter-reset: subsubsubheading;
+}
+article h3 {
   font-size: 19px;
 	font-weight: 700;
   color: #333 !important;
   margin: 10px 0px !important; }
-h4 {
+article h4:not(.sectiontitle):before {
+	content: counter(heading)"." counter(subheading)"." counter(subsubheading)"." counter(subsubsubheading)" ";
+	counter-increment: subsubsubheading;
+}
+article h4:not(.sectiontitle) {
+	counter-reset: subsubsubsubheading;
+}
+article h4:not(.sectiontitle) {
   font-size: 18px;
   color: #333 !important;
   font-weight: bold;

@@ -37,3 +37,8 @@ for file in $(find ./tmp -name "*.ditamap");do
 	sed -i'' -e "s/@docs_git_hash@/$DOCS_GIT_HASH/g" $file
 	done
 
+# replace variables in the XML header files used for the single file HTML5 output
+for file in $(find ./tmp -name "*.xml");do
+	sed -i'' -e "s/@product_version@/$PRODUCT_VERSION/g" $file
+	sed -i'' -e "s/@docs_git_hash@/$DOCS_GIT_HASH/g" $file 
+	done
