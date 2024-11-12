@@ -9,10 +9,7 @@
         </topicmeta>
     <topicref href="VeRsIoN.md" format="mdita"/>
     <topicref href="overview/overview.md" format="mdita"/>
-    <topichead>
-        <topicmeta>
-            <navtitle>Install SHS for CSM</navtitle>
-        </topicmeta>
+    <topicref href="install/Install_SHS_for_CSM.md" format="mdita">
         <topicref href="install/install_shs_on_csm_14_or_newer.md" format="mdita"/>
         <topicref href="operations/operational_activities_csm.md" format="mdita">
             <topicref href="install/kdreg2_csm.md" format="mdita"/>
@@ -31,40 +28,32 @@
         <topicref href="operations/compute_node_configuration.md" format="mdita"/>
         <topicref href="operations/application_node_configuration.md" format="mdita"/>
         <topicref href="operations/image_building.md" format="mdita"/>
-    </topichead>
-    <topichead>
-        <topicmeta>
-            <navtitle>Install SHS for HPCM</navtitle>
-        </topicmeta>
+    </topicref>
+    <topicref href="install/Install_SHS_for_HPCM.md" format="mdita">
         <topicref href="install/install_or_upgrade_shs_on_hpcm_compute_nodes.md" format="mdita">
-            <topicref href="install/HPE_Slingshot_200Gbps_cxi_nic_system_install_upgrade_procedure.md" format="mdita"/>
-            <topicref href="install/mellanox_based_system_install_upgrade_procedure.md" format="mdita"/>
+            <topicref
+                href="install/HPE_Slingshot_200Gbps_cxi_nic_system_install_upgrade_procedure.md"
+                format="mdita"/>
+            <topicref href="install/mellanox_based_system_install_upgrade_procedure.md"
+                format="mdita"/>
         </topicref>
         <topicref href="install/ama_hpcm.md" format="mdita"/>
-    </topichead>
-    <topichead>
-        <topicmeta>
-            <navtitle>Install SHS for bare metal</navtitle>
-        </topicmeta>
+    </topicref>
+    <topicref href="install/Install_SHS_for_bare_metal.md" format="mdita">
         <topicref href="install/compute_install_prereqs.md" format="mdita"/>
         <topicref href="install/install_or_upgrade_compute_nodes.md" format="mdita">
             <topicref href="install/install_200gbps_nic_host_software.md" format="mdita"/>
-            <topicref href="install/HPE_Slingshot_configuration_with_Mellanox_nics.md" format="mdita"/>
+            <topicref href="install/HPE_Slingshot_configuration_with_Mellanox_nics.md"
+                format="mdita"/>
         </topicref>
-    </topichead>
-    <topichead>
-        <topicmeta>
-            <navtitle>Install kdreg2</navtitle>
-        </topicmeta>
+    </topicref>
+    <topicref href="install/Install_kdreg2.md" format="mdita">
         <topicref href="install/kdreg2_introduction.md" format="mdita"/>
         <topicref href="install/kdreg2_install.md" format="mdita"/>
-    </topichead>
-    <topichead>
-        <topicmeta>
-            <navtitle>Soft-RoCE on HPE Slingshot 200Gbps NICs</navtitle>
-        </topicmeta>
-        <topicref href="install/configure_softroce.md" format="mdita"/>
-        <topicref href="install/softroce_on_HPE_Slingshot_200Gbps.md" format="markdown"/>
-        <topicref href="install/lustre_network_driver_lnd_ko2iblnd_configuration.md" format="mdita"/>
-    </topichead>
+    </topicref>
+    <topicref href="install/Soft_RoCE_on_HPE_Slingshot_200Gbps_NICs.md" format="mdita">
+        <topicref href="install/softroce_on_HPE_Slingshot_200Gbps.md" format="mdita"/>
+        <topicref href="install/lustre_network_driver_lnd_ko2iblnd_configuration.md" format="mdita"
+        />
+    </topicref>
 </map>

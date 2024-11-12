@@ -172,11 +172,11 @@ The following steps describe how to use the NCN personalization CFS configuratio
 
 The steps are identical to the steps for installing SHS provided content on NCN Workers, with the exception of the playbook used in the CFS configuration.
 
-1. See Step 1 of the [install procedure](#install-with-ncn-personalization).
+1. See Step 1 of the [install procedure](#./install-with-ncn-personalization).
 
-2. See Step 2 of the [install procedure](#install-with-ncn-personalization).
+2. See Step 2 of the [install procedure](#./install-with-ncn-personalization).
 
-3. See Step 3 of the [install procedure](#install-with-ncn-personalization), with the exception of replacing the values in the format with the instructions below:
+3. See Step 3 of the [install procedure](#./install-with-ncn-personalization), with the exception of replacing the values in the format with the instructions below:
 
    - Replace `<ansible playbook to run>` with one of the following:
      - `shs_cassini_install.yml` if the HPE Slingshot 200Gbps NIC software stack should be installed or updated.
