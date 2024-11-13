@@ -15,17 +15,12 @@
     <topicref href="release_notes/component_map.md" format="markdown"/>
     <topicref href="release_notes/securityissues.md" format="markdown"/>
     <topicref href="release_notes/knownissues.md" format="markdown"/>
-    <topichead>
-      <topicmeta>
-          <navtitle>System Software Requirements for Host Software</navtitle>
-       </topicmeta>
+    <topicref href="release_notes/System_Software_Requirements_for_Host_Software.md" format="mdita">
         <topicref href="release_notes/support_matrix.md" format="markdown"/>
-    </topichead>
+    </topicref>
     <topicref href="release_notes/cassini_firmware.md" format="markdown"/>
-    <topichead>
-      <topicmeta>
-          <navtitle>Appendix A: Validate Slingshot Software/Firmware</navtitle>
-       </topicmeta>
+    <topicref href="release_notes/Appendix_A_Validate_Slingshot_Software_and_Firmware.md"
+        format="mdita">
         <topicref href="release_notes/hash_validation_howto.md" format="markdown"/>
-    </topichead>
+    </topicref>
 </map>

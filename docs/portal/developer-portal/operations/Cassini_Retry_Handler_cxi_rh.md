@@ -1,4 +1,4 @@
-# Introduction
+# Cassini retry handler (`cxi_rh`)
 
 The Cassini Retry Handler (`cxi_rh`) is an integral part of the HPE Slingshot 200Gbps network.
 It handles events from the HPE Slingshot 200Gbps NIC to provide end-to-end retransmission when necessary.

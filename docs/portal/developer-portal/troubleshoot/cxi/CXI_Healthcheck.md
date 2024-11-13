@@ -1,4 +1,4 @@
-# CXI HealthCheck Overview
+# CXI HealthCheck
 
 The HPE Slingshot 200Gbps NIC software stack includes the `pycxi-utils` package, which contains a health and diagnostic utility that was developed using the `pycxi` library. This utility can be used to monitor the health and troubleshoot HPE Slingshot 200GB NIC issues.
 
@@ -131,3 +131,4 @@ Check: codeword_rate_check  Result: Pass
 Check: pci_error_check  Result: Pass
 Check: fw_version_check  Result: Pass
 ```
+

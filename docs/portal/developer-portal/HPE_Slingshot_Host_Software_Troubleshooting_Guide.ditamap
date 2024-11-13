@@ -13,10 +13,9 @@
         <topicref href="troubleshoot/cxi/cxi_diags_bandwidth.md" format="mdita"/>
         <topicref href="troubleshoot/cxi/cxi_diags_latency.md" format="mdita"/>
         <topicref href="troubleshoot/cxi/cxi_diags_thermal.md" format="mdita"/>
-        <topichead id="cxi-diags-troubleshoot" keys="cxi-diags-troubleshoot">
-            <topicmeta>
-                <navtitle>Troubleshoot CXI Diagnostics and Utilities</navtitle>
-            </topicmeta>
+        <topicref
+            href="troubleshoot/cxi/Troubleshoot_CXI_Diagnostics_and_Utilities_cxi_diags_troubleshoot.md"
+            format="mdita">
             <topicref href="troubleshoot/cxi/Cannot_reach_server.md" format="mdita"/>
             <topicref href="troubleshoot/cxi/No_server_running_at_remote_host.md" format="mdita"/>
             <topicref href="troubleshoot/cxi/TCP_port_already_in_use.md" format="mdita"/>
@@ -30,108 +29,74 @@
             <topicref href="troubleshoot/cxi/sync_timeout.md" format="mdita"/>
             <topicref href="troubleshoot/cxi/semaphore_already_exists.md" format="mdita"/>
             <topicref href="troubleshoot/cxi/failed_to_allocate_LNI.md" format="mdita"/>
-        </topichead>
-    </topicref>
-    <topichead id="cxi-healthcheck">
-        <topicmeta>
-            <navtitle>CXI HealthCheck</navtitle>
-        </topicmeta>
-        <topicref href="troubleshoot/cxi/CXI_HealthCheck_Overview.md" format="mdita"/>
-        <topicref href="troubleshoot/cxi/Common_CXI_core_error_messages.md" format="mdita"/>
-    </topichead>
-    <topichead id="cxi-error-handling-guidance-and-recommendations">
-        <topicmeta>
-            <navtitle>CXI Error Handling Guidance and Recommendations</navtitle>
-        </topicmeta>
-        <topicref href="troubleshoot/cxi/cxi_logged_events.md" format="mdita">
-            <topicref href="troubleshoot/cxi/Kernel_Severity_EMERG_0.md" format="mdita"/>
-            <topicref href="troubleshoot/cxi/Kernel_Severity_ALERT_1.md" format="mdita"/>
-            <topicref href="troubleshoot/cxi/Kernel_Severity_CRIT_2.md" format="mdita"/>
-            <topicref href="troubleshoot/cxi/Kernel_Severity_ERR_3.md" format="mdita"/>
-            <topicref href="troubleshoot/cxi/Kernel_Severity_WARNING_4.md" format="mdita"/>
-            <topicref href="troubleshoot/cxi/Kernel_Severity_NOTICE_5.md" format="mdita"/>
-            <topicref href="troubleshoot/cxi/Kernel_Severity_INFO_6.md" format="mdita"/>
-            <topicref href="troubleshoot/cxi/Kernel_Severity_DEBUG_7.md" format="mdita"/>
         </topicref>
-    </topichead>
-    <topichead id="network-diagnostics">
-        <topicmeta>
-            <navtitle>Network Diagnostics</navtitle>
-        </topicmeta>
-        <topicref href="troubleshoot/net_diags/net_diags_overview.md" format="mdita"/>
-        <topichead>
-            <topicmeta>
-                <navtitle>dgnettest</navtitle>
-            </topicmeta>
-            <topicref href="troubleshoot/net_diags/net_diags_dgnettest.md" format="mdita"/>
-            <topicref href="troubleshoot/net_diags/dgnettest_run.md" format="mdita"/>
-            <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_dgnettest.md" format="mdita"/>
-        </topichead>
-        <topichead>
-            <topicmeta>
-                <navtitle>cxibwcheck.sh</navtitle>
-            </topicmeta>
-            <topicref href="troubleshoot/net_diags/net_diags_cxibwcheck.md" format="mdita"/>
-            <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_cxibwcheck.md" format="mdita"/>
-        </topichead>
-        <topichead>
-            <topicmeta>
-                <navtitle>bwcheck.sh</navtitle>
-            </topicmeta>
-            <topicref href="troubleshoot/net_diags/net_diags_bwcheck.md" format="mdita"/>
-            <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_bwcheck.md" format="mdita"/>
-        </topichead>
-        <topichead>
-            <topicmeta>
-                <navtitle>cxiberstat.sh</navtitle>
-            </topicmeta>
-        <topicref href="troubleshoot/net_diags/net_diags_cxiberstat.md" format="mdita"/>
-        <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_cxiberstat.md" format="mdita"/>
-        </topichead>
-    </topichead>
-    <topichead id="compute-node-troubleshooting">
-        <topicmeta>
-            <navtitle>Compute node troubleshooting</navtitle>
-        </topicmeta>
-        <topicref href="troubleshoot/compute/troubleshoot_compute.md" format="mdita"/>
-        <topicref href="troubleshoot/compute/troubleshoot_bond0_not_up.md" format="mdita"/>
-    </topichead>
-    <topichead id="hpe-slingshot-200Gbps-nic">
-        <topicmeta>
-            <navtitle>HPE Slingshot 200Gbps NIC</navtitle>
-        </topicmeta>
-        <topichead id="hpe-slingshot-200Gbps-nic-troubleshooting">
-            <topicmeta>
-                <navtitle>HPE Slingshot 200Gbps NIC troubleshooting</navtitle>
-            </topicmeta>
-            <topicref href="troubleshoot/cassini/check_and_fix_misconfigured_nonvlan_tagged_ethernet_pcp_settings.md" format="mdita"/>
-            <topicref href="troubleshoot/cassini/check_and_fix_lldp_issues_on_the_fabric.md" format="mdita"/>
-            <topicref href="troubleshoot/cassini/lldp_mac_address_issue.md" format="mdita"/>
-        </topichead>
-        <topichead id="hpe-slingshot-200Gbps-nic-host-troubleshooting">
-        <topicmeta>
-            <navtitle>HPE Slingshot 200Gbps NIC Host troubleshooting</navtitle>
-        </topicmeta>
-        <topicref href="troubleshoot/cassini/200gbps_nic_appear_down.md" format="mdita"/>
-        <topicref href="troubleshoot/cassini/retry_handler.md" format="mdita"/>
-        <topicref href="troubleshoot/cassini/200gbps_nic_loopback_mode.md" format="mdita"/>
-        <topicref href="troubleshoot/cassini/ethernet_driven_configuration.md" format="mdita"/>
-        <topicref href="troubleshoot/cassini/200gbps_nic_errors.md" format="mdita"/>
-        <topicref href="troubleshoot/cassini/pcie_interface_troubleshooting.md" format="mdita"/>
-        <topicref href="troubleshoot/cassini/ethernet_interface_troubleshooting.md" format="mdita"/>
-            <topicref href="troubleshoot/cassini/RDMA_interface_troubleshooting.md" format="mdita"/>
-    </topichead>
-    <topichead id="hpe-slingshot-200Gbps-nic-firmware-troubleshooting">
-        <topicmeta>
-            <navtitle>HPE Slingshot 200Gbps NIC Firmware troubleshooting</navtitle>
-        </topicmeta>
-        <topicref href="troubleshoot/cassini/firmware_update_failure.md" format="mdita"/>
-        <topicref href="troubleshoot/cassini/firmware_factory_reset.md" format="mdita"/>
-    </topichead>
-    <topicref href="troubleshoot/cassini/pause_too_long.md" format="mdita">
-        <topicref href="troubleshoot/cassini/pause_too_long_map_ethernet.md" format="mdita"/>
-        <topicref href="troubleshoot/cassini/pause_too_long_fabric_recovery.md" format="mdita"/>
     </topicref>
-    </topichead>
+    <topicref href="troubleshoot/cxi/CXI_Healthcheck.md" format="mdita">
+        <topicref href="troubleshoot/cxi/Common_CXI_core_error_messages.md" format="mdita"/>
+    </topicref>
+    <topicref href="troubleshoot/cxi/cxi_logged_events.md" format="mdita">
+        <topicref href="troubleshoot/cxi/Kernel_Severity_EMERG_0.md" format="mdita"/>
+        <topicref href="troubleshoot/cxi/Kernel_Severity_ALERT_1.md" format="mdita"/>
+        <topicref href="troubleshoot/cxi/Kernel_Severity_CRIT_2.md" format="mdita"/>
+        <topicref href="troubleshoot/cxi/Kernel_Severity_ERR_3.md" format="mdita"/>
+        <topicref href="troubleshoot/cxi/Kernel_Severity_WARNING_4.md" format="mdita"/>
+        <topicref href="troubleshoot/cxi/Kernel_Severity_NOTICE_5.md" format="mdita"/>
+        <topicref href="troubleshoot/cxi/Kernel_Severity_INFO_6.md" format="mdita"/>
+        <topicref href="troubleshoot/cxi/Kernel_Severity_DEBUG_7.md" format="mdita"/>
+    </topicref>
+    <topicref href="troubleshoot/net_diags/Network_Diagnostics.md" format="mdita">
+        <topicref href="troubleshoot/net_diags/net_diags_dgnettest.md" format="mdita">
+            <topicref href="troubleshoot/net_diags/dgnettest_run.md" format="mdita"/>
+            <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_dgnettest.md"
+                format="mdita"/>
+        </topicref>
+        <topicref href="troubleshoot/net_diags/net_diags_cxibwcheck.md" format="mdita">
+            <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_cxibwcheck.md"
+                format="mdita"/>
+        </topicref>
+        <topicref href="troubleshoot/net_diags/net_diags_bwcheck.md" format="mdita">
+            <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_bwcheck.md" format="mdita"
+            />
+        </topicref>
+        <topicref href="troubleshoot/net_diags/net_diags_cxiberstat.md" format="mdita">
+            <topicref href="troubleshoot/net_diags/troubleshoot_net_diags_cxiberstat.md"
+                format="mdita"/>
+        </topicref>
+    </topicref>
+    <topicref href="troubleshoot/compute/troubleshoot_compute.md" format="mdita">
+        <topicref href="troubleshoot/compute/troubleshoot_bond0_not_up.md" format="mdita"/>
+    </topicref>
+    <topicref href="troubleshoot/cassini/HPE_Slingshot_200Gbps_NIC.md" format="mdita">
+        <topicref href="troubleshoot/cassini/HPE_Slingshot_200Gpbs_NIC_troubleshooting.md"
+            format="mdita">
+            <topicref
+                href="troubleshoot/cassini/check_and_fix_misconfigured_nonvlan_tagged_ethernet_pcp_settings.md"
+                format="mdita"/>
+            <topicref href="troubleshoot/cassini/check_and_fix_lldp_issues_on_the_fabric.md"
+                format="mdita"/>
+            <topicref href="troubleshoot/cassini/lldp_mac_address_issue.md" format="mdita"/>
+        </topicref>
+        <topicref href="troubleshoot/cassini/HPE_Slingshot_200Gbps_NIC_Host_troubleshooting.md"
+            format="mdita">
+            <topicref href="troubleshoot/cassini/200gbps_nic_appear_down.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/retry_handler.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/200gbps_nic_loopback_mode.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/ethernet_driven_configuration.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/200gbps_nic_errors.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/pcie_interface_troubleshooting.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/ethernet_interface_troubleshooting.md"
+                format="mdita"/>
+            <topicref href="troubleshoot/cassini/RDMA_interface_troubleshooting.md" format="mdita"/>
+        </topicref>
+        <topicref href="troubleshoot/cassini/HPE_Slingshot_200Gbps_NIC_Firmware_troubleshooting.md"
+            format="mdita">
+            <topicref href="troubleshoot/cassini/firmware_update_failure.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/firmware_factory_reset.md" format="mdita"/>
+        </topicref>
+        <topicref href="troubleshoot/cassini/pause_too_long.md" format="mdita">
+            <topicref href="troubleshoot/cassini/pause_too_long_map_ethernet.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/pause_too_long_fabric_recovery.md" format="mdita"/>
+        </topicref>
+    </topicref>
     <topicref href="troubleshoot/cxi/High_rate_puts_and_internal_loopack.md" format="mdita"/>
 </map>

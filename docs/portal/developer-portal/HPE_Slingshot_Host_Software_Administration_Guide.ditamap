@@ -9,66 +9,37 @@
     </topicmeta>
     <topicref href="VeRsIoN.md" format="mdita"/>
     <topicref href="overview/overview_admin.md" format="mdita"/>
-    <topichead>
-        <topicmeta>
-            <navtitle>Common operational tasks</navtitle>
-        </topicmeta>
+    <topicref href="install/Common_operational_tasks.md" format="mdita">
         <topicref href="install/generic_hpe_slingshot_configuration.md" format="mdita"/>
         <topicref href="install/host_adapter_naming.md" format="mdita"/>
         <topicref href="install/algorithmic_mac_address_mac_configuration.md" format="mdita"/>
-        <topicref href="install/multiple_network_adapters.md" format="mdita"/> 
+        <topicref href="install/multiple_network_adapters.md" format="mdita"/>
         <topicref href="install/sysctl_configuration_example.md" format="mdita"/>
         <topicref href="install/arp_settings.md" format="mdita"/>
-    </topichead>
-    <topichead>
-        <topicmeta>
-            <navtitle>Firmware management</navtitle>
-        </topicmeta>
+    </topicref>
+    <topicref href="operations/Firmware_management.md" format="mdita">
         <topicref href="operations/update_firmware_hpcm_metal.md" format="mdita"/>
         <topicref href="operations/update_firmware_csm.md" format="mdita"/>
-    </topichead>
-    <topichead>
-        <topicmeta>
-            <navtitle>Quality of Service (QoS)</navtitle>
-        </topicmeta>
-        <topicref href="operations/configure_qos_shs.md" format="mdita"/>
-    </topichead>
-    <topichead>
-        <topicmeta>
-             <navtitle>HSN performance</navtitle>
-        </topicmeta>
-        <topicref href="performance/performance_overview.md" format="mdita"/>
+    </topicref>
+    <topicref href="operations/configure_qos_shs.md" format="mdita"/>
+    <topicref href="performance/HSN_performance.md" format="mdita">
         <topicref href="performance/gpcnet_benchmark.md" format="mdita"/>
         <topicref href="performance/osu_benchmark.md" format="mdita"/>
         <topicref href="performance/openmpi.md" format="mdita"/>
         <topicref href="performance/libfabrics.md" format="mdita"/>
         <topicref href="performance/perftest.md" format="mdita"/>
-        <topichead>
-            <topicmeta>
-                <navtitle>HSN performance benchmark tools</navtitle>
-            </topicmeta>
-            <topicref href="performance/HSN_performance_benchmarking.md" format="mdita"/>
-            </topichead>
+        <topicref href="performance/HSN_performance_benchmarking.md" format="mdita"/>
         <topicref href="performance/ARP.md" format="mdita"/>
         <topicref href="performance/ethtool_node_tuning.md" format="mdita"/>
         <topicref href="performance/AMA.md" format="mdita"/>
         <topicref href="performance/TCP_performance_tuning.md" format="mdita"/>
-    </topichead>
-    <topichead>
-        <topicmeta>
-             <navtitle>Cassini Retry Handler (cxi_rh)</navtitle>
-        </topicmeta>
-        <topicref href="operations/cassini_retry_handler.md" format="mdita"/>
+    </topicref>
+    <topicref href="operations/Cassini_Retry_Handler_cxi_rh.md" format="mdita">
         <topicref href="operations/cassini_retry_handler_configuration.md" format="mdita"/>
         <topicref href="operations/cassini_retry_handler_usage.md" format="mdita"/>
         <topicref href="operations/cassini_retry_handler_logging.md" format="mdita"/>
         <topicref href="operations/cassini_retry_handler_monitoring_and_telemetry.md" format="mdita"/>
         <topicref href="operations/cassini_retry_handler_troubleshooting.md" format="mdita"/>
-    </topichead>
-    <topichead>
-        <topicmeta>
-             <navtitle>kdreg2</navtitle>
-        </topicmeta>
-        <topicref href="operations/kdreg2_configuration.md" format="mdita"/>
-    </topichead>
+    </topicref>
+    <topicref href="operations/kdreg2_configuration.md" format="mdita"/>
 </map>

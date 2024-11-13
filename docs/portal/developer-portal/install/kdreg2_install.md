@@ -4,8 +4,8 @@
 Use this section to install kdreg2 in the host images.
 For more detailed instructions, see one of the following sections depending on the system management environment in use:
 
-- [kdreg2 installation: Cray System Management (CSM)](#kdreg2-installation-cray-system-management-csm)
-- [kdreg2 installation: HPE Performance Cluster Manager (HPCM)](#kdreg2-installation-hpe-performance-cluster-manager-hpcm)
+- [kdreg2 installation: Cray System Management (CSM)](#./kdreg2-installation-cray-system-management-csm)
+- [kdreg2 installation: HPE Performance Cluster Manager (HPCM)](#./kdreg2-installation-hpe-performance-cluster-manager-hpcm)
 
 ## kdreg2 installation: Cray System Management (CSM)
 

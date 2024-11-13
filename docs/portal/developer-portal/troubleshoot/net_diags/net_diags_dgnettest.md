@@ -1,4 +1,4 @@
-# `dgnettest` overview
+# `dgnettest`
 
 The network diagnostic `dgnettest` is comprised of four individual tests. It interfaces with Slurm to run multiple tests in parallel, setting up MPI communicators for each blade, group, or other set of nodes. It can run on systems of any size. It uses enough processes per node to get optimal performance while ensuring that memory use remains low.
 
