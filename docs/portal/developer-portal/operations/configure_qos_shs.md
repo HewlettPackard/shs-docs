@@ -1,6 +1,6 @@
 # Configure QoS for Slingshot Host Software (SHS)
 
-The cxi-driver includes multiple QoS profiles for SHS. This includes PCP to DSCP mappings and other settings that must match the Rosetta side configs, as well as which internal HPE Slingshot 200Gbps NIC resources are made available to each traffic class in a profile.
+The cxi-driver includes multiple QoS profiles for SHS. This includes PCP to DSCP mappings and other settings that must match the Rosetta side configurations, as well as which internal HPE Slingshot 200Gbps NIC resources are made available to each traffic class in a profile.
 
 An admin will be able to choose from one of the profiles that is made available. See the following subsections for guidance on viewing and selecting QoS profiles on the host.
 
@@ -10,7 +10,7 @@ For general information on QoS outside the context of SHS, see "Configure Qualit
 
 QoS profile names on the host match those on the switch. On the host there will be an integer value associated with each QoS Profile. This value is used to select the QoS Profile that the driver should load.
 
-Starting in the Slingshot 2.2 release, the following profiles will be supported on the host:
+Starting in the HPE Slingshot 2.2 release, the following profiles will be supported on the host:
 
 - 1 - HPC
 - 2 - LL_BE_BD_ET
@@ -34,7 +34,7 @@ parm:           active_qos_profile:QoS Profile to load. Must match fabric QoS Pr
 
 ## Select QoS profile on the host
 
-The `active_qos_profile` module parameter to the cxi-ss1 driver allows admins to choose a QoS profile. As with any module parameter, there are multiple ways for an admin to apply the change, such as the following:
+The `active_qos_profile` module parameter to the `cxi-ss1` driver allows admins to choose a QoS profile. As with any module parameter, there are multiple ways for an admin to apply the change, such as the following:
 
 - Directly via `insmod`/`modprobe`
 - Kernel Command Line
@@ -49,7 +49,7 @@ For example, to load the LL_BE_BD_ET profile via `modprobe`:
 Important notes:
 
 - All nodes _must_ use the same QoS Profile on a particular fabric. See "Configure Quality of Service (QoS)" in the _HPE Slingshot Installation Guide_ for the environment in use.
-- QoS Profile change cannot be done "live", as the cxi-ss1 driver must be reloaded. To change profiles, reboot nodes with the desired QoS profile specified.
+- QoS Profile change cannot be done "live", as the `cxi-ss1` driver must be reloaded. To change profiles, reboot nodes with the desired QoS profile specified.
 
 ## Query QoS information on the host
 
@@ -100,7 +100,7 @@ The following error message on the host can be reported if the 200Gbps NIC and H
 
 **Note:** The above errors, specifically `pfc_fifo_oflw` errors, can also occur if the Fabric Manager is not configured with 200Gbps NIC QoS settings.
 
-The PCP to utilize for non-VLAN tagged Ethernet frames is defined in a QoS profile. The CXI Driver (cxi-ss1) defines a kernel module parameter, `untagged_eth_pcp`, to optionally change this value. The default value of -1 means the value defined in the QoS profile will be used.
+The PCP to utilize for non-VLAN tagged Ethernet frames is defined in a QoS profile. The CXI Driver (`cxi-ss1`) defines a kernel module parameter, `untagged_eth_pcp`, to optionally change this value. The default value of -1 means the value defined in the QoS profile will be used.
 
 The following is an example of how to override the value defined in the profile via modprobe:
 

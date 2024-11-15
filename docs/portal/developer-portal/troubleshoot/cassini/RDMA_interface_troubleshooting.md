@@ -34,9 +34,9 @@ The availability of a CXI interface indicates several key signs of health. An in
 - The interface retry handler is running
 - A matching L2 interface is available
 - The L1 interface has a temporary, locally administered, unicast address assigned to it. This is presumed to be an AMA applied by the fabric manager.
-- The L1 link state is reported if verbosity is enabled. L1 link state reported by `fi_info` will match the state reported by the L2 device through the ip tool.
+- The L1 link state is reported if verbosity is enabled. L1 link state reported by `fi_info` will match the state reported by the L2 device through the `ip` tool.
 
-All these checks together make `fi_inf0` an excellent first tool to use to check the general health of 200Gbps NIC RDMA interfaces.
+All these checks together make `fi_info` an excellent first tool to use to check the general health of 200Gbps NIC RDMA interfaces.
 
 **fi_pingpong:**
 

@@ -90,9 +90,9 @@ Running switch tests over : nid[000001-000004]
 Using NIC 0
 nprocs=32 sets=2 maxbytes=131072 ppn=8 (Warning: no PMI set manually)
 Test      Iter    Bytes      Min     Mean      Max      Dev       CV
-all2all      1   131072 						 Not enough nodes
-all2all      2   131072 						 Not enough nodes
-all2all      3   131072 						 Not enough nodes
+all2all      1   131072                          Not enough nodes
+all2all      2   131072                          Not enough nodes
+all2all      3   131072                          Not enough nodes
 Test      Iter    Bytes      Min     Mean      Max      Dev       CV
 bisect       1   131072    19374    19621    19868      349      1.8%
 bisect       2   131072    19409    19639    19869      326      1.7%
@@ -100,7 +100,7 @@ bisect       3   131072    19409    19651    19894      343      1.7%
 dgnettest has PASSED
 ```
 
-## PMPI_Init error
+## `PMPI_Init` error
 
 By default, `dgnettest` uses the MPI selection set in Slurm on the system. If this fails with the following error, try using the `--mpi` option to select a different version of MPI. A system's supported versions can be queried with `srun --mpi=list`.
 

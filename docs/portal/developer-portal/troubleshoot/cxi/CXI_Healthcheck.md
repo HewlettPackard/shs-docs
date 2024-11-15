@@ -26,7 +26,7 @@ This utility is found in the `pycxi-utils` package and must be run as a privileg
 
 ## Running the diagnostic
 
-Running cxi_healthcheck requires root privileges. It runs on compute nodes only. The '--not_idle' option must be used when running `cxi_healthcheck` on a non-idle system where traffic is flowing. This helps to avoid false positives that may occur when a system is in a non-idle state.
+Running `cxi_healthcheck` requires root privileges. It runs on compute nodes only. The `--not_idle` option must be used when running `cxi_healthcheck` on a non-idle system where traffic is flowing. This helps to avoid false positives that may occur when a system is in a non-idle state.
 
 _**Usage**_
 
@@ -131,4 +131,3 @@ Check: codeword_rate_check  Result: Pass
 Check: pci_error_check  Result: Pass
 Check: fw_version_check  Result: Pass
 ```
-

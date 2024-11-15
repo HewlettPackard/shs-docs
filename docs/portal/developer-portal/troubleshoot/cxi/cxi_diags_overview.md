@@ -4,11 +4,11 @@
 
 The 200Gbps NIC software stack includes the libcxi library, which provides a direct interface to the CXI driver. A set of diagnostics has been developed using this library. These can be used to measure performance and troubleshoot 200Gbps NIC issues without using `libfabric`.
 
-The bandwidth and latency utilities can measure either loopback or point-to-point performance. They can be used to get a quick systemwide snapshot of NIC and link health, as well as highlight switch edge port configuration issues. When used point-to-point they can be helpful in isolating localized problems. Point-to-point runs may also discover switch fabric port configuration issues, though other tools like `dgnettest` are better suited for this purpose.
+The bandwidth and latency utilities can measure either loopback or point-to-point performance. They can be used to get a quick system-wide snapshot of NIC and link health, as well as highlight switch edge port configuration issues. When used point-to-point they can be helpful in isolating localized problems. Point-to-point runs may also discover switch fabric port configuration issues, though other tools like `dgnettest` are better suited for this purpose.
 
 The `cray-libcxi-utils` RPM is included in the `slingshot-compute-cassini` tarball in the HPE Slingshot release package.
 
-The `cray-libcxi-utils` package can be installed on both compute and noncompute nodes. Each program has a corresponding manpage, and there is a `cxi_diags(7)` page with a summary of the diagnostics and their features. Binaries are placed in `/usr/bin`, and manpages are placed in `/usr/share/man/man1` and `/usr/share/man/man7`.
+The `cray-libcxi-utils` package can be installed on both compute and non-compute nodes. Each program has a corresponding manpage, and there is a `cxi_diags(7)` page with a summary of the diagnostics and their features. Binaries are placed in `/usr/bin`, and manpages are placed in `/usr/share/man/man1` and `/usr/share/man/man7`.
 
 ## Minimum setup required
 

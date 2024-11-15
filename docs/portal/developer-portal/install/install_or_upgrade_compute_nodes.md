@@ -1,6 +1,6 @@
 # Install compute nodes
 
-Perform this procedure to install SHS on compute nodes. This procedure can be used for systems that use either Mellanox NICs or HPE Slingshot 200Gpbs NICs.
+Perform this procedure to install SHS on compute nodes. This procedure can be used for systems that use either Mellanox NICs or HPE Slingshot 200Gbps NICs.
 
 The installation method will depend on what type of NIC is installed on the system.
 Select one of the following procedures depending on the NIC in use:
@@ -39,7 +39,7 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
 
    a. The RPMs should be copied or moved to a location accessible to one or more hosts where the RPMs will be installed. This can be a network file share, a physically backed location such as a disk drive on the host, or a remotely accessible location such as a web server that hosts the RPMs.
 
-   b. The host or host OS image should be modified to add a repository for the newly downloaded RPMs for the package manager used in the OS distribution. Select the RPMs from the distribution file for your environment (slingshot_compute_cos-2.4... for COS 2.4, slingshot_compute_sle15_sp4 for SLE15_sp4, and so on)
+   b. The host or host OS image should be modified to add a repository for the newly downloaded RPMs for the package manager used in the OS distribution. Select the RPMs from the distribution file for your environment (`slingshot_compute_cos-2.4...` for COS 2.4, `slingshot_compute_sle15_sp4` for SLE15_sp4, and so on)
    For SLE 15, `zypper` is used as the package manager for the host. A Zypper repository should be added which provides the path to the RPMs are hosted. An example for this could be the following:
 
    Assume that the RPMs were downloaded and added to a web server that is external to the host,

@@ -13,7 +13,7 @@ journalctl -u cxi_rh@cxi0
 
 ## Log levels
 
-As of SHS 11.1, the RH primarily uses four log Levels. Some messages have been moved to different levels as compared to previous releases.
+As of the SHS 11.1 release, the RH primarily uses four log Levels. Some messages have been moved to different levels as compared to previous releases.
 
 - **LOG_WARN**: Cancellation Related Messages, Config Messages, Connection Level Messages (SCTs, TCTs), Retrying a Connection.
 - **LOG_NOTICE**: SPT Timeouts, Retry Completes for Timed out Packets.

@@ -171,9 +171,9 @@ Looking at the `event MSI vector` field, EQ 3 is using the Linux IRQ with the na
 
 Repeating this process for the other EQs, we get the following map:
 
-- RX Queue 0: cxi0_comp0
-- PTP RX Queue 16: cxi0_comp2
-- TX Queue 0: cxi0_comp128
+- RX Queue 0: `cxi0_comp0`
+- PTP RX Queue 16: `cxi0_comp2`
+- TX Queue 0: `cxi0_comp128`
 
 ## Map IRQ name to IRQ number
 

@@ -2,9 +2,10 @@
 
 This section describes how to monitor the health of the 200Gbps NIC Ethernet Interface. Standard tools are used to monitor the Ethernet interface health.
 
-## ip
+## `ip`
 
-The 'ip' is a standard Linux tool to monitor the state of a Linux network device. Use this tool to view the state of the 200Gbps NIC Ethernet interface as follows:
+The `ip` is a standard Linux tool to monitor the state of a Linux network device.
+Use this tool to view the state of the 200Gbps NIC Ethernet interface as follows:
 
 ```screen
 # ip l show hsn0
@@ -17,7 +18,7 @@ This command shows several pieces of important information:
 - `LOWER_UP` - This flag shows the state of the L1 link. This is relevant to the RDMA interface as well.
 - `UP` - This flag shows the administrative state of the Ethernet L2 interface.
 - `state UNKNOWN` - The operational state of the interface. UNKNOWN and UP are valid running states for the L2 Ethernet interface.
-- `02:00:00:00:00:f3` - Algorithmic MAC address. The prefix '0x02' indicates a locally administered unicast address. This is one signature of a managed AMA.
+- `02:00:00:00:00:f3` - Algorithmic MAC address. The prefix `0x02` indicates a locally administered unicast address. This is one signature of a managed AMA.
 
 ## ping
 

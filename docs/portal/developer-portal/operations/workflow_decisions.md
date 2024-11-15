@@ -34,7 +34,7 @@ At this point, some workflow decisions must be made. These decisions depend on r
     ncn-m001# OLD_IMPORT_BRANCH_REF=refs/remotes/origin/cray/slingshot-host-software/${OLD_RELEASE}
     ```
 
-  - Else if there are no `integration-*` branches, but there is an integration branch with no `-<RELEASE>` suffix, determine what the release integration was based on by running the `git log` command.This finds the newest commit in the output (the commit closest to the top), which contains a message similar to "Import of 'slingshot-host-software' product version `<OLD-RELEASE>`".
+  - Else if there are no `integration-*` branches, but there is an integration branch with no `-<RELEASE>` suffix, determine what the release integration was based on by running the `git log` command. This finds the newest commit in the output (the commit closest to the top), which contains a message similar to "Import of 'slingshot-host-software' product version `<OLD-RELEASE>`".
 
     ```screen
     ncn-m001# git log --topo-order refs/remotes/origin/integration | less
@@ -110,11 +110,11 @@ Failure to define any of the three variables above may result in install, upgrad
 
 If group variable files are used, then a file must be defined for each target node type. Three groups of nodes are supported:
 
-| Node Type          | Product | Target Kernel Distribution                      | Group Variable File Name      |
-| ------------------ | ------- | ----------------------------------------------- | ----------------------------- |
-| Compute            | COS     | COS (see COS installation for target OS kernel) | Compute/default.yml           |
-| User Access/Login  | UAN     | COS (see COS installation for target OS kernel) | Application/default.yml       |
-| Non-compute Worker | CSM     | CSM (see CSM installation for target OS kernel) | Management_Worker/default.yml |
+| Node Type          | Product | Target Kernel Distribution                      | Group Variable File Name        |
+|--------------------|---------|-------------------------------------------------|---------------------------------|
+| Compute            | COS     | COS (see COS installation for target OS kernel) | `Compute/default.yml`           |
+| User Access/Login  | UAN     | COS (see COS installation for target OS kernel) | `Application/default.yml`       |
+| Non-compute Worker | CSM     | CSM (see CSM installation for target OS kernel) | `Management_Worker/default.yml` |
 
 An example configuration for a Compute node (`ansible/group_vars/Compute/default.yml`) on HPE Cray EX System Software 1.5 using COS 2.4 and CSM 1.3 might be the following:
 

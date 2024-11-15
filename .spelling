@@ -6,6 +6,12 @@
 #
 # General
 #
+0x82
+0x83
+0x84
+0x85
+0x86
+0x87
 1G
 100Gbps
 1-port
@@ -15,6 +21,7 @@
 200Gbps
 2-port
 802.1Q
+adminStatus
 AMA
 AMAs
 amdgpu
@@ -46,6 +53,7 @@ Basesystem
 BER
 BERs
 behavior
+behaviors
 benchmarking
 bisectional
 Bond0
@@ -75,6 +83,7 @@ COS Base
 CN
 CNs
 CPE
+CPTs
 Cray
 cray
 cray-diags-fabric
@@ -118,7 +127,13 @@ debugfs
 default.yml
 defragmented
 dgnettest
+diags
 diskless
+disk-ful
+DIS_HOST
+DIS_ETH
+DIS_SMB
+DIS_USB
 DITA-OT
 ditamap
 ditamaps
@@ -166,6 +181,7 @@ FM
 FMN
 GbE
 Gbps
+Gen4
 gc_thresh
 Git
 Gitea
@@ -183,6 +199,7 @@ heatsink
 highpriority
 hodagd
 honor
+honoring
 hostname
 hostnames
 HPCM
@@ -215,6 +232,7 @@ IPs
 IPv4
 ISO
 ISOs
+journald
 JSON
 jwt
 JWT
@@ -252,6 +270,11 @@ LNM
 Loadbalance
 loadbalance
 localtime
+LOG_DEBUG
+LogLevelMax
+LOG_NOTICE
+LOG_INFO
+LOG_WARN
 Loopback
 loopback
 low-noise-mode
@@ -288,6 +311,7 @@ munged*
 multisocket
 n00
 n01
+NACKs
 nameserver
 NAPI
 ncn-personalization
@@ -315,6 +339,8 @@ ncn-w004
 Neighbor
 neighbor
 neighbors
+neighboring
+Netlink
 nfsserv
 NID
 NIDs
@@ -327,6 +353,8 @@ node-identity
 nodename
 non-CFS
 non-VLAN
+nonprivileged
+Nonprivileged
 nodelist
 NUMA
 Nvidia
@@ -348,6 +376,7 @@ pdsh
 Perftest
 perftest
 perf
+PEs
 pfc_fifo_oflw
 PKTBUF_ERROR
 playbook
@@ -375,6 +404,8 @@ Redfish
 RedHat
 release-rpms
 repo
+requeue
+Requeue
 RHEL-based
 RoCE
 roce_perf_check_loopback
@@ -396,17 +427,21 @@ rxe
 rxe0
 rxe1
 rxtx
+SBL_ASYNC_ALERT_LINK_DOWN
 SBL_ASYNC_ALERT_SERDES_FW_CORRUPTION
+SCTs
 SD-DAEMON
-SD_NOTICE
-SD_INFO
-SD_DEBUG
+_SD-DAEMON_
+_SD_NOTICE_
+_SD_INFO_
+_SD_DEBUG_
 SDK
 sdk
 SEL
 SELinux
 SerDes
 serdes
+SEQUENCE_ERROR
 shadow
 SharePoint
 SHS
@@ -422,14 +457,18 @@ SLE
 SLES
 SLE15_sp4
 SLE15-SP4
+SLES15-SP4
 socklnd
 Soft-RoCE
 Standalone
 standalone
 StatsFS
+SPTs
 subcommand
 subcommands
+substep
 subrole
+SU-leader
 superblock
 Supercomputing
 SuSE
@@ -439,9 +478,11 @@ sysctl
 syslog
 systemctl
 systemd
+Taskset
 tcp
 tcp1
 tcs
+TCTs
 TEMPLATE_NAME
 tmpfs
 TLV
@@ -458,6 +499,7 @@ UANs
 uC
 UDEV
 udev
+uint128
 uncomment
 untagged_eth_pcp
 untar
@@ -479,7 +521,11 @@ wildcard
 wildcards
 WLM
 WLMs
+WP_NIC0
+WP_NIC1
 writable
+x100x
+x16
 x86
 x86_64
 xname

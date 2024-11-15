@@ -18,7 +18,7 @@ below a threshold compared to the mean.
 
 ## Example
 
-This example shows running the script with Slurm and using srun's broadcast option to distribute the script to the nodes.
+This example shows running the script with Slurm and using the `srun` broadcast option to distribute the script to the nodes.
 
 ```screen
 # srun -N6 --bcast=/tmp/bwcheck.sh /tmp/bwcheck.sh

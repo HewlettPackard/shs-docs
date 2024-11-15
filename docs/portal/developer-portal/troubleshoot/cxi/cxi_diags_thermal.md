@@ -6,7 +6,7 @@ For troubleshooting information, see [Troubleshoot CXI Diagnostics and Utilities
 
 ## Node configuration
 
-When testing a single-NIC device, only one instance of `cxi_heatsink_check` is needed. However, when testing a dual-NIC device, two instances of the diagnostic must run simultaneously, each targeting one of the two NICs. Dual-NIC pairs can be determined by using cxi_stat to obtai NIC serial numbers. NICs of the same device will have identical serial numbers.
+When testing a single-NIC device, only one instance of `cxi_heatsink_check` is needed. However, when testing a dual-NIC device, two instances of the diagnostic must run simultaneously, each targeting one of the two NICs. Dual-NIC pairs can be determined by using `cxi_stat` to obtain NIC serial numbers. NICs of the same device will have identical serial numbers.
 
 **Note:** In some compute blades, each NIC of a dual-NIC device belongs to a separate node.
 

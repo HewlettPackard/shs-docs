@@ -26,7 +26,7 @@ The `sat bootprep` input file should contain sections similar to the following t
 For the examples below,
 
 - Replace `<version>` with the version of SHS desired
-- Replace `<playbook>` with the SHS ansible playbook that should be used
+- Replace `<playbook>` with the SHS Ansible playbook that should be used
 - Replace `ims_require_dkms: true` with `ims_require_dkms: false` if pre-built kernel binaries should be used instead of DKMS kernel packages. NOTE: This setting only exists with CSM 1.5 and later deployments.
 
 **Note:** `shs_mellanox_install.yml` should be used if the Mellanox NIC is installed. `shs_cassini_install.yml` should be used if the HPE Slingshot 200Gbps NIC is installed.

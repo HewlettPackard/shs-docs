@@ -4,7 +4,7 @@ This section helps to understand some common CXI core error messages.
 
 **Note:** This section applies to HPE Cray EX Supercomputer and HPE Cray Supercomputer systems that are configured with HPE Slingshot 200 GbE NICs and are only to be used in understanding HPE Slingshot Cassini error messages.
 
-## rbyp_abort errors
+## `rbyp_abort` errors
 
 These errors may occur when a PCIe-correctable error occurs.
 
@@ -35,7 +35,7 @@ To disable `pri_rbyp_abort` reporting, bit 44 needs to be set in `sysfs CXI PI I
 echo "00001000,00000000" > /sys/class/cxi/cxi0/device/err_flgs_irqa/pi_ipd/no_print_mask
 ```
 
-## pcs_link_down errors
+## `pcs_link_down` errors
 
 `pcs_link_down` errors occur when the HSN link transitions from an up to a down state.
 
@@ -55,7 +55,7 @@ echo "e0010003,00000000" > /sys/class/cxi/cxi0/device/err_flgs_irqa/hni_pml/no_p
 
 **Note:** To disable the reporting of `pcs_tx_dp_err`, `llr_ack_nack_error`, or `mac_rx_frame_err` errors, bits 31, 35, or 58 must be included with bit 48.
 
-## pcs_tx_dp_err errors
+## `pcs_tx_dp_err` errors
 
 Typically, `pcs_tx_dp_err` is associated with a `CXI_EVENT_LINK_DOWN` message.
 
@@ -75,7 +75,7 @@ echo "e000000b,00000000" > /sys/class/cxi/cxi0/device/err_flgs_irqa/hni_pml/no_p
 
 **Note:** To disable the reporting of `llr_ack_nack_error`, `pcs_link_down`, or `mac_rx_frame_err errors`, bits 31, 48, or 58 must be included with bit 35.
 
-## llr_eopb, llr_ack_nack_error, and mac_rx_frame_err errors
+## `llr_eopb`, `llr_ack_nack_error`, and `mac_rx_frame_err` errors
 
 These errors are associated with poor HSN link quality and potentially many uncorrected codewords.
 
@@ -108,7 +108,7 @@ echo "e4000003,80000000" > /sys/class/cxi/cxi0/device/err_flgs_irqa/hni_pml/no_p
 
 **Note:** To disable the reporting of `pcs_tx_dp_err` or `pcs_link_down`, bits 35 or 48 must be included with bits 31 or 58.
 
-## tct_tbl_dealloc errors
+## `tct_tbl_dealloc` errors
 
 This error occurs when, under certain conditions, the HPE Slingshot host software stack does not take proper precautions to prevent the HPE Slingshot 200 GbE NIC from entering an error state. An example of such a condition that may initiate this error - is a fabric event causing packet transfers to be significantly delayed. Normal NIC and fabric operation is not expected to initiate this error.
 
@@ -118,13 +118,13 @@ The following is an example of this error:
 [122215.631871] cxi_ss1 0000:11:00.0: cxi0[hsn0]: C_EC_CRIT: C_PCT_EXT error: tct_tbl_dealloc (18)
 ```
 
-Once CXI core reports this error, the NIC has issues communicating with other NICs using the native Slingshot HPC protocol. Ethernet functionality is not impacted. Recovery from this state requires a node reboot.
+Once CXI core reports this error, the NIC has issues communicating with other NICs using the native HPE Slingshot HPC protocol. Ethernet functionality is not impacted. Recovery from this state requires a node reboot.
 
 **Important:** Disabling the reporting of this error message must be avoided.
 
-## ptl_invld_vni errors
+## `ptl_invld_vni` errors
 
-This error occurs when incoming native Slingshot HPC protocol packets do not match a configured virtual network identifier (VNI).
+This error occurs when incoming native HPE Slingshot HPC protocol packets do not match a configured virtual network identifier (VNI).
 
 The following is an example of this error:
 
@@ -136,7 +136,7 @@ The HPE Slingshot 200 GbE NIC drops all HPC packets with a non-matching VNI. The
 
 - In a client-server environment, the client is issuing I/O requests to a server that does not have its endpoints configured.
 - In a client-server environment, client-server VNI misconfiguration results in some clients or servers operating on different VNIs.
-- A local rank or processing element (PE) crashed in a parallel application environment with incoming RDMA operations from remote ranks or PEs. When the local rank or PE crashes, the CXI kernel software stack automatically teara down endpoints used by the local rank/PE. This will eventually result in disabling the VNI.
+- A local rank or processing element (PE) crashed in a parallel application environment with incoming RDMA operations from remote ranks or PEs. When the local rank or PE crashes, the CXI kernel software stack automatically tears down endpoints used by the local rank/PE. This will eventually result in disabling the VNI.
 
 `ptl_invld_vni errors` are informational only.
 

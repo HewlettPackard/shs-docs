@@ -95,7 +95,7 @@ A jumbo packet (e.g. 9000 bytes) is split into 2 large packets buffers of 4KB, a
 
 ## Jumbo frames
 
-By default, each ethernet interface has an MTU of 1500. 200Gbps NIC supports jumbo frames up to 9000, which improves performances for
+By default, each Ethernet interface has an MTU of 1500. 200Gbps NIC supports jumbo frames up to 9000, which improves performances for
 large transfers.
 
 To change the MTU:

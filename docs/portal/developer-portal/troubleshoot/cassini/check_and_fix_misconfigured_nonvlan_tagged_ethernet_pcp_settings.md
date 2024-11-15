@@ -9,17 +9,17 @@ VLAN tagged Ethernet frames (IEEE 802.1Q) have a PCP field which both HPE Slings
 [ 6283.580551] cxi_ss1 0000:c1:00.0:   pbuf_rd_errors: 219
 ```
 
-**Note:** The above errors, specifically pfc_fifo_oflw errors, can also occur if the HPE Slingshot Fabric Manager is not configured with 200Gbps NIC QoS settings.
+**Note:** The above errors, specifically `pfc_fifo_oflw` errors, can also occur if the HPE Slingshot Fabric Manager is not configured with 200Gbps NIC QoS settings.
 
-By default, the HPE Slingshot Fabric Manager configures HPE Slingshot switch to map non-VLAN tagged Ethernet frames to PCP 6. The CXI driver (cxi-ss1) defines a kernel module parameter, untagged_eth_pcp, to change this value. The following is an example of how to set this parameter.
+By default, the HPE Slingshot Fabric Manager configures HPE Slingshot switch to map non-VLAN tagged Ethernet frames to PCP 6. The CXI driver (`cxi-ss1`) defines a kernel module parameter, `untagged_eth_pcp`, to change this value. The following is an example of how to set this parameter.
 
 ```screen
 modprobe cxi-ss1 untagged_eth_pcp=6
 ```
 
-**Note:** The above method is not the only way to set the cxi-ss1 untagged_eth_pcp parameter. You can use the standard Linux methods to configure this parameter.
+**Note:** The above method is not the only way to set the `cxi-ss1` `untagged_eth_pcp` parameter. You can use the standard Linux methods to configure this parameter.
 
-The following provides an example for how to verify what the current cxi-ss1 untagged_eth_pcp value is.
+The following provides an example for how to verify what the current `cxi-ss1` `untagged_eth_pcp` value is.
 
 ```screen
 # cat /sys/module/cxi_ss1/parameters/untagged_eth_pcp

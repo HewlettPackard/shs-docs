@@ -1,4 +1,4 @@
-# Configure Soft-RoCE on HPE Slingshot 200Gpbs NICs
+# Configure Soft-RoCE on HPE Slingshot 200Gbps NICs
 
 ## Prerequisites
 
