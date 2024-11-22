@@ -145,7 +145,7 @@ dita_build: $(TMPDIR)/VeRsIoN.md
 ## and '$<' is a variable holding the (first) dependency of a rule.
 
 # Setup Version/Copyright for Doc section
-$(TMPDIR)/VeRsIoN.md:
+$(TMPDIR)/VeRsIoN.md: clean
 	mkdir -p $(TMPDIR)
 	cd ../../.. && sh setup_versioning.sh -d > docs/portal/developer-portal/$(TMPDIR)/VeRsIoN.md
 
@@ -236,6 +236,7 @@ clean:
 	rm -fr $(HPESCBUILDDIR)
 	rm -f pdf-templates/fancy.tex
 	rm -fr ./dita_build/
+	rm -fr hpc-shs-version
 
 
 ifdef NODOCKER
