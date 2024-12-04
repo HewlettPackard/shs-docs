@@ -82,6 +82,7 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
       slingshot-firmware-mellanox
       slingshot-utils
       shs-version
+      sshpass
    """ > ./shs-mlnx.rpmlist
    ```
 
@@ -111,7 +112,7 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
 
        ```screen
        echo -e """\
-          kernel-mft-mlnx-kmp-cray_shasta_c_64k # for aarch64 cos
+          kernel-mft-mlnx-kmp-cray_shasta_c_64k
           mlnx-ofa_kernel-kmp-cray_shasta_c_64k
        """ >> ./shs-mlnx.rpmlist
        ```
@@ -120,7 +121,7 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
 
      ```screen
      echo -e """\
-        kernel-mft-mlnx-kmp-cray_shasta_c # for cos
+        kernel-mft-mlnx-kmp-cray_shasta_c
         mlnx-ofa_kernel-kmp-cray_shasta_c
      """ >> ./shs-mlnx.rpmlist
      ```
