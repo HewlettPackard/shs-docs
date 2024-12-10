@@ -31,7 +31,7 @@ Each of the traditional monitors has advantages and disadvantages. Memhooks are 
 By default, HPE Slingshot uses the memhooks monitor unless set otherwise with the appropriate Libfabric environment variable. Also, HPE guides to select userfaultfd for applications that use NCCL or RCCL collectives libraries as they can hang at scale under memhooks.
 
 To overcome many of the previously described limitations as well as avoiding the need to configure this per-application, HPE introduced kdreg2 as a third memory cache monitor. kdreg2 is provided as a Linux kernel module and uses an open-source licensing model.
-As of the date of this note, it ships in the HPE Slingshot host software distribution and is optionally installed.
+As of the date of this note, it ships in the HPE Slingshot Host Software distribution and is optionally installed.
 Future releases may install this by default, and eventually HPE expects HPE Slingshot NIC Libfabric provider to select kdreg2 by default instead of memhooks.
 
 kdreg2 uses kernel mechanisms to monitor mapping changes and provides synchronous notification to the memory registration cache. It can report changes at the byte level to any memory within the application’s virtual address space.

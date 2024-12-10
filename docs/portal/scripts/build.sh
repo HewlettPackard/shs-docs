@@ -59,6 +59,7 @@ mkdir -m777 -p build/install
 mkdir -m777 -p build/release_notes
 mkdir -m777 -p build/troubleshoot
 mkdir -m777 -p build/admin
+mkdir -m777 -p build/user
 mkdir -m777 -p build/Markdown
 
 # call the script that flattens the dir structure used to build the HPESC bundle
@@ -114,6 +115,17 @@ dita -i HPE_Slingshot_Host_Software_Administration_Guide.ditamap -o build/PDF/ad
 echo "Building Combined Markdown File"
 dita -i HPE_Slingshot_Host_Software_Administration_Guide.ditamap --root-chunk-override=to-content -o build/Markdown -f markdown_github
 
+echo "Building SHS User Guide";
+
+# This line builds the HPESC HTML bundle for the user guide
+dita -i tmp/HPE_Slingshot_Host_Software_User_Guide.ditamap -o build/user -f HPEscHtml5 && cp HPE_Slingshot_Host_Software_User_Guide.json build/user/publication.json && cd build/user/ && zip -r crs9014en_us.zip ./
+cd $THIS_DIR
+# This builds the PDF using DITA-OT's default PDF transform
+echo "Building PDF"
+dita -i HPE_Slingshot_Host_Software_User_Guide.ditamap -o build/PDF/user -f pdf
+# This builds the single file Markdown version of the guide. This leverages DITA's "chunking"
+echo "Building Combined Markdown File"
+dita -i HPE_Slingshot_Host_Software_User_Guide.ditamap --root-chunk-override=to-content -o build/Markdown -f markdown_github
 
 # delete the tmp dir created by the flatten script. The bundle is still in the build subdir
 rm -rf tmp/
@@ -123,8 +135,11 @@ mv build/Markdown/HPE_Slingshot_Host_Software_Installation_and_Configuration_Gui
 mv build/Markdown/HPE_Slingshot_Host_Software_Release_Notes.md build/
 mv build/Markdown/HPE_Slingshot_Host_Software_Troubleshooting_Guide.md build/
 mv build/Markdown/HPE_Slingshot_Host_Software_Administration_Guide.md build/
+mv build/Markdown/HPE_Slingshot_Host_Software_User_Guide.md build/
+
 rm -rf build/Markdown/*
 mv build/HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide.md build/Markdown/
 mv build/HPE_Slingshot_Host_Software_Release_Notes.md build/Markdown/
 mv build/HPE_Slingshot_Host_Software_Troubleshooting_Guide.md build/Markdown/
 mv build/HPE_Slingshot_Host_Software_Administration_Guide.md build/Markdown/
+mv build/HPE_Slingshot_Host_Software_User_Guide.md build/Markdown/

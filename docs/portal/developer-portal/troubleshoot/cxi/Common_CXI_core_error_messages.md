@@ -110,7 +110,7 @@ echo "e4000003,80000000" > /sys/class/cxi/cxi0/device/err_flgs_irqa/hni_pml/no_p
 
 ## `tct_tbl_dealloc` errors
 
-This error occurs when, under certain conditions, the HPE Slingshot host software stack does not take proper precautions to prevent the HPE Slingshot 200 GbE NIC from entering an error state. An example of such a condition that may initiate this error - is a fabric event causing packet transfers to be significantly delayed. Normal NIC and fabric operation is not expected to initiate this error.
+This error occurs when, under certain conditions, the HPE Slingshot Host Software stack does not take proper precautions to prevent the HPE Slingshot 200 GbE NIC from entering an error state. An example of such a condition that may initiate this error - is a fabric event causing packet transfers to be significantly delayed. Normal NIC and fabric operation is not expected to initiate this error.
 
 The following is an example of this error:
 

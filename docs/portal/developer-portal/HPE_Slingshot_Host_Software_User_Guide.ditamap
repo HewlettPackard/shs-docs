@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map id="shs_relnotes">
+    <title>HPE Slingshot Host Software User Guide (S-9014) (@product_version@)</title>
+    <topicmeta>
+        <shortdesc>This publication describes user procedures for SHS.</shortdesc>
+        <data name="pubsnumber" value="S-9014"></data>
+        <data name="edition" value="SHS Software Release @product_version@"></data>
+    </topicmeta>
+    <topicref href="VeRsIoN.md" format="mdita" />
+    <topicref href="user/about.md" format="mdita" />
+    <topichead>
+      <topicmeta>
+          <navtitle>HPE Slingshot NIC overview</navtitle>
+      </topicmeta>
+      <topicref href="user/hardware_overview.md" format="mdita" />
+      <topicref href="user/libfabric_and_the_hpe_slingshot_nic_offloads.md" format="mdita" />
+      <topicref href="user/memory_registration.md" format="mdita" />
+      <topicref href="user/hardware_offload_capabilities.md" format="mdita" />
+      <topicref href="user/software_architecture.md" format="mdita" />
+      <topicref href="user/performance_counters.md" format="mdita" />
+      <topicref href="user/ip_networking_considerations.md" format="mdita" />
+    </topichead>
+    <topichead>
+      <topicmeta>
+          <navtitle>HPE Slingshot NIC Libfabric</navtitle>
+      </topicmeta>
+      <topicref href="user/user_configurable_libfabric_environment_variables.md" format="mdita">
+           <topicref href="user/rdma_messaging_and_relationship_to_environment_settings.md" format="mdita"/>
+           <topicref href="user/memory_cache_monitor_settings.md" format="mdita"/>
+           <topicref href="user/endpoint_receive_size_attribute.md" format="mdita"/>
+           <topicref href="user/endpoint_transmit_size_attribute.md" format="mdita"/>
+           <topicref href="user/completion_queue_size_attribute.md" format="mdita"/>
+           <topicref href="user/expected_number_of_ranks_and_peers.md" format="mdita"/>
+           <topicref href="user/tag_matching_mode_settings.md" format="mdita"/>
+           <topicref href="user/rendezvous_protocol_configuration.md" format="mdita"/>
+       </topicref>
+       <topicref href="user/debug_performance_and_failure_issues.md" format="mdita"/>
+    </topichead>
+    <topicref href="user/application_software_overview.md" format="mdita">
+       <topicref href="user/hpe_cray_programming_environment.md" format="mdita"/>
+       <topicref href="user/nccl.md" format="mdita"/>
+       <topicref href="user/rccl.md" format="mdita"/>
+       <topicref href="user/intel_mpi.md" format="mdita"/>
+       <topicref href="user/daos.md" format="mdita"/>
+       <topicref href="user/openmpi.md" format="mdita"/>
+    </topicref>
+    <topichead>
+      <topicmeta>
+          <navtitle>Appendex</navtitle>
+       </topicmeta>
+       <topicref href="user/hpe_slingshot_nic_rdma_protocol_and_traffic_classes.md" format="mdita"/>
+       <topicref href="user/ip_performance_and_configuration_settings.md" format="mdita"/>
+       <topicref href="user/memory_registration_and_cache_monitors.md" format="mdita"/>
+       <topicref href="user/libfabric_runtime_configurable_parameters.md" format="mdita"/>
+    </topichead>
+</map>

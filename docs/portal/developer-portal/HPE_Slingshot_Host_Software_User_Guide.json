@@ -1,0 +1,17 @@
+{
+"content_type": "htmlzip",
+"content_class": "html-default",
+"source_system": "git",
+"source_system_id": "https://github.com/Cray-HPE/docs-shs",
+"source_system_version": "@docs_git_hash@",
+"lifecycle": "DRAFT",
+"products": ["1013247219","1013083813"],
+"product_version": "@product_version@",
+"full_title": "HPE Slingshot Host Software User Guide (S-9014) @product_version@",
+"description": "This publication includes user procedures for SHS.",
+"language_code": "en_US",
+"submitter": "nathan.rockershousen@hpe.com",
+"company_info": "HPE-green",
+"customer_available_date": "",
+"content_org": "CMG708"
+}

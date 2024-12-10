@@ -167,6 +167,7 @@ dir: $(TMPDIR)/VeRsIoN.md
 	cp -r performance $(TMPDIR)
 	cp -r operations $(TMPDIR)
 	cp -r overview $(TMPDIR)
+	cp -r user $(TMPDIR)
 	cp -r images $(TMPDIR)
 
 

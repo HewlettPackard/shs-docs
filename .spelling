@@ -20,20 +20,29 @@
 200gb
 200Gbps
 2-port
+4KiB
 802.1Q
+ack
+ACKs
+acknowledgment
+acknowledgments
 adminStatus
 AMA
 AMAs
 amdgpu
+AMOs
 aarch64
 AERs
 all2all
 analytics
+analyze
+analyzing
 Ansible
 API
 APIs
 arm64
 Arista
+artifact
 Artifactory
 ASIC
 ASIC_0
@@ -61,6 +70,7 @@ BOS
 bootprep
 catalog
 Cassini
+Center
 Ceph
 CFS
 CFS-based
@@ -126,6 +136,7 @@ deallocation
 debugfs
 default.yml
 defragmented
+deregistering
 dgnettest
 diags
 diskless
@@ -162,6 +173,7 @@ EC_TRNSNT_S
 EC_UNCOR_NS
 EC_UNCOR_S
 EPEL
+enablement
 ENOMEM
 ENOENT
 eth0
@@ -174,6 +186,7 @@ EX235a
 failback
 Failback
 failover
+favoring
 fi_info
 fi_pingpong
 Flavored
@@ -183,6 +196,7 @@ GbE
 Gbps
 Gen4
 gc_thresh
+GDRCopy
 Git
 Gitea
 GPCNeT
@@ -197,6 +211,7 @@ HealthCheck
 HeartBeat
 heatsink
 highpriority
+high_empty
 hodagd
 honor
 honoring
@@ -216,10 +231,13 @@ hsn_traffic
 hugepages
 Hugepages
 Jenkinsfile
+IB-over-Ethernet
 IBM
 ifcfg
 IMAGE_NAME
 image.rpmlist
+incast
+inflight
 initramfs
 initrd
 int
@@ -242,6 +260,7 @@ Keycloak
 keycloak_group
 keycloak_passwd
 keypair
+Kfabric
 kfi
 kfi1
 kfi2
@@ -255,6 +274,8 @@ libcxi
 Libfabric
 libfabric
 libfabric-devel
+Libfabric-to-NCCL
+Libfabric-to-RCCL
 libpals
 limits
 Linux
@@ -270,6 +291,7 @@ LNM
 Loadbalance
 loadbalance
 localtime
+lockup
 LOG_DEBUG
 LogLevelMax
 LOG_NOTICE
@@ -277,6 +299,7 @@ LOG_INFO
 LOG_WARN
 Loopback
 loopback
+low_empty
 low-noise-mode
 lownoise-service
 Lua
@@ -296,16 +319,19 @@ Mellanox
 memhooks
 Memhooks
 metadata
+misconfigurations
 modprobe
 mountpoints
 MOFED
 MPI
+MPI-3
 MPI-3.1
 MPIR
 MpiDefault
 MpiParams
 mpiexec
 mpirun
+MRs
 msr-safe
 munged*
 multisocket
@@ -352,6 +378,7 @@ nil
 node-identity
 nodename
 non-CFS
+non-HPE
 non-VLAN
 nonprivileged
 Nonprivileged
@@ -362,6 +389,7 @@ NVIDIA
 ntp
 OData
 ogopogod
+onloaded
 OOM
 OPA
 OpenMPI
@@ -387,6 +415,7 @@ Podman
 PMI
 PMIx
 pmix
+preemptive
 prepended
 prepends
 ProLiant
@@ -444,6 +473,7 @@ serdes
 SEQUENCE_ERROR
 shadow
 SharePoint
+Shmem
 SHS
 shs-docs
 shs-version
@@ -486,6 +516,7 @@ TCTs
 TEMPLATE_NAME
 tmpfs
 TLV
+toolkits
 traceback
 tunable
 tunables
@@ -547,6 +578,8 @@ Zypper
 2.x
 3.x
 4.x
+5.0.x
+5.1.2
 cos-2.x
 sle15spx
 SSHOT1.2.1
@@ -571,6 +604,7 @@ S-9009
 S-9010
 S-9011
 S-9012
+S-9929
 
 
 #
