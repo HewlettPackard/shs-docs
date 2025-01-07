@@ -56,4 +56,5 @@
         <topicref href="install/lustre_network_driver_lnd_ko2iblnd_configuration.md" format="mdita"
         />
     </topicref>
+    <topicref href="install/pml_recovery.md" format="mdita"/>
 </map>
