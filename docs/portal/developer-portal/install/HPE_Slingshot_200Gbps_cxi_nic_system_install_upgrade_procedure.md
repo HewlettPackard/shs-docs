@@ -27,7 +27,9 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    cm repo refresh slingshot-host-software-repo
    ```
 
-4. Create a new repo group and add Slingshot, Distro Base-OS, OS Updates, Cluster Manager, and MPI Repo's.
+4. Create a new repo group and add Slingshot, Distro Base-OS, OS Updates, Cluster Manager, MPI Repos, and DKMS.
+
+   **NOTE:** SHS uses DKMS as the default mechanism for installing the kernel driver. DKMS is not included by default and must be obtained separately. You can source it from your distribution's package manager or an external repository. After obtaining DKMS, create a custom repository for it.
 
    ```screen
    cm repo group add slingshot-host-software-repo-group --repos slingshot-host-software-repo
@@ -65,7 +67,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    """ > ./shs-cxi.rpmlist
    ```
 
-   NOTE: If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist. For example, to install a specific libfabric, add the following to the rpmlist:
+   **NOTE:** If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist. For example, to install a specific libfabric, add the following to the rpmlist:
 
    ```screen
    echo -e """\
@@ -85,27 +87,36 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    """ >> ./shs-cxi.rpmlist
    ```
 
-   NOTE: SHS supports DKMS as the default installation mechanism for the kernel driver.
-   Pre-built binaries are provided with distributed binary builds. To use the pre-built kernel binaries, substitute the pre-built binary packages for the DKMS packages.
-   This can be done by replacing the DKMS packages with the `*-kmp-[default,cray_shasta_c,cray_shasta_c_64k]` or `kmod-*` variants of each DKMS package.
+   For distributed binary builds, pre-built kernel binaries are available. To use these binaries instead of DKMS packages, follow these steps:
 
-   For example: If installing pre-built binary kernel modules instead of DKMS package on SLE 15 SP5 with the default kernel, then replace the following packages:
+   - Identify the appropriate pre-built binary variant for your distribution.
+      - Pre-Built Binary Variants
+         - SLES/CSM: Use `*-kmp-default`.
+         - COS on x86: Use `*-kmp-cray_shasta_c`.
+         - COS on ARM64: Use `*-kmp-cray_shasta_c_64k`.
+         - RHEL: Only DKMS is supported.
+   - Replace the DKMS packages with the corresponding pre-built binary variants.
 
-   ```screen
-   cray-cxi-driver-dkms
-   cray-slingshot-base-link-dkms
-   sl-driver-dkms
-   cray-kfabric-dkms
-   ```
+   - **Example**: Replacing DKMS Packages on COS (x86)
 
-   with
+      If you are installing pre-built kernel modules on COS for x86 systems, replace the following DKMS packages:
 
-   ```screen
-   cray-cxi-driver-kmp-default
-   cray-slingshot-base-link-kmp-default
-   sl-driver-kmp-default
-   cray-kfabric-kmp-default
-   ```
+      ```screen
+      cray-cxi-driver-dkms  
+      cray-slingshot-base-link-dkms  
+      sl-driver-dkms  
+      cray-kfabric-dkms  
+      ```
+
+      with the corresponding pre-built binaries:
+
+      ```screen
+      cray-cxi-driver-kmp-cray_shasta_c  
+      cray-slingshot-base-link-kmp-cray_shasta_c  
+      sl-driver-kmp-cray_shasta_c  
+      cray-kfabric-kmp-cray_shasta_c  
+      ```
+
 
 6. (Optional) Install kdreg2 as an additional memory cache monitor.
    See [Install kdreg2](kdreg2_install.md#install-procedure) for more information.
@@ -152,7 +163,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
        autoinstall_all_kernels=y cm image dnf -y install $(cat $(pwd)/shs-cxi.rpmlist) --enablerepo=slingshot-host-software-repo-group
        ```
 
-   **Note:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is required for COS installations with Nvidia software, but it is generally recommended to avoid problems when building in a chroot environment.
+   **NOTE:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is required for COS installations with Nvidia software, but it is generally recommended to avoid problems when building in a chroot environment.
 
 8. On HPE Slingshot 200Gbps CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
 
