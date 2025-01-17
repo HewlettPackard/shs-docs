@@ -77,7 +77,7 @@ if [ "-d" = "${1}" ]; then
    cat << EOF
 
 # Copyright and Version
-&copy; 2024 Hewlett Packard Enterprise Development LP
+&copy; 2025 Hewlett Packard Enterprise Development LP
 
 SHS:
 ${PRODUCT_VERSION}-${RELEASE}
