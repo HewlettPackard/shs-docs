@@ -11,16 +11,12 @@
     <topicref href="release_notes/summary.md" format="markdown" />
     <topicref href="release_notes/newfeatures.md" format="markdown"/>
     <topicref href="release_notes/interface_and_operational.md" format="markdown"/>
-    <topicref href="release_notes/resolvedissues.md" format="markdown"/>
     <topicref href="release_notes/component_map.md" format="markdown"/>
+    <topicref href="release_notes/resolvedissues.md" format="markdown"/>
     <topicref href="release_notes/securityissues.md" format="markdown"/>
     <topicref href="release_notes/knownissues.md" format="markdown"/>
-    <topicref href="release_notes/System_Software_Requirements_for_Host_Software.md" format="mdita">
-        <topicref href="release_notes/support_matrix.md" format="markdown"/>
-    </topicref>
-    <topicref href="release_notes/cassini_firmware.md" format="markdown"/>
-    <topicref href="release_notes/Appendix_A_Validate_Slingshot_Software_and_Firmware.md"
-        format="mdita">
-        <topicref href="release_notes/hash_validation_howto.md" format="markdown"/>
-    </topicref>
+    <topicref href="release_notes/workarounds.md" format="markdown"/>
+    <topicref href="release_notes/support_matrix.md" format="markdown"/>
+    <topicref href="release_notes/versioning_model.md" format="markdown"/>
+    <topicref href="release_notes/hash_validation_howto.md" format="markdown"/>
 </map>

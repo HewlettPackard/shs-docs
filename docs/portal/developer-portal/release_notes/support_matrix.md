@@ -1,4 +1,4 @@
-# HPE Slingshot Host Software (SHS)
+# System Software Requirements for HPE Slingshot Host Software (SHS)
 
 Here are the System Software requirements for the SHS release, detailing compatibility and requirements:
 
@@ -51,7 +51,6 @@ In the following table, **FM/SA Version** stands for the Fabric Manager and Swit
 | Cray Operating System    | COS 24.11.x w/ COS Base 3.2     | 6.2.1        | 550.90.07    | 24.07      |
 | Cray Operating System    | COS 24.11.x w/ COS Base 3.2 ARM | NA           | 550.90.07    | 24.07      |
 
-
 ## NIC Support
 
 | Distribution             | Versions                        | Mellanox NIC | Mellanox Version | HPE Slingshot Ethernet 200Gb |
@@ -83,7 +82,6 @@ _**Mellanox External Vendor Software**_
 ## Libfabric Versions
 
 All the Distributions provided with libfabric 1.22.x. 
-
 
 ## HPE System Cluster Management Software
 
@@ -118,28 +116,13 @@ _**Compute Node Image and Cluster Management Software Compatibility**_
 
 \* Cray System Management (CSM) and Cray Operating System (COS) are tightly coupled, meaning each version of COS is specifically supported by a corresponding version of CSM. For instance, COS-2.5 should only be installed with CSM-1.4 and any CSM-1.4.x version.
 
-## Versioning Model for HPE Slingshot Host Software Starting from Release 11.0.0
+## HPE Slingshot 200Gbps NIC Firmware Release Version
 
-_**Versioning Model Overview**_
-
-Starting from SHS release 11.0.0, the versioning model will follow an alternating Long-Term Support (LTS) and Standard-Term Support (STS) scheme.
-
-**Designation:**
-
-- _Even numbers_: LTS (Long-Term Support)
-- _Odd numbers_: STS (Standard-Term Support)
-
-_**Version Format**_
-
-The version format is structured as follows:
+The 200Gbps NIC firmware image version 1.5.53 is included in the Slingshot SHS 11.0.0 release. There are two firmware images contained in the slingshot-firmware-cassini-1.5.53-SSHOT\* RPM file:
 
 ```screen
-<LTS/STS indicator>.<feature increment>.<patch/bugfix increment>
+cassini_fw_1.5.53.bin : Standard 200Gbps NIC firmware image
+cassini_fw_esm_1.5.53.bin : Extended Speed Mode (ESM) 200Gbps NIC firmware image used exclusively on HPE Cray EX235a compute blade
 ```
 
-**Example Versions:**
-
-- _11.0.0_: STS Release
-- _12.0.0_: LTS Release
-
-By following this versioning and branching model, customers can easily identify the type of release and plan their upgrade paths accordingly.
+The 200Gbps NIC firmware is flashed in-band after the nodes are booted. This is covered in the "Firmware management" section of the _HPE Slingshot Host Software Installation and Configuration Guide (S-9009)_. Ensure that all HPE Slingshot SA220M Ethernet 200Gb 2-port Mezzanine NIC and HPE Slingshot SA210S Ethernet 200Gb 1-port PCIe NIC installed are updated appropriately.

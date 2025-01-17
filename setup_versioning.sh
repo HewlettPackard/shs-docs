@@ -76,7 +76,7 @@ create_changelog() {
 if [ "-d" = "${1}" ]; then
    cat << EOF
 
-# Copyright and version
+# Copyright and Version
 &copy; 2024 Hewlett Packard Enterprise Development LP
 
 SHS:

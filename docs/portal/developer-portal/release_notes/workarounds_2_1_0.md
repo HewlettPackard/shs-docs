@@ -1,4 +1,4 @@
-# Appendix B: Slingshot 200G NIC, Fabric Manager and Switch Workaround
+# Appendix A: Slingshot 200G NIC, Fabric Manager and Switch Workaround
 
 ## 2497306 Mellanox OFED kernel modules fail to load on CSM workers using 5.14.21-150500.55.39.1.27360.1.PTF.1215587-default kernel
 
