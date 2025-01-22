@@ -21,6 +21,7 @@ In the following table, **FM/SA Version** stands for the Fabric Manager and Swit
 |   **2.2.0**    | Supported\*\* |     R-A-B     |   Supported   |
 | **SHS-11.0.2** | Supported\*\* |   Supported   |   Supported   |
 | **SHS-11.1.0** | Supported\*\* |   Supported   |     R-A-B     |
+| **SHS-12.0.0** | Incompatible  |   Supported   |   Supported   |
 
 \*\* The combination is supported, but the new FMN features added in later versions will not be available.
 
@@ -36,40 +37,38 @@ In the following table, **FM/SA Version** stands for the Fabric Manager and Swit
 
 | Distribution             | Versions                        | ROCM Version | CUDA Version | Nvidia SDK |
 |--------------------------|---------------------------------|--------------|--------------|------------|
-| Red Hat Enterprise Linux | 8.9                             | 6.0.0        | 535.154.05   | 23.11      |
 | Red Hat Enterprise Linux | 8.10                            | 6.1.0        | 550.54.15    | 24.03      |
-| Red Hat Enterprise Linux | 9.4                             | 6.1.0        | 550.54.15    | 24.03      |
-| Red Hat Enterprise Linux | 9.4 ARM                         | NA           | 550.54.15    | 24.03      |
-| SuSE Linux Enterprise 15 | SP4                             | 5.5.1        | 525.105.17   | 23.03      |
+| Red Hat Enterprise Linux | 9.4                             | 6.3.0        | 565.57.01    | 24.11      |
+| Red Hat Enterprise Linux | 9.4 ARM                         | NA           | 565.57.01    | 24.11      |
+| Red Hat Enterprise Linux | 9.5                             | 6.3.0        | 565.57.01    | 24.11      |
+| Red Hat Enterprise Linux | 9.5 ARM                         | NA           | 565.57.01    | 24.11      |
 | SuSE Linux Enterprise 15 | SP5                             | 6.1.0        | 550.54.15    | 24.03      |
 | SuSE Linux Enterprise 15 | SP5 ARM                         | NA           | 550.54.15    | 24.03      |
-| SuSE Linux Enterprise 15 | SP6                             | 6.2.1        | 550.90.07    | 24.07      |
-| SuSE Linux Enterprise 15 | SP6 ARM                         | NA           | 550.90.07    | 24.07      |
-| Cray Operating System    | 2.5                             | 5.5.1        | 525.105.17   | 23.03      |
+| SuSE Linux Enterprise 15 | SP6                             | 6.3.0        | 565.57.01    | 24.11      |
+| SuSE Linux Enterprise 15 | SP6 ARM                         | NA           | 565.57.01    | 24.11      |
 | Cray Operating System    | COS 24.07.x w/ COS Base 3.1     | 6.1.0        | 550.54.15    | 24.03      |
 | Cray Operating System    | COS 24.07.x w/ COS Base 3.1 ARM | NA           | 550.54.15    | 24.03      |
-| Cray Operating System    | COS 24.11.x w/ COS Base 3.2     | 6.2.1        | 550.90.07    | 24.07      |
-| Cray Operating System    | COS 24.11.x w/ COS Base 3.2 ARM | NA           | 550.90.07    | 24.07      |
+| Cray Operating System    | COS 25.03.x w/ COS Base 3.3     | 6.3.0        | 565.57.01    | 24.11      |
+| Cray Operating System    | COS 25.03.x w/ COS Base 3.3 ARM | NA           | 565.57.01    | 24.11      |
 
 
 ## NIC Support
 
 | Distribution             | Versions                        | Mellanox NIC | Mellanox Version | HPE Slingshot Ethernet 200Gb |
 |--------------------------|---------------------------------|--------------|------------------|------------------------------|
-| Red Hat Enterprise Linux | 8.9                             | Yes          | 23.10-3.2.2.0    | Yes                          |
 | Red Hat Enterprise Linux | 8.10                            | Yes          | 23.10-3.2.2.0    | Yes                          |
 | Red Hat Enterprise Linux | 9.4                             | Yes          | 23.10-3.2.2.0    | Yes                          |
 | Red Hat Enterprise Linux | 9.4 ARM                         | No           | Not Supported    | Yes                          |
-| SuSE Linux Enterprise 15 | SP4                             | Yes          | 23.0.4-1.1.3.0   | Yes                          |
+| Red Hat Enterprise Linux | 9.5                             | Yes          | 24.10-1.1.4.0    | Yes                          |
+| Red Hat Enterprise Linux | 9.5 ARM                         | No           | Not Supported    | Yes                          |
 | SuSE Linux Enterprise 15 | SP5                             | Yes          | 23.10-3.2.2.0    | Yes                          |
 | SuSE Linux Enterprise 15 | SP5 ARM                         | No           | Not Supported    | Yes                          |
 | SuSE Linux Enterprise 15 | SP6                             | Yes          | 23.10-3.2.2.0    | Yes                          |
 | SuSE Linux Enterprise 15 | SP6 ARM                         | No           | Not Supported    | Yes                          |
-| Cray Operating System    | 2.5                             | Yes          | 5.6-2.0.9.0\*    | Yes                          |
 | Cray Operating System    | COS 24.07.x w/ COS Base 3.1     | Yes          | 23.0.4-1.1.3.0\* | Yes                          |
 | Cray Operating System    | COS 24.07.x w/ COS Base 3.1 ARM | No           | Not Supported    | Yes                          |
-| Cray Operating System    | COS 24.11.x w/ COS Base 3.2     | Yes          | 23.10-3.2.2.0\*  | Yes                          |
-| Cray Operating System    | COS 24.11.x w/ COS Base 3.2 ARM | No           | Not Supported    | Yes                          |
+| Cray Operating System    | COS 24.11.x w/ COS Base 3.3     | Yes          | 23.10-3.2.2.0\*  | Yes                          |
+| Cray Operating System    | COS 24.11.x w/ COS Base 3.3 ARM | No           | Not Supported    | Yes                          |
 
 \* Items marked with an asterisk (\*) are the only distributions for which SHS will provide the necessary Mellanox RPMs. For other distributions, download the required software from the URLs listed below.
 
@@ -91,24 +90,23 @@ The following cluster manager software compatibility information is for referenc
 
 | Cluster Management                     | Versions Supported  |
 |----------------------------------------|---------------------|
-| HPE Cray EX System Software            | 1.4.X, 1.5.X, 1.6.X |
+| HPE Cray EX System Software            | 1.5.X, 1.6.X        |
 | HPE Performance Cluster Manager (HPCM) | 1.11, 1.12          |
 
 _**Compute Node Image and Cluster Management Software Compatibility**_
 
 | Distribution             | Versions                        | Cray EX(CSM) | HPCM  |
 |--------------------------|---------------------------------|--------------|-------|
-| Red Hat Enterprise Linux | 8.9                             | NA           | 1.10+ |
 | Red Hat Enterprise Linux | 8.10                            | NA           | 1.11+ |
 | Red Hat Enterprise Linux | 9.3 ARM                         | NA           | 1.10+ |
 | Red Hat Enterprise Linux | 9.4                             | 1.5.2+       | 1.11+ |
 | Red Hat Enterprise Linux | 9.4 ARM                         | 1.5.2+       | 1.11+ |
-| SuSE Linux Enterprise 15 | SP4                             | NA           | 1.10+ |
+| Red Hat Enterprise Linux | 9.5                             | 1.6.1+       | 1.13+ |
+| Red Hat Enterprise Linux | 9.5 ARM                         | 1.6.1+       | 1.13+ |
 | SuSE Linux Enterprise 15 | SP5                             | NA           | 1.11+ |
 | SuSE Linux Enterprise 15 | SP5 ARM                         | NA           | 1.11+ |
 | SuSE Linux Enterprise 15 | SP6                             | NA           | 1.12+ |
 | SuSE Linux Enterprise 15 | SP6 ARM                         | NA           | 1.12+ |
-| Cray Operating System    | 2.5                             | 1.4.X\*      | 1.10+ |
 | Cray Operating System    | COS 24.07.x w/ COS Base 3.1     | 1.5.X\*      | 1.11+ |
 | Cray Operating System    | COS 24.07.x w/ COS Base 3.1 ARM | 1.5.X\*      | 1.11+ |
 | Cray Operating System    | COS 24.11.x w/ COS Base 3.2     | 1.6.X\*      | 1.12+ |
