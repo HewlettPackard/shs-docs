@@ -1,7 +1,7 @@
 
-Date of Release: March 31, 2025
+# Summary
 
-## Summary
+Date of Release: March 31, 2025
 
 The Slingshot Host Software version 12.0.0 
 

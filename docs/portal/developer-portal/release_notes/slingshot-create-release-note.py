@@ -44,7 +44,7 @@ CRNL          = '\r\n'
 UNDERSCORE    = '_'
 NL            = '\n'
 PIPE          = '|'
-H2            = '##'
+H1            = '#'
 EMPTY_CONTENT = '<br>N/A<br>'
 WHITE_SPACE   = ' '
 MARKDOWN_SAFE_NL ='<br>'
@@ -92,9 +92,9 @@ MARKDOWN_SAFE = { CRNL       : MARKDOWN_PDF_SAFE_NL,
                   UNDERSCORE : f'{ESCAPE}{UNDERSCORE}' }
 
 SUMMARY_TEMPLATE = '''
-Date of Release: {}
-
 {} {}
+
+Date of Release: {}
 
 {}'''
 
@@ -131,7 +131,7 @@ def commandline_args() -> tuple:
 
 
 def generate_heading(fd : TextIOWrapper, key : str) -> int:
-    return fd.write(f'{NL}{H2} {HEADINGS[key]}{NL}')    
+    return fd.write(f'{NL}{H1} {HEADINGS[key]}{NL}')    
 
 
 def generate_markdown_table(fd : TextIOWrapper, col : str) -> int:
@@ -154,7 +154,7 @@ def generate_markdown_summary(fd : TextIOWrapper, contents : list) -> int:
     except:
         date_str = contents[0]
         
-    content = SUMMARY_TEMPLATE.format(date_str, H2, HEADINGS[NS_SUMMARY], contents[1])
+    content = SUMMARY_TEMPLATE.format(H1, HEADINGS[NS_SUMMARY],date_str, contents[1])
     
     return generate_markdown_content(fd, content)
 
@@ -233,6 +233,7 @@ def query(file_name : str) -> list:
     user, password, cacert = commandline_args()
     query_uri = JIRA_HOST + JIRA_API_ENDPOINT + QUERY_FILTERS[file_name]    
     query_resp = requests.get(query_uri, verify = cacert, auth = HTTPBasicAuth(user, password))
+    query_resp.raise_for_status()
     query_resp_text = json.loads(query_resp.text)
     
     return [[safe_query_result(i, x) for x in QUERY_FIELDS[file_name]]

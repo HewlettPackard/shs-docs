@@ -1,5 +1,5 @@
 
-## Known Issues
+# Known Issues
 |ID|Description|Workaround|
 |:--:|:---------|:---------|
 |2716400|Mellanox OFED Kernel Modules Fail to Load Due to Weak-Updates Incompatibility.|See Appendix A of these release notes for complete details.|

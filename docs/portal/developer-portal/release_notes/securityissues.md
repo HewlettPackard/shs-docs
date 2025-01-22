@@ -1,3 +1,3 @@
 
-## Security Issues Resolved
+# Security Issues Resolved
 <br>N/A<br>
