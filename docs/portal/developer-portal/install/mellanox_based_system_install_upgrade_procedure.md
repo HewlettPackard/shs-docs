@@ -49,6 +49,8 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
 
 7. Create a new repo group and add Slingshot, Distro Base-OS, OS Updates, Cluster Manager, and MPI Repo's.
 
+   **NOTE:** SHS uses `sshpass`, which is not included by default and must be obtained separately. You can acquire it through your distribution's package manager or an external repository.
+
    ```screen
    cm repo group add slingshot-host-software-repo-group --repos slingshot-host-software-repo
    # Add other required base-os repositories for the image

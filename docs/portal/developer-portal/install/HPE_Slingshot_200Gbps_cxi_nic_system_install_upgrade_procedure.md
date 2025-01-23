@@ -27,7 +27,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    cm repo refresh slingshot-host-software-repo
    ```
 
-4. Create a new repo group and add Slingshot, Distro Base-OS, OS Updates, Cluster Manager, MPI Repos, and DKMS.
+4. Create a new repo group and add Slingshot, Distro Base-OS, OS Updates, Cluster Manager, MPI Repos and DKMS.
 
    **NOTE:** SHS uses DKMS as the default mechanism for installing the kernel driver. DKMS is not included by default and must be obtained separately. You can source it from your distribution's package manager or an external repository. After obtaining DKMS, create a custom repository for it.
 
@@ -63,7 +63,6 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
       pycxi-diags
       pycxi-utils
       shs-version
-
    """ > ./shs-cxi.rpmlist
    ```
 
@@ -89,34 +88,55 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
 
    For distributed binary builds, pre-built kernel binaries are available. To use these binaries instead of DKMS packages, follow these steps:
 
-   - Identify the appropriate pre-built binary variant for your distribution.
+   1. Identify the appropriate pre-built binary variant for your distribution.
+      
       - Pre-Built Binary Variants
-         - SLES/CSM: Use `*-kmp-default`.
-         - COS on x86: Use `*-kmp-cray_shasta_c`.
-         - COS on ARM64: Use `*-kmp-cray_shasta_c_64k`.
-         - RHEL: Only DKMS is supported.
-   - Replace the DKMS packages with the corresponding pre-built binary variants.
+         - SLES/CSM: Replace `*-dkms` with `*-kmp-default`.
+         - COS on x86: Replace `*-dkms` with `*-kmp-cray_shasta_c`.
+         - COS on ARM64: Replace `*-dkms` with `*-kmp-cray_shasta_c_64k`.
+         - RHEL: Replace `*-dkms` with `kmod-*`.
+   
+   2. Replace the DKMS packages with the corresponding pre-built binary variants.
 
-   - **Example**: Replacing DKMS Packages on COS (x86)
+       **Examples** 
+      - Example 1: Replacing DKMS Packages on SLES15 SP5 (x86)
+         If you are installing pre-built kernel modules on SLES15 SP5 for x86 systems, replace the following DKMS packages:
 
-      If you are installing pre-built kernel modules on COS for x86 systems, replace the following DKMS packages:
+         ```screen
+            cray-slingshot-base-link-dkms
+            sl-driver-dkms
+            cray-cxi-driver-dkms
+            cray-kfabric-dkms
+         ```
 
-      ```screen
-      cray-cxi-driver-dkms  
-      cray-slingshot-base-link-dkms  
-      sl-driver-dkms  
-      cray-kfabric-dkms  
-      ```
+         with the corresponding pre-built binaries:
 
-      with the corresponding pre-built binaries:
+         ```screen
+            cray-slingshot-base-link-kmp-default
+            sl-driver-kmp-default
+            cray-cxi-driver-kmp-default
+            cray-kfabric-kmp-default
+         ```
 
-      ```screen
-      cray-cxi-driver-kmp-cray_shasta_c  
-      cray-slingshot-base-link-kmp-cray_shasta_c  
-      sl-driver-kmp-cray_shasta_c  
-      cray-kfabric-kmp-cray_shasta_c  
-      ```
+      - Example 2: Replacing DKMS Packages on RHEL (x86)
 
+         If you are installing pre-built kernel modules on SLES15 SP5 for x86 systems, replace the following DKMS packages:
+
+         ```screen
+            cray-slingshot-base-link-dkms
+            sl-driver-dkms
+            cray-cxi-driver-dkms
+            cray-kfabric-dkms
+         ```
+
+         with the corresponding pre-built binaries:
+
+         ```screen
+            kmod-cray-slingshot-base-link-dkms
+            kmod-sl-driver-dkms
+            kmod-cray-cxi-driver-dkms
+            kmod-cray-kfabric-dkms
+         ```
 
 6. (Optional) Install kdreg2 as an additional memory cache monitor.
    See [Install kdreg2](kdreg2_install.md#install-procedure) for more information.
@@ -148,6 +168,8 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
        autoinstall_all_kernels=y cm image create -i ${IMAGE_NAME} --repo-group slingshot-host-software-repo-group --rpmlist $(pwd)/image.rpmlist
        ```
 
+       **NOTE:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
+
    - If updating an image:
 
      - SLES/COS environment:
@@ -157,11 +179,15 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
        autoinstall_all_kernels=y cm image zypper -i ${IMAGE_NAME} --repo-group slingshot-host-software-repo-group install $(cat $(pwd)/shs-cxi.rpmlist)
        ```
 
+       **NOTE:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
+
      - RHEL environment:
 
        ```screen
        autoinstall_all_kernels=y cm image dnf -y install $(cat $(pwd)/shs-cxi.rpmlist) --enablerepo=slingshot-host-software-repo-group
        ```
+
+       **NOTE:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
 
    **NOTE:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is required for COS installations with Nvidia software, but it is generally recommended to avoid problems when building in a chroot environment.
 

@@ -49,16 +49,56 @@ At the end of this process, SHS will be configured to install kdreg2 into images
 
 HPCM customers must add the following RPMs to the rpmlist for the image before constructing the image.
 
-- **SLE-based images (COS and SLE):** See step 5 in section 6.2 of the _HPE Slingshot Operations Guide_ (version 2.0.2) for more information.
+See step 5 of the [HPE Slingshot 200Gbps CXI NIC system install procedure](HPE_Slingshot_200Gbps_cxi_nic_system_install_upgrade_procedure.md#hpe-slingshot-200gbps-cxi-nic-system-install-procedure) for detailed instructions. The appropriate kernel module packages differ based on whether DKMS or pre-built binaries are used. See the following guidelines for each image type:
 
-   ```screen
-   “‘console echo -e “““
-   kdreg2 kdreg2-kmp kdreg2-devel”“” » ./Slingshot-host-software.rpmlist
-   ```
+- **SLES Images**
 
-- **RHEL-based images:** See step 5 in section 6.2 of the _HPE Slingshot Operations Guide_ (version 2.0.2) for more information.
+   - **With DKMS:** Use the following packages:
+      
+      ```screen
+      echo -e "kdreg2 kdreg2-dkms kdreg2-devel" >> ./Slingshot-host-software.rpmlist
+      ```
 
-   ```screen
-   “‘console echo -e “““
-   kdreg2 kmod-kdreg2 kdreg2-devel”“” » ./Slingshot-host-software.rpmlist
-   ```
+   - **Without DKMS:** Replace the DKMS package with the KMP package:
+      
+      ```screen
+      echo -e "kdreg2 kdreg2-kmp-default kdreg2-devel" >> ./Slingshot-host-software.rpmlist
+      ```
+
+- **COS-based Images**
+
+   - **With DKMS:** Use the following packages:
+      
+      ```screen
+      echo -e "kdreg2 kdreg2-dkms kdreg2-devel" >> ./Slingshot-host-software.rpmlist
+      ```
+
+   - **Without DKMS:** Replace the DKMS package with the appropriate KMP variant based on architecture:
+ 
+      - **COS on x86:** Replace `*-dkms` with `*-kmp-cray_shasta_c`.
+         
+         ```screen
+         echo -e "kdreg2 kdreg2-kmp-cray_shasta_c kdreg2-devel" >> ./Slingshot-host-software.rpmlist
+         ```
+
+      - **COS on ARM64:** Replace `*-dkms` with `*-kmp-cray_shasta_c_64k`.
+         
+         ```screen
+         echo -e "kdreg2 kdreg2-kmp-cray_shasta_c_64k kdreg2-devel" >> ./Slingshot-host-software.rpmlist
+         ```
+
+- **RHEL-based Images**
+
+   - **With DKMS:** Use the following packages:
+     
+      ```screen
+      echo -e "kdreg2 kdreg2-dkms kdreg2-devel" >> ./Slingshot-host-software.rpmlist
+      ```
+
+   - **Without DKMS:** Replace the DKMS package with the KMOD package:
+      
+      ```screen
+      echo -e "kdreg2 kmod-kdreg2 kdreg2-devel" >> ./Slingshot-host-software.rpmlist
+      ```
+
+By replacing the `*-dkms` packages with the appropriate pre-built binary variants (`*-kmp` or `kmod-*`), you can configure the system based on your needs and architecture.
