@@ -132,10 +132,10 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
          with the corresponding pre-built binaries:
 
          ```screen
-            kmod-cray-slingshot-base-link-dkms
-            kmod-sl-driver-dkms
-            kmod-cray-cxi-driver-dkms
-            kmod-cray-kfabric-dkms
+            kmod-cray-slingshot-base-link
+            kmod-sl-driver
+            kmod-cray-cxi-driver
+            kmod-cray-kfabric
          ```
 
 6. (Optional) Install kdreg2 as an additional memory cache monitor.
