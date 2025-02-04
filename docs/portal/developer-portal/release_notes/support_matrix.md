@@ -55,14 +55,14 @@ In the following table, **FM/SA Version** stands for the Fabric Manager and Swit
 
 | Distribution             | Versions                        | Mellanox NIC | Mellanox Version | HPE Slingshot Ethernet 200Gb |
 |--------------------------|---------------------------------|--------------|------------------|------------------------------|
-| Red Hat Enterprise Linux | 8.10                            | Yes          | 23.10-3.2.2.0    | Yes                          |
-| Red Hat Enterprise Linux | 9.4                             | Yes          | 23.10-3.2.2.0    | Yes                          |
+| Red Hat Enterprise Linux | 8.10                            | Yes          | 24.10-1.1.4.0    | Yes                          |
+| Red Hat Enterprise Linux | 9.4                             | Yes          | 24.10-1.1.4.0    | Yes                          |
 | Red Hat Enterprise Linux | 9.4 ARM                         | No           | Not Supported    | Yes                          |
 | Red Hat Enterprise Linux | 9.5                             | Yes          | 24.10-1.1.4.0    | Yes                          |
 | Red Hat Enterprise Linux | 9.5 ARM                         | No           | Not Supported    | Yes                          |
-| SuSE Linux Enterprise 15 | SP5                             | Yes          | 23.10-3.2.2.0    | Yes                          |
+| SuSE Linux Enterprise 15 | SP5                             | Yes          | 24.10-1.1.4.0    | Yes                          |
 | SuSE Linux Enterprise 15 | SP5 ARM                         | No           | Not Supported    | Yes                          |
-| SuSE Linux Enterprise 15 | SP6                             | Yes          | 23.10-3.2.2.0    | Yes                          |
+| SuSE Linux Enterprise 15 | SP6                             | Yes          | 24.10-1.1.4.0    | Yes                          |
 | SuSE Linux Enterprise 15 | SP6 ARM                         | No           | Not Supported    | Yes                          |
 | Cray Operating System    | COS 24.07.x w/ COS Base 3.1     | Yes          | 23.0.4-1.1.3.0\* | Yes                          |
 | Cray Operating System    | COS 24.07.x w/ COS Base 3.1 ARM | No           | Not Supported    | Yes                          |
@@ -76,7 +76,7 @@ _**Mellanox External Vendor Software**_
 | Name                       | Contains                           | Typical Install Target                  | Recommended Version | URL                                                                                            |
 |----------------------------|------------------------------------|-----------------------------------------|---------------------|------------------------------------------------------------------------------------------------|
 | Mellanox OFED distribution | Mellanox Networking Software Stack | all compute nodes and user access nodes | Listed Above        | [Mellanox OFED download](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed) |
-| Mellanox Device Firmware   | Mellanox NIC Firmware              | all compute nodes                       | 16.32.1010          | Contact your Support or account team to obtain the recommended firmware                        |
+| Mellanox Device Firmware   | Mellanox NIC Firmware              | all compute nodes                       | 16.35.4030          | Contact your Support or account team to obtain the recommended firmware                        |
 
 ## Libfabric Versions
 
@@ -89,7 +89,7 @@ The following cluster manager software compatibility information is for referenc
 | Cluster Management                     | Versions Supported  |
 |----------------------------------------|---------------------|
 | HPE Cray EX System Software            | 1.5.X, 1.6.X        |
-| HPE Performance Cluster Manager (HPCM) | 1.11, 1.12          |
+| HPE Performance Cluster Manager (HPCM) | 1.11, 1.12, 1.13    |
 
 _**Compute Node Image and Cluster Management Software Compatibility**_
 
@@ -107,8 +107,8 @@ _**Compute Node Image and Cluster Management Software Compatibility**_
 | SuSE Linux Enterprise 15 | SP6 ARM                         | NA           | 1.12+ |
 | Cray Operating System    | COS 24.07.x w/ COS Base 3.1     | 1.5.X\*      | 1.11+ |
 | Cray Operating System    | COS 24.07.x w/ COS Base 3.1 ARM | 1.5.X\*      | 1.11+ |
-| Cray Operating System    | COS 24.11.x w/ COS Base 3.2     | 1.6.X\*      | 1.12+ |
-| Cray Operating System    | COS 24.11.x w/ COS Base 3.2 ARM | 1.6.X\*      | 1.12+ |
+| Cray Operating System    | COS 25.03.x w/ COS Base 3.3     | 1.6.X\*      | 1.12+ |
+| Cray Operating System    | COS 25.03.x w/ COS Base 3.3 ARM | 1.6.X\*      | 1.12+ |
 
 \+ Any versions released after the listed version are supported.
 
