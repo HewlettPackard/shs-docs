@@ -6,11 +6,13 @@ Ensure that the [Setup](setup.md#setup) section preceding this section has been 
 
 This step is not executed until after the UAN install or upgrade has finished on the system. UAN provides the instructions for creating a CFS configuration for compute nodes. The procedure in this section aims at updating the existing CFS configuration for application nodes.
 
-The following steps describe how to use the Application node CFS configuration in conjunction with HPE Cray EX System Software CFS to install, update, and configure SHS provided content with application node images. These steps are necessary to provide the networking drivers, management software, and device firmware as required.
+The following steps describe how to use the Application node CFS configuration in conjunction with HPE Cray EX System Software CFS to install, update, and configure SHS provided content with application node images.
+These steps are necessary to provide the networking drivers, management software, and device firmware as required.
 
 The existing configuration will likely include other Cray EX product entries. The Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) provides guidance on how and when to update the entries for the other products.
 
-The following example steps reference how to modify the user access node CFS configuration. This same process can be applied to other application node CFS configurations.
+The following example steps reference how to modify the user access node CFS configuration.
+This same process can be applied to other application node CFS configurations.
 
 1. Retrieve the existing configuration file.
 

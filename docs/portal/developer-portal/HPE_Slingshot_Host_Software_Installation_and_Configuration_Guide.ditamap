@@ -21,10 +21,7 @@
             <topicref href="operations/references.md" format="mdita"/>
             <topicref href="operations/target_shell_variables.md" format="mdita"/>
         </topicref>
-        <topicref href="operations/ncn_personalization_and_image_customization.md" format="mdita">
-            <topicref href="operations/ncn_personalization.md" format="mdita"/>
-            <topicref href="operations/ncn_image_customization.md" format="mdita"/>
-        </topicref>
+        <topicref href="operations/ncn_image_customization.md" format="mdita"/>
         <topicref href="operations/compute_node_configuration.md" format="mdita"/>
         <topicref href="operations/application_node_configuration.md" format="mdita"/>
         <topicref href="operations/image_building.md" format="mdita"/>
