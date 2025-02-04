@@ -1,8 +1,7 @@
-# NCN image customization
+# Non-compute node (NCN) image customization
 
-Use this configuration method to install SHS on NCN images only if the system uses CSM 1.3 or later versions.
-
-For systems using CSM 1.2 or earlier versions, skip this section and proceed to the [NCN personalization](ncn_personalization.md#ncn-personalization) procedure, followed by the [Compute Node Configuration](compute_node_configuration.md#compute-node-configuration) procedure.
+NCN image customization is the process of applying product-specific configuration to an NCN image prior to boot.
+It must be run on the NCN worker node image to ensure the appropriate SHS CFS layer is applied.
 
 Ensure that the [Setup](setup.md#setup) section has been completed prior to running any steps in this section.
 
