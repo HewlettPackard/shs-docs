@@ -63,9 +63,7 @@
                 format="mdita"/>
         </topicref>
     </topicref>
-    <topicref href="troubleshoot/compute/troubleshoot_compute.md" format="mdita">
-        <topicref href="troubleshoot/compute/troubleshoot_bond0_not_up.md" format="mdita"/>
-    </topicref>
+    <topicref href="troubleshoot/compute/troubleshoot_compute.md" format="mdita"/>
     <topicref href="troubleshoot/cassini/HPE_Slingshot_200Gbps_NIC.md" format="mdita">
         <topicref href="troubleshoot/cassini/HPE_Slingshot_200Gbps_NIC_troubleshooting.md"
             format="mdita">
