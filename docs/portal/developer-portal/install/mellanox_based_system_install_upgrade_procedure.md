@@ -62,6 +62,8 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
       ibutils2
       infiniband-diags
       infiniband-diags-compat
+      kdreg2 
+      kdreg2-devel
       libfabric
       libfabric-devel
       libibumad
@@ -113,6 +115,7 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
        echo -e """\
           kernel-mft-mlnx-kmp-cray_shasta_c_64k
           mlnx-ofa_kernel-kmp-cray_shasta_c_64k
+          kdreg2-kmp-cray_shasta_c_64k
        """ >> ./shs-mlnx.rpmlist
        ```
 
@@ -122,6 +125,7 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
      echo -e """\
         kernel-mft-mlnx-kmp-cray_shasta_c
         mlnx-ofa_kernel-kmp-cray_shasta_c
+        kdreg2-kmp-cray_shasta_c
      """ >> ./shs-mlnx.rpmlist
      ```
 
@@ -131,6 +135,7 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
      echo -e """\
         kernel-mft-mlnx-kmp-default
         mlnx-ofa_kernel-kmp-default
+        kdreg2-kmp-default
      """ >> ./shs-mlnx.rpmlist
      ```
 
@@ -140,13 +145,11 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
      echo -e """\
         kmod-kernel-mft-mlnx
         kmod-mlnx-ofa_kernel
+        kmod-kdreg2
      """ >> ./shs-mlnx.rpmlist
      ```
 
-9. (Optional) Install kdreg2 as an additional memory cache monitor.
-   See [Install kdreg2](kdreg2_install.md#install-procedure) for more information.
-
-10. Create or update image.
+9. Create or update image.
 
     SHS does not support installing software as a single command on HPCM systems with `cm image create` with COS 3.0 and later.
     Installation of SHS with COS and the GPU sub-products must be performed as a series of steps. SHS requires that COS and GPU software provided by the COS and USS products must be installed prior to installing SHS.
@@ -190,9 +193,9 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
 
     **Note:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is required for COS installations with Nvidia software, but it is generally recommended to avoid problems when building in a chroot environment.
 
-11. If using a `tmpfs` image, there are no additional steps. If not using a `tmpfs` image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
+10. If using a `tmpfs` image, there are no additional steps. If not using a `tmpfs` image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
 
-12. Boot the new image when it is ready.
+11. Boot the new image when it is ready.
 
 ## Post-install
 

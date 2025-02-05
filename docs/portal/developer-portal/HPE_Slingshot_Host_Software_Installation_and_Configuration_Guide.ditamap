@@ -12,7 +12,6 @@
     <topicref href="install/Install_SHS_for_CSM.md" format="mdita">
         <topicref href="install/install_shs_on_csm_14_or_newer.md" format="mdita"/>
         <topicref href="operations/operational_activities_csm.md" format="mdita">
-            <topicref href="install/kdreg2_csm.md" format="mdita"/>
             <topicref href="operations/shs_cfs_variable_reference.md" format="mdita"/>
             <topicref href="operations/setup.md" format="mdita"/>
             <topicref href="operations/authentication_credentials.md" format="mdita"/>
@@ -44,10 +43,7 @@
                 format="mdita"/>
         </topicref>
     </topicref>
-    <topicref href="install/Install_kdreg2.md" format="mdita">
-        <topicref href="install/kdreg2_introduction.md" format="mdita"/>
-        <topicref href="install/kdreg2_install.md" format="mdita"/>
-    </topicref>
+    <topicref href="install/kdreg2_introduction.md" format="mdita"/>
     <topicref href="install/Soft_RoCE_on_HPE_Slingshot_200Gbps_NICs.md" format="mdita">
         <topicref href="install/softroce_on_HPE_Slingshot_200Gbps.md" format="mdita"/>
         <topicref href="install/lustre_network_driver_lnd_ko2iblnd_configuration.md" format="mdita"

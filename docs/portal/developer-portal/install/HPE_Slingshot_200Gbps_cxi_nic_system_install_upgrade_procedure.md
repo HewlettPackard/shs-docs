@@ -62,6 +62,8 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
       pycxi
       pycxi-diags
       pycxi-utils
+      kdreg2 
+      kdreg2-devel
       shs-version
    """ > ./shs-cxi.rpmlist
    ```
@@ -83,6 +85,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
       sl-driver-dkms
       cray-cxi-driver-dkms
       cray-kfabric-dkms
+      kdreg2-dkms 
    """ >> ./shs-cxi.rpmlist
    ```
 
@@ -107,6 +110,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
             sl-driver-dkms
             cray-cxi-driver-dkms
             cray-kfabric-dkms
+            kdreg2-dkms 
          ```
 
          with the corresponding pre-built binaries:
@@ -116,6 +120,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
             sl-driver-kmp-default
             cray-cxi-driver-kmp-default
             cray-kfabric-kmp-default
+            kdreg2-kmp-default
          ```
 
       - Example 2: Replacing DKMS Packages on RHEL (x86)
@@ -127,6 +132,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
             sl-driver-dkms
             cray-cxi-driver-dkms
             cray-kfabric-dkms
+            kdreg2-dkms 
          ```
 
          with the corresponding pre-built binaries:
@@ -136,12 +142,10 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
             kmod-sl-driver
             kmod-cray-cxi-driver
             kmod-cray-kfabric
+            kmod-kdreg2
          ```
 
-6. (Optional) Install kdreg2 as an additional memory cache monitor.
-   See [Install kdreg2](kdreg2_install.md#install-procedure) for more information.
-
-7. Create or update image.
+6. Create or update image.
 
    SHS does not support installing software as a single command on HPCM systems with `cm image create` with the COS 3.0 and later.
    Installation of SHS with COS and the GPU sub-products must be performed as a series of steps. SHS requires that COS and GPU software provided by the COS and USS products must be installed prior to installing SHS.
@@ -191,7 +195,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
 
    **NOTE:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is required for COS installations with Nvidia software, but it is generally recommended to avoid problems when building in a chroot environment.
 
-8. On HPE Slingshot 200Gbps CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
+7. On HPE Slingshot 200Gbps CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
 
    ```screen
    sed -i 's/allow_unsupported_modules 0/allow_unsupported_modules 1/' \
@@ -205,8 +209,8 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    /opt/clmgr/image/images/${IMAGE_NAME}/etc/modprobe.d/10-unsupported-modules.conf
    ```
 
-9. If using a tmpfs image, there are no additional steps. If not using a tmpfs image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
+8. If using a tmpfs image, there are no additional steps. If not using a tmpfs image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
 
-10. Boot the new image when it is ready.
+9. Boot the new image when it is ready.
 
-11. Apply the post-boot firmware and firmware configuration. General instructions are in the "Install compute nodes" section of the _HPE Slingshot Installation Guide for Bare Metal_.
+10. Apply the post-boot firmware and firmware configuration. General instructions are in the "Install compute nodes" section of the _HPE Slingshot Installation Guide for Bare Metal_.

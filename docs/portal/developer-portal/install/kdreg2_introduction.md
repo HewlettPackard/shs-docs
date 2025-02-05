@@ -1,4 +1,4 @@
-# Introduction
+# kdreg2
 
 High performance applications use “Remote Direct Memory Access” (RDMA) in which the networking stack reads and writes data directly into application memory bypassing normal operating system protection mechanisms.
 To orchestrate the transfer of data from the application space to the NIC, the memory ranges are “registered” with an operation that translates the virtual addresses into physical addresses and orchestrates the pinning of the relevant pages.
@@ -48,3 +48,6 @@ The size of the memory registration cache is one of the most important parameter
 
 In summary, kdreg2 is available as an additional memory cache monitor that can enable applications that otherwise use memory registration caching to achieve a performance advantage.  
 For sites that run a mix of HPC applications under the default memhooks while setting NCCL and RCCL applications to userfaultfd, setting the default configuration to kdreg2 may simplify operations by eliminating this per-application setting.
+
+Starting in SHS release 12.0.0, kdreg2 is installed by default.
+
