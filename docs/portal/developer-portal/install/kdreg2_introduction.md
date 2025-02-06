@@ -49,5 +49,5 @@ The size of the memory registration cache is one of the most important parameter
 In summary, kdreg2 is available as an additional memory cache monitor that can enable applications that otherwise use memory registration caching to achieve a performance advantage.  
 For sites that run a mix of HPC applications under the default memhooks while setting NCCL and RCCL applications to userfaultfd, setting the default configuration to kdreg2 may simplify operations by eliminating this per-application setting.
 
-Starting SHS v12.0.0 kdreg2 is installed by default.
+Starting in SHS release 12.0.0, kdreg2 is installed by default.
 
