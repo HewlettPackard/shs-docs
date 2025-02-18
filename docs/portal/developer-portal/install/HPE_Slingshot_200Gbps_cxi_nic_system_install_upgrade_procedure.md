@@ -92,16 +92,16 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    For distributed binary builds, pre-built kernel binaries are available. To use these binaries instead of DKMS packages, follow these steps:
 
    1. Identify the appropriate pre-built binary variant for your distribution.
-      
+
       - Pre-Built Binary Variants
          - SLES/CSM: Replace `*-dkms` with `*-kmp-default`.
          - COS on x86: Replace `*-dkms` with `*-kmp-cray_shasta_c`.
          - COS on ARM64: Replace `*-dkms` with `*-kmp-cray_shasta_c_64k`.
          - RHEL: Replace `*-dkms` with `kmod-*`.
-   
+
    2. Replace the DKMS packages with the corresponding pre-built binary variants.
 
-       **Examples** 
+       **Examples**
       - Example 1: Replacing DKMS Packages on SLES15 SP5 (x86)
          If you are installing pre-built kernel modules on SLES15 SP5 for x86 systems, replace the following DKMS packages:
 
@@ -151,6 +151,20 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    Installation of SHS with COS and the GPU sub-products must be performed as a series of steps. SHS requires that COS and GPU software provided by the COS and USS products must be installed prior to installing SHS.
    In this case, SHS must be installed via the 'If updating an image' workflow instead of the 'If creating an image' workflow.
 
+   The following examples use the `slingshot-host-software-repo-group` repo group created earlier in this procedure. If a different repo group is preferred, use the following commands to find an existing repo group.
+
+    To determine available repo groups:
+
+    ```screen
+    cm repo group show
+    ```
+
+    To see the repos within a specific repo group:
+
+    ```screen
+    cm repo group show <REPO_GROUP_NAME>
+    ```
+
    - If creating an image:
 
      - Create an image.rpmlist from generated rpmlists in step 4.
@@ -188,7 +202,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
      - RHEL environment:
 
        ```screen
-       autoinstall_all_kernels=y cm image dnf -y install $(cat $(pwd)/shs-cxi.rpmlist) --enablerepo=slingshot-host-software-repo-group
+       autoinstall_all_kernels=y cm image dnf install --repo-group slingshot-host-software-repo-group $(cat $(pwd)/shs-cxi.rpmlist)
        ```
 
        **NOTE:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
