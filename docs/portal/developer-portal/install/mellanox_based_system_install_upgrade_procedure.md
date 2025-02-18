@@ -155,21 +155,35 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
     Installation of SHS with COS and the GPU sub-products must be performed as a series of steps. SHS requires that COS and GPU software provided by the COS and USS products must be installed prior to installing SHS.
     In this case, SHS must be installed via the 'If updating an image' workflow instead of the 'If creating an image' workflow.
 
+    The following examples use the `slingshot-host-software-repo-group` repo group created earlier in this procedure. If a different repo group is preferred, use the following commands to find an existing repo group.
+
+    To determine available repo groups:
+
+    ```screen
+    cm repo group show
+    ```
+
+    To see the repos within a specific repo group:
+
+    ```screen
+    cm repo group show <REPO_GROUP_NAME>
+    ```
+
     - If creating an image:
 
-      - Create an image.rpmlist from generated rpmlists in step 7.
+      1. Create an image.rpmlist from generated rpmlists in step 7.
 
          ```screen
          cp /opt/clmgr/image/rpmlists/generated/generated-group-slingshot-host-software-repo-group.rpmlist image.rpmlist
          ```
 
-      - Add the .rpmlist generated in step 8 to the image.rpmlist.
+      2. Add the .rpmlist generated in step 8 to the image.rpmlist.
 
          ```screen
          cat ./shs-mlnx.rpmlist >> image.rpmlist
          ```
 
-      - Create the image.
+      3. Create the image.
 
          ```screen
          IMAGE_NAME=${DIST}_hpcm_ss
@@ -187,9 +201,9 @@ For systems using HPE Slingshot 200Gbps NICs, skip this section and instead proc
 
       - RHEL environment:
 
-         ```screen
-         autoinstall_all_kernels=y cm image dnf -y install $(cat $(pwd)/shs-mlnx.rpmlist) --enablerepo=slingshot-host-software-repo-group
-         ```
+        ```screen
+        autoinstall_all_kernels=y cm image dnf install --repo-group slingshot-host-software-repo-group $(cat $(pwd)/shs-mlnx.rpmlist)
+        ```
 
     **Note:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is required for COS installations with Nvidia software, but it is generally recommended to avoid problems when building in a chroot environment.
 
