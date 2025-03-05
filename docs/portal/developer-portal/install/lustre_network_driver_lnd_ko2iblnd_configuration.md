@@ -1,6 +1,15 @@
-# Lustre Network Driver (LND) ko2iblnd configuration
+# Configure ko2iblnd Lustre Network Driver (LND) for Soft-RoCE performance
 
-The ko2iblnd.ko changes are needed for better Soft-RoCE performance on LNDs.
+The ko2iblnd.ko module requires modifications to optimize Soft-RoCE performance.
+If your setup does not involve Soft-RoCE connections, this section does not apply.
+
+## Prerequisites
+
+Ensure that Lustre is installed with the ko2iblnd module built for the Soft-RoCE driver (RXE) by specifying `--with-o2ib=yes` for `/.configure` or `rpmbuild`.
+If this option is not specified, the build process will attempt to automatically detect external OFED installations or internal o2ib support.
+If neither is detected, the ko2iblnd module will not be built.
+
+For detailed instructions, see the _Cray ClusterStor Lustre Client Build Configuration Guide S-9100_.
 
 ## Compute Node tuning for Soft-RoCE
 
@@ -49,7 +58,7 @@ Tuning on compute node can be achieved in two ways. Follow the steps that work b
       /sys/module/ko2iblnd/parameters/cksum:0
       /sys/module/ko2iblnd/parameters/concurrent_sends:84
       /sys/module/ko2iblnd/parameters/conns_per_peer:4
-      /sys/module/ko2iblnd/parameters/credits:84
+      /sys/module/ko2iblnd/parameters/credits:1024
       /sys/module/ko2iblnd/parameters/dev_failover:1
       /sys/module/ko2iblnd/parameters/fmr_cache:1
       /sys/module/ko2iblnd/parameters/fmr_flush_trigger:384
@@ -112,7 +121,7 @@ NOTE: These changes will not persist on file system upgrade and should be reappl
    ```console
    [root@hpelus1n01 ~]# vim /mnt/nfsdata/images/$(nodeattr -UV ver)/appliance.x86_64/etc/modprobe.d/ko2iblnd.conf
 
-   options ko2iblnd conns_per_peer=4 ntx=2048 peer_credits=42 peer_credits_hiw=64 concurrent_sends=256 credits=1024 map_on_demand=1
+   options ko2iblnd conns_per_peer=4 ntx=2048 peer_credits=42 peer_credits_hiw=64 concurrent_sends=84 credits=1024 map_on_demand=1
    ```
 
 7. Recreate the SquashFS image after updating the `ko2iblnd.conf` file in the image.
@@ -163,7 +172,7 @@ NOTE: These changes will not persist on file system upgrade and should be reappl
     /sys/module/ko2iblnd/parameters/cksum:0
     /sys/module/ko2iblnd/parameters/concurrent_sends:84
     /sys/module/ko2iblnd/parameters/conns_per_peer:4
-    /sys/module/ko2iblnd/parameters/credits:84
+    /sys/module/ko2iblnd/parameters/credits:1024
     /sys/module/ko2iblnd/parameters/dev_failover:1
     /sys/module/ko2iblnd/parameters/fmr_cache:1
     /sys/module/ko2iblnd/parameters/fmr_flush_trigger:384
