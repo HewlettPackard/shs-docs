@@ -80,6 +80,7 @@ chroot
 CLI
 cli
 client-server
+ClusterStor
 cm-cli
 COCN
 conditionalization
@@ -387,6 +388,7 @@ NUMA
 Nvidia
 NVIDIA
 ntp
+o2ib
 OData
 ogopogod
 onloaded
@@ -604,6 +606,7 @@ S-9009
 S-9010
 S-9011
 S-9012
+S-9100
 S-9929
 
 
