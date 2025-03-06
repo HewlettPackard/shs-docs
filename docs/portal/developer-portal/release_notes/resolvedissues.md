@@ -2,7 +2,10 @@
 # Resolved Issues
 |ID|Description|Impact|Component|Affected Version/s|
 |:--:|:---------|:---------|:----|:----|
+|2963648|Retry handler may exceed packet retry attempts before the fabric finishes provisioning new routes|We have fixed the issue where, if RDMA traffic is in flight and fabric groups become directly disconnected, the Retry handler could exceed packet retry attempts before the fabric finishes provisioning new routes. Potentially leading to unexpected application termination.|cxirh|SHS v11.0.2|
+|2931114|Enable KDREG2 by Default for SHS-12.0.0 and Beyond |Starting with SHS-12.0.0, KDREG2 is installed by default. To use it, set the default memory monitor to KDREG2 by configuring the Libfabric environment variable|cxirh|SHS v11.1.0|
 |2923272|Enhance SHS DKMS to allow parallelism|Updated SHS DKMS builds to support parallelism by utilizing the `parallel\_jobs` variable in the DKMS framework. The `dkms build -jN` command now aligns with `parallel\_jobs`. Note: When no value is specified, GNU Make interprets it as an unlimited number of jobs.|Build|SHS v11.0.2|
+|2910600|Libfabric CXI provider failing AMD GPU memory registration with DMA buf enabled|The CXI provider can be utilized when AMD GPU memory registration is enabled with DMA-BUF in Libfabric.|cxicore<br>  cxiprov|SHS v11.1.0|
 |2896815|Libfabric MR cache does not unsubscribe with kdreg2 memory monitor|When MR cache entries are freed due to list-recently-used, kdreg2 tracking of MR was not being cleaned up. This could result in future kdreg2 requests to traffic an MR to fail.|libfabric|SHS v11.0.2|
 |2839555|kfabric: Add Scatter/Gather APIs to support GDS|Adds scatterlist support to kfabric APIs and kfi\_cxi provider.|kcxiprov<br>  kfabric|SHS v11.0.2|
 |2692943|Add libfabric cxi provider support for FI\_OPT\_CUDA\_API\_PERMITTED|The libfabric CXI provider has been updated to allow the aws-ofi-nccl and aws-ofi-rccl plugins to use the 1.18 version of the libfabric interface, which is required to support the most recent versions of those plugins.|cxiprov<br>  libfabric|SHS v11.1.0|
