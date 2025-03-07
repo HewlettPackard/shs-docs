@@ -15,7 +15,6 @@
     <topicref href="release_notes/resolvedissues.md" format="markdown"/>
     <topicref href="release_notes/securityissues.md" format="markdown"/>
     <topicref href="release_notes/knownissues.md" format="markdown"/>
-    <topicref href="release_notes/workarounds.md" format="markdown"/>
     <topicref href="release_notes/support_matrix.md" format="markdown"/>
     <topicref href="release_notes/versioning_model.md" format="markdown"/>
     <topicref href="release_notes/hash_validation_howto.md" format="markdown"/>
