@@ -202,7 +202,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
      - RHEL environment:
 
        ```screen
-       autoinstall_all_kernels=y cm image dnf install --repo-group slingshot-host-software-repo-group $(cat $(pwd)/shs-cxi.rpmlist)
+       autoinstall_all_kernels=y cm image dnf -i ${IMAGE_NAME} --repo-group slingshot-host-software-repo-group "install --allowerasing" $(cat $(pwd)/shs-cxi.rpmlist)
        ```
 
        **NOTE:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
