@@ -33,7 +33,7 @@ CURRENT_BRANCH=$GIT_BRANCH
 # For example:
 # RELEASE_BRANCH=release/shs-11.0
 
-RELEASE_BRANCH=main
+RELEASE_BRANCH=release/shs-12.0
 
 if [ -d hpc-shs-version ]; then
     rm -rf hpc-shs-version
