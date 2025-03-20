@@ -209,7 +209,54 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
 
    **NOTE:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is required for COS installations with Nvidia software, but it is generally recommended to avoid problems when building in a chroot environment.
 
-7. On HPE Slingshot 200Gbps CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
+7. (DKMS ONLY) Verify that the DKMS RPMs were installed properly.
+
+   1. Check the installation status of the DKMS RPMs.
+
+      If any RPM is labeled as `added` or `build`, they will need to be installed using the script in the next sub-step.
+      If all RPMs are listed as `installed`, skip the "Install the DKMS RPMs" step.
+
+      ```screen
+      DKMS_RPM_LIST="sl-driver cray-slingshot-base-link cray-cxi-driver kdreg2 cray-kfabric"
+
+      # Check script
+      for pkg in ${DKMS_RPM_LIST}; do
+         cm image chroot -i ${TEST_IMAGE} dkms status -m ${pkg}
+      done
+      ```
+
+   2. Install the DKMS RPMs.
+
+      a. Reinstall the RPMs for each kernel version.
+
+         The following script will install each RPM listed as `built` or `added` in the previous step for each kernel version.
+
+         ```screen
+         # Repair script
+         KERNEL_LIST=$(chroot ${IMAGE_PATH} ls /lib/modules/)
+         for kernel in ${KERNEL_LIST}; do
+         for pkg in ${DKMS_RPM_LIST}; do
+            MODULE_INFO=$(cm image chroot -i ${TEST_IMAGE} dkms status -m ${pkg} \
+               | grep -v ": installed" \
+               | cut -d':' -f1 | cut -d',' -f1 \
+            )
+            if [[ -n "${MODULE_INFO}" ]]; then
+               cm image chroot -i ${TEST_IMAGE} dkms install -k ${kernel} ${MODULE_INFO}
+            fi # MODULE_INFO
+         done # pkg
+         done # kernel
+         ```
+
+      b. Check the status of the RPMs again to verify that they are now listed as `installed`.
+
+         ```screen
+         # Check script
+         for pkg in ${DKMS_RPM_LIST}; do
+            cm image chroot -i ${TEST_IMAGE} dkms status -m ${pkg}
+         done
+         ```
+
+8. On HPE Slingshot 200Gbps CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
 
    ```screen
    sed -i 's/allow_unsupported_modules 0/allow_unsupported_modules 1/' \
@@ -223,8 +270,8 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    /opt/clmgr/image/images/${IMAGE_NAME}/etc/modprobe.d/10-unsupported-modules.conf
    ```
 
-8. If using a tmpfs image, there are no additional steps. If not using a tmpfs image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
+9. If using a tmpfs image, there are no additional steps. If not using a tmpfs image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
 
-9. Boot the new image when it is ready.
+10. Boot the new image when it is ready.
 
-10. Apply the post-boot firmware and firmware configuration. General instructions are in the "Install compute nodes" section of the _HPE Slingshot Installation Guide for Bare Metal_.
+11. Apply the post-boot firmware and firmware configuration. General instructions are in the "Install compute nodes" section of the _HPE Slingshot Installation Guide for Bare Metal_.
