@@ -2,64 +2,8 @@
 
 ## Test failures
 
-Test failures indicate NIC or network issues. A failure can often be isolated by running multiple tests using different node configurations. Once isolated, error flags and counters should be checked for the NICs and switches affected. Cabling and link stability should be verified. Algorithmic MAC addresses, switch routing, and switch and NIC QoS settings should be verified.
-
-## Loopback test
-
-If a node falls outside of a set threshold compared to the mean, a warning is displayed. There can be warnings for both too high and too low results, but only low results cause the test to fail. The inclusion of a too high warning is due to the possibility of extreme outliers skewing the results for other nodes. Begin by looking at outliers and retest once they have been fixed or without them included in the test. The threshold value is set to 90% by default (acceptable values fall within 10% above or below the mean). This can be adjusted with the `-T` option.
-
-```screen
-Running loopback tests on NIC 1 over : nid[000022-000028]
-Using NIC 1
-nprocs=56 sets=1 maxbytes=131072 ppn=8 (Warning: no PMI set manually)
-loopback  autoreps time 0.003501 reps 4284
-Test      Iter    Bytes      Min     Mean      Max      Dev       CV
-loopback     1   131072     4044     6518     8156     1782     27.3%
-loopback     2   131072     4235     7033     8771     1641     23.3%
-loopback     3   131072     6653     7910     9145      998     12.6%
-loopback     4   131072     4850     6785     9087     1796     26.5%
-Final loopback bandwidth stats
-loopback     4   131072     4235     7243     9145     1523     21.0%
-Per node bandwidth stats
-nid000022    4   131072     7900     8570     9039      596      7.0%   result is high
-nid000023    4   131072     6223     6494     6823      304      4.7%    result is low
-nid000024    4   131072     4235     6201     9145     2597     41.9%    result is low
-nid000025    4   131072     6617     7914     8854     1161     14.7%
-nid000026    4   131072     5356     6984     8206     1468     21.0%
-nid000027    4   131072     6653     8150     9087     1309     16.1%   result is high
-nid000028    4   131072     4850     6385     8045     1601     25.1%    result is low
-dgnettest has FAILED
-```
-
-## Latency test
-
-In the latency test the coefficient of variance (CV) is checked to see if it is below a threshold, which is set to 5% by default. If the CV is above this threshold, a warning is printed. In this case the latency histogram likely shows a wide range of latency values. The CV threshold can be adjusted with the `-l` option. Increasing the threshold is necessary when measuring latency for nodes that span multiple switches.
-
-```screen
-$ dgnettest_run.sh -n nid[001000-001009,001011-001081,001211-001219,001221-001279,001412-001499,001501-001511] -s 16 latency
-Running tests over : nid[001000-001009,001011-001081,001211-001219,001221-001279,001412-001499,001501-001511]
-nprocs=1984 sets=20 maxbytes=131072 ppn=8 (Warning: no PMI set manually)
-Test       Count    Min   Mean    Max    Dev     CV
-latency     1596   1.81   2.37   2.93   0.33   13.9%     CV is high
-latency histogram
-latency   1.75 - 1.80     0
-latency   1.80 - 1.85     66
-latency   1.85 - 1.90     110
-latency   1.90 - 1.95     27
-latency   1.95 - 2.00     63
-latency   2.00 - 2.05     123
-latency   2.05 - 2.10     24
-latency   2.10 - 2.15     70
-latency   2.15 - 2.20     53
-latency   2.20 - 2.25     59
-latency   2.25 - 2.30     116
-latency   2.30 - 2.35     93
-latency   2.35 - 2.40     6
-latency   2.40 - 2.45     116
-latency   2.45 - 2.50     33
-latency   > 2.50          637
-dgnettest has PASSED
-```
+Test failures indicate NIC or network issues. A failure can often be isolated by running multiple tests using different node configurations. Once isolated, error flags and counters should be checked for the NICs and switches affected.
+Cabling and link stability should be verified. Algorithmic MAC addresses, switch routing, and switch and NIC QoS settings should be verified.
 
 ## Bisectional and all-to-all tests
 
@@ -120,7 +64,7 @@ By default, `dgnettest` runs with an assumption that the network class of the sy
 
 ```screen
 dgnettest_run.sh -n nid[000005-000009]
-Running loopback tests over : nid[000005-000009]
+Running switch tests over : nid[000005-000009]
 dgnettest: failed to parse MAC addr for Shasta node nid000006 02:00:00:00:00:3e
 dgnettest: failed to parse MAC addr for Shasta node nid000009 02:00:00:00:00:2c
 dgnettest: failed to parse MAC addr for Shasta node nid000005 02:00:00:00:00:3f
@@ -134,7 +78,7 @@ The following error indicates that too many nodes were selected for the given ne
 
 ```screen
 $ dgnettest_run.sh -n nid[001000-001009,001083-001146,001188-001219,001278-001279,001284-001347,001432-001499,001501-001506,001510-001511] -c 0
-Running loopback tests on NIC 0 over : nid[001000-001009,001083-001146,001188-001219,001278-001279,001284-001347,001432-001499,001501-001506,001510-001511]
+Running switch tests on NIC 0 over : nid[001000-001009,001083-001146,001188-001219,001278-001279,001284-001347,001432-001499,001501-001506,001510-001511]
 Too many nodes selected for network class type 0, check the configuration
 Too many nodes selected for network class type 0, check the configuration
 ...
@@ -146,7 +90,7 @@ Running `dgnettest` requires that a copy of the test is present on each node. Fo
 
 ```screen
 $ dgnettest_run.sh -n nid[000002-000028]
-Running loopback tests on NIC 0 over : nid[000002-000028]
+Running switch tests on NIC 0 over : nid[000002-000028]
 slurmstepd: error: execve(): /tmp/./dgnettest: No such file or directory
 slurmstepd: error: execve(): /tmp/./dgnettest: No such file or directory
 slurmstepd: error: execve(): /tmp/./dgnettest: No such file or directory
