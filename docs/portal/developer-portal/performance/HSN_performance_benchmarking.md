@@ -20,7 +20,7 @@ It is required to progress in a systematic and hierarchical way to validate the 
 
 ## Edge performance (test between compute Nodes connected the same switch)
 
-The following is an example test that provides sample OSU one-side Performance results between two nodes with HSN Fabric in the same group and connected to the same switch. The actual results expected results.
+The following is an example test that provides sample OSU one-side Performance results between two nodes with HSN Fabric in the same group and connected to the same switch. These results represent the expected performance.
 
 ```screen
 mpirun --host <system_name>n001,<system_name>n003 ./one-sided/osu_get_bw
@@ -55,7 +55,8 @@ mpirun --host <system_name>n001,<system_name>n003 ./one-sided/osu_get_bw
 
 ## Local performance test (tests between nodes in the same group)
 
-The following are example tests providing sample OSU pt2pt mbw performance results between two nodes with HSN Fabric in the same group and connected to the same switch. The actual results expected results. In this particular topology there are two switches in the groups and two groups in this topology. The tests verifies the health of the local links and performance between the nodes within the group.
+The following are example tests providing sample OSU pt2pt mbw performance results between two nodes with HSN Fabric in the same group and connected to the same switch. These results represent the expected performance.
+In this particular topology there are two switches in the groups and two groups in this topology. The tests verifies the health of the local links and performance between the nodes within the group.
 
 _**Group 1**_
 
@@ -128,7 +129,8 @@ Peak BW/Node : 12081 MB/
 
 ## Global performance test (tests between nodes in the different group)
 
-The following is an example test that provides a sample OSU pt2pt mbw performance results between two nodes with HSN Fabric in the same group and connected to the same switch. The actual results expected results. In this particular topology there are two switches in the groups and two groups in this topology.
+The following is an example test that provides a sample OSU pt2pt mbw performance results between two nodes with HSN Fabric in the same group and connected to the same switch. These results represent the expected performance.
+In this particular topology there are two switches in the groups and two groups in this topology.
 
 ```screen
 # OSU MPI Multiple Bandwidth / Message Rate Test v5.7
