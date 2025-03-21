@@ -1,6 +1,6 @@
 # HSN Performance
 
-HPE Slingshot is a network fabric consisting of fabric agents responsible for performing ASIC operations on specific HPE Slingshot switches by managing network congestion across an HPC system.
+HPE Slingshot is a network fabric consisting of fabric agents that manage congestion by performing ASIC operations on specific HPE Slingshot switches across the HPC system.
 
 The hardware tracks all active network packets and identifies and controls causes of congestion by:
 
