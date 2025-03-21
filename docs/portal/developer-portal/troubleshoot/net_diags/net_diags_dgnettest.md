@@ -1,10 +1,6 @@
 # `dgnettest`
 
-The network diagnostic `dgnettest` is comprised of four individual tests. It interfaces with Slurm to run multiple tests in parallel, setting up MPI communicators for each blade, group, or other set of nodes. It can run on systems of any size. It uses enough processes per node to get optimal performance while ensuring that memory use remains low.
-
-**Loopback Bandwidth Test:** The loopback test measures MPI bandwidth with each NIC set to communicate through the connected Slingshot switch back to itself with local memory sharing turned off. It reports bandwidth for each node and highlights nodes that measured outside of a set threshold. This test runs for each NIC on a node in serial, but for each node in parallel.
-
-**Latency Test:** The latency test measures MPI point-to-point latency from one node to itself and to every other node. The test measures round-trip latency and halves this to estimate one-way latency. It reports a summary of latency statistics along with a histogram to illustrate the measured distribution.
+The network diagnostic `dgnettest` is comprised of two individual tests. It interfaces with Slurm to run multiple tests in parallel, setting up MPI communicators for each blade, group, or other set of nodes. It can run on systems of any size. It uses enough processes per node to get optimal performance while ensuring that memory use remains low.
 
 **Fabric Bisection Bandwidth Test:** The bisection bandwidth test divides the nodes in two and measures bandwidth between the halves. In general you can select the worst-case cut, but in a dragonfly network (or fat-tree) of reasonable size it is similar. The bisection bandwidth is usually limited by the bandwidth of the global links.
 
