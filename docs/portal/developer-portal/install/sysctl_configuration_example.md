@@ -1,6 +1,8 @@
 # `sysctl` configuration example
 
-The `slingshot-network-config` RPM contains an example `sysctl` configuration file shown here:
+The `slingshot-network-config` RPM contains an example `sysctl` configuration file.
+
+The following settings were recommended by Mellanox in their online documentation for RoCE networks and were tested internally for the HPE Slingshot product. These settings are also recommended by this document.
 
 ```screen
 ####
@@ -44,7 +46,7 @@ net.ipv4.neigh.default.gc_thresh3=8192
 net.ipv4.neigh.default.gc_stale_time=240
 ```
 
-The following settings were recommended by Mellanox in their online documentation for RoCE networks and were tested internally for the HPE Slingshot product. These settings are also recommended by this document.
+The following settings are suggested for larger clusters to reduce the frequency of ARP cache misses during connection establishment when using the libfabric `verbs` provider, as basic or standard ARP default parameters will not scale to support large systems.
 
 ```screen
 # NIC performance tuning options
@@ -61,7 +63,5 @@ net.ipv4.tcp_wmem=4096 65536 16777216
 net.ipv4.tcp_mem=16777216 16777216 16777216
 net.ipv4.tcp_low_latency=1
 ```
-
-The following settings are suggested for larger clusters to reduce the frequency of ARP cache misses during connection establishment when using the libfabric `verbs` provider, as basic or standard ARP default parameters will not scale to support large systems.
 
 For guidance on setting the `gc_thresh\*` value, see the [ARP settings](arp_settings.md#arp-settings) section.

@@ -70,8 +70,6 @@ Port Description TLV
         Interface  26 as ros0p21
 System Name TLV
         x3000c0r42b0
-Unidentified Org Specific TLV
-        OUI: 0x000eab, Subtype: 1, Info: 7b202269705f ... 23a20393030307d
 End of LLDPDU TLV
 ```
 
