@@ -51,7 +51,6 @@
        </topicmeta>
        <topicref href="user/hpe_slingshot_nic_rdma_protocol_and_traffic_classes.md" format="mdita"/>
        <topicref href="user/ip_performance_and_configuration_settings.md" format="mdita"/>
-       <topicref href="user/memory_registration_and_cache_monitors.md" format="mdita"/>
        <topicref href="user/libfabric_runtime_configurable_parameters.md" format="mdita"/>
     </topichead>
 </map>

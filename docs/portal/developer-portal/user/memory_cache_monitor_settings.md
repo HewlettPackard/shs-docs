@@ -8,26 +8,33 @@ To achieve good RDMA performance, caching memory registrations is important beca
 Libfabric also has extensive support for memory registration caching because it is common for software to register the same memory sections in the course of the application.
 Ensuring the data in the MR cache is “fresh” is the role of the memory registration cache monitor. Libfabric supports several methods for monitoring the memory registration cache. These are selectable using the `FI_MR_CACHE_MONITOR` environment variable.
 
-## `FI_MR_CACHE_MONITOR=userfaultfd`
+## `FI_MR_CACHE_MONITOR`
 
-`userfaultfd` (or `uffd`) - is delivered as part of Linux operating system distributions. It is a kernel service for tracking memory mapping changes.
+Use the `FI_MR_CACHE_MONITOR` environment variable to select the memory registration cache monitor: `userfaultfd`, `memhooks`, `kdreg2`.
 
-## `FI_MR_CACHE_MONITOR=memhooks`
+Currently, the default setting is `memhooks`.
+`userfaultfd` is required when running applications with NCCL or RCCL.
 
-`memhooks` is distributed as part of Libfabric. Unlike `uffd`, `memhooks` is a user-space function which traps library functions for memory allocation or deallocation.
-Both `userfaultfd` and `memhooks` have advantages as well as known shortcomings as memory monitors for MR Cache.
+- `userfaultfd` (or `uffd`)
+  
+  Delivered as part of Linux operating system distributions. It is a kernel service for tracking memory mapping changes.`userfaultfd` uses a file descriptor for communication which introduces a delay between detection of changes to the memory layout and acknowledgement within Libfabric.
+  This delay can provide for memory corrupting errors since scenarios such as allocation-free-reallocation of the same address in user space are unresolvable. `userfaultfd` is also constrained to operating on page-aligned, full page regions, making it unsuitable for data layout commonly found in applications which utilize SHMEM.
 
-- `memhooks` is set up primarily to monitor dynamic memory allocations, such as applications using `mmap` and `brk` memory functions. Downsides are that it cannot monitor stack allocations or static allocations. The hook instantiation is dependent on load order, linker directives, etc. It deadlocks if the code frees memory such is observed with GPU-style programming locks.
-- `userfaultfd` uses a file descriptor for communication which introduces a delay between detection of changes to the memory layout and acknowledgement within Libfabric. This delay can provide for memory corrupting errors since scenarios such as allocation-free-reallocation of the same address in user space are unresolvable. `userfaultfd` is also constrained to operating on page-aligned, full page regions, making it unsuitable for data layout commonly found in applications which utilize SHMEM.
+- `memhooks`
+  
+  Distributed as part of Libfabric. Unlike `uffd`, `memhooks` is a user-space function which traps library functions for memory allocation or deallocation.
+  
+  `memhooks` is set up primarily to monitor dynamic memory allocations, such as applications using `mmap` and `brk` memory functions. Downsides are that it cannot monitor stack allocations or static allocations. The hook instantiation is dependent on load order, linker directives, etc. It deadlocks if the code frees memory such is observed with GPU-style programming locks.
 
-Currently the default setting is memhooks. Importantly, `userfaultfd` is required when running applications with NCCL or RCCL.
+- `kdreg2`
+  
+  This is not installed by default, and HPE encourages system administrators to ensure it is installed so that users can try it and see where it provides benefits and whether it can be a single cache monitor for all applications. Future releases of SHS will change the installation to be done by default, and will likely make this the default memory cache monitor in the future.
 
-## `FI_MR_CACHE_MONITOR=kdreg2`
+  The purpose of `kdreg2` is to overcome situations where `memhooks` and `uffd` both fail so that the application can achieve performance by utilizing caching. `kdreg2` is able to monitor static, dynamic, and stack memory. It can support arbitrary alignment. It provides synchronous notification mechanisms. And it can employ extra data to detect allocate/free/reallocate scenarios.
+  
+  It must be installed into the host OS kernel at image creation time.
 
-In addition to `memhooks` and `uffd`, the HPE Slingshot NIC provides another monitor, `kdreg2`, developed by HPE and shipped in the HPE Slingshot Host Software (SHS) package for optional installation. This will be provided as open source as well. The purpose of `kdreg2` is to overcome situations where `memhooks` and `uffd` both fail so that the application can achieve performance by utilizing caching. `kdreg2` is able to monitor static, dynamic, and stack memory. It can support arbitrary alignment. It provides synchronous notification mechanisms. And it can employ extra data to detect allocate/free/reallocate scenarios.
-It must be installed into the host OS kernel at image creation time.
-
-`kdreg2` is not installed by default, and HPE encourages system administrators to ensure it is installed so that users can try it and see where it provides benefits and whether it can be a single cache monitor for all applications. Future releases of SHS will change the installation to be done by default, and will likely make this the default memory cache monitor in the future.
+## Libfabric parameters for the memory registration cache
 
 There are two Libfabric parameters for the memory registration cache that are of note:
 
