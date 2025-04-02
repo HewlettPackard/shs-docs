@@ -7,8 +7,9 @@ Here are the System Software requirements for the SHS release, detailing compati
 - **NICs**: Supported Network Interface Cards (NICs) are listed for each given OS distribution.
 - **Libfabric**: Libfabric version supported.
 - **Cluster Managers**: Specified supported cluster managers and their respective versions.
+- **Soft-Roce**: Soft-Roce compatibility
 
-Advisory: older platform targets (i.e. SLE 15 SP3, COS 2.4, CSM 1.3, RHEL 8.5) are supported by earlier versions of SHS. Software for older platforms can be found in earlier SHS releases.
+Advisory: older platform targets (i.e. SLE 15 SP4, COS 2.X, CSM 1.3.X, RHEL 8.9) are supported by earlier versions of SHS. Software for older platforms can be found in earlier SHS releases.
 
 ## Fabric Manager and HPE Slingshot Host Software Release Compatibility
 
@@ -46,8 +47,8 @@ In the following table, **FM/SA Version** stands for the Fabric Manager and Swit
 | SuSE Linux Enterprise 15 | SP5 ARM                         | NA           | 550.54.15    | 24.03      |
 | SuSE Linux Enterprise 15 | SP6                             | 6.3.0        | 565.57.01    | 24.11      |
 | SuSE Linux Enterprise 15 | SP6 ARM                         | NA           | 565.57.01    | 24.11      |
-| Cray Operating System    | COS 24.07.x w/ COS Base 3.1     | 6.1.0        | 550.54.15    | 24.03      |
-| Cray Operating System    | COS 24.07.x w/ COS Base 3.1 ARM | NA           | 550.54.15    | 24.03      |
+| Cray Operating System    | COS 24.10.x w/ COS Base 3.1     | 6.1.0        | 550.54.15    | 24.03      |
+| Cray Operating System    | COS 24.10.x w/ COS Base 3.1 ARM | NA           | 550.54.15    | 24.03      |
 | Cray Operating System    | COS 25.03.x w/ COS Base 3.3     | 6.3.0        | 565.57.01    | 24.11      |
 | Cray Operating System    | COS 25.03.x w/ COS Base 3.3 ARM | NA           | 565.57.01    | 24.11      |
 
@@ -64,10 +65,10 @@ In the following table, **FM/SA Version** stands for the Fabric Manager and Swit
 | SuSE Linux Enterprise 15 | SP5 ARM                         | No           | Not Supported    | Yes                          |
 | SuSE Linux Enterprise 15 | SP6                             | Yes          | 24.10-1.1.4.0    | Yes                          |
 | SuSE Linux Enterprise 15 | SP6 ARM                         | No           | Not Supported    | Yes                          |
-| Cray Operating System    | COS 24.07.x w/ COS Base 3.1     | Yes          | 23.0.4-1.1.3.0\* | Yes                          |
-| Cray Operating System    | COS 24.07.x w/ COS Base 3.1 ARM | No           | Not Supported    | Yes                          |
-| Cray Operating System    | COS 24.11.x w/ COS Base 3.3     | Yes          | 23.10-3.2.2.0\*  | Yes                          |
-| Cray Operating System    | COS 24.11.x w/ COS Base 3.3 ARM | No           | Not Supported    | Yes                          |
+| Cray Operating System    | COS 24.10.x w/ COS Base 3.1     | Yes          | 23.0.4-1.1.3.0\* | Yes                          |
+| Cray Operating System    | COS 24.10.x w/ COS Base 3.1 ARM | No           | Not Supported    | Yes                          |
+| Cray Operating System    | COS 25.03.x w/ COS Base 3.3     | Yes          | 23.10-3.2.2.0\*  | Yes                          |
+| Cray Operating System    | COS 25.03.x w/ COS Base 3.3 ARM | No           | Not Supported    | Yes                          |
 
 \* Items marked with an asterisk (\*) are the only distributions for which SHS will provide the necessary Mellanox RPMs. For other distributions, download the required software from the URLs listed below.
 
@@ -105,8 +106,8 @@ _**Compute Node Image and Cluster Management Software Compatibility**_
 | SuSE Linux Enterprise 15 | SP5 ARM                         | NA           | 1.11+ |
 | SuSE Linux Enterprise 15 | SP6                             | NA           | 1.12+ |
 | SuSE Linux Enterprise 15 | SP6 ARM                         | NA           | 1.12+ |
-| Cray Operating System    | COS 24.07.x w/ COS Base 3.1     | 1.5.X\*      | 1.11+ |
-| Cray Operating System    | COS 24.07.x w/ COS Base 3.1 ARM | 1.5.X\*      | 1.11+ |
+| Cray Operating System    | COS 24.10.x w/ COS Base 3.1     | 1.5.X\*      | 1.11+ |
+| Cray Operating System    | COS 24.10.x w/ COS Base 3.1 ARM | 1.5.X\*      | 1.11+ |
 | Cray Operating System    | COS 25.03.x w/ COS Base 3.3     | 1.6.X\*      | 1.12+ |
 | Cray Operating System    | COS 25.03.x w/ COS Base 3.3 ARM | 1.6.X\*      | 1.12+ |
 
@@ -114,7 +115,11 @@ _**Compute Node Image and Cluster Management Software Compatibility**_
 
 \* Cray System Management (CSM) and Cray Operating System (COS) are tightly coupled, meaning each version of COS is specifically supported by a corresponding version of CSM. For instance, COS-2.5 should only be installed with CSM-1.4 and any CSM-1.4.x version.
 
-## HPE Slingshot 200Gbps NIC Firmware Release Version
+## Soft-Roce 
+
+Soft-RoCE is supported only on COS 24.10.x with COS Base 3.1, running on an x86 system managed by Cray System Management (CSM) 1.5.X.
+
+## Versioning Model for HPE Slingshot Host Software Starting from Release 11.0.0
 
 The 200Gbps NIC firmware image version 1.5.53 is included in the Slingshot SHS 11.0.0 release. There are two firmware images contained in the slingshot-firmware-cassini-1.5.53-SSHOT\* RPM file:
 
