@@ -256,6 +256,20 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
          done
          ```
 
+   3. Update the initrd and miniroot (only if SHS drivers were updated).
+
+      This step is required only if SHS drivers were rebuilt or reinstalled.
+
+      **Note:** The examples in this step are for HPCM 1.13.
+      If a different release is installed, see the _HPE Performance Cluster Manager Software Command Reference_ for that release to find the correct commands.
+
+      Replace `<IMAGE>` with the appropriate image name and `<REPO_GROUP>` with the relevant repository group before executing the commands.
+
+      ```screen
+      cm image update --image <IMAGE> --update-kernels --repo-group <REPO_GROUP>
+      cm image recreate --image <IMAGE> --update-miniroot
+      ```
+
 8. On HPE Slingshot 200Gbps CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
 
    ```screen
