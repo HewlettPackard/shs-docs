@@ -4,11 +4,9 @@ To achieve high TCP performance on the HPE Slingshot system, tune the following 
 
 - **TCP window size:** TCP window size is the amount of received data that can be buffered during a connection. The size is calculated based on the latency bandwidth of the link speed and Round-Trip Time (RTT) using the following formula:
 
-  ```screen
-    $~~$ TCP window size = 2 (Throughput* RTT)
+  `TCP window size = 2 (Throughput* RTT)`
 
-    $~~$ Where, expected throughput is in bits/sec and RTT in ms.
-  ```
+  Where, expected throughput is in bits/sec and RTT in ms.
 
   **Note:** RTT is system dependent and measures the duration of end-to-end communication of data packet, include the latency introduced by a gateway when connecting to another network.
 
@@ -20,11 +18,11 @@ To achieve high TCP performance on the HPE Slingshot system, tune the following 
 
 - **Set Linux Tx queue size:** Set the Tx queues based on the traffic load. The default Tx queues are set to 1000. If a high traffic load of MTU 1500 is given, you must set the Tx queues to 10000.
 
-- **Set CPU governor:** Set the CPU governer to **Performance** to maintain a higher clock speed limit, thus increasing the performance.
+- **Set CPU governor:** Set the CPU governor to **Performance** to maintain a higher clock speed limit, thus increasing the performance.
 
 ## Current recommendations for TCP settings
 
-**Note:** The recommended settings are based on the TCP window size formula and RTT of 0.13ms which may differ for each system.
+**Note:** The recommended settings are based on the TCP window size formula and RTT of 0.13 ms which may differ for each system.
 
 - To use 8 MB buffers with RTT 0.13 ms, add the following to `/etc/sysctl.conf` file:
 
