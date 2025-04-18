@@ -27,17 +27,23 @@ on:
   pull_request:
 
 jobs:
+  create-runner:
+    name: Create Runner
+    uses: hpc-sw/create_runners/.github/workflows/create_runners.yaml@master
+    secrets: inherit
+
   style-check:
-    runs-on: [ self-hosted ]
+    needs: create-runner
+    runs-on: ['${{ needs.create-runner.outputs.runner_name }}', 'ignore']
     container:
       image: arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/ghcr.io/igorshubovych/markdownlint-cli:v0.31.1
       options: --entrypoint /bin/bash
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Get changed Markdown files
       id: get-changed-files
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7
       with:
         script: |
           // Get the pull request number from the context
@@ -58,6 +64,10 @@ jobs:
 
           // Set the output for the changed files
           core.setOutput('changed_files', changedFiles);
+
+    - name: Log no Markdown files changed
+      if: steps.get-changed-files.outputs.changed_files == ''
+      run: echo "No Markdown files were changed in this pull request."
 
     - name: Run markdownlint
       if: steps.get-changed-files.outputs.changed_files != ''

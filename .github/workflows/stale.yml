@@ -5,14 +5,20 @@ on:
   - cron: '31 1 * * *'
 
 jobs:
-  stale:
+  create-runner:
+    name: Create Runner
+    uses: hpc-sw/create_runners/.github/workflows/create_runners.yaml@master
+    secrets: inherit
 
-    runs-on: [ self-hosted ]
+  stale:
+    needs: create-runner
+    runs-on: ['${{ needs.create-runner.outputs.runner_name }}', 'ignore']
     permissions:
       issues: write
       pull-requests: write
 
     steps:
+    - uses: actions/checkout@v4
     - uses: actions/stale@v5
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
