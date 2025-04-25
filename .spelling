@@ -151,6 +151,7 @@ ditamap
 ditamaps
 DKMS
 dkms
+DMA-FQ
 dmabuf
 dmesg
 dns-resolver
@@ -184,6 +185,7 @@ etcd
 EQs
 exclude-module
 EX235a
+EX254n
 failback
 Failback
 failover
@@ -245,6 +247,7 @@ int
 internal-loopback
 infiniband-diags
 InfiniBand
+IOMMUs
 iSCSI
 IP
 IPs
@@ -398,6 +401,7 @@ OpenMPI
 OpenFabrics
 PALS
 palsd
+passthrough
 passwordless
 PBS
 PCIe
@@ -533,6 +537,7 @@ uC
 UDEV
 udev
 uint128
+unmap
 uncomment
 untagged_eth_pcp
 untar

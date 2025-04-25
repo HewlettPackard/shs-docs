@@ -33,6 +33,11 @@
         <topicref href="performance/ethtool_node_tuning.md" format="mdita"/>
         <topicref href="performance/AMA.md" format="mdita"/>
         <topicref href="performance/TCP_performance_tuning.md" format="mdita"/>
+        <topicref href="performance/iommu.md" format="mdita">
+            <topicref href="performance/iommu_overview.md" format="mdita"/>
+            <topicref href="performance/iommu_recommended_configuration.md" format="mdita"/>
+            <topicref href="performance/iommu_enabled_without_passthrough.md" format="mdita"/>
+        </topicref>
     </topicref>
     <topicref href="operations/Cassini_Retry_Handler_cxi_rh.md" format="mdita">
         <topicref href="operations/cassini_retry_handler_configuration.md" format="mdita"/>

@@ -49,11 +49,9 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
       slingshot-utils
       cray-cassini-headers-user
       cray-cxi-driver-devel
-      cray-cxi-driver-udev
       cray-diags-fabric
       cray-hms-firmware
       cray-kfabric-devel
-      cray-kfabric-udev
       cray-libcxi
       cray-libcxi-devel
       cray-libcxi-utils
@@ -62,7 +60,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
       pycxi
       pycxi-diags
       pycxi-utils
-      kdreg2 
+      kdreg2
       kdreg2-devel
       shs-version
    """ > ./shs-cxi.rpmlist
@@ -85,7 +83,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
       sl-driver-dkms
       cray-cxi-driver-dkms
       cray-kfabric-dkms
-      kdreg2-dkms 
+      kdreg2-dkms
    """ >> ./shs-cxi.rpmlist
    ```
 
@@ -110,7 +108,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
             sl-driver-dkms
             cray-cxi-driver-dkms
             cray-kfabric-dkms
-            kdreg2-dkms 
+            kdreg2-dkms
          ```
 
          with the corresponding pre-built binaries:
@@ -132,7 +130,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
             sl-driver-dkms
             cray-cxi-driver-dkms
             cray-kfabric-dkms
-            kdreg2-dkms 
+            kdreg2-dkms
          ```
 
          with the corresponding pre-built binaries:
@@ -145,7 +143,21 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
             kmod-kdreg2
          ```
 
-6. Create or update image.
+6. Add the following RPMs to the RPM list.
+   Skip this step if the `slingshot-cxi-drivers-install` script (provided in the `slingshot-utils` RPM) will be used for driver installation.
+
+   **Note:** `slingshot-cxi-drivers-install` must be used to load HPE Slingshot
+   drivers to ensure optimal performance for nodes where the I/O Memory Management Unit (IOMMU) is enabled
+   with passthrough disabled. Such node types include HPE Cray Supercomputing EX254n Grace Hopper nodes.
+
+   ```screen
+   echo -e """\
+      cray-cxi-driver-udev
+      cray-kfabric-udev
+   """ >> ./shs-cxi.rpmlist
+   ```
+
+7. Create or update image.
 
    SHS does not support installing software as a single command on HPCM systems with `cm image create` with the COS 3.0 and later.
    Installation of SHS with COS and the GPU sub-products must be performed as a series of steps. SHS requires that COS and GPU software provided by the COS and USS products must be installed prior to installing SHS.
@@ -209,7 +221,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
 
    **NOTE:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is required for COS installations with Nvidia software, but it is generally recommended to avoid problems when building in a chroot environment.
 
-7. On HPE Slingshot 200Gbps CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
+8. On HPE Slingshot 200Gbps CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
 
    ```screen
    sed -i 's/allow_unsupported_modules 0/allow_unsupported_modules 1/' \
@@ -223,8 +235,23 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    /opt/clmgr/image/images/${IMAGE_NAME}/etc/modprobe.d/10-unsupported-modules.conf
    ```
 
-8. If using a tmpfs image, there are no additional steps. If not using a tmpfs image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
+9. Load the HPE Slingshot drivers with the `slingshot-cxi-drivers-install` script that is provided in the `slingshot-utils` RPM.
+   Skip this step if you are not using the `slingshot-cxi-drivers-install` script.
 
-9. Boot the new image when it is ready.
+   A `modprobe.conf` for install `cxi-ss1` needs to be defined for
+   `slingshot-cxi-drivers-install` to properly intercept the loading of `cxi-ss1`
+   and change IOMMU group type to identity.
 
-10. Apply the post-boot firmware and firmware configuration. General instructions are in the "Install compute nodes" section of the _HPE Slingshot Installation Guide for Bare Metal_.
+   ```screen
+   echo 'install cxi-ss1 slingshot-cxi-drivers-install --iommu-group identity' > /opt/clmgr/image/images/${IMAGE_NAME}/etc/modprobe.d/50-cxi-ss1.conf
+   ```
+
+   **Note:** If the IOMMU group containing the HPE Slingshot NIC also contains
+   other devices, `slingshot-cxi-drivers-install --iommu-group identity` will
+   fail to run and `cxi-ss1` will not load.
+
+10. If using a tmpfs image, there are no additional steps. If not using a tmpfs image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
+
+11. Boot the new image when it is ready.
+
+12. Apply the post-boot firmware and firmware configuration. General instructions are in the "Install compute nodes" section of the _HPE Slingshot Installation Guide for Bare Metal_.
