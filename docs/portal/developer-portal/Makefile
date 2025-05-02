@@ -92,9 +92,9 @@ MANPAGE_OPTS = --standalone --to man -M section="8" -M header="Slingshot Fabric 
 MANPAGE_OPTS_HTML = --standalone -M title="${NAME}(8)" -M subtitle="Slingshot Fabric Commands, Version ${VER}" 
 HTML_PANDOC_OPTS = -c $(CSSDIR)/H.css -s --toc -V urlcolor:blue -V linkcolor:blue --to html5 -M subtitle="Version: ${VER}" --toc --number-sections
 
-PANDOC = docker run --volume "`pwd`:/data" --user `id -u`:`id -g` arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/pandoc/latex:latest ${PANDOC_OPTS}
-MAN_PANDOC = docker run --volume "`pwd`:/data" --user `id -u`:`id -g` arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/pandoc/latex:latest ${MANPAGE_OPTS} 
-MAN_PANDOC_HTML = docker run --volume "`pwd`:/data" --user `id -u`:`id -g` arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/pandoc/latex:latest ${MANPAGE_OPTS_HTML} 
+PANDOC = podman run --mount type=bind,src=`pwd`,dst=/data --userns=keep-id arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/pandoc/latex:latest ${PANDOC_OPTS}
+MAN_PANDOC = podman run --mount type=bind,src=`pwd`,dst=/data --userns=keep-id arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/pandoc/latex:latest ${MANPAGE_OPTS} 
+MAN_PANDOC_HTML = podman run --mount type=bind,src=`pwd`,dst=/data --userns=keep-id arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/pandoc/latex:latest ${MANPAGE_OPTS_HTML} 
 
 # Used when env NODOCKER is set
 PANDOC-N = pandoc ${PANDOC_OPTS}
@@ -103,11 +103,11 @@ MAN_PANDOC_HTML-N = pandoc ${MANPAGE_OPTS_HTML}
 HTML_PANDOC-N = pandoc ${HTML_PANDOC_OPTS}
 
 
-HTML_PANDOC = docker run --rm --volume "`pwd`:/data" --user `id -u`:`id -g` arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/pandoc/latex:latest ${HTML_PANDOC_OPTS}
+HTML_PANDOC = podman run --mount type=bind,src=`pwd`,dst=/data --userns=keep-id arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/pandoc/latex:latest ${HTML_PANDOC_OPTS}
 
 
-REDOC = docker run -v "`pwd`/..:/data" arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/broothie/redoc-cli:0.9.8 bundle
-MDL =	docker run --rm -v `pwd`:/workspace -v `pwd`/lint/.mdlrc:/mdl/.mdlrc arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/wpengine/mdl:latest
+REDOC = podman run --mount type=bind,src=`pwd`/..:/data arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/broothie/redoc-cli:0.9.8 bundle
+MDL =	podman run --mount type=bind,src=`pwd`,dst=/workspace --mount type=bind,src=`pwd`/lint/.mdlrc,dst=/mdl/.mdlrc arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/wpengine/mdl:latest
 MDL-N = mdl
 
 # Also, include non-file targets in .PHONY so they are run regardless of any
@@ -307,7 +307,7 @@ dita_ot_dir: dir
 	../scripts/dita_build_prep.sh
 
 dita_container_prep:
-	docker image build -t test-dita-ot-image:1.0 docker/
+	podman image build -t test-dita-ot-image:1.0 docker/
 
 hpesc_build: dita_ot_dir dita_container_prep
 	../scripts/dita_build.sh -b
