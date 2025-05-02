@@ -331,14 +331,16 @@ pipeline {
         always {
             script {
                 currentBuild.result = currentBuild.result == null ? "SUCCESS" : currentBuild.result
-            }
-            script {
-                     
-                sh """
-                    docker stop ${containerId}
-                    docker rm ${containerId}
-                """
-                     
+                 //Clean the Workspace
+                if (fileExists("${WORKSPACE}")) {
+                    isPodmanInstalled = sh(script: 'which podman', returnStatus: true) == 0
+                    if (isPodmanInstalled) {
+                        echo 'Podman is installed, using unshare'
+                        sh "podman unshare rm -rf ${WORKSPACE}/* || true"
+                    } else {
+                        sh "rm -rf ${WORKSPACE}/* || true"
+                    }
+                }
             }
         }
         fixed {
