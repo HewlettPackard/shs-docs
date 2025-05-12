@@ -1,8 +1,10 @@
 # Fix Algorithmic MAC Address (AMA) prefix after HPCM install
 
+This procedure is only required for systems running HPCM versions earlier than 1.13.
+Starting with HPCM 1.13, the issue described in this section has been resolved, and this workaround is no longer necessary.
+
 This procedure addresses an issue in HPCM environments where modifying the HPE Slingshot fabric AMA prefix from the default `02` prevents nodes' HSN NICs from booting with a configured AMA.
 
-A fix for this issue is being investigated for a future HPCM release.
 For more information on writing post-install scripts, see the `/opt/clmgr/image/scripts/post-install/README` file on an HPCM admin node.
 
 ## Procedure
