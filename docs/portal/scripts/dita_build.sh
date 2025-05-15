@@ -28,6 +28,7 @@ for MAP in $(ls ${PWD}/*.ditamap);do
 	PUB_STEMS+=($STEM);done
 
 function build_bundle(){
+    build_pdf
     for STEM in ${PUB_STEMS[@]};do
         podman run \
         --mount type=bind,src=`pwd`,dst=/src \
@@ -35,7 +36,10 @@ function build_bundle(){
         test-dita-ot-image:1.0 -v \
         -i /src/tmp/$STEM.ditamap \
         -o /src/build/hpesc/$STEM/ \
-        -f HPEscHtml5 \
+        -f HPEscHtml5;
+        done
+    for STEM in ${PUB_STEMS[@]};do
+        cp build/pdf/$STEM/$STEM.pdf build/hpesc/$STEM/ \
         && cp tmp/$STEM.json build/hpesc/$STEM/publication.json \
         && cd build/hpesc/$STEM/ && zip -r $STEM.zip ./
         cd $THIS_DIR;
