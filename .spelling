@@ -313,6 +313,7 @@ lustre-client
 lustre_config
 lustre_tuning
 LwDITA
+main.yml
 manpage
 manpages
 man-page-db
@@ -548,6 +549,7 @@ Userfaultfd
 userfaultfd
 USS
 v2
+vcs
 versioned
 virtualization
 vim
