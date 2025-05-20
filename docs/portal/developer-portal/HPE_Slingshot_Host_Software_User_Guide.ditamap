@@ -47,7 +47,7 @@
     </topicref>
     <topichead>
       <topicmeta>
-          <navtitle>Appendex</navtitle>
+          <navtitle>Appendix</navtitle>
        </topicmeta>
        <topicref href="user/hpe_slingshot_nic_rdma_protocol_and_traffic_classes.md" format="mdita"/>
        <topicref href="user/ip_performance_and_configuration_settings.md" format="mdita"/>
