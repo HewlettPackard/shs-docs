@@ -12,7 +12,7 @@ This is [an example](http://www.example.com/) inline link.
 ## Checklist
 
 <!---
-    NOTE: This HTML style comment does not show in the PR. 
+    NOTE: This HTML style comment does not show in the PR.
 
     An empty check is two brackets with a space in-between, a checked checkbox is two brackets with an x in-between
 
@@ -24,6 +24,14 @@ This is [an example](http://www.example.com/) inline link.
     invalid checkbox: [ x ]
 -->
 
+To the reviewers,
+- Please examine each change carefully
+- Identify and improve unclear language
+- Spot errors and inconsistencies
+- Write and read with the audience's needs in mind
+- Apply best practices for structure and clarity
+
+To the pull request author,
 - [ ] If I added any example commands or output, I removed any information that exposes internal or customer information.
 - [ ] If I added a new file, I added a reference to the new file to any impacted `.ditamap` files.
 - [ ] If I changed the title of a section or file, I verified it did not break any links.
