@@ -1,5 +1,49 @@
 # Troubleshoot `dgnettest`
 
+## Execution errors
+
+`dgnettest` will fail to execute if the `libmpi.so.12` shared object file is missing.
+
+```screen
+$ dgnettest -h
+dgnettest: error while loading shared libraries: libmpi.so.12: cannot open shared object file: No such file or directory
+```
+
+To resolve this issue, load the `cray-mpich-abi` module or set `LD_LIBRARY_PATH` to the location of the installed `libmpi.so.12` shared object file. For example:
+
+```screen
+$ module unload cray-mpich
+$ module load cray-mpich-abi
+$ dgnettest -h
+
+Usage: dgnettest [options] [latency | all2all | bisect]
+
+    [-a]                    All sets are the same size
+    [-h]                    Print this help message
+    [-c class]              Set the network class of the system. Supported classes are 0-4, default is 2.
+    [-C counter]            Specify a counter to sample while running dgnettest. Provide the full path name
+                            or the prefix "cxi:" for Cassini counters or "rh:" for retry handler counters
+                            Counters are reported for the NIC selected using -N (default 0)
+    [-d]                    Print debug info
+    [-D]                    Display additional Network information.
+    [-e]                    All sets are an even number of nodes
+    [-i]                    Ignore MAC/hostname errors
+    [-l latency]            Set latency CV threshold. Value should be between 0 and 1, default is 0.05
+    [-m min[:max[:step]]]   Transfer size (bytes)
+    [-n]                    Print nodelists for each set, -nn to exit after printing report
+    [-N nic_mapping]        Set the NIC mapping for this run. If a single NIC is being used, enter the NIC
+                            number to use. If using multiple NICs, the NICs to Ranks mapping is needed.
+                            No Default; must be set to run
+    [-p ppn]                Set PPN, Default 1
+    [-r reps | -r auto ]    Set repetitions, auto is enough for 15 seconds, default 100
+    [-s set-size]           Number of nodes per set, default 512
+    [-S]                    Print stats, default off
+    [-t run-time]           Set runtime for each test
+    [-T threshold]          Set the low bandwidth threshold. Value should be between 0 and 1, default is 0.9
+    [-v]                    Verbose
+    [-V]                    Print the version and exit
+```
+
 ## Test failures
 
 Test failures indicate NIC or network issues. A failure can often be isolated by running multiple tests using different node configurations. Once isolated, error flags and counters should be checked for the NICs and switches affected.
@@ -72,7 +116,7 @@ dgnettest: failed to parse MAC addr for Shasta node nid000005 02:00:00:00:00:3f
 
 If the correct class type is used and MAC parsing errors are still printed, something may be cabled wrong or the MAC addresses may have been assigned incorrectly. The `-i` option can be used to force `dgnettest` to run despite these warnings.
 
-## Too many nodes for network class
+## Too many nodes for a network class
 
 The following error indicates that too many nodes were selected for the given network class type.
 

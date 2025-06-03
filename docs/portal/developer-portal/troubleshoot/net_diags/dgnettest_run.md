@@ -1,10 +1,21 @@
 # `dgnettest_run.sh`
 
-While `dgnettest` can be run as a standalone test for troubleshooting specific issues, it must run multiple times to get a full picture of the state of a system. The script `dgnettest_run.sh` makes this easier by running the `dgnettest` in a number of configurations. There are two test configurations that `dgnettest_run.sh` runs.
+While `dgnettest` can be run as a standalone test for troubleshooting specific issues, it must run multiple times to get a full picture of the state of a system.
+The script `dgnettest_run.sh` makes this easier by running the `dgnettest` in a number of configurations.
+There are two test configurations that `dgnettest_run.sh` runs.
 
-**Switch:** This configuration runs the bisect bandwidth and all2all tests using the `dgnettest` option `-S` to display statistics. The set size is the number of edge ports on a switch, which is chosen based on the network class of the system, optionally specified with the `dgnettest_run.sh` option `-c`.
+- **Switch:** This configuration runs the bisect bandwidth and all2all tests using the `dgnettest` option `-S` to display statistics. The set size is the number of edge ports on a switch, which is chosen based on the network class of the system, optionally specified with the `dgnettest_run.sh` option `-c`.
+- **Group:** This configuration runs the bisect bandwidth and all2all tests using the `dgnettest` option `-S` to display statistics. The set size is 512, which is the number of nodes in a high-density cabinet.
 
-**Group:** This configuration runs the bisect bandwidth and all2all tests using the `dgnettest` option `-S` to display statistics. The set size is 512, which is the number of nodes in a high-density cabinet.
+## Prerequisite
+
+The `dgnettest` utility requires an MPI ABI compatible version of MPICH.
+Make sure that the `cray-mpich-api` module is loaded prior to running `dgnettest_run.sh`:
+
+```screen
+$ module unload cray-mpich
+$ module load cray-mpich-abi
+```
 
 ## Examples
 
@@ -93,7 +104,9 @@ While `dgnettest` can be run as a standalone test for troubleshooting specific i
 
   By default, NICs are divided and mapped evenly across the NUMA nodes. You can override it with custom mapping of threads to NICs.
 
-  If `dgnettest` is run directly, several MPICH environment variables must be set. The `dgnettest_run.sh` script does this automatically when a custom mapping is provided. For example, two NICs can be split so NIC 0 is mapped to the even ranks and NIC 1 is mapped to the odd ranks.
+  If `dgnettest` is run directly, several MPICH environment variables must be set.
+  The `dgnettest_run.sh` script does this automatically when a custom mapping is provided.
+  For example, two NICs can be split so NIC 0 is mapped to the even ranks and NIC 1 is mapped to the odd ranks.
 
   ```screen
   export MPICH_OFI_NUM_NICS=2
@@ -103,7 +116,8 @@ While `dgnettest` can be run as a standalone test for troubleshooting specific i
 
   The mapping should be provided to `dgnettest` and `dgnettest_run.sh` with the `-N` option.
 
-  **Note:** Results are not guaranteed to be valid when using a custom mapping. You must ensure to validate any errors with a re-run of `dgnettest` with the default settings.
+  **Note:** Results are not guaranteed to be valid when using a custom mapping.
+  You must ensure to validate any errors with a re-run of `dgnettest` with the default settings.
 
   ```screen
   $ dgnettest_run.sh -n nid[000022-000028] -C -N "0:0,2,4,6;1:1,3,5,7"
