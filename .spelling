@@ -21,6 +21,7 @@
 200Gbps
 2-port
 4KiB
+400Gbps
 802.1Q
 ack
 ACKs
@@ -70,6 +71,8 @@ BOS
 bootprep
 catalog
 Cassini
+Cassini-1
+Cassini-2
 Center
 Ceph
 CFS

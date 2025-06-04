@@ -1,43 +1,49 @@
-# HPE Slingshot 200Gbps CXI NIC system install procedure
+# Install an HPE Slingshot CXI NIC system
 
-This section is for systems using HPE Slingshot 200Gbps CXI NICs.
+This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
-For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-based system install procedure](mellanox_based_system_install_upgrade_procedure.md#mellanox-based-system-installupgrade-procedure), followed by the "Update firmware for HPCM and bare metal" section in the _HPE Slingshot Host Software Administration Guide_.
+For systems using Mellanox NICs, skip this section and proceed to the [Install a Mellanox NIC system](mellanox_based_system_install_upgrade_procedure.md#install-a-mellanox-nic-system), followed by the "Update firmware for HPCM and bare metal" section in the _HPE Slingshot Host Software Administration Guide_.
 
-1. Copy the HPE Slingshot compute RPMs tarball for the required distributions to the target system's admin node where the HPCM images will be created. The filename typically follows this pattern: `slingshot-host-software-<version>-<OS distro>_<OS Architecture>.tar.gz`.
+1. Copy the HPE Slingshot compute RPMs tarball for the required distributions to the target system's admin node where the HPCM images will be created. The file name typically follows this pattern: `slingshot-host-software-<version>-<OS distro>_<OS Architecture>.tar.gz`.
 
-   For example, the `slingshot-host-software-**2.1.1-215-rhel-8.7_x86_64**.tar.gz` tarball would be used to install the SHS 2.1.1-215 stack on a RHEL 8.7 host.
+   For example, the `slingshot-host-software-13.0.0-1022-rhel-9.5_x86_64.tar.gz` tarball is used to install the SHS 13.0.0-1022 stack on a RHEL 9.5 host.
 
-2. Untar the tarball to a local directory. Replace `<version>` and `<distro>` with the appropriate version and OS distribution.
+2. Untar the tarball to a local directory and create the HPCM repositories.
+
+   In the following script, replace the `<version>`, `<distro>`, and `<OS_architecture>` placeholders with the appropriate values.
 
    ```screen
-   SLINGSHOT_HOST_SOFTWARE=slingshot-host-software-<version>
-   DIST=<distro>
-   TARBALL=${SLINGSHOT_HOST_SOFTWARE}-${DIST}.tar.gz
+   # set REPO_NAME to the name to use for the new repo
+   REPO_NAME=slingshot-host-software-repo
+   # set REPO_PATH to the directory in which the repo should be created
+   REPO_PATH=/opt/clmgr/repos/other
+   # set TARBALL to the pathname of the tarball
+   TARBALL_PATH=./slingshot-host-software-<version>-<distro>_<OS_architecture>.tar.gz
+   # set DISTRO to the tarball's distro
+   DISTRO=<distro>
 
-   # change distribution name as appropriate
-   tar -xvf ${TARBALL} -C /opt/clmgr/repos/other/
+   TARBALL_NAME=$(basename $TARBALL_PATH)
+   mkdir -p $REPO_PATH/$REPO_NAME
+   tar -xzf ${TARBALL_PATH} -C $REPO_PATH/$REPO_NAME --strip-components=5 ${TARBALL_NAME%.tar.gz}/rpms/cassini/${DISTRO}/ncn/
+   cm repo add --custom $REPO_NAME $REPO_PATH/$REPO_NAME
+   cm repo refresh $REPO_NAME
    ```
 
-3. Create the HPCM repositories using the `cm` command.
+3. Create a new repo group and add HPE Slingshot, Distro Base-OS, OS Updates, Cluster Manager, MPI Repos, and DKMS.
+
+   **Note:** SHS uses DKMS as the default mechanism for installing the kernel driver.
+   DKMS is included in the Cluster-Manager repository by default in HPCM 1.11 and later releases.
 
    ```screen
-   TYPE=cassini
-   cm repo add --custom slingshot-host-software-repo /opt/clmgr/repos/other/${SLINGSHOT_HOST_SOFTWARE}/rpms/${TYPE}/${DIST}
-   cm repo refresh slingshot-host-software-repo
-   ```
-
-4. Create a new repo group and add Slingshot, Distro Base-OS, OS Updates, Cluster Manager, MPI Repos and DKMS.
-
-   **NOTE:** SHS uses DKMS as the default mechanism for installing the kernel driver. DKMS is not included by default and must be obtained separately. You can source it from your distribution's package manager or an external repository. After obtaining DKMS, create a custom repository for it.
-
-   ```screen
-   cm repo group add slingshot-host-software-repo-group --repos slingshot-host-software-repo
+   # Set the REPO_GROUP to the name to use for the new repo group
+   REPO_GROUP=slingshot-host-software-repo-group
+   # Create a new repo group
+   cm repo group add ${REPO_GROUP} --repos ${REPO_NAME}
    # Add other required base-os repositories for the image
-   cm repo group show slingshot-host-software-repo-group
+   cm repo group show ${REPO_GROUP}
    ```
 
-5. Add SHS RPMs to the CXI image rpmlist.
+4. Add SHS RPMs to the CXI image rpmlist.
 
    ```screen
    echo -e """\
@@ -46,6 +52,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
       slingshot-network-config
       slingshot-firmware-management
       slingshot-firmware-cassini
+      slingshot-firmware-cassini2
       slingshot-utils
       cray-cassini-headers-user
       cray-cxi-driver-devel
@@ -66,7 +73,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    """ > ./shs-cxi.rpmlist
    ```
 
-   **NOTE:** If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist. For example, to install a specific libfabric, add the following to the rpmlist:
+   **Note:** If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist. For example, to install a specific libfabric, add the following to the rpmlist:
 
    ```screen
    echo -e """\
@@ -75,7 +82,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    """ >> ./shs-cxi.rpmlist
    ```
 
-   For HPE Slingshot 200Gbps CXI NIC systems, append these additional packages, regardless of the operating system or architecture:
+   For HPE Slingshot CXI NIC systems, append these additional packages, regardless of the operating system or architecture:
 
    ```screen
    echo -e """\
@@ -87,21 +94,23 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    """ >> ./shs-cxi.rpmlist
    ```
 
-   For distributed binary builds, pre-built kernel binaries are available. To use these binaries instead of DKMS packages, follow these steps:
+   For distributed binary builds, pre-built kernel binaries are available.
+   To use these binaries instead of DKMS packages, follow these steps:
 
    1. Identify the appropriate pre-built binary variant for your distribution.
 
-      - Pre-Built Binary Variants
-         - SLES/CSM: Replace `*-dkms` with `*-kmp-default`.
-         - COS on x86: Replace `*-dkms` with `*-kmp-cray_shasta_c`.
-         - COS on ARM64: Replace `*-dkms` with `*-kmp-cray_shasta_c_64k`.
-         - RHEL: Replace `*-dkms` with `kmod-*`.
+      - **SLES/CSM:** Replace `*-dkms` with `*-kmp-default`.
+      - **COS on x86:** Replace `*-dkms` with `*-kmp-cray_shasta_c`.
+      - **COS on ARM64:** Replace `*-dkms` with `*-kmp-cray_shasta_c_64k`.
+      - **RHEL:** Replace `*-dkms` with `kmod-*`.
 
    2. Replace the DKMS packages with the corresponding pre-built binary variants.
 
-       **Examples**
-      - Example 1: Replacing DKMS Packages on SLES15 SP5 (x86)
-         If you are installing pre-built kernel modules on SLES15 SP5 for x86 systems, replace the following DKMS packages:
+      See one of the following examples depending on the distribution in use:
+
+      - **Example 1:** Replacing DKMS Packages on SLES15 SP5 (x86)
+
+        If you are installing pre-built kernel modules on SLES15 SP5 for x86 systems, replace the following DKMS packages:
 
          ```screen
             cray-slingshot-base-link-dkms
@@ -121,9 +130,9 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
             kdreg2-kmp-default
          ```
 
-      - Example 2: Replacing DKMS Packages on RHEL (x86)
+      - **Example 2:** Replacing DKMS Packages on RHEL (x86)
 
-         If you are installing pre-built kernel modules on SLES15 SP5 for x86 systems, replace the following DKMS packages:
+         If you are installing pre-built kernel modules on RHEL for x86 systems, replace the following DKMS packages:
 
          ```screen
             cray-slingshot-base-link-dkms
@@ -143,12 +152,12 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
             kmod-kdreg2
          ```
 
-6. Add the following RPMs to the RPM list.
+5. Add the following RPMs to the RPM list.
    Skip this step if the `slingshot-cxi-drivers-install` script (provided in the `slingshot-utils` RPM) will be used for driver installation.
 
    **Note:** `slingshot-cxi-drivers-install` must be used to load HPE Slingshot
-   drivers to ensure optimal performance for nodes where the I/O Memory Management Unit (IOMMU) is enabled
-   with passthrough disabled. Such node types include HPE Cray Supercomputing EX254n Grace Hopper nodes.
+   drivers to ensure optimal performance for nodes where the I/O Memory Management Unit (IOMMU) is enabled with passthrough disabled.
+   Such node types include HPE Cray Supercomputing EX254n Grace Hopper nodes.
 
    ```screen
    echo -e """\
@@ -157,13 +166,14 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    """ >> ./shs-cxi.rpmlist
    ```
 
-7. Create or update image.
+6. Create or update an image.
 
    SHS does not support installing software as a single command on HPCM systems with `cm image create` with the COS 3.0 and later.
    Installation of SHS with COS and the GPU sub-products must be performed as a series of steps. SHS requires that COS and GPU software provided by the COS and USS products must be installed prior to installing SHS.
    In this case, SHS must be installed via the 'If updating an image' workflow instead of the 'If creating an image' workflow.
 
-   The following examples use the `slingshot-host-software-repo-group` repo group created earlier in this procedure. If a different repo group is preferred, use the following commands to find an existing repo group.
+   The following examples use the `slingshot-host-software-repo-group` repo group created earlier in this procedure.
+   If a different repo group is preferred, use the following commands to find an existing repo group.
 
     To determine available repo groups:
 
@@ -179,13 +189,13 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
 
    - If creating an image:
 
-     - Create an image.rpmlist from generated rpmlists in step 4.
+     - Create an `image.rpmlist` from generated rpmlists in step 4.
 
        ```screen
-       cp /opt/clmgr/image/rpmlists/generated/generated-group-slingshot-host-software-repo-group.rpmlist image.rpmlist
+       cp /opt/clmgr/image/rpmlists/generated/generated-group-${REPO_GROUP}.rpmlist image.rpmlist
        ```
 
-     - Add the .rpmlist generated in step 5 to the image.rpmlist.
+     - Add the `.rpmlist` generated in step 5 to the `image.rpmlist`.
 
        ```screen
        cat ./shs-cxi.rpmlist >> image.rpmlist
@@ -194,46 +204,77 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
      - Create the image.
 
        ```screen
-       IMAGE_NAME=${DIST}_hpcm_ss
-       autoinstall_all_kernels=y cm image create -i ${IMAGE_NAME} --repo-group slingshot-host-software-repo-group --rpmlist $(pwd)/image.rpmlist
+       IMAGE_NAME=${DISTRO}_hpcm_ss
+       autoinstall_all_kernels=y cm image create -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} --rpmlist $(pwd)/image.rpmlist
        ```
 
-       **NOTE:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
+       **Note:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
 
    - If updating an image:
 
      - SLES/COS environment:
 
        ```screen
-       IMAGE_NAME=${DIST}_hpcm_ss
-       autoinstall_all_kernels=y cm image zypper -i ${IMAGE_NAME} --repo-group slingshot-host-software-repo-group install $(cat $(pwd)/shs-cxi.rpmlist)
+       IMAGE_NAME=${DISTRO}_hpcm_ss
+       autoinstall_all_kernels=y cm image zypper -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} install $(cat $(pwd)/shs-cxi.rpmlist)
        ```
 
-       **NOTE:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
+       **Note:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
 
      - RHEL environment:
 
        ```screen
-       autoinstall_all_kernels=y cm image dnf -i ${IMAGE_NAME} --repo-group slingshot-host-software-repo-group "update --allowerasing" $(cat $(pwd)/shs-cxi.rpmlist)
+       autoinstall_all_kernels=y cm image dnf -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} "update --allowerasing" $(cat $(pwd)/shs-cxi.rpmlist)
        ```
 
-       **NOTE:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
+       **Note:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
 
-   **NOTE:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is required for COS installations with Nvidia software, but it is generally recommended to avoid problems when building in a chroot environment.
+   **Note:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is required for COS installations with Nvidia software, but it is recommended to avoid problems when building in a `chroot` environment.
 
-8. On HPE Slingshot 200Gbps CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
+7. Verify that DKMS successfully built the kernel modules.
 
-   ```screen
-   sed -i 's/allow_unsupported_modules 0/allow_unsupported_modules 1/' \
-   /opt/clmgr/image/images/${IMAGE_NAME}/lib/modprobe.d/10-unsupported-modules.conf
-   ```
-
-   NOTE: For systems using SLES15SP3 or earlier, use the following command instead:
+   There must be eight kernel modules in the `extra` directory for a successful build.
+   Use the following script to verify:
 
    ```screen
-   sed -i 's/allow_unsupported_modules 0/allow_unsupported_modules 1/' \
-   /opt/clmgr/image/images/${IMAGE_NAME}/etc/modprobe.d/10-unsupported-modules.conf
+   for kernel in /opt/clmgr/image/images/${IMAGE_NAME}/usr/lib/modules/*; do
+      echo kernel $kernel:
+      ls $kernel/extra
+   done
    ```
+
+   The following is an example of a failed build for Rocky distribution:
+
+   ```screen
+   kernel /path/to/kernel/5.14.0-503.40.1.el9_5.x86_64:
+       ls: cannot access '/path/to/kernel/extra': No such file or directory
+   ```
+
+   If modules are missing in the `extra` directory, inspect the `/var/log/cinstallman` for detailed error messages.
+   For example:
+
+   ```screen
+   Module build for kernel 5.14.0-503.40.1.el9_5.x86_64 was skipped since the
+   kernel headers for this kernel do not seem to be installed.
+   ```
+
+   To resolve this issue, refresh the repositories and ensure that the required kernel headers are installed.
+
+8. On HPE Slingshot CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
+
+   - For systems using SLES15 SP4 or later:
+
+      ```screen
+      sed -i 's/allow_unsupported_modules 0/allow_unsupported_modules 1/' \
+      /opt/clmgr/image/images/${IMAGE_NAME}/lib/modprobe.d/10-unsupported-modules.conf
+      ```
+
+   - For systems using SLES15 SP3 or earlier:
+
+      ```screen
+      sed -i 's/allow_unsupported_modules 0/allow_unsupported_modules 1/' \
+      /opt/clmgr/image/images/${IMAGE_NAME}/etc/modprobe.d/10-unsupported-modules.conf
+      ```
 
 9. Load the HPE Slingshot drivers with the `slingshot-cxi-drivers-install` script that is provided in the `slingshot-utils` RPM.
    Skip this step if you are not using the `slingshot-cxi-drivers-install` script.
@@ -250,8 +291,8 @@ For systems using Mellanox NICs, skip this section and proceed to the [Mellanox-
    other devices, `slingshot-cxi-drivers-install --iommu-group identity` will
    fail to run and `cxi-ss1` will not load.
 
-10. If using a tmpfs image, there are no additional steps. If not using a tmpfs image, contact HPCM support for instructions on how to recompress/rebuild the image to ensure the linking change persists into the booted image.
+10. Create a `sysctl` file in `/etc/sysctl.d` using the example provided in the "`sysctl` configuration example" section of the _HPE Slingshot Host Software Administration Guide_. Copy the example `sysctl` file into the image being created.
 
 11. Boot the new image when it is ready.
 
-12. Apply the post-boot firmware and firmware configuration. General instructions are in the "Install compute nodes" section of the _HPE Slingshot Installation Guide for Bare Metal_.
+12. Apply the post-boot firmware and firmware configuration. General instructions are in the "Update firmware for HPCM and bare metal" section of the _HPE Slingshot Host Software Administration Guide_.
