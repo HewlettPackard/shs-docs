@@ -1,6 +1,6 @@
 * @hpe/sshot-pubs
 
-docs/portal/developer-portal/*.md @hpe/shs-technical-document-review-team @hpe/sshot-pubs
+docs/portal/developer-portal/**/*.md @hpe/shs-technical-document-review-team @hpe/sshot-pubs
 
 # Include ASICFWDG team for some changes.
 docs/portal/developer-portal/troubleshoot @jeff-schutkoske @andrew-gailey @tristan-simetkosky
