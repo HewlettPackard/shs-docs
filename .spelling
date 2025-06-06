@@ -71,6 +71,7 @@ BOS
 bootprep
 catalog
 Cassini
+Cas1
 Cassini-1
 Cassini-2
 Center
@@ -113,6 +114,8 @@ cxi
 cxi0
 cxi1
 cxi2
+cxicore
+cxieth
 cxi-eth
 cxi-nid0
 cxi_atomic_bw
@@ -132,6 +135,7 @@ cxi_write_lat
 CXI_EVENT_LINK_DOWN
 CXI_EVENT_LINK_UP
 cxiprov
+cxirh
 cxi_healthcheckcxirh
 cxibwcheck.sh
 daemonless
@@ -142,6 +146,7 @@ default.yml
 defragmented
 deregistering
 dgnettest
+diag
 diags
 diskless
 disk-ful
@@ -251,6 +256,8 @@ internal-loopback
 infiniband-diags
 InfiniBand
 IOMMUs
+iova
+iova_domain_init_rcaches
 iSCSI
 IP
 IPs
@@ -348,6 +355,7 @@ n01
 NACKs
 nameserver
 NAPI
+nC
 ncn-personalization
 NCN
 NCN-GW
@@ -438,6 +446,7 @@ QPs
 rasdaemon
 RDMA
 rdma_cm
+readme.txt
 rebuild-initrd
 Redfish
 RedHat
@@ -445,6 +454,8 @@ release-rpms
 repo
 requeue
 Requeue
+rhel
+rhel8.8
 RHEL-based
 RoCE
 roce_perf_check_loopback
@@ -481,6 +492,8 @@ SELinux
 SerDes
 serdes
 SEQUENCE_ERROR
+SHA-256
+sha256.manifest
 shadow
 SharePoint
 Shmem
@@ -498,6 +511,7 @@ SLES
 SLE15_sp4
 SLE15-SP4
 SLES15-SP4
+sles15sp5
 socklnd
 Soft-RoCE
 Standalone
@@ -514,6 +528,7 @@ Supercomputing
 SuSE
 SUSE
 SquashFS
+sys
 sysctl
 syslog
 systemctl
@@ -584,6 +599,11 @@ Zypper
 # The spell checker complains about generic version numbers (1.x)
 #
 1.x
+1.3.X
+1.5.X
+1.5.X.
+1.6.X
+1.22.x.
 11.0
 11.1
 11.x
@@ -592,11 +612,32 @@ Zypper
 4.x
 5.0.x
 5.1.2
+5.14.21-150500.55.39.1.27360.1.PTF.1215587-default
+150500.55.39.1.27360.1.PTF.1215587
+24.10.x
+25.03.x
 cos-2.x
+COS-2.5
+CSM-1.4
+CSM-1.4.x
+sle15sp5
 sle15spx
+slingshot-firmware-cassini-1
+slingshot-firmware-cassini-1.5.53-SSHOT
+SHS-11.0.0
+SHS-11.0.1
+SHS-11.0.2
+SHS-11.1.0
+SHS-12.0.0
+SHS-12.0.1
+SHS-13.0.0
 SSHOT1.2.1
+v1.7.0
+v2.1.0
+v2.1.1
 v5.6
 v5.6-2.0.9.0
+v23.9
 
 #
 # HPE publication numbers

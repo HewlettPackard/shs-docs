@@ -84,7 +84,7 @@ Follow these steps build and publish SHS documentation to HPESC.
    make hpesc_build
    ```
 
-   **Troubleshooting:** If this step fails, it is likely because Docker is not installed or running. Ensure Docker is set up correctly.
+   **Troubleshooting:** If this step fails, it is likely because Podman is not installed or running. Ensure Podman is set up correctly.
 
 6. Perform the [direct publishing process](https://rndwiki-pro.its.hpecorp.net/display/HPCTechPubs/Direct+publish+PDFs+to+the+HPESC).
 
@@ -97,7 +97,7 @@ The spell, link, and style checks that are setup via GitHub Actions can be run l
 
 ### Prerequisites
 
-- **Docker installed**: Ensure that Docker is installed on your machine.
+- **Podman installed**: Ensure that Podman is installed on your machine.
 - **Repository cloned**: Ensure you have cloned the repository containing your markdown files and the script.
 
 ### Instructions
@@ -137,3 +137,9 @@ The spell, link, and style checks that are setup via GitHub Actions can be run l
      ```screen
      ./md_checks.sh path/to/markdownfile1.md path/to/markdownfile2.md path/to/directory
      ```
+
+   **Troubleshooting:** If you get the following error: `-bash: ./md_checks.sh /bin/bash^M: bad interpreter: No such file or directory`, run the following command to clean up the line endings:
+
+   ```screen
+   sed -i 's/\r$//' md_checks.sh
+   ```

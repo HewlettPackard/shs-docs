@@ -9,7 +9,7 @@ run_spell_check() {
   local file_path=$1
   echo " "
   echo "----- SPELL CHECK on ${file_path} -----"
-  docker run --rm -ti -v "${REPO_ROOT}":/workdir arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/tmaier/markdown-spellcheck:latest "**/${file_path}" -r -n -a
+  podman run --rm -ti -v "${REPO_ROOT}":/workdir arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/tmaier/markdown-spellcheck:latest "**/${file_path}" -r -n -a
 }
 
 # Function to run the Style check on a markdown file
@@ -17,7 +17,7 @@ run_style_check() {
   local file_path=$1
   echo " "
   echo "----- STYLE CHECK on ${file_path} -----"
-  docker run -v "${REPO_ROOT}":/workdir arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/ghcr.io/igorshubovych/markdownlint-cli:v0.31.1 -c "/workdir/.github/config//markdown_style.yaml" "**/${file_path}"
+  podman run -v "${REPO_ROOT}":/workdir arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/ghcr.io/igorshubovych/markdownlint-cli:v0.31.1 -c "/workdir/.github/config//markdown_style.yaml" "**/${file_path}"
 }
 
 # Function to run the Link check on a markdown file
@@ -25,7 +25,7 @@ run_link_check() {
   local file_path=$1
   echo " "
   echo "----- LINK CHECK on ${file_path} -----"
-  docker run --rm -ti -v "${REPO_ROOT}":/workdir --workdir /workdir arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/ghcr.io/tcort/markdown-link-check:3.9.3  --config "/workdir/.github/config/markdown_link.json" "docs/portal/developer-portal/${file_path}"
+  podman run --rm -ti -v "${REPO_ROOT}":/workdir --workdir /workdir arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/ghcr.io/tcort/markdown-link-check:3.9.3  --config "/workdir/.github/config/markdown_link.json" "docs/portal/developer-portal/${file_path}"
 }
 
 

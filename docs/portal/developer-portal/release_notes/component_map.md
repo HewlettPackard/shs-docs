@@ -11,4 +11,4 @@
 |    cxirh     | Retry handler               |
 |  libfabric   |                             |
 |    pycxi     | NIC diagnostic software     |
-|     rxe      | SoftROCE                    |
+|     rxe      | Soft-RoCE                   |

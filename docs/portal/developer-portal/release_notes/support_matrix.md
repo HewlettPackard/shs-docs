@@ -7,7 +7,7 @@ Here are the System Software requirements for the SHS release, detailing compati
 - **NICs**: Supported Network Interface Cards (NICs) are listed for each given OS distribution.
 - **Libfabric**: Libfabric version supported.
 - **Cluster Managers**: Specified supported cluster managers and their respective versions.
-- **Soft-Roce**: Soft-Roce compatibility
+- **Soft-RoCE**: Soft-RoCE compatibility
 
 Advisory: older platform targets (i.e. SLE 15 SP4, COS 2.X, CSM 1.3.X, RHEL 8.9) are supported by earlier versions of SHS. Software for older platforms can be found in earlier SHS releases.
 
@@ -52,7 +52,6 @@ In the following table, **FM/SA Version** stands for the Fabric Manager and Swit
 | Cray Operating System    | COS 25.03.x w/ COS Base 3.3     | 6.3.0        | 565.57.01    | 24.11      |
 | Cray Operating System    | COS 25.03.x w/ COS Base 3.3 ARM | NA           | 565.57.01    | 24.11      |
 
-
 ## NIC Support
 
 | Distribution             | Versions                        | Mellanox NIC | Mellanox Version | HPE Slingshot Ethernet 200Gb |
@@ -82,8 +81,7 @@ _**Mellanox External Vendor Software**_
 
 ## Libfabric Versions
 
-All the Distributions provided with libfabric 1.22.x. 
-
+All the Distributions provided with libfabric 1.22.x.
 
 ## HPE System Cluster Management Software
 
@@ -117,7 +115,7 @@ _**Compute Node Image and Cluster Management Software Compatibility**_
 
 \* Cray System Management (CSM) and Cray Operating System (COS) are tightly coupled, meaning each version of COS is specifically supported by a corresponding version of CSM. For instance, COS-2.5 should only be installed with CSM-1.4 and any CSM-1.4.x version.
 
-## Soft-Roce 
+## Soft-RoCE
 
 Soft-RoCE is supported only on COS 24.10.x with COS Base 3.1, running on an x86 system managed by Cray System Management (CSM) 1.5.X.
 
