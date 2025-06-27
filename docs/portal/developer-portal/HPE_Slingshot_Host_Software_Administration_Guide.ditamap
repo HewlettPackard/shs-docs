@@ -47,4 +47,7 @@
         <topicref href="operations/cassini_retry_handler_troubleshooting.md" format="mdita"/>
     </topicref>
     <topicref href="operations/kdreg2_configuration.md" format="mdita"/>
+    <topicref href="operations/hpe_slingshot_cxi_nic_security.md" format="mdita">
+        <topicref href="operations/vni_overview.md" format="mdita"/>
+        <topicref href="operations/cxi_services.md" format="mdita"/>
 </map>
