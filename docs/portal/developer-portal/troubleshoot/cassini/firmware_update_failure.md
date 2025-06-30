@@ -1,6 +1,6 @@
-# HPE Slingshot 200Gbps NIC firmware update failures
+# HPE Slingshot CXI NIC firmware update failures
 
-If a 200Gbps NIC firmware update fails, a failure code is printed in the kernel log:
+If a 200Gbps or 400Gbps NIC firmware update fails, a failure code is printed in the kernel log:
 
 ```screen
 [55777.130299] cxi_ss1 0000:21:00.0: cxi0[hsn0] Firmware flashing failed: 0x84

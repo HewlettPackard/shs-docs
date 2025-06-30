@@ -1,6 +1,6 @@
 # Update firmware for HPCM and bare metal
 
-HPE Slingshot 200Gbps and Mellanox NICs system firmware management is done through the `slingshot-firmware` utility.
+HPE Slingshot 200Gbps, 400Gbps, and Mellanox NICs system firmware management is done through the `slingshot-firmware` utility.
 `slingshot-firmware` is a tool for managing the firmware of a network interface.
 The utility must be run as `root` since this is a privileged operation.
 
@@ -34,6 +34,10 @@ Global options:
 ```
 
 Depending on the node in use, the following additional option will be available:
+
+- HPE Slingshot 400Gbps:
+  
+  No options required.
 
 - HPE Slingshot 200Gbps:
 
@@ -95,7 +99,7 @@ An example using the `update` action is provided as follows:
 user@host:/ # slingshot-firmware update
 ```
 
-- Example output for the HPE Slingshot 200Gbps NIC:
+- Example output for the HPE Slingshot CXI NIC:
 
    ```screen
    Flashing hsn0 with firmware cassini_fw_1.5.53.bin.....Succeeded

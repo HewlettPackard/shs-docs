@@ -1,10 +1,12 @@
-# Install 200Gbps NIC host software
+# Install HPE Slingshot CXI NIC host software
 
-The 200Gbps NIC software stack includes drivers and libraries to support standard Ethernet and libfabric RDMA interfaces. Perform this procedure the install it.
+The HPE Slingshot CXI NIC software stack (200Gbps or 400Gbps) includes drivers and libraries to support standard Ethernet and libfabric RDMA interfaces. Perform this procedure the install it.
 
 ## Prerequisites for compute node installs
 
-The 200Gbps NIC software stack must be installed after a base compute OS install has been completed. A list of 200Gbps NIC supported distribution installs can be found in the "Support Matrix" in the _HPE Slingshot Host Software Release Notes (S-9010)_ document. When those have been installed, then proceed with instructions for Installing 200Gbps NIC Host Software for that distribution.
+The HPE Slingshot CXI NIC software stack must be installed after a base compute OS install has been completed.
+
+A list of HPE Slingshot CXI NIC supported distribution installs can be found in the "Support Matrix" in the _HPE Slingshot Host Software Release Notes (S-9010)_ document. When those have been installed, then proceed with instructions for "Installing HPE Slingshot CXI NIC host software" for that distribution.
 
 The following RPMs should be retrieved and installed using the package manager for the distro in use (`zypper`, `yum`, or `dnf`):
 
@@ -21,6 +23,7 @@ The following RPMs should be retrieved and installed using the package manager f
 - `slingshot-network-config`
 - `slingshot-firmware-management`
 - `slingshot-firmware-cassini`
+- `slingshot-firmware-cassini2`
 - `pycxi`
 - `pycxi-utils`
 - `shs-version`
@@ -43,17 +46,17 @@ manually loaded with the following commands:
 To complete setup, follow the fabric management procedure for Algorithmic MAC
 Address configuration.
 
-## 200Gbps NIC support in early boot
+## HPE Slingshot CXI NIC support in early boot
 
-If traffic must be passed over the 200Gbps NIC prior to the root filesystem
-being mounted (for example, for a network root filesystem using the 200Gbps NIC),
+If traffic must be passed over the HPE Slingshot CXI NIC prior to the root filesystem
+being mounted (for example, for a network root filesystem using the NIC),
 the optional `cray-libcxi-dracut` RPM must be installed.
-This package cause the 200Gbps NIC retry handler and drivers to be installed in the `initramfs` and start
+This package causes the HPE Slingshot CXI NIC retry handler and drivers to be installed in the `initramfs` and start
 in early boot.
 
 SystemD units that depend on the retry handler running (such as filesystem
 daemons and mountpoints) should depend on `cxi_rh.target` to ensure that all
-200Gbps NICs have retry handlers running beforehand.
+HPE Slingshot CXI NICs have retry handlers running beforehand.
 
 When running in such a configuration, note the following caveats:
 
@@ -63,12 +66,12 @@ When running in such a configuration, note the following caveats:
 - The retry handler StatsFS mount at `/run/cxi/` will not be available.
 
 Due to these caveats, it is recommended that the `cray-libcxi-dracut` RPM only
-be installed on systems whose configurations require 200Gbps NIC support in early
+be installed on systems whose configurations require HPE Slingshot CXI NIC support in early
 boot.
 
-## Check 200Gbps NIC host software version
+## Check HPE Slingshot CXI NIC host software version
 
-Each 200Gbps NIC RPM has the HPE Slingshot version embedded in the release field of the
+Each NIC package has the HPE Slingshot version embedded in the release field of the
 RPM metadata. This information can be queried using standard RPM commands. The
 following example shows how to extract this information for the `cray-libcxi`
 RPM:
@@ -100,15 +103,16 @@ Distribution: (none)
 ```
 
 The HPE Slingshot release for this version of `cray-libcxi` is 1.2.1 (SSHOT1.2.1).
-This process can be repeated for all 200Gbps NIC RPMs.
+This process can be repeated for all HPE Slingshot CXI NIC RPMs.
 
 ## Install validation
 
-The 200Gbps NIC software stack install procedure should make all 200Gbps NIC devices
+The HPE Slingshot CXI NIC software stack install procedure should make all NIC devices
 available for Ethernet and RDMA. Perform the following steps to validate the
 host software installation.
 
-Check for 200Gbps NIC RDMA devices. The `fi_info` tool is installed with libfabric
+Check for HPE Slingshot CXI NIC RDMA devices.
+The `fi_info` tool is installed with libfabric
 and reports available RDMA devices.
 
 ```screen
@@ -121,7 +125,7 @@ provider: cxi
     protocol: FI_PROTO_CXI
 ```
 
-Check for 200Gbps NIC Ethernet network devices.
+Check for HPE Slingshot CXI NIC Ethernet network devices.
 
 ```screen
 # for i in `ls /sys/class/net/`; do [ -n "$(/usr/sbin/ethtool -i $i 2>&1 \
@@ -130,16 +134,24 @@ Check for 200Gbps NIC Ethernet network devices.
 hsn0 is CXI interface
 ```
 
-## 200Gbps NIC firmware management
+## HPE Slingshot CXI NIC firmware management
 
 See the "Update firmware for HPCM and bare metal" procedure in the _HPE Slingshot Host Software Administration Guide_ section for more information on how to update firmware.
 
-Both `slingshot-firmware-cassini` and `slingshot-firmware-management` must be installed to successfully update 200Gbps NIC firmware.
+Packages required to update firmware for each NIC type:
 
-The `slingshot-firmware-cassini` package provides two different versions of 200Gbps NIC firmware:
+- **200Gbps:** `slingshot-firmware-cassini` and `slingshot-firmware-management`
+  
+  The `slingshot-firmware-cassini` package provides includes two different versions:
 
-- `cassini_fw_x.x.x.bin` - Standard 200Gbps NIC firmware image
-- `cassini_fw_esm_x.x.x.bin` - Extended Speed Mode (ESM) 200Gbps NIC firmware image used exclusively on HPE Cray EX235a compute blade
+  - `cassini_fw_x.x.x.bin` - Standard 200Gbps NIC firmware image
+  - `cassini_fw_esm_x.x.x.bin` - Extended Speed Mode (ESM) 200Gbps NIC firmware image used exclusively on HPE Cray EX235a compute blade
+
+- **400Gbps:** `slingshot-firmware-cassini2` and `slingshot-firmware-management`
+  
+   The `slingshot-firmware-cassini2` package only includes `cassini2_fw_x.x.x.bin`, which is the standard 400Gbps NIC firmware image.
+
+**200Gbps only:**
 
 The admin may specify which firmware will be flashed using the `--cassini_opt` option of the `slingshot-firmware` command.
 If the `--cassini_opt` option is not specified, then the firmware type that matches the running version will be used.
@@ -168,5 +180,5 @@ hsn3:
 ```
 
 NOTE: The 200Gbps NIC must be power cycled after a firmware update for the new firmware to fully activate.
-This can be accomplished on a system with an HPE Slingshot SA210S Ethernet 200Gb 1-port PCIe card through a hardware-level reboot (platform reset).
+This can be done on a system with an HPE Slingshot SA210S Ethernet 200Gb 1-port PCIe card through a hardware-level reboot (platform reset).
 HPE Slingshot SA220M Ethernet 200Gb 2-port Mezzanine NIC cards require all nodes that are connected to the mezzanine card to be powered down before they are powered back up.

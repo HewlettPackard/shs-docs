@@ -1,1 +1,1 @@
-# HPE Slingshot 200Gbps NIC Firmware troubleshooting
+# HPE Slingshot CXI NIC firmware troubleshooting
