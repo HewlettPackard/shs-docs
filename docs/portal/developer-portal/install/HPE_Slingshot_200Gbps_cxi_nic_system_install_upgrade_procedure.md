@@ -2,8 +2,6 @@
 
 This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
-For systems using Mellanox NICs, skip this section and proceed to the [Install a Mellanox NIC system](mellanox_based_system_install_upgrade_procedure.md#install-a-mellanox-nic-system), followed by the "Update firmware for HPCM and bare metal" section in the _HPE Slingshot Host Software Administration Guide_.
-
 1. Copy the HPE Slingshot compute RPMs tarball for the required distributions to the target system's admin node where the HPCM images will be created. The file name typically follows this pattern: `slingshot-host-software-<version>-<OS distro>_<OS Architecture>.tar.gz`.
 
    For example, the `slingshot-host-software-13.0.0-1022-rhel-9.5_x86_64.tar.gz` tarball is used to install the SHS 13.0.0-1022 stack on a RHEL 9.5 host.

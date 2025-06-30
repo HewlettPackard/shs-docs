@@ -30,8 +30,6 @@
             <topicref
                 href="install/HPE_Slingshot_200Gbps_cxi_nic_system_install_upgrade_procedure.md"
                 format="mdita"/>
-            <topicref href="install/mellanox_based_system_install_upgrade_procedure.md"
-                format="mdita"/>
         </topicref>
         <topicref href="install/ama_hpcm.md" format="mdita"/>
     </topicref>
@@ -39,8 +37,6 @@
         <topicref href="install/compute_install_prereqs.md" format="mdita"/>
         <topicref href="install/install_or_upgrade_compute_nodes.md" format="mdita">
             <topicref href="install/install_hpe_slingshot_cxi_nic_host_software.md" format="mdita"/>
-            <topicref href="install/HPE_Slingshot_configuration_with_Mellanox_nics.md"
-                format="mdita"/>
         </topicref>
     </topicref>
     <topicref href="install/kdreg2_introduction.md" format="mdita"/>

@@ -16,7 +16,7 @@ These Ansible variables are publicly exposed for use by customers or administrat
   description: Sets the node profile. This is an advanced usage variable to set the configuration of a node to a pre-determined configuration. The configuration is viewable in `ansible/roles/setup/defaults/main.yml`. Available choices are one of (`compute`, `application`, `worker`).
 - name: `shs_target_network`
   type: `string`
-  description: Sets the network type. Available choices are one of (`mellanox`, `cassini`).
+  description: Sets the network type. (`cassini`)
 - name: `shs_release`
   type: `string`
   description: Sets the SHS release. This can be used to control the release used for a specific image, or node type.

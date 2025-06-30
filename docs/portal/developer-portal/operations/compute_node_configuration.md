@@ -23,13 +23,13 @@ The "SAT Bootprep" section of the _HPE Cray EX System Admin Toolkit (SAT) Guide_
 
 The `sat bootprep` input file should contain sections similar to the following to ensure SHS configuration data is used when configuring the compute image prior to boot and when personalizing compute nodes after boot. Replace `<version>` with the version of SHS desired. The version of SHS installed resides in the CSM product catalog and can be displayed with the `sat showrev` command.
 
-For the examples below,
+For the following examples:
 
 - Replace `<version>` with the version of SHS desired
 - Replace `<playbook>` with the SHS Ansible playbook that should be used
 - Replace `ims_require_dkms: true` with `ims_require_dkms: false` if pre-built kernel binaries should be used instead of DKMS kernel packages. NOTE: This setting only exists with CSM 1.5 and later deployments.
 
-**Note:** `shs_mellanox_install.yml` should be used if the Mellanox NIC is installed. `shs_cassini_install.yml` should be used if the HPE Slingshot 200Gbps NIC is installed.
+Use the `shs_cassini_install.yml` file for HPE Slingshot CXI NICs.
 
 ```yaml
 configurations:
@@ -98,8 +98,7 @@ The existing configuration will likely include other Cray EX product entries. Th
    The release field should match the release of SHS that is being installed or updated to.
    Replace `<ansible playbook to run>` with
 
-   `shs_cassini_install.yml` if the HPE Slingshot 200Gbps NIC software stack should be installed or updated.
-   `shs_mellanox_install.yml` if the Mellanox software stack should be installed or updated.
+   Use the `shs_cassini_install.yml` file for HPE Slingshot CXI NICs.
 
 3. Update the Configuration Framework Service (CFS) Session with the new SHS configuration.
 

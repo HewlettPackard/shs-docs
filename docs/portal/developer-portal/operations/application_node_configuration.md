@@ -57,8 +57,7 @@ This same process can be applied to other application node CFS configurations.
    Replace `<name of the CFS layer>` with `shs-integration-<release>`. `<release>` should be replaced by the SHS release. Earlier examples provided `2.0.0` as the release. The release field should match the release of SHS that is being installed or updated to.
    Replace `<ansible playbook to run>` with
 
-   `shs_cassini_install.yml` if the HPE Slingshot 200Gbps NIC software stack should be installed or updated.
-   `shs_mellanox_install.yml` if the Mellanox software stack should be installed or updated
+   `shs_cassini_install.yml` if the HPE Slingshot CXI NIC software stack should be installed or updated.
 
 3. Update the Configuration Framework Service (CFS) Session with the new SHS configuration
 
