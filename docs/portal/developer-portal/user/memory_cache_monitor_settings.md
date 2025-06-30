@@ -12,23 +12,23 @@ Ensuring the data in the MR cache is “fresh” is the role of the memory regis
 
 Use the `FI_MR_CACHE_MONITOR` environment variable to select the memory registration cache monitor: `userfaultfd`, `memhooks`, `kdreg2`.
 
-Currently, the default setting is `memhooks`.
-`userfaultfd` is required when running applications with NCCL or RCCL.
+`memhooks` is currently the default setting because of its wide availability, but it is not the best option for the CXI provider. Choose `kdreg2` whenever possible.
+Applications running NCCL or RCCL require `userfaultfd`.
 
 - `userfaultfd` (or `uffd`)
   
-  Delivered as part of Linux operating system distributions. It is a kernel service for tracking memory mapping changes.`userfaultfd` uses a file descriptor for communication which introduces a delay between detection of changes to the memory layout and acknowledgement within Libfabric.
+  Delivered as part of Linux operating system distributions. It is a kernel service for tracking memory mapping changes.`userfaultfd` uses a file descriptor for communication which introduces a delay between detection of changes to the memory layout and acknowledgment within Libfabric.
   This delay can provide for memory corrupting errors since scenarios such as allocation-free-reallocation of the same address in user space are unresolvable. `userfaultfd` is also constrained to operating on page-aligned, full page regions, making it unsuitable for data layout commonly found in applications which utilize SHMEM.
 
 - `memhooks`
   
   Distributed as part of Libfabric. Unlike `uffd`, `memhooks` is a user-space function which traps library functions for memory allocation or deallocation.
   
-  `memhooks` is set up primarily to monitor dynamic memory allocations, such as applications using `mmap` and `brk` memory functions. Downsides are that it cannot monitor stack allocations or static allocations. The hook instantiation is dependent on load order, linker directives, etc. It deadlocks if the code frees memory such is observed with GPU-style programming locks.
+  `memhooks` is set up primarily to monitor dynamic memory allocations, such as applications using `mmap` and `brk` memory functions. Downsides are that it cannot monitor stack allocations or static allocations. The hook instantiation is dependent on load order, linker directives, and so on It deadlocks if the code frees memory such is observed with GPU-style programming locks.
 
 - `kdreg2`
   
-  This is not installed by default, and HPE encourages system administrators to ensure it is installed so that users can try it and see where it provides benefits and whether it can be a single cache monitor for all applications. Future releases of SHS will change the installation to be done by default, and will likely make this the default memory cache monitor in the future.
+  This is not installed by default, and HPE encourages system administrators to ensure that it is installed so that users can try it and see where it provides benefits and whether it can be a single cache monitor for all applications. Future releases of SHS will change the installation to be done by default, and will likely make this the default memory cache monitor in the future.
 
   The purpose of `kdreg2` is to overcome situations where `memhooks` and `uffd` both fail so that the application can achieve performance by utilizing caching. `kdreg2` is able to monitor static, dynamic, and stack memory. It can support arbitrary alignment. It provides synchronous notification mechanisms. And it can employ extra data to detect allocate/free/reallocate scenarios.
   
