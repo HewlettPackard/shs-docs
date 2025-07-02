@@ -9,7 +9,7 @@ Perform this procedure to install SHS on compute nodes.
 2. Copy or move the RPMs to a location accessible to one or more hosts.
    This can be a network file share, a physically backed location such as a disk drive on the host, or a remotely accessible location such as a web server that hosts the RPMs.
 
-3. Modify the host or host OS image to add a repository for the newly downloaded RPMs for the package manager used in the OS distribution. Select the RPMs from the distribution file for your environment (`slingshot_compute_cos-2.4...` for COS 2.4, `slingshot_compute_sle15_sp4` for SLE15_sp4, and so on).
+3. Modify the host or host OS image to add a repository for the newly downloaded RPMs for the package manager used in the OS distribution. Select the RPMs from the distribution file for your environment (for example, `slingshot_compute_sle15_sp4` for SLE15_sp4).
 
    For SLE 15, `zypper` is used as the package manager for the host. A Zypper repository should be added which provides the path to the RPMs are hosted. An example for this could be the following:
 

@@ -97,9 +97,9 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
    1. Identify the appropriate pre-built binary variant for your distribution.
 
-      - **SLES/CSM:** Replace `*-dkms` with `*-kmp-default`.
-      - **COS on x86:** Replace `*-dkms` with `*-kmp-cray_shasta_c`.
-      - **COS on ARM64:** Replace `*-dkms` with `*-kmp-cray_shasta_c_64k`.
+      **Note:** DKMS is required for both COS and CSM. The `*-kmp-default` package will not work for these solutions even though they are SLES-based.
+
+      - **SLES** Replace `*-dkms` with `*-kmp-default`.
       - **RHEL:** Replace `*-dkms` with `kmod-*`.
 
    2. Replace the DKMS packages with the corresponding pre-built binary variants.
@@ -166,10 +166,6 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
 6. Create or update an image.
 
-   SHS does not support installing software as a single command on HPCM systems with `cm image create` with the COS 3.0 and later.
-   Installation of SHS with COS and the GPU sub-products must be performed as a series of steps. SHS requires that COS and GPU software provided by the COS and USS products must be installed prior to installing SHS.
-   In this case, SHS must be installed via the 'If updating an image' workflow instead of the 'If creating an image' workflow.
-
    The following examples use the `slingshot-host-software-repo-group` repo group created earlier in this procedure.
    If a different repo group is preferred, use the following commands to find an existing repo group.
 
@@ -210,7 +206,7 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
    - If updating an image:
 
-     - SLES/COS environment:
+     - SLES environment:
 
        ```screen
        IMAGE_NAME=${DISTRO}_hpcm_ss
@@ -227,7 +223,7 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
        **Note:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
 
-   **Note:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is required for COS installations with Nvidia software, but it is recommended to avoid problems when building in a `chroot` environment.
+   **Note:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is recommended to avoid problems when building in a `chroot` environment.
 
 7. Verify that DKMS successfully built the kernel modules.
 
@@ -258,7 +254,7 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
    To resolve this issue, refresh the repositories and ensure that the required kernel headers are installed.
 
-8. On HPE Slingshot CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
+8. On HPE Slingshot CXI NIC systems running SLES, enable unsupported kernel modules in newly created image directory.
 
    - For systems using SLES15 SP4 or later:
 
