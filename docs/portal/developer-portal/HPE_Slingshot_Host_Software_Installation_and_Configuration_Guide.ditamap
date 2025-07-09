@@ -38,6 +38,7 @@
         <topicref href="install/install_or_upgrade_compute_nodes.md" format="mdita">
             <topicref href="install/install_hpe_slingshot_cxi_nic_host_software.md" format="mdita"/>
         </topicref>
+        <topicref href="install/standalone_install.md" format="mdita"/>
     </topicref>
     <topicref href="install/kdreg2_introduction.md" format="mdita"/>
     <topicref href="install/Soft_RoCE_on_HPE_Slingshot_200Gbps_NICs.md" format="mdita">
