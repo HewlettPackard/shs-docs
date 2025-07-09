@@ -42,6 +42,7 @@
             <topicref href="install/HPE_Slingshot_configuration_with_Mellanox_nics.md"
                 format="mdita"/>
         </topicref>
+        <topicref href="install/standalone_install.md" format="mdita"/>
     </topicref>
     <topicref href="install/kdreg2_introduction.md" format="mdita"/>
     <topicref href="install/Soft_RoCE_on_HPE_Slingshot_200Gbps_NICs.md" format="mdita">
