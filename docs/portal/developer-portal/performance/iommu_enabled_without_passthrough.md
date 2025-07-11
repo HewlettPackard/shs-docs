@@ -7,38 +7,20 @@ behavior only for the HPE Slingshot NIC IOMMU groups. This capability is support
 
 ## Install instruction updates
 
-For `slingshot-cxi-drivers-install` to work, `slingshot-cxi-drivers-install` needs to be in control of loading most of an HPE Slingshot NIC driver stack. `slingshot-cxi-drivers-install` will load `cxi-ss1`, `cxi-eth`, `cxi-user`, and optionally `kfi_cxi`. Any other methods to load `cxi-eth`,`cxi-user`, and `kfi_cxi` *MUST NOT* be applied. `cray-cxi-driver-udev` and `cray-kfabric-udev` *MUST NOT* be installed.
+For `slingshot-cxi-drivers-install` to work, `slingshot-cxi-drivers-install` needs to be in control of loading the `cxi-ss1` kernel module.
 
 - CSM systems:
 
   During normal IUF install procedures, complete the following steps *BEFORE* running the `update-vcs-config` stage:
   
-  1. While entering any CFS configuration changes as outlined in the "Workflow decisions" section in the *HPE Slingshot Host Software Installation and Configuration Guide*, remove the following lines from the `vcs/roles/setup/tasks/main.yml` file:
-  
-     ```screen
-      - "{{ (shs_cassini_enabled) | ternary('cray-cxi-driver-udev', '') }}"
-      ...
-      - "{{ (shs_cassini_enabled) | ternary('cray-libcxi-dracut', '') }}"
-      - "{{ (shs_cassini_enabled) | ternary('cray-kfabric-udev', '') }}"
-     ```
-
-  2. Append the following sections to the bottom of the `vcs/roles/install/tasks/main.yml` file:
+  1. Append the following sections to the bottom of the `vcs/roles/install/tasks/main.yml` file:
 
      ```screen
      - name: Configure dracut for CXI drivers and install items
        copy:
          dest: /etc/dracut.conf.d/50-cxi-ss1.conf
          content: |
-           add_drivers+=" cxi-sl cxi-sbl cxi-ss1 cxi-user cxi-eth "
            install_items+=" /etc/modprobe.d/50-cxi-ss1.conf /usr/bin/slingshot-cxi-drivers-install "
-           install_items+=" /etc/cxi_rh.conf "
-           install_items+=" /usr/bin/cxi_rh "
-           install_items+=" /usr/lib/systemd/system/cxi_rh@.service "
-           install_items+=" /usr/lib/systemd/system/cxi_rh.target "
-           install_items+=" /usr/lib/udev/rules.d/60-cxi.rules "
-           install_items+=" /usr/lib64/libcxi.so "
-           install_items+=" /usr/lib64/libcxi.so.1 "
-           install_items+=" /usr/lib64/libcxi.so.1.5.0 "
          owner: root
          group: root
          mode: '0644'
@@ -70,9 +52,9 @@ For `slingshot-cxi-drivers-install` to work, `slingshot-cxi-drivers-install` nee
      ========  =====================================================
      ```
 
-  3. Complete the CFS configuration instructions and proceed with the IUF installation.
+  2. Complete the CFS configuration instructions and proceed with the IUF installation.
 
-  4. Confirm configuration success by running `slingshot-show-cxi-iommu-group` on a booted compute node.
+  3. Confirm configuration success by running `slingshot-show-cxi-iommu-group` on a booted compute node.
 
 - HPCM systems:
 
@@ -101,21 +83,11 @@ If `cxi-ss1` needs to load in the initrd, `slingshot-cxi-drivers-install` and `/
 
   ```screen
   # cat /etc/dracut.conf.d/50-cxi-ss1.conf
-  add_drivers+=" cxi-sl cxi-sbl cxi-ss1 cxi-user cxi-eth "
   install_items+=" /etc/modprobe.d/50-cxi-ss1.conf /usr/bin/slingshot-cxi-drivers-install "
-  install_items+=" /usr/bin/cxi_rh "
-  install_items+=" /usr/lib/systemd/system/cxi_rh@.service "
-  install_items+=" /usr/lib/systemd/system/cxi_rh.target "
-  install_items+=" /etc/cxi_rh.conf "
-  install_items+=" /usr/lib/udev/rules.d/60-cxi.rules "
-  install_items+=" /usr/lib64/libcxi.so "
-  install_items+=" /usr/lib64/libcxi.so.1 "
-  install_items+=" /usr/lib64/libcxi.so.1.5.0 "
   ```
 
 **Note:**
 
 - `/etc/dracut.conf.d/50-cxi-ss1.conf` is not provided by HPE Slingshot software and needs to be manually created with content as shown in the previous example.
-- `cray-libcxi-dracut` is not compatible when using `slingshot-cxi-drivers-install` in initrd. Thus, `cray-libcxi-dracut` should not be installed. The previous examples shows applicable content from `cray-libcxi-dracut` which can be used with `slingshot-cxi-drivers-install` in the initrd.
 
 Use the `dracut --force --regenerate-all` command to rebuild the initrd.

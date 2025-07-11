@@ -56,9 +56,11 @@ For systems using Mellanox NICs, skip this section and proceed to the [Install a
       slingshot-utils
       cray-cassini-headers-user
       cray-cxi-driver-devel
+      cray-cxi-driver-udev
       cray-diags-fabric
       cray-hms-firmware
       cray-kfabric-devel
+      cray-kfabric-udev
       cray-libcxi
       cray-libcxi-devel
       cray-libcxi-utils
@@ -152,21 +154,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Install a
             kmod-kdreg2
          ```
 
-5. Add the following RPMs to the RPM list.
-   Skip this step if the `slingshot-cxi-drivers-install` script (provided in the `slingshot-utils` RPM) will be used for driver installation.
-
-   **Note:** `slingshot-cxi-drivers-install` must be used to load HPE Slingshot
-   drivers to ensure optimal performance for nodes where the I/O Memory Management Unit (IOMMU) is enabled with passthrough disabled.
-   Such node types include HPE Cray Supercomputing EX254n Grace Hopper nodes.
-
-   ```screen
-   echo -e """\
-      cray-cxi-driver-udev
-      cray-kfabric-udev
-   """ >> ./shs-cxi.rpmlist
-   ```
-
-6. Create or update an image.
+5. Create or update an image.
 
    SHS does not support installing software as a single command on HPCM systems with `cm image create` with the COS 3.0 and later.
    Installation of SHS with COS and the GPU sub-products must be performed as a series of steps. SHS requires that COS and GPU software provided by the COS and USS products must be installed prior to installing SHS.
@@ -231,7 +219,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Install a
 
    **Note:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is required for COS installations with Nvidia software, but it is recommended to avoid problems when building in a `chroot` environment.
 
-7. Verify that DKMS successfully built the kernel modules.
+6. Verify that DKMS successfully built the kernel modules.
 
    There must be eight kernel modules in the `extra` directory for a successful build.
    Use the following script to verify:
@@ -260,7 +248,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Install a
 
    To resolve this issue, refresh the repositories and ensure that the required kernel headers are installed.
 
-8. On HPE Slingshot CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
+7. On HPE Slingshot CXI NIC systems running COS or SLES, enable unsupported kernel modules in newly created image directory.
 
    - For systems using SLES15 SP4 or later:
 
@@ -276,8 +264,12 @@ For systems using Mellanox NICs, skip this section and proceed to the [Install a
       /opt/clmgr/image/images/${IMAGE_NAME}/etc/modprobe.d/10-unsupported-modules.conf
       ```
 
-9. Load the HPE Slingshot drivers with the `slingshot-cxi-drivers-install` script that is provided in the `slingshot-utils` RPM.
+8. Load the HPE Slingshot drivers with the `slingshot-cxi-drivers-install` script that is provided in the `slingshot-utils` RPM.
    Skip this step if you are not using the `slingshot-cxi-drivers-install` script.
+
+   **Note:** `slingshot-cxi-drivers-install` must be used to load HPE Slingshot
+   drivers to ensure optimal performance for nodes where the I/O Memory Management Unit (IOMMU) is enabled with passthrough disabled.
+   Such node types include HPE Cray Supercomputing EX254n Grace Hopper nodes.
 
    A `modprobe.conf` for install `cxi-ss1` needs to be defined for
    `slingshot-cxi-drivers-install` to properly intercept the loading of `cxi-ss1`
@@ -291,8 +283,8 @@ For systems using Mellanox NICs, skip this section and proceed to the [Install a
    other devices, `slingshot-cxi-drivers-install --iommu-group identity` will
    fail to run and `cxi-ss1` will not load.
 
-10. Create a `sysctl` file in `/etc/sysctl.d` using the example provided in the "`sysctl` configuration example" section of the _HPE Slingshot Host Software Administration Guide_. Copy the example `sysctl` file into the image being created.
+9. Create a `sysctl` file in `/etc/sysctl.d` using the example provided in the "`sysctl` configuration example" section of the _HPE Slingshot Host Software Administration Guide_. Copy the example `sysctl` file into the image being created.
 
-11. Boot the new image when it is ready.
+10. Boot the new image when it is ready.
 
-12. Apply the post-boot firmware and firmware configuration. General instructions are in the "Update firmware for HPCM and bare metal" section of the _HPE Slingshot Host Software Administration Guide_.
+11. Apply the post-boot firmware and firmware configuration. General instructions are in the "Update firmware for HPCM and bare metal" section of the _HPE Slingshot Host Software Administration Guide_.
