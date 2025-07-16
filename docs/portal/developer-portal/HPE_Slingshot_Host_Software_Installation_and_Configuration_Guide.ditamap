@@ -45,10 +45,11 @@
         <topicref href="install/standalone_install.md" format="mdita"/>
     </topicref>
     <topicref href="install/kdreg2_introduction.md" format="mdita"/>
-    <topicref href="install/Soft_RoCE_on_HPE_Slingshot_200Gbps_NICs.md" format="mdita">
-        <topicref href="install/softroce_on_HPE_Slingshot_200Gbps.md" format="mdita"/>
-        <topicref href="install/lustre_network_driver_lnd_ko2iblnd_configuration.md" format="mdita"
-        />
+    <topicref href="install/Soft_RoCE_on_HPE_Slingshot_CXI_NICs.md" format="mdita">
+        <topicref href="install/softroce_on_HPE_Slingshot_CXI.md" format="mdita"/>
+        <topicref href="install/lustre_network_driver_lnd_ko2iblnd_configuration.md" format="mdita">
+            <topicref href="install/e1000_ko2iblnd_tuning_for_soft-roce.md" format="mdita"/>
+        </topicref>
     </topicref>
     <topicref href="install/pml_recovery.md" format="mdita"/>
 </map>
