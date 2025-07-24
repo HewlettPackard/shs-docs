@@ -15,8 +15,9 @@ sed -i 's/troubleshoot\///' tmp/HPE_Slingshot_Host_Software_Troubleshooting_Guid
 sed -i 's/operations\///' tmp/HPE_Slingshot_Host_Software_Administration_Guide.ditamap
 sed -i 's/performance\///' tmp/HPE_Slingshot_Host_Software_Administration_Guide.ditamap
 sed -i 's/release_notes\///' tmp/HPE_Slingshot_Host_Software_Release_Notes.ditamap
+sed -i 's/fabric_validation\///' tmp/HPE_Slingshot_Host_Software_Scale_and_Performance_Validation_Guide.ditamap
 
 
 # convert all links in all Markdown files. 
-declare -a prefixes=("\.\.\/install" "\.\.\/operations" "\.\.\/overview" "\.\.\/release_notes" "\.\.\/performance" "\.\.\/troubleshoot")
+declare -a prefixes=("\.\.\/install" "\.\.\/operations" "\.\.\/overview" "\.\.\/release_notes" "\.\.\/performance" "\.\.\/troubleshoot" "\.\.\/fabric_validation")
 for file in $(ls tmp/*.md);do for prefix in ${prefixes[@]}; do sed -i "s/$prefix\///g" $file;done;done

@@ -168,6 +168,7 @@ dir: $(TMPDIR)/VeRsIoN.md
 	cp -r operations $(TMPDIR)
 	cp -r overview $(TMPDIR)
 	cp -r user $(TMPDIR)
+	cp -r fabric_validation $(TMPDIR)
 	cp -r images $(TMPDIR)
 
 

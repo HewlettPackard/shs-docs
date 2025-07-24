@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map id="shs_relnotes">
+    <title>HPE Slingshot Host Software Scale and Performance Validation Guide (S-9008) (@product_version@)</title>
+    <topicmeta>
+        <shortdesc>Use this guide to validate HPE Slingshot fabric connectivity and performance between different types of nodes.</shortdesc>
+        <data name="pubsnumber" value="S-9008"></data>
+        <data name="edition" value="SHS Software Release @product_version@"></data>
+    </topicmeta>
+    <topicref href="VeRsIoN.md" format="mdita" />
+    <topicref href="fabric_validation/introduction.md" format="mdita"/>
+    <topicref href="fabric_validation/concepts.md" format="mdita"/>
+    <topicref href="fabric_validation/validation_between_nodes.md" format="mdita">
+        <topicref href="fabric_validation/gateway_nodes.md" format="mdita"/>
+        <topicref href="fabric_validation/compute_nodes.md" format="mdita"/>
+        <topicref href="fabric_validation/fabric_validation_flow.md" format="mdita"/>
+        <topicref href="fabric_validation/health_check_of_hsn_interfaces.md" format="mdita"/>
+        <topicref href="fabric_validation/loopback_performance_test.md" format="mdita"/>
+        <topicref href="fabric_validation/check_arp_information_on_compute_and_gateway.md" format="mdita"/>
+        <topicref href="fabric_validation/connectivity_test_using_ping.md" format="mdita"/>
+        <topicref href="fabric_validation/bandwidth_check_of_single_interface.md" format="mdita"/>
+        <topicref href="fabric_validation/bandwidth_check_of_all_interfaces_sequential.md" format="mdita"/>
+        <topicref href="fabric_validation/bandwidth_check_of_all_interfaces_parallel.md" format="mdita"/>
+        <topicref href="fabric_validation/latency_test_on_single_interface.md" format="mdita"/>
+        <topicref href="fabric_validation/latency_test_on_all_interfaces_sequential.md" format="mdita"/>
+    </topicref>
+    <topicref href="fabric_validation/validation_with_mpi.md" format="mdita">
+        <topicref href="fabric_validation/fabric_validation_using_dgnettest.md" format="mdita"/>
+        <topicref href="fabric_validation/fabric_validation_using_osu_tests.md" format="mdita"/>
+        <topicref href="fabric_validation/fabric_validation_using_gpcnet_tests.md" format="mdita"/>
+     </topicref>
+    <topicref href="fabric_validation/slingshot_storage_validation.md" format="mdita"/>
+    <topicref href="fabric_validation/troubleshoot_performance_tests.md" format="mdita">
+        <topicref href="fabric_validation/troubleshoot_ama_mismatch.md" format="mdita"/>
+        <topicref href="fabric_validation/troubleshoot_mpi_application_failure_hardware_error.md" format="mdita"/>
+        <topicref href="fabric_validation/troubleshoot_mpi_application_failure_ama_mismatch.md" format="mdita"/>
+        <topicref href="fabric_validation/troubleshoot_mpi_application_failure_cancel_messages.md" format="mdita"/>
+        <topicref href="fabric_validation/troubleshoot_hpl_benchmark_performance_issues.md" format="mdita"/>
+    </topicref>
+    <topicref href="fabric_validation/reference.md" format="mdita"/>
+    <topicref href="fabric_validation/appendix.md" format="mdita">
+        <topicref href="fabric_validation/copy_and_paste_commands.md" format="mdita"/>
+        <topicref href="fabric_validation/tools_and_packages.md" format="mdita"/>
+        <topicref href="fabric_validation/scripts.md" format="mdita"/>
+    </topicref>
+</map>

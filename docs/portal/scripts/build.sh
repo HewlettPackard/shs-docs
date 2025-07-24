@@ -60,6 +60,7 @@ mkdir -m777 -p build/release_notes
 mkdir -m777 -p build/troubleshoot
 mkdir -m777 -p build/admin
 mkdir -m777 -p build/user
+mkdir -m777 -p build/fabric_validation
 mkdir -m777 -p build/Markdown
 
 # call the script that flattens the dir structure used to build the HPESC bundle
@@ -127,6 +128,18 @@ dita -i HPE_Slingshot_Host_Software_User_Guide.ditamap -o build/PDF/user -f pdf
 echo "Building Combined Markdown File"
 dita -i HPE_Slingshot_Host_Software_User_Guide.ditamap --root-chunk-override=to-content -o build/Markdown -f markdown_github
 
+echo "Building Scale and Performance Validation Guide";
+
+# This line builds the HPESC HTML bundle for the user guide
+dita -i tmp/HPE_Slingshot_Host_Software_Scale_and_Performance_Validation_Guide.ditamap -o build/fabric_validation -f HPEscHtml5 && cp HPE_Slingshot_Host_Software_Scale_and_Performance_Validation_Guide.json build/fabric_validation/publication.json && cd build/fabric_validation/ && zip -r crs9008en_us.zip ./
+cd $THIS_DIR
+# This builds the PDF using DITA-OT's default PDF transform
+echo "Building PDF"
+dita -i HPE_Slingshot_Host_Software_Scale_and_Performance_Validation_Guide.ditamap -o build/PDF/fabric_validation -f pdf
+# This builds the single file Markdown version of the guide. This leverages DITA's "chunking"
+echo "Building Combined Markdown File"
+dita -i HPE_Slingshot_Host_Software_Scale_and_Performance_Validation_Guide.ditamap --root-chunk-override=to-content -o build/Markdown -f markdown_github
+
 # delete the tmp dir created by the flatten script. The bundle is still in the build subdir
 rm -rf tmp/
 
@@ -136,6 +149,7 @@ mv build/Markdown/HPE_Slingshot_Host_Software_Release_Notes.md build/
 mv build/Markdown/HPE_Slingshot_Host_Software_Troubleshooting_Guide.md build/
 mv build/Markdown/HPE_Slingshot_Host_Software_Administration_Guide.md build/
 mv build/Markdown/HPE_Slingshot_Host_Software_User_Guide.md build/
+mv build/Markdown/HPE_Slingshot_Host_Software_Scale_and_Performance_Validation_Guide.md build/
 
 rm -rf build/Markdown/*
 mv build/HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide.md build/Markdown/
@@ -143,3 +157,4 @@ mv build/HPE_Slingshot_Host_Software_Release_Notes.md build/Markdown/
 mv build/HPE_Slingshot_Host_Software_Troubleshooting_Guide.md build/Markdown/
 mv build/HPE_Slingshot_Host_Software_Administration_Guide.md build/Markdown/
 mv build/HPE_Slingshot_Host_Software_User_Guide.md build/Markdown/
+mv build/HPE_Slingshot_Host_Software_Scale_and_Performance_Validation_Guide.md build/Markdown/
