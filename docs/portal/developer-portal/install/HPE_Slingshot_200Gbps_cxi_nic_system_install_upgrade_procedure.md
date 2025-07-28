@@ -49,6 +49,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Install a
    echo -e """\
       libfabric
       libfabric-devel
+      sl-driver-devel
       slingshot-network-config
       slingshot-firmware-management
       slingshot-firmware-cassini
