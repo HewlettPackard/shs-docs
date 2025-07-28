@@ -47,6 +47,7 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
    echo -e """\
       libfabric
       libfabric-devel
+      sl-driver-devel
       slingshot-network-config
       slingshot-firmware-management
       slingshot-firmware-cassini
