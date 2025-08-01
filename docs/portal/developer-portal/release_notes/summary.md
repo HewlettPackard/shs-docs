@@ -1,26 +1,18 @@
 
 # Summary
 
-Date of Release: May 09, 2025
+Date of Release: August 01, 2025
 
-Slingshot Host Software (SHS) version 12.0.1 replaced SHS 12.0.0 for the Long-Term Support Release (LTS). The release notes for SHS 12.0.1 are cumulative - combining 12.0.0 and 12.0.1 notes and issues.
+Slingshot Host Software (SHS) version 12.0.2 is a patch to the SHS 12.0.1 Long-Term Support Release (LTS) and contains notes and issues for this patch only.  Refer to the SHS 12.0.1 Release Notes for details on the contents of that release.
 
-Slingshot Host Software (SHS) version 12.0.1 is our latest Long-Term Support (LTS) release, focused on stability, reliability, and performance. It includes critical bug fixes, security enhancements, and compatibility updates to ensure long-term support. Users on earlier LTS versions are encouraged to upgrade.
+Slingshot Host Software (SHS) version 12.0.2 is our latest Long-Term Support (LTS) release, focused on stability, reliability, and performance. It includes critical bug fixes and performance enhancements to ensure long-term support. Users on earlier LTS versions are recommended to upgrade if they encounter any of the listed defects or performance issues.
 
-Key Highlights:
- * CXI Driver has been updated to allow AMD GPUs to use dmabuf.
- * Install kdreg2 by Default
- * New Distributions
-    * RHEL 9.5 (x86 and Arm)
-    * Updated SLES15 SP6 Kernel and Corresponding COS-base (COS 25.03.x w/ COS Base 3.3)
- * GPU Driver for New Distros
-    * ROCM 6.3
-    * Nvidia 24.11
-    * CUDA 565.57.01
- * DKMS Updates
-    * Enable parallel builds for DKMS modules using make.
-    * Remove dependency on NVIDIA DKMS when it's installed outside the DKMS framework.
-
-Note:  In 12.0.0 we identified an issue where in some cases Blanca Peak nodes crashed when using LNet.  This exposed a kfi_cxi bug on ARM blades running LNet (with Lustre or DVS over LNet) if iommu.passthough was not configured to be enabled impacted both to directly connected Lustre using LNET or an LNET router going from kfi to k2oib (Infiniband back-end Lustre). Starting with SHS v12.0.1, this has been resolved and  kfi_cxi will support either device IOMMU or passthrough.
+The following is a summary of the critical bug fixes contained in this patch:
+ * Libfabric hardening to handle data integrity issues arising from applications not properly synchronizing buffers during overlapping CUDA P2P RDMA accesses and memory copies
+ * CXI driver fix to address a resource leak related to Communication Profiles
+ * NCCL performance improvement at large node counts
+ * NCCL performance when using the alt_read rendezvous protocol
+ * CXI driver fix to improve performance for incast-heavy traffic patterns at larger scales
+ * Retry Handler exit handling
 
 HPE recommends thoroughly reviewing the release notes and readme.txt files before upgrading systems. Note that release notes are specific to each release, so customers should consider reviewing the cumulative set of release notes to understand the net changes.

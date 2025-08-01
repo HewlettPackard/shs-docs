@@ -22,7 +22,8 @@ In the following table, **FM/SA Version** stands for the Fabric Manager and Swit
 |   **2.2.0**    | Supported\*\* |     R-A-B     |   Supported   |
 | **SHS-11.0.2** | Supported\*\* |   Supported   |   Supported   |
 | **SHS-11.1.0** | Supported\*\* |   Supported   |     R-A-B     |
-| **SHS-12.0.0** | Incompatible  |   Supported   |   Supported   |
+| **SHS-12.0.1** | Incompatible  |   Supported   |   Supported   |
+| **SHS-12.0.2** | Incompatible  |   Supported   |   Supported   |
 
 \*\* The combination is supported, but the new FMN features added in later versions will not be available.
 
