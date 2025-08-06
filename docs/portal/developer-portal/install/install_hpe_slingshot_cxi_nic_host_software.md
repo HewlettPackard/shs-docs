@@ -8,27 +8,109 @@ The HPE Slingshot CXI NIC software stack must be installed after a base compute 
 
 A list of HPE Slingshot CXI NIC supported distribution installs can be found in the "Support Matrix" in the _HPE Slingshot Host Software Release Notes (S-9010)_ document. When those have been installed, then proceed with instructions for "Installing HPE Slingshot CXI NIC host software" for that distribution.
 
+## Install the required RPMs
+
 The following RPMs should be retrieved and installed using the package manager for the distro in use (`zypper`, `yum`, or `dnf`):
 
-- `cray-hms-firmware`
-- `cray-slingshot-base-link-dkms`
-- `sl-driver-dkms`
-- `cray-cxi-driver-dkms`
-- `cray-cxi-driver-udev`
-- `cray-libcxi`
-- `cray-libcxi-retry-handler`
-- `cray-libcxi-utils`
-- `libfabric`
-- `libfabric-devel`
-- `slingshot-network-config`
-- `slingshot-firmware-management`
-- `slingshot-firmware-cassini`
-- `slingshot-firmware-cassini2`
-- `pycxi`
-- `pycxi-utils`
-- `shs-version`
+```screen
+libfabric
+libfabric-devel
+sl-driver-devel
+sl-driver-dkms
+slingshot-network-config
+slingshot-firmware-management
+slingshot-firmware-cassini
+slingshot-firmware-cassini2
+slingshot-utils
+cray-cassini-headers-user
+cray-cxi-driver-devel
+cray-cxi-driver-udev
+cray-cxi-driver-dkms
+cray-diags-fabric
+cray-hms-firmware
+cray-kfabric-devel
+cray-kfabric-udev
+cray-kfabric-dkms
+cray-libcxi
+cray-libcxi-devel
+cray-libcxi-utils
+cray-libcxi-retry-handler
+cray-slingshot-base-link-devel
+cray-slingshot-base-link-dkms
+pycxi
+pycxi-diags
+pycxi-utils
+kdreg2
+kdreg2-devel
+kdreg2-dkms
+shs-version
+```
 
-After installing the above RPMs, the system must be configured to allow
+**Note:** If a specific version is required, simply specify the versions you want when adding the packages.
+For example, to install a specific libfabric, add the following to the rpmlist:
+
+```screen
+libfabric-1.x.y.z
+libfabric-devel-1.x.y.z
+```
+
+For distributed binary builds, pre-built kernel binaries are available.
+To use these binaries instead of DKMS packages, follow these steps:
+
+1. Identify the appropriate pre-built binary variant for your distribution.
+
+   - **SLES:** Replace `*-dkms` with `*-kmp-default`.
+   - **RHEL:** Replace `*-dkms` with `kmod-*`.
+
+2. Replace the DKMS packages with the corresponding pre-built binary variants.
+
+   See one of the following examples depending on the distribution in use:
+
+   - **Example 1:** Replacing DKMS Packages on SLES15 SP5 (x86)
+
+      If you are installing pre-built kernel modules on SLES15 SP5 for x86 systems, replace the following DKMS packages:
+
+      ```screen
+      cray-slingshot-base-link-dkms
+      sl-driver-dkms
+      cray-cxi-driver-dkms
+      cray-kfabric-dkms
+      kdreg2-dkms
+      ```
+
+      with the corresponding pre-built binaries:
+
+      ```screen
+      cray-slingshot-base-link-kmp-default
+      sl-driver-kmp-default
+      cray-cxi-driver-kmp-default
+      cray-kfabric-kmp-default
+      kdreg2-kmp-default
+      ```
+
+   - **Example 2:** Replacing DKMS Packages on RHEL (x86)
+
+      If you are installing pre-built kernel modules on RHEL for x86 systems, replace the following DKMS packages:
+
+      ```screen
+      cray-slingshot-base-link-dkms
+      sl-driver-dkms
+      cray-cxi-driver-dkms
+      cray-kfabric-dkms
+      kdreg2-dkms
+      ```
+
+      with the corresponding pre-built binaries:
+
+      ```screen
+      kmod-cray-slingshot-base-link
+      kmod-sl-driver
+      kmod-cray-cxi-driver
+      kmod-cray-kfabric
+      kmod-kdreg2
+      ```
+
+After installing the required RPMs, the system must be configured to allow
 'unsupported' kernel modules before the drivers can be loaded. Edit
 `/etc/modprobe.d/10-unsupported-modules.conf` to allow unsupported modules:
 
