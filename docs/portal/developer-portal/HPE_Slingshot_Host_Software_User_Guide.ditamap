@@ -25,6 +25,7 @@
       <topicmeta>
           <navtitle>HPE Slingshot NIC Libfabric</navtitle>
       </topicmeta>
+      <topicref href="user/download_and_build_libfabric.md" format="mdita"/>
       <topicref href="user/user_configurable_libfabric_environment_variables.md" format="mdita">
            <topicref href="user/rdma_messaging_and_relationship_to_environment_settings.md" format="mdita"/>
            <topicref href="user/memory_cache_monitor_settings.md" format="mdita"/>
