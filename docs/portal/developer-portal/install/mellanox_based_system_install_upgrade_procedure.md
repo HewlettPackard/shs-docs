@@ -155,10 +155,6 @@ For systems using HPE Slingshot CXI NICs, skip this section and instead proceed 
 
 9. Create or update image.
 
-    SHS does not support installing software as a single command on HPCM systems with `cm image create` with COS 3.0 and later.
-    Installation of SHS with COS and the GPU sub-products must be performed as a series of steps. SHS requires that COS and GPU software provided by the COS and USS products must be installed prior to installing SHS.
-    In this case, SHS must be installed via the 'If updating an image' workflow instead of the 'If creating an image' workflow.
-
     The following examples use the `slingshot-host-software-repo-group` repo group created earlier in this procedure. If a different repo group is preferred, use the following commands to find an existing repo group.
 
     To determine available repo groups:
@@ -196,7 +192,7 @@ For systems using HPE Slingshot CXI NICs, skip this section and instead proceed 
 
     - If updating an image:
 
-      - SLES/COS environment:
+      - SLES environment:
 
          ```screen
          IMAGE_NAME=${DIST}_hpcm_ss
@@ -209,7 +205,7 @@ For systems using HPE Slingshot CXI NICs, skip this section and instead proceed 
         autoinstall_all_kernels=y cm image dnf install --repo-group ${REPO_GROUP} $(cat $(pwd)/shs-mlnx.rpmlist)
         ```
 
-    **Note:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is required for COS installations with Nvidia software, but it is generally recommended to avoid problems when building in a chroot environment.
+    **Note:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is recommended to avoid problems when building in a chroot environment.
 
 10. Create a `sysctl` file in `/etc/sysctl.d` using the example provided in the "`sysctl` configuration example" section of the _HPE Slingshot Host Software Administration Guide_. Copy the example `sysctl` file into the image being created.
 

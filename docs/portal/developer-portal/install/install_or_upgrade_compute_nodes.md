@@ -35,11 +35,13 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
 
 ## Install via package managers (recommended)
 
-1. For each distribution and distribution version as collected in the first step of the prerequisite install, download the RPMs mentioned in the previous section in the HPE Slingshot RPMs table above.
+1. For each distribution and distribution version, download the required RPMs mentioned in the _HPE Slingshot Host Software Release Notes_.
 
-   a. The RPMs should be copied or moved to a location accessible to one or more hosts where the RPMs will be installed. This can be a network file share, a physically backed location such as a disk drive on the host, or a remotely accessible location such as a web server that hosts the RPMs.
+2. Copy or move the RPMs to a location accessible to one or more hosts.
+   This can be a network file share, a physically backed location such as a disk drive on the host, or a remotely accessible location such as a web server that hosts the RPMs.
 
-   b. The host or host OS image should be modified to add a repository for the newly downloaded RPMs for the package manager used in the OS distribution. Select the RPMs from the distribution file for your environment (`slingshot_compute_cos-2.4...` for COS 2.4, `slingshot_compute_sle15_sp4` for SLE15_sp4, and so on)
+3. Modify the host or host OS image to add a repository for the newly downloaded RPMs for the package manager used in the OS distribution. Select the RPMs from the distribution file for your environment (for example, `slingshot_compute_sle15_sp4` for SLE15_sp4).
+
    For SLE 15, `zypper` is used as the package manager for the host. A Zypper repository should be added which provides the path to the RPMs are hosted. An example for this could be the following:
 
    Assume that the RPMs were downloaded and added to a web server that is external to the host,
@@ -79,42 +81,43 @@ NOTE: The upgrade process is nearly identical to the installation, and the proce
 
    The `zypper ar` command should be tailored specifically to the customer's environment as needed and is only provided here as an example.
 
-2. For hosts using an HPE Slingshot configuration with Mellanox NICs:
+4. For hosts using an HPE Slingshot configuration with Mellanox NICs:
 
-   a. If the host or host OS image is a compute node, install the compute-required RPMs:
-   NOTE: For COS 2.x images, use the HPE Slingshot version as provided/specified in the COS image recipe.
+   1. If the host or host OS image is a compute node, install the compute-required RPMs:
 
-   - For installs, run:
+      **Note:** For COS 2.x images, use the HPE Slingshot version as provided/specified in the COS image recipe.
 
-   ```screen
-   root@host: ~# zypper install slingshot-network-config slingshot-utils libfabric
-   ... <output from zypper>
-   ```
+      - For installs, run:
 
-   - For upgrades, replace the `zypper install` command with `zypper upgrade`:
+         ```screen
+         root@host: ~# zypper install slingshot-network-config slingshot-utils libfabric
+         ... <output from zypper>
+         ```
 
-   ```screen
-   root@host: ~# zypper upgrade slingshot-network-config slingshot-utils libfabric
-   ... <output from zypper>
-   ```
+      - For upgrades, replace the `zypper install` command with `zypper upgrade`:
 
-   b. If the host or host OS image is a user access node, install the user access node-required RPMs:
+         ```screen
+         root@host: ~# zypper upgrade slingshot-network-config slingshot-utils libfabric
+         ... <output from zypper>
+         ```
 
-   - For installs, run:
+   2. If the host or host OS image is a user access node, install the user access node-required RPMs:
 
-     ```screen
-     root@host: ~# zypper install libfabric-devel
-     ... <output from zypper>
-     ```
+      - For installs, run:
 
-   - For upgrades, replace the `zypper install` command with `zypper upgrade`:
+        ```screen
+        root@host: ~# zypper install libfabric-devel
+        ... <output from zypper>
+        ```
 
-     ```screen
-     root@host: ~# zypper upgrade libfabric-devel
-     ... <output from zypper>
-     ```
+      - For upgrades, replace the `zypper install` command with `zypper upgrade`:
 
-   c. If the host is a compute node, and a user access node, perform steps 1 and 2, otherwise skip this step.
+        ```screen
+        root@host: ~# zypper upgrade libfabric-devel
+        ... <output from zypper>
+        ```
+
+   3. If the host is a compute node, and a user access node, perform steps 1 and 2, otherwise skip this step.
 
 ## Install via command line
 
