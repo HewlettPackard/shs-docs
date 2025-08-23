@@ -38,6 +38,12 @@
             <topicref href="performance/iommu_recommended_configuration.md" format="mdita"/>
             <topicref href="performance/iommu_enabled_without_passthrough.md" format="mdita"/>
         </topicref>
+        <topicref href="performance/slingshot-eth-tuning.md" format="mdita">
+            <topicref href="performance/slingshot-eth-tuning_requirements.md" format="mdita"/>
+            <topicref href="performance/slingshot-eth-tuning_best_practices.md" format="mdita"/>
+            <topicref href="performance/slingshot-eth-tuning_features.md" format="mdita"/>
+            <topicref href="performance/slingshot-eth-tuning_usage.md" format="mdita"/>
+        </topicref>
     </topicref>
     <topicref href="operations/Cassini_Retry_Handler_cxi_rh.md" format="mdita">
         <topicref href="operations/cassini_retry_handler_configuration.md" format="mdita"/>
