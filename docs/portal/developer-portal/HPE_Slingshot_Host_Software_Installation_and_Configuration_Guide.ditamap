@@ -52,4 +52,5 @@
         </topicref>
     </topicref>
     <topicref href="install/pml_recovery.md" format="mdita"/>
+    <topicref href="install/tuning_parameters.md" format="mdita"/>
 </map>
