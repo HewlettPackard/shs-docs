@@ -1,16 +1,20 @@
+
 # Summary
 
-Date of Release: February 28, 2024
+Date of Release: August 31, 2025
 
-The HPE Slingshot 2.1.2 release only contains Slingshot Host Software (SHS) packages. The release packages include updated firmware for the HPE Slingshot NIC that may be installed as needed.
+This is Slingshot Host Software version 13.0.0.  It includes new hardware support, compatibility updates, support updates, and critical bug fixes.
 
-This HPE Slingshot 2.1.2 release resolves issues in a number of areas for SHS:
+Key Highlights:
+ * Support for HPE Slingshot 400Gbps NICs
+ * Upgrade to libfabric 2.2
+ * Support for new distributions: SLES SP7 and RHEL 9.6
+ * Support for New GPU Versions: AMD 6.4 and NVIDIA 25.5 with 570 driver for the new distros
+ * SoftRoCE support for RHEL 9.4 (x86 Only) and SLES SP6 (x86 Only)
+ * Removal of COS and CSM product streams — use SLES for all CSM installations
 
-- A kernel panic was resolved for some systems running SLES15 SP5, RHEL 8.8, or COS 3.0. If sites plan on running SLES15 SP5, RHEL 8.8, or COS 3.0, you will need to update to SHS 2.1.2 to avoid the possibility of the kernel panic. A Customer Advisory is being issued with more details.
-- An updated Cassini UEFI driver firmware (1.5.49) was introduced to address an exception found in 1.5.47. If you are on Cassini firmware 1.5.41, an upgrade is not required. If you do plan to upgrade, skip 1.5.47 and go directly to 1.5.49.
-- Soft-RoCE hangs were resolved by fixing the Ethernet driver transmit queue size.
-- Limitations with appropriate workarounds for systems running the MELLANOX OFED software stack are provided in the release notes.
+Note: SS10 is not supported — please continue using SHS-v12.0.x for any SS10 Systems
 
-HPE recommends all sites running SLES15 SP5, RHEL 8.8, or COS 3.0. upgrade to release 2.1.2 to utilize these fixes. This release is designated as "extended support" in conjunction with other HPE software components.
+Note: CXI provider support for FI_ORDER_ATOMIC_WAR and FI_ORDER_ATOMIC_RAW message ordering is not conformant and have been deprecated. They will be removed in a future release.
 
 HPE recommends thoroughly reviewing the release notes and readme.txt files before upgrading systems. Note that release notes are specific to each release, so customers should consider reviewing the cumulative set of release notes to understand the net changes.
