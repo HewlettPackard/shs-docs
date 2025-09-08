@@ -1,7 +1,7 @@
 
 # Summary
 
-Date of Release: August 31, 2025
+Date of Release: September 05, 2025
 
 This is Slingshot Host Software version 13.0.0.  It includes new hardware support, compatibility updates, support updates, and critical bug fixes.
 
@@ -14,6 +14,8 @@ Key Highlights:
  * Removal of COS and CSM product streams — use SLES for all CSM installations
 
 Note: SS10 is not supported — please continue using SHS-v12.0.x for any SS10 Systems
+
+Note: Using the latest SLURM version 25.05 or PALS 1.7.1 can result in an application failure with libfabric error: 'Command failure' when > 252 ranks per node are used because of an issue with RGID sharing. If more than more than 252 ppn are required then recommend to use earlier versions of SLURM or PALS until this is resolved.
 
 Note: CXI provider support for FI_ORDER_ATOMIC_WAR and FI_ORDER_ATOMIC_RAW message ordering is not conformant and have been deprecated. They will be removed in a future release.
 
