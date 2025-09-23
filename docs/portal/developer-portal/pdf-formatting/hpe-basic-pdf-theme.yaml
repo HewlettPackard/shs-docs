@@ -23,7 +23,7 @@ pdf2:
   font:
     sans: 'MetricHPE, Arial Unicode MS, Tahoma, Batang, SimSun'
     serif: 'Times New Roman, Times, Arial Unicode MS, Tahoma, Batang, SimSun'
-    monospaced: 'Courier New, Courier, Arial Unicode MS, Tahoma, Batang, SimSun'
+    monospaced: 'DejaVu Sans Mono, Arial Unicode MS, Tahoma, Batang, SimSun'
 # ↑ end-font-stacks ↑
 
 # ↓ add-page-settings ↓
@@ -53,6 +53,7 @@ header:
   even:
     content: '{title}'
     text-align: start
+    font-size: 10pt
 # ↑ end-header-setup ↑
 
 # ↓ add-footer-setup ↓
@@ -96,6 +97,8 @@ style:
   codeph:
     color: $brand-color-secondary
     font-size: '0.9 * from-parent(font-size)'
+  tt:
+    font-size: '0.75 * from-parent(font-size)'
   # ↓ set-cover-page ↓
   cover:
     height: 25.7cm
@@ -108,6 +111,8 @@ style:
     line-height: 1.5
     space-before: 50mm
   # ↑ end-cover-page ↑
+  dl:
+    dl-type: html
   example-title:
     color: $brand-color-secondary
   fig:
@@ -129,9 +134,9 @@ style:
     space-after: 9pt
     font-weight: bold
     title-numbering: true
+    break-before: page
   h2:
     border-after-style: none
-    color: $brand-color-primary
     color: $brand-color-primary
     font-family: $pdf2-font-sans
     font-style: normal
@@ -142,7 +147,6 @@ style:
     title-numbering: true
   h3:
     border-after-style: none
-    color: $brand-color-primary
     color: $brand-color-primary
     font-family: $pdf2-font-sans
     font-size: 14pt
@@ -193,13 +197,16 @@ style:
     background-color: $brand-color-inverse
     border: solid 1pt $brand-color-tertiary
     font-family: $pdf2-font-monospaced
-    font-size: 8pt
+    font-size: 10pt
     keep-together.within-page: always
     space-after: 8pt
   section-title:
     color: $brand-color-primary
+    font-weight: bold
   shortdesc:
     color: $brand-color-primary
+    font-syle: normal
+    font-weight: normal
     font-size: 11pt
     line-height: 1.3
   table:
@@ -216,19 +223,28 @@ style:
     color: $brand-color-primary
     font-family: $pdf2-font-sans
     font-style: normal
-    start-indent: 0
+    start-indent: from-parent(start-indent)
+    space-before: 12pt
   toc-2:
     color: $brand-color-primary
     font-family: $pdf2-font-sans
     font-style: normal
+    start-indent: '9pt + from-parent(start-indent)'
+    space-before: 0pt
   toc-3:
     color: $brand-color-primary
     font-family: $pdf2-font-sans
     font-style: normal
+    start-indent: '25pt + from-parent(start-indent)'
+    space-before: 0pt
   toc-4:
     color: $brand-color-primary
     font-family: $pdf2-font-sans
     font-style: normal
+    start-indent: '30pt + from-parent(start-indent)'
+    space-before: 0pt
+  li:
+    start-indent: body-start()
   varname:
     color: $brand-color-secondary
     font-style: italic
