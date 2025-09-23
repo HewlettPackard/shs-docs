@@ -37,6 +37,29 @@
            <topicref href="user/rendezvous_protocol_configuration.md" format="mdita"/>
        </topicref>
        <topicref href="user/debug_performance_and_failure_issues.md" format="mdita"/>
+       <topicref href="user/collectives/libfabric_cxi_accelerated_collectives.md" format="mdita">
+            <topicref href="user/collectives/overview.md" format="mdita"/>
+            <topicref href="user/collectives/requirements.md" format="mdita"/>
+            <topicref href="user/collectives/basic_application_overview.md" format="mdita"/>
+            <topicref href="user/collectives/collective_functions.md" format="mdita">
+                <topicref href="user/collectives/collective_join.md" format="mdita">
+                    <topicref href="user/collectives/fi_av.md" format="mdita"/>
+                    <topicref href="user/collectives/fi_av_set.md" format="mdita"/>
+                    <topicref href="user/collectives/collective_join.md" format="mdita"/>
+                    </topicref>
+                <topicref href="user/collectives/collective_operations.md" format="mdita">
+                    <topicref href="user/collectives/barrier.md" format="mdita"/>
+                    <topicref href="user/collectives/broadcast.md" format="mdita"/>
+                    <topicref href="user/collectives/reduce.md" format="mdita"/>
+                    <topicref href="user/collectives/allreduce.md" format="mdita"/>
+                    <topicref href="user/collectives/collective_flags.md" format="mdita"/>
+                    <topicref href="user/collectives/collective_operators.md" format="mdita"/>
+                    </topicref>
+                <topicref href="user/collectives/collective_close.md" format="mdita"/>
+            </topicref>
+            <topicref href="user/collectives/environment_variables.md" format="mdita"/>
+            <topicref href="user/collectives/error_codes.md" format="mdita"/>
+        </topicref>
     </topichead>
     <topicref href="user/application_software_overview.md" format="mdita">
        <topicref href="user/hpe_cray_programming_environment.md" format="mdita"/>
