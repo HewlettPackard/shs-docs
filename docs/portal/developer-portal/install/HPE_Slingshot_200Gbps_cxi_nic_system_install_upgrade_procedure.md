@@ -280,8 +280,6 @@ For systems using Mellanox NICs, skip this section and proceed to the [Install a
    other devices, `slingshot-cxi-drivers-install --iommu-group identity` will
    fail to run and `cxi-ss1` will not load.
 
-9. Create a `sysctl` file in `/etc/sysctl.d` using the example provided in the "`sysctl` configuration example" section of the _HPE Slingshot Host Software Administration Guide_. Copy the example `sysctl` file into the image being created.
+9. Boot the new image when it is ready.
 
-10. Boot the new image when it is ready.
-
-11. Apply the post-boot firmware and firmware configuration. General instructions are in the "Update firmware for HPCM and bare metal" section of the _HPE Slingshot Host Software Administration Guide_.
+10. Apply the post-boot firmware and firmware configuration. General instructions are in the "Update firmware for HPCM and bare metal" section of the _HPE Slingshot Host Software Administration Guide_.
