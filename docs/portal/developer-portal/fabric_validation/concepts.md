@@ -120,7 +120,7 @@ NID information is also used by performance utilities and can be used to identif
 ```screen
 # cxi_stat -d cxi0 
 Device: cxi0
-    Description: SS11 200Gb 1P N
+    Description: 400Gb 1P N
     Part Number: <part_number>
     Serial Number: <serial_number>
     FW Version: 1.5.41
@@ -134,13 +134,13 @@ Device: cxi0
         Link loopback: off
         Link media: electrical
         Link MTU: 2112
-        Link speed: BS_200G
+        Link speed: CK_400G
 
         Link state: up
 
 nidXXXXX# cxi_stat --device cxi0
 Device: cxi0
-    Description: SS11 200Gb 2P N
+    Description: 400Gb 2P N
     Part Number: <part_number>
     Serial Number: <serial_number>
     FW Version: 1.5.41
@@ -154,7 +154,7 @@ Device: cxi0
         Link loopback: off
         Link media: electrical
         Link MTU: 2112
-        Link speed: BS_200G
+        Link speed: CK_400G
         Link state: up
 ```
 
@@ -178,7 +178,7 @@ The AMA for device hsn0 in node `elbert-gateway-0097` is `02:00:00:00:07:ea`.
 
 # cxi_stat -d cxi0 
 Device: cxi0
-    Description: SS11 200Gb 1P N
+    Description: 400Gb 1P N
     Part Number: <part_number>
     Serial Number: <serial_number>
     FW Version: 1.5.41
@@ -192,7 +192,7 @@ Device: cxi0
         Link loopback: off
         Link media: electrical
         Link MTU: 2112
-        Link speed: BS_200G
+        Link speed: CK_400G
 ```
 
 AMA for device hsn0 in node `elbert-gateway-0097` is `02:00:00:00:07:ea`.

@@ -1,6 +1,6 @@
 # Retry Handler
 
-Each HPE Slingshot 200Gbps NIC must have a Retry Handler daemon running and they are indexed by device number, such as `cxi0`, `cxi1`, and so on.
+Each HPE Slingshot CXI NIC must have a Retry Handler daemon running and they are indexed by device number, such as `cxi0`, `cxi1`, and so on.
 
 **Note:** These instructions refer to `cxi0` in the example.
 

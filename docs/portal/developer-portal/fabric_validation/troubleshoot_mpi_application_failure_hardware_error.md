@@ -44,7 +44,7 @@ This example illustrates how to analyze an application failure with a `libfabric
 
     ```screen
     Device: cxi3
-        Description: SS11 200Gb 2P N
+        Description: 400Gb 2P N
         Part Number: <part_number>
         Serial Number: <serial_number>
         FW Version: 1.5.40
@@ -58,7 +58,7 @@ This example illustrates how to analyze an application failure with a `libfabric
             Link loopback: off
             Link media: electrical
             Link MTU: 2112
-            Link speed: BS_200G
+            Link speed: CK_400G
             Link state: up
     ```
 

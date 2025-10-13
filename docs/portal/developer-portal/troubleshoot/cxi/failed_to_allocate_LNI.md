@@ -18,4 +18,6 @@ Hugepages        : Disabled
 Failed to allocate LNI: Key has been revoked
 ```
 
-CXI Diagnostic tools need an enabled CXI Service to function properly. If the default CXI Service is (re)enabled, it will be utilized by diagnostic utilities automatically. If it is disabled, a separate CXI Service must be set up for each Node (and each NIC on the node). See "HPE Slingshot 200G NIC security" in the _HPE Slingshot Administration Guide_ for more information on CXI Services.
+CXI Diagnostic tools need an enabled CXI Service to function properly.
+If the default CXI Service is (re)enabled, it will be utilized by diagnostic utilities automatically. If it is disabled, a separate CXI Service must be set up for each Node (and each NIC on the node).
+See "HPE Slingshot CXI NIC security" in the _HPE Slingshot Host Software Administration Guide_ for more information on CXI Services.

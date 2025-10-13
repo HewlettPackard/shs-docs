@@ -14,7 +14,7 @@ WARN: AMA for device hsn0 does not match switch port ID
 DIAG: Contact support for next steps to initialize the adapter with a valid AMA
 cxi0[hsn0]:
 Device: cxi0
-    Description: SS11 200Gb 1P N
+    Description: 400Gb 1P N
     Part Number: <part_number>
     Serial Number: <serial_number>
     FW Version: 1.5.41
@@ -28,7 +28,7 @@ Device: cxi0
         Link loopback: off
         Link media: electrical
         Link MTU: 2112
-        Link speed: BS_200G
+        Link speed: CK_400G
         Link state: up
     Rates:
         Good CW: 39059816.00/s

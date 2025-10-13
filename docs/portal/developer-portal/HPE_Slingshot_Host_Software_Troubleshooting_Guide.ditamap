@@ -64,27 +64,27 @@
         </topicref>
     </topicref>
     <topicref href="troubleshoot/compute/troubleshoot_compute.md" format="mdita"/>
-    <topicref href="troubleshoot/cassini/HPE_Slingshot_200Gbps_NIC.md" format="mdita">
-        <topicref href="troubleshoot/cassini/HPE_Slingshot_200Gbps_NIC_troubleshooting.md"
+    <topicref href="troubleshoot/cassini/HPE_Slingshot_CXI_NIC.md" format="mdita">
+        <topicref href="troubleshoot/cassini/HPE_Slingshot_CXI_NIC_troubleshooting.md"
             format="mdita">
             <topicref
                 href="troubleshoot/cassini/check_and_fix_misconfigured_nonvlan_tagged_ethernet_pcp_settings.md"
                 format="mdita"/>
             <topicref href="troubleshoot/cassini/lldp_mac_address_issue.md" format="mdita"/>
         </topicref>
-        <topicref href="troubleshoot/cassini/HPE_Slingshot_200Gbps_NIC_Host_troubleshooting.md"
+        <topicref href="troubleshoot/cassini/HPE_Slingshot_CXI_NIC_Host_troubleshooting.md"
             format="mdita">
-            <topicref href="troubleshoot/cassini/200gbps_nic_appear_down.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/nic_appear_down.md" format="mdita"/>
             <topicref href="troubleshoot/cassini/retry_handler.md" format="mdita"/>
-            <topicref href="troubleshoot/cassini/200gbps_nic_loopback_mode.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/nic_loopback_mode.md" format="mdita"/>
             <topicref href="troubleshoot/cassini/ethernet_driven_configuration.md" format="mdita"/>
-            <topicref href="troubleshoot/cassini/200gbps_nic_errors.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/nic_errors.md" format="mdita"/>
             <topicref href="troubleshoot/cassini/pcie_interface_troubleshooting.md" format="mdita"/>
             <topicref href="troubleshoot/cassini/ethernet_interface_troubleshooting.md"
                 format="mdita"/>
             <topicref href="troubleshoot/cassini/RDMA_interface_troubleshooting.md" format="mdita"/>
         </topicref>
-        <topicref href="troubleshoot/cassini/HPE_Slingshot_200Gbps_NIC_Firmware_troubleshooting.md"
+        <topicref href="troubleshoot/cassini/HPE_Slingshot_CXI_NIC_Firmware_troubleshooting.md"
             format="mdita">
             <topicref href="troubleshoot/cassini/firmware_update_failure.md" format="mdita"/>
             <topicref href="troubleshoot/cassini/firmware_factory_reset.md" format="mdita"/>

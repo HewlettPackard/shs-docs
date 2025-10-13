@@ -56,7 +56,7 @@ Each storage node consists of two HPE Slingshot HSN interfaces as shown in the f
 
 # cxi_stat
 Device: cxi0
-    Description: SS11 200Gb 1P N
+    Description: 400Gb 1P N
     Part Number: <part_number>
     Serial Number: <serial_number>
     FW Version: 1.5.41
@@ -70,10 +70,10 @@ Device: cxi0
         Link loopback: off
         Link media: electrical
         Link MTU: 2112
-        Link speed: BS_200G
+        Link speed: CK_400G
         Link state: up
 Device: cxi1
-    Description: SS11 200Gb 1P N
+    Description: 400Gb 1P N
     Part Number: <part_number>
     Serial Number: PR11394Q6Z
     FW Version: 1.5.41
@@ -87,7 +87,7 @@ Device: cxi1
         Link loopback: off
         Link media: electrical
         Link MTU: 2112
-        Link speed: BS_200G
+        Link speed: CK_400G
         Link state: up
 #
 ```

@@ -9,7 +9,7 @@
 - uC
   - ATT1_ASIC_PWR_UP_DONE
 
-## 200Gbps NIC State
+## HPE Slingshot CXI NIC State
 
 Healthy
 

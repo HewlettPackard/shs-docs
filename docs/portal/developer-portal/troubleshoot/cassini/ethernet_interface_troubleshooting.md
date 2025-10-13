@@ -1,11 +1,12 @@
 # Ethernet interface troubleshooting
 
-This section describes how to monitor the health of the 200Gbps NIC Ethernet Interface. Standard tools are used to monitor the Ethernet interface health.
+This section describes how to monitor the health of the HPE Slingshot CXI NIC Ethernet Interface.
+Standard tools are used to monitor the Ethernet interface health.
 
 ## `ip`
 
 The `ip` is a standard Linux tool to monitor the state of a Linux network device.
-Use this tool to view the state of the 200Gbps NIC Ethernet interface as follows:
+Use this tool to view the state of the NIC Ethernet interface as follows:
 
 ```screen
 # ip l show hsn0
@@ -22,4 +23,4 @@ This command shows several pieces of important information:
 
 ## ping
 
-Use the standard Linux `ping` command to test basic Ethernet L2 function between a pair of 200Gbps NICs.
+Use the standard Linux `ping` command to test basic Ethernet L2 function between a pair of NICs.

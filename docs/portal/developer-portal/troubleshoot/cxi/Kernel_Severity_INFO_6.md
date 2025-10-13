@@ -14,7 +14,7 @@
 - uC
   - ATT1_UC_RESET
 
-## 200Gbps NIC State
+## HPE Slingshot CXI NIC State
 
 Healthy
 

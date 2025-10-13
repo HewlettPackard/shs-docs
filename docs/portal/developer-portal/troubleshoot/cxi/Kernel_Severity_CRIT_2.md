@@ -12,9 +12,9 @@
   - ATT1_QSFP_EPO_TEMPERATURE
   - ATT1_SENSOR_ALERT - Fatal
 
-## 200Gbps NIC State
+## HPE Slingshot CXI NIC State
 
-200Gbps NIC is unusable. The 200Gbps NIC driver will disable all current access and prevent future access to the impacted device.
+The NIC is unusable. The NIC driver will disable all current access and prevent future access to the impacted device.
 
 ## Actions
 

@@ -19,7 +19,7 @@ Running `cxi_heatsink_check` requires root privileges.
 _**Usage**_
 
 ```screen
-Monitor 200Gbps NIC temperature and power consumption while stressing
+Monitor Cassini NIC temperature and power consumption while stressing
 the chip with RDMA writes.
 Requirements:
   1. The NIC must be able to initiate writes to itself, either by being
@@ -135,7 +135,9 @@ Average BW over 19 GB/s:                     10.31 GB/s  FAIL
 
 **Example high temperature failure:**
 
-This example shows a single failure (**200Gbps NIC 0 Temperature (ASIC_0) under 85°C**). The 200Gbps NIC temperature rose higher than expected, which indicates that heat is not being dissipated properly. In this case the 200Gbps NIC card should be inspected to ensure that the heatsink is properly installed and that the cabinet has adequate cooling. If the problem persists and is local to only one card within the cabinet, then the 200Gbps NIC card should be replaced.
+This example shows a single failure (**NIC 0 Temperature (ASIC_0) under 85°C**). The NIC temperature rose higher than expected, which indicates that heat is not being dissipated properly.
+In this case the NIC card should be inspected to ensure that the heatsink is properly installed and that the cabinet has adequate cooling.
+If the problem persists and is local to only one card within the cabinet, then the NIC card should be replaced.
 
 ```screen
 # cxi_heatsink_check -D 12 -i 2
@@ -172,7 +174,9 @@ Average BW over 19 GB/s:                     21.55 GB/s  PASS
 
 **Example early stop:**
 
-This example illustrates an early exit due to the 200Gbps NIC 0 temperature continuing to climb into an unsafe range. In this case the test is stopped immediately. If the temperature was allowed to continue to climb, the 200Gbps NIC card would execute an Emergency Power Off (EPO). The 200Gbps NIC card should be inspected to ensure that the heatsink is properly installed and that the cabinet has adequate cooling. If the problem persists and is local to only one card within the cabinet, then the 200Gbps NIC card should be replaced.
+This example illustrates an early exit due to the NIC 0 temperature continuing to climb into an unsafe range.
+In this case the test is stopped immediately. If the temperature was allowed to continue to climb, the NIC card would execute an Emergency Power Off (EPO).
+The NIC card should be inspected to ensure that the heatsink is properly installed and that the cabinet has adequate cooling. If the problem persists and is local to only one card within the cabinet, then the NIC card should be replaced.
 
 ```screen
 # cxi_heatsink_check -D 12 -i 1

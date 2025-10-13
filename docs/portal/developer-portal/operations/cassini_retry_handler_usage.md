@@ -1,7 +1,7 @@
 # Usage
 
 The Cassini Retry Handler program (`cxi_rh`) runs as a systemd service and can be controlled via typical `systemctl` commands.
-An instance is spawned for each HPE Slingshot 200Gbps NIC for a given node.
+An instance is spawned for each HPE Slingshot NIC for a given node.
 For instance, `cxi_rh@cxi0`, `cxi_rh@cxi1`, and so on.
 
 Run the following command to query the status of `cxi_rh`.

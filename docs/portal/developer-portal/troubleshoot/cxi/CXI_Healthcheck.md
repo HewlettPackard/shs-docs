@@ -1,10 +1,10 @@
 # CXI HealthCheck
 
-The HPE Slingshot 200Gbps NIC software stack includes the `pycxi-utils` package, which contains a health and diagnostic utility that was developed using the `pycxi` library. This utility can be used to monitor the health and troubleshoot HPE Slingshot 200GB NIC issues.
+The HPE Slingshot NIC software stack includes the `pycxi-utils` package, which contains a health and diagnostic utility that was developed using the `pycxi` library. This utility can be used to monitor the health and troubleshoot HPE Slingshot NIC issues.
 
 ## `cxi_healthcheck`
 
-The `cxi_healthcheck` utility helps you to verify the health of an HPE Slingshot 200GB NIC.
+The `cxi_healthcheck` utility helps you to verify the health of an HPE Slingshot NIC.
 It checks the following items:
 
 - PCIe speed and width
@@ -15,7 +15,7 @@ It checks the following items:
 - Internal loopback mode is disabled
 - Priority Flow Control (PFC) is enabled
 - Acceptable number of link flaps in the past hour (< 5) and the past 10 hours (< 10)
-- Presence of common error messages related to HPE Slingshot 200GB NIC in the kernel log
+- Presence of common error messages related to HPE Slingshot NIC in the kernel log
 - Services (retry handler, etc.) are in a running state (optional)
 - Resource and retry handler leak detection
 - Successful ping from HPE Slingshot 200 GB NIC interface to an external host / interface (optional)

@@ -58,7 +58,7 @@ See the [Appendix](./appendix.md#appendix) for the list of packages to be instal
         WARN: missing RPMs: cray-network-config cray-slingshot-base-link-kmp-cray_shasta_c
         cxi0[hsn0]:
         Device: cxi0
-            Description: SS11 200Gb 1P N
+            Description: 400Gb 1P N
             Part Number: <part_number>
             Serial Number: <serial_number>
             FW Version: 1.5.41
@@ -72,7 +72,7 @@ See the [Appendix](./appendix.md#appendix) for the list of packages to be instal
                 Link loopback: off
                 Link media: electrical
                 Link MTU: 2112
-                Link speed: BS_200G
+                Link speed: CK_400G
                 Link state: up
             Rates:
                 Good CW: 39062920.00/s
@@ -126,7 +126,7 @@ See the [Appendix](./appendix.md#appendix) for the list of packages to be instal
                 Link loopback: off
                 Link media: electrical
                 Link MTU: 2112
-                Link speed: BS_200G
+                Link speed: CK_400G
                 Link state: up
             Rates:
                 Good CW: 39062904.00/s
@@ -205,7 +205,7 @@ See the [Appendix](./appendix.md#appendix) for the list of packages to be instal
         WARN: missing RPMs: cray-network-config cray-slingshot-base-link-kmp-cray_shasta_c
         cxi0[hsn0]:
         Device: cxi0
-            Description: SS11 200Gb 2P N
+            Description: 400Gb 2P N
             Part Number: <part_number>
             Serial Number: <serial_number>
             FW Version: 1.5.41
@@ -219,7 +219,7 @@ See the [Appendix](./appendix.md#appendix) for the list of packages to be instal
                 Link loopback: off
                 Link media: electrical
                 Link MTU: 2112
-                Link speed: BS_200G
+                Link speed: CK_400G
                 Link state: up
             Rates:
                 Good CW: 39062920.00/s

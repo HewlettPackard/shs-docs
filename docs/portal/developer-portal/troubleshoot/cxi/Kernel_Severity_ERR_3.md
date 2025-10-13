@@ -9,9 +9,9 @@
 - uC
   - None
 
-## 200Gbps NIC State
+## HPE Slingshot CXI NIC State
 
-200Gbps NIC is functioning in a degraded state.
+The NIC is functioning in a degraded state.
 
 ## Actions
 

@@ -9,7 +9,7 @@
 - uC
   - None
 
-## 200Gbps NIC State
+## HPE Slingshot CXI NIC State
 
 N/A
 

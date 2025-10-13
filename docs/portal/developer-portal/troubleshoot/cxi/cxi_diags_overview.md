@@ -2,7 +2,7 @@
 
 ## Overview
 
-The 200Gbps NIC software stack includes the libcxi library, which provides a direct interface to the CXI driver. A set of diagnostics has been developed using this library. These can be used to measure performance and troubleshoot 200Gbps NIC issues without using `libfabric`.
+The HPE Slingshot NIC software stack includes the libcxi library, which provides a direct interface to the CXI driver. A set of diagnostics has been developed using this library. These can be used to measure performance and troubleshoot NIC issues without using `libfabric`.
 
 The bandwidth and latency utilities can measure either loopback or point-to-point performance. They can be used to get a quick system-wide snapshot of NIC and link health, as well as highlight switch edge port configuration issues. When used point-to-point they can be helpful in isolating localized problems. Point-to-point runs may also discover switch fabric port configuration issues, though other tools like `dgnettest` are better suited for this purpose.
 

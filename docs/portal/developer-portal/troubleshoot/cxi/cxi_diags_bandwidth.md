@@ -436,7 +436,7 @@ Usage:
   cxi_loopback_bw [OPTIONS]
 
 Options:
-  -d, --device=DEV       200Gbps NIC device (default: "cxi0")
+  -d, --device=DEV       Cassini NIC device (default: "cxi0")
   -v, --svc-id=SVC_ID    Service ID (default: 1)
   -t, --tx-gpu=GPU       GPU index for allocating TX buf (default: no GPU)
   -r, --rx-gpu=GPU       GPU index for allocating RX buf (default: no GPU)

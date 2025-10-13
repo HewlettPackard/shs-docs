@@ -16,7 +16,7 @@
   - ATT1_SENSOR_ALERT - Warning
   - ATT1_SENSOR_ALERT - Critical
 
-## 200Gbps NIC State
+## HPE Slingshot CXI NIC State
 
 Hardware encountered an unexpected condition or state. The ASIC is still functional. Whether traffic can flow or not is dependent on the SERDES state.
 

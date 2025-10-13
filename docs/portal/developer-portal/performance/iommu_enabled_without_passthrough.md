@@ -58,7 +58,7 @@ For `slingshot-cxi-drivers-install` to work, `slingshot-cxi-drivers-install` nee
 
 - HPCM systems:
 
-  Proceed to the "HPE Slingshot 200Gbps CXI NIC system install procedure" procedure in the *HPE Slingshot Host Software Installation and Configuration Guide* for instructions on including `slingshot-cxi-drivers-install`.
+  Proceed to the "Install an HPE Slingshot CXI NIC" procedure in the *HPE Slingshot Host Software Installation and Configuration Guide* for instructions on including `slingshot-cxi-drivers-install`.
 
 ## HPCM compute node optimization setup
 

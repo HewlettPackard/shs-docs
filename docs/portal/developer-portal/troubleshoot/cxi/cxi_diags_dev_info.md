@@ -26,7 +26,7 @@ _**Example**_
 ```screen
 $ cxi_stat -r
 Device: cxi0
-    Description: SS11 200Gb 2P NIC Mezz
+    Description: 400Gb 2P NIC Mezz
     Part Number: P43012-001
     Serial Number: <serial_number>
     FW Version: 1.6.0.326
@@ -39,7 +39,7 @@ Device: cxi0
         Link loopback: off
         Link media: electrical
         Link MTU: 2112
-        Link speed: BS_200G
+        Link speed: CK_400G
         Link state: up
     Rates:
         Good CW: 39066186/s
