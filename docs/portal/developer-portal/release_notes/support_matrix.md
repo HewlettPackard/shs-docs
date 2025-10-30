@@ -77,7 +77,8 @@ Support for Mellanox NIC (SS10) is not included in this release. For systems usi
 
 ## Libfabric Versions
 
-All the Distributions provided with libfabric 2.2.0.
+All distributions are provided with libfabric version 2.3.0, branched from v2.3.x: https://github.com/ofiwg/libfabric/tree/v2.3.x. 
+
 
 ## HPE System Cluster Management Software
 
