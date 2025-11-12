@@ -7,10 +7,25 @@ The HPE Slingshot CXI NIC software stack (200Gbps or 400Gbps) includes drivers a
 The HPE Slingshot CXI NIC software stack must be installed after a base compute OS install has been completed.
 
 A list of HPE Slingshot CXI NIC supported distribution installs can be found in the "Support Matrix" in the _HPE Slingshot Host Software Release Notes (S-9010)_ document. When those have been installed, then proceed with instructions for "Installing HPE Slingshot CXI NIC host software" for that distribution.
+## Install the required RPMs 
 
-## Install the required RPMs
+To install the required RPMs, use either of the following methods:
 
-The following RPMs should be retrieved and installed using the package manager for the distro in use (`zypper`, `yum`, or `dnf`):
+- Meta RPMs
+- Individual RPMs
+  
+  The list of required packages is provided below.
+
+### Use meta RPMs
+
+SHS now provides meta RPMs that simplify installation by including all required SHS packages.
+These meta packages are available only for RHEL and SLES distributions.
+There are two available meta RPMs: `shs-hpcm-dkms` and `shs-hpcm-kmp`.
+Use `shs-hpcm-dkms` for DKMS-based installations, and `shs-hpcm-kmp` for KMP-based installations.
+
+### Use individual RPMs
+
+The following RPMs should be retrieved and installed using the package manager for the distro in use (`zypper`, `yum`, `dnf`, `apt`):
 
 ```screen
 libfabric
@@ -46,12 +61,20 @@ kdreg2-dkms
 shs-version
 ```
 
-**Note:** If a specific version is required, simply specify the versions you want when adding the packages.
-For example, to install a specific libfabric, add the following to the rpmlist:
+**Ubuntu distribution** 
+- If you are using an Ubuntu distribution, all package names ending with `-devel` should be replaced with `-dev`.  For example:  `sl-driver-devel` will become `sl-driver-dev`.
+- `cray-hms-firmware` must be changed to `hms-firmware-serdes`.
+- Only DKMS instalations are supported. 
+
+**Optional:**
+
+If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist. For example, to install a specific libfabric, add the following to the rpmlist:
 
 ```screen
-libfabric-1.x.y.z
-libfabric-devel-1.x.y.z
+echo -e """\
+   libfabric-1.x.y.z
+   libfabric-devel-1.x.y.z
+""" >> ./shs-cxi.rpmlist
 ```
 
 For distributed binary builds, pre-built kernel binaries are available.
