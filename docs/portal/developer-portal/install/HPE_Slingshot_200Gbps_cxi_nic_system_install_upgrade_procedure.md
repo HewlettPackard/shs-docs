@@ -45,115 +45,135 @@ For systems using Mellanox NICs, skip this section and proceed to the [Install a
 
 4. Add SHS RPMs to the CXI image rpmlist.
 
-   ```screen
-   echo -e """\
-      libfabric
-      libfabric-devel
-      sl-driver-devel
-      slingshot-network-config
-      slingshot-firmware-management
-      slingshot-firmware-cassini
-      slingshot-firmware-cassini2
-      slingshot-utils
-      cray-cassini-headers-user
-      cray-cxi-driver-devel
-      cray-cxi-driver-udev
-      cray-diags-fabric
-      cray-hms-firmware
-      cray-kfabric-devel
-      cray-kfabric-udev
-      cray-libcxi
-      cray-libcxi-devel
-      cray-libcxi-utils
-      cray-libcxi-retry-handler
-      cray-slingshot-base-link-devel
-      pycxi
-      pycxi-diags
-      pycxi-utils
-      kdreg2
-      kdreg2-devel
-      shs-version
-   """ > ./shs-cxi.rpmlist
-   ```
+   To install the required RPMs, use either of the following methods:
 
-   **Note:** If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist. For example, to install a specific libfabric, add the following to the rpmlist:
+   - Meta RPMs
+   - Individual RPMs
 
-   ```screen
-   echo -e """\
-      libfabric-1.x.y.z
-      libfabric-devel-1.x.y.z
-   """ >> ./shs-cxi.rpmlist
-   ```
+   1. Using meta RPMs:
+      SHS now provides meta RPMs that simplify installation by including all required SHS packages.
+      These meta packages are available only for RHEL and SLES distributions.
+      There are two available meta RPMs: `shs-hpcm-dkms` and `shs-hpcm-kmp`.
+      Use `shs-hpcm-dkms` for DKMS-based installations and `shs-hpcm-kmp` for KMP-based installations.
 
-   For HPE Slingshot CXI NIC systems, append these additional packages, regardless of the operating system or architecture:
+      Example for DKMS-based installation:
+      
+      ```screen
+      echo -e "shs-hpcm-dkms" > ./shs-cxi.rpmlist
+      ```
 
-   ```screen
-   echo -e """\
-      cray-slingshot-base-link-dkms
-      sl-driver-dkms
-      cray-cxi-driver-dkms
-      cray-kfabric-dkms
-      kdreg2-dkms
-   """ >> ./shs-cxi.rpmlist
-   ```
+   2. Using individual RPMs:
+      The following RPMs should be retrieved and installed using the package manager for the distro in use (`zypper`, `yum`, `dnf`, `apt`). The default SHS installation uses the DKMS-based setup:
 
-   For distributed binary builds, pre-built kernel binaries are available.
-   To use these binaries instead of DKMS packages, follow these steps:
+      ```screen
+      echo -e """\
+         libfabric
+         libfabric-devel
+         sl-driver-devel
+         sl-driver-dkms
+         slingshot-network-config
+         slingshot-firmware-management
+         slingshot-firmware-cassini
+         slingshot-firmware-cassini2
+         slingshot-utils
+         cray-cassini-headers-user
+         cray-cxi-driver-devel
+         cray-cxi-driver-udev
+         cray-cxi-driver-dkms
+         cray-diags-fabric
+         cray-hms-firmware
+         cray-kfabric-devel
+         cray-kfabric-udev
+         cray-kfabric-dkms
+         cray-libcxi
+         cray-libcxi-devel
+         cray-libcxi-utils
+         cray-libcxi-retry-handler
+         cray-slingshot-base-link-devel
+         cray-slingshot-base-link-dkms
+         pycxi
+         pycxi-diags
+         pycxi-utils
+         kdreg2
+         kdreg2-devel
+         kdreg2-dkms
+         shs-version
+      """ > ./shs-cxi.rpmlist
+      ```
 
-   1. Identify the appropriate pre-built binary variant for your distribution.
+      **Ubuntu distribution** 
+      - If you are using an Ubuntu distribution, all package names ending with `-devel` should be replaced with `-dev`.  For example:  `sl-driver-devel` will become `sl-driver-dev`.
+      - `cray-hms-firmware` must be changed to `hms-firmware-serdes`.
+      - Only DKMS instalations are supported. 
 
-      **Note:** DKMS is required for both COS and CSM. The `*-kmp-default` package will not work for these solutions even though they are SLES-based.
+      **Optional:**
 
-      - **SLES** Replace `*-dkms` with `*-kmp-default`.
-      - **RHEL:** Replace `*-dkms` with `kmod-*`.
+      If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist. For example, to install a specific libfabric, add the following to the rpmlist:
 
-   2. Replace the DKMS packages with the corresponding pre-built binary variants.
+      ```screen
+      echo -e """\
+         libfabric-1.x.y.z
+         libfabric-devel-1.x.y.z
+      """ >> ./shs-cxi.rpmlist
+      ```
+   
+      For distributed binary builds, pre-built kernel binaries are available.
+      To use these binaries instead of DKMS packages, follow these steps:
 
-      See one of the following examples depending on the distribution in use:
+      1. Identify the appropriate pre-built binary variant for your distribution.
 
-      - **Example 1:** Replacing DKMS Packages on SLES15 SP5 (x86)
+         **Note:** DKMS is required for both COS and CSM. The `*-kmp-default` package will not work for these solutions even though they are SLES-based.
 
-        If you are installing pre-built kernel modules on SLES15 SP5 for x86 systems, replace the following DKMS packages:
+         - **SLES** Replace `*-dkms` with `*-kmp-default`.
+         - **RHEL:** Replace `*-dkms` with `kmod-*`.
 
-         ```screen
-            cray-slingshot-base-link-dkms
-            sl-driver-dkms
-            cray-cxi-driver-dkms
-            cray-kfabric-dkms
-            kdreg2-dkms
-         ```
+      2. Replace the DKMS packages with the corresponding pre-built binary variants.
 
-         with the corresponding pre-built binaries:
+         See one of the following examples depending on the distribution in use:
 
-         ```screen
-            cray-slingshot-base-link-kmp-default
-            sl-driver-kmp-default
-            cray-cxi-driver-kmp-default
-            cray-kfabric-kmp-default
-            kdreg2-kmp-default
-         ```
+         - **Example 1:** Replacing DKMS Packages on SLES15 SP5 (x86)
 
-      - **Example 2:** Replacing DKMS Packages on RHEL (x86)
+         If you are installing pre-built kernel modules on SLES15 SP5 for x86 systems, replace the following DKMS packages:
 
-         If you are installing pre-built kernel modules on RHEL for x86 systems, replace the following DKMS packages:
+            ```screen
+               cray-slingshot-base-link-dkms
+               sl-driver-dkms
+               cray-cxi-driver-dkms
+               cray-kfabric-dkms
+               kdreg2-dkms
+            ```
 
-         ```screen
-            cray-slingshot-base-link-dkms
-            sl-driver-dkms
-            cray-cxi-driver-dkms
-            cray-kfabric-dkms
-            kdreg2-dkms
-         ```
+            with the corresponding pre-built binaries:
 
-         with the corresponding pre-built binaries:
+            ```screen
+               cray-slingshot-base-link-kmp-default
+               sl-driver-kmp-default
+               cray-cxi-driver-kmp-default
+               cray-kfabric-kmp-default
+               kdreg2-kmp-default
+            ```
 
-         ```screen
-            kmod-cray-slingshot-base-link
-            kmod-sl-driver
-            kmod-cray-cxi-driver
-            kmod-cray-kfabric
-            kmod-kdreg2
-         ```
+         - **Example 2:** Replacing DKMS Packages on RHEL (x86)
+
+            If you are installing pre-built kernel modules on RHEL for x86 systems, replace the following DKMS packages:
+
+            ```screen
+               cray-slingshot-base-link-dkms
+               sl-driver-dkms
+               cray-cxi-driver-dkms
+               cray-kfabric-dkms
+               kdreg2-dkms
+            ```
+
+            with the corresponding pre-built binaries:
+
+            ```screen
+               kmod-cray-slingshot-base-link
+               kmod-sl-driver
+               kmod-cray-cxi-driver
+               kmod-cray-kfabric
+               kmod-kdreg2
+            ```
 
 5. Create or update an image.
 
