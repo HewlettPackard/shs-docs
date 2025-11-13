@@ -95,8 +95,8 @@ For systems using HPE Slingshot CXI NICs, skip this section and instead proceed 
 
    ```screen
    echo -e """\
-      libfabric-1.x.y.z
-      libfabric-devel-1.x.y.z
+      libfabric-x.y.z
+      libfabric-devel-x.y.z
    """ >> ./shs-mlnx.rpmlist
    ```
 
