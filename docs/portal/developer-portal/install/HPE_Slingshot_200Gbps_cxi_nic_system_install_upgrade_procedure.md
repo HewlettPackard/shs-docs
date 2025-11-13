@@ -274,13 +274,6 @@ For systems using Mellanox NICs, skip this section and proceed to the [Install a
       /opt/clmgr/image/images/${IMAGE_NAME}/lib/modprobe.d/10-unsupported-modules.conf
       ```
 
-   - For systems using SLES15 SP3 or earlier:
-
-      ```screen
-      sed -i 's/allow_unsupported_modules 0/allow_unsupported_modules 1/' \
-      /opt/clmgr/image/images/${IMAGE_NAME}/etc/modprobe.d/10-unsupported-modules.conf
-      ```
-
 8. Load the HPE Slingshot drivers with the `slingshot-cxi-drivers-install` script that is provided in the `slingshot-utils` RPM.
    Skip this step if you are not using the `slingshot-cxi-drivers-install` script.
 
