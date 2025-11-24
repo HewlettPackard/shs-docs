@@ -19,8 +19,5 @@
         <topicref href="release_notes/support_matrix.md" format="markdown"/>
     </topicref>
     <topicref href="release_notes/cassini_firmware.md" format="markdown"/>
-    <topicref href="release_notes/Appendix_A_Validate_Slingshot_Software_and_Firmware.md"
-        format="mdita">
-        <topicref href="release_notes/hash_validation_howto.md" format="markdown"/>
-    </topicref>
+    <topicref href="release_notes/hash_validation_howto.md" format="markdown"/>
 </map>

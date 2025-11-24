@@ -50,7 +50,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Install a
    - Meta RPMs
    - Individual RPMs
 
-   1. Using meta RPMs:
+   1. Using meta RPMs(Early Access Feature):
       SHS now provides meta RPMs that simplify installation by including all required SHS packages.
       These meta packages are available only for RHEL and SLES distributions.
       There are two available meta RPMs: `shs-hpcm-dkms` and `shs-hpcm-kmp`.
@@ -61,6 +61,9 @@ For systems using Mellanox NICs, skip this section and proceed to the [Install a
       ```screen
       echo -e "shs-hpcm-dkms" > ./shs-cxi.rpmlist
       ```
+      **Note:** This feature is provided as an **Early Access Feature**. It has been fully tested internally and is planned for general availability in the next release.
+
+      For now, **use with caution**. If the installation fails due to dependencies or other issues, then install the RPMs directly following the "Using individual RPMs" procedure.
 
    2. Using individual RPMs:
       The following RPMs should be retrieved and installed using the package manager for the distro in use (`zypper`, `yum`, `dnf`, `apt`). The default SHS installation uses the DKMS-based setup:
@@ -69,6 +72,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Install a
       echo -e """\
          libfabric
          libfabric-devel
+         sl-driver
          sl-driver-devel
          sl-driver-dkms
          slingshot-network-config

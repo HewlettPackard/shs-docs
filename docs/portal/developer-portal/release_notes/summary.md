@@ -1,16 +1,31 @@
+
 # Summary
 
-Date of Release: February 28, 2024
+Date of Release: December 08, 2025
 
-The HPE Slingshot 2.1.2 release only contains Slingshot Host Software (SHS) packages. The release packages include updated firmware for the HPE Slingshot NIC that may be installed as needed.
+HPE Slingshot Host Software (SHS) version 13.1.0 introduces new hardware enablement, expanded operating system compatibility, feature enhancements, and critical fixes to improve reliability and performance across HPE Slingshot systems.
 
-This HPE Slingshot 2.1.2 release resolves issues in a number of areas for SHS:
+Key Highlights
 
-- A kernel panic was resolved for some systems running SLES15 SP5, RHEL 8.8, or COS 3.0. If sites plan on running SLES15 SP5, RHEL 8.8, or COS 3.0, you will need to update to SHS 2.1.2 to avoid the possibility of the kernel panic. A Customer Advisory is being issued with more details.
-- An updated Cassini UEFI driver firmware (1.5.49) was introduced to address an exception found in 1.5.47. If you are on Cassini firmware 1.5.41, an upgrade is not required. If you do plan to upgrade, skip 1.5.47 and go directly to 1.5.49.
-- Soft-RoCE hangs were resolved by fixing the Ethernet driver transmit queue size.
-- Limitations with appropriate workarounds for systems running the MELLANOX OFED software stack are provided in the release notes.
++ Enhanced DAOS Integration
+    + Added support for configuring Virtual Network Interfaces (VNIs) on DAOS client nodes using mechanisms other than scheduler plug-ins.
 
-HPE recommends all sites running SLES15 SP5, RHEL 8.8, or COS 3.0. upgrade to release 2.1.2 to utilize these fixes. This release is designated as "extended support" in conjunction with other HPE software components.
+    + Increased VNI capacity, enabling configurations requiring more than 256 VNIs.
+
+ + HPE Slingshot 400Gbps Updates
+
+    + Improvements and fixes specific to HPE Slingshot 400Gbps hardware to enhance stability and overall performance.
+    + Updated firmware interactions and improved compatibility with newer OS and driver versions.
+
+ + Switch-Based Collectives Enhancements
+    + Updates to improve reliability and performance of switch-based collective operations.
+ + Reliability and Performance Updates
+    + RGID-related fixes and additional stability improvements.
+    + General performance optimizations across SHS components.
+ + Updated OS and Driver Support
+    + Added ROCm 7.0 and NVIDIA 580.x driver support for SLES 15 SP7, RHEL 8.10, and RHEL 9.6.
+    + Tech Preview: Initial enablement for RHEL 10.0 and Ubuntu 24.04.
+    + DMABUF enabled by default for improved GPU/NIC interoperability.
+ + Soft-RoCE support added for RHEL 9.6 x86 and SLES 15 SP7 x86.
 
 HPE recommends thoroughly reviewing the release notes and readme.txt files before upgrading systems. Note that release notes are specific to each release, so customers should consider reviewing the cumulative set of release notes to understand the net changes.
