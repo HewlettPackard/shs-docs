@@ -18,42 +18,45 @@ This may be a local directory, NFS mount, or an HTTP-accessible path.
 
 2. Update the host operating system (or image) to include a local repository pointing to the directory containing the RPMs. Use the package manager appropriate for your distribution.
 
-**Example: Using RHEL 9.6** 
-   1. Download the Slingshot Host Software package to `/home/SHS`.
-   
-       For example, `slingshot-host-software-13.1.0-43-rhel-9.6_x86_64.tar.gz`.
-   2. Extract the package:  
-      
+**Example: Using RHEL 9.6**
+
+1. Download the Slingshot Host Software package to `/home/SHS`.
+
+   For example, `slingshot-host-software-13.1.0-43-rhel-9.6_x86_64.tar.gz`.
+
+2. Extract the package.
+
+   ```screen
+   tar -xf slingshot-host-software-13.1.0-43-rhel-9.6_x86_64.tar.gz
+   ```
+
+3. Navigate to the RPM directory.
+
+   ```screen
+   cd /home/SHS/slingshot-host-software-13.1.0-43-rhel-9.6_x86_64/rpms/cassini/rhel-9.6/ncn/
+   ```
+
+4. Add a local repository.
+
+   - RHEL (dnf):
+
       ```screen
-      tar -xf slingshot-host-software-13.1.0-43-rhel-9.6_x86_64.tar.gz
+      dnf config-manager --add-repo file:$PWD
       ```
-   4. Navigate to the RPM directory:
-      
-      ```screen
-      cd /home/SHS/slingshot-host-software-13.1.0-43-rhel-9.6_x86_64/rpms/cassini/rhel-9.6/ncn/
-      ```
-   5. Add a local repository:
-      
-      - RHEL (dnf): 
-      
-         ```screen
-         dnf config-manager --add-repo file:$PWD
-         ```
-      
-      - SLES (zypper):
- 
+
+   - SLES (zypper):
+
         ```screen
          zypper ar file://$PWD slingshot-local-repo
          zypper refresh
          ```
       
-      - Ubuntu (apt):
-         
-         ```screen
-         echo "deb [trusted=yes] file:$PWD ./" | sudo tee /etc/apt/sources.list.d/slingshot-local.list
-         sudo apt update
-         ```
+   - Ubuntu (apt):
 
+      ```screen
+      echo "deb [trusted=yes] file:$PWD ./" | sudo tee /etc/apt/sources.list.d/slingshot-local.list
+      sudo apt update
+       ```
 
 To install the required RPMs, use either of the following methods:
 
@@ -62,7 +65,7 @@ To install the required RPMs, use either of the following methods:
   
   The list of required packages is provided below.
 
-### Use meta RPMs(Early Access Feature)
+## Use meta RPMs (Early Access Feature)
 
 SHS now provides meta RPMs that simplify installation by including all required SHS packages.
 These meta packages are available only for RHEL and SLES distributions.
@@ -72,7 +75,7 @@ Use `shs-hpcm-dkms` for DKMS-based installations, and `shs-hpcm-kmp` for KMP-bas
 
 For now, **use with caution**. If the installation fails due to dependencies or other issues, then install the RPMs directly following the "Use individual RPMs" procedure.
 
-### Use individual RPMs
+## Use individual RPMs
 
 The following RPMs should be retrieved and installed using the package manager for the distro in use (`zypper`, `yum`, `dnf`, `apt`):
 
@@ -111,14 +114,13 @@ kdreg2-dkms
 shs-version
 ```
 
-**Ubuntu distribution** 
+**Ubuntu distribution**
+
 - If you are using an Ubuntu distribution, all package names ending with `-devel` should be replaced with `-dev`.  For example:  `sl-driver-devel` will become `sl-driver-dev`.
 - `cray-hms-firmware` must be changed to `hms-firmware-serdes`.
-- Only DKMS instalations are supported. 
+- Only DKMS instalations are supported.
 
-**Optional:**
-
-If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist. For example, to install a specific libfabric, add the following to the rpmlist:
+**Optional:** If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist. For example, to install a specific libfabric, add the following to the rpmlist:
 
 ```screen
 libfabric-x.y.z
@@ -181,7 +183,7 @@ To use these binaries instead of DKMS packages, follow these steps:
       kmod-kdreg2
       ```
 
-## Post Install 
+## Post Install
 
 After installing the required RPMs, the system must be configured to allow
 'unsupported' kernel modules before the drivers can be loaded. Edit
@@ -191,7 +193,7 @@ After installing the required RPMs, the system must be configured to allow
 # echo "allow_unsupported_modules 1" > /etc/modprobe.d/10-unsupported-modules.conf
 ```
 
-**RHEL-10 no longer recognizes this directive.** 
+**RHEL-10 no longer recognizes this directive.**
 
 For RHEL-10, unsigned kernel modules cannot load if Secure Boot is enabled. 
 
@@ -220,20 +222,22 @@ manually loaded with the following commands:
 
 ## Install validation
 
-1. DKMS Validation
-   After installing the HPE Slingshot CXI NIC host software, verify that all Dynamic Kernel Module Support (DKMS) components are correctly installed and built for the running kernel.
-   
+1. Validate the Dynamic Kernel Module Support (DKMS) components.
+
+   After installing the HPE Slingshot CXI NIC host software, verify that all DKMS components are correctly installed and built for the running kernel.
+
    a. List the installed DKMS modules.
 
       Run the following command to display all DKMS-managed modules and their build status:
-      
+
       ```screen
       dkms status
       ```
+
    b. Verify that there are entries similar to the following for the HPE Slingshot components:
-      
+
       Example RHEL-9.6 aarch64:
-      
+
       ```screen
       [root@cn-0001 ~]# dkms status
       cray-cxi-driver/1.0.0-SHS13.1.0_20251104073917_c6c980d7382c, 5.14.0-570.12.1.el9_6.aarch64, aarch64: installed
@@ -244,8 +248,8 @@ manually loaded with the following commands:
       [root@cn-0001 ~]#
       ```
 
-   c. (Optional) If any HPE Slingshot module is missing, built for the wrong kernel, or not installed, rebuild and reinstall the affected module using: 
-   
+   c. (Optional) If any HPE Slingshot module is missing, built for the wrong kernel, or not installed, rebuild and reinstall the affected module using:
+
       ```screen
          for m in cray-slingshot-base-link kdreg2 sl-driver cray-cxi-driver cray-kfabric; do
             ver=$(dkms status | grep $m | awk '{print $1}' | cut -d'/' -f2 | cut -d':' -f1)
@@ -256,9 +260,9 @@ manually loaded with the following commands:
       ```
 
 2. Verify functionality using the `cxi_stat` utility.
-   
-   Example output using `cxi_stat`: 
-   
+
+   Example output using `cxi_stat`:
+
    ```screen
       cn-0012:~ # cxi_stat
       Device: cxi0
@@ -280,7 +284,6 @@ manually loaded with the following commands:
             Link state: up
       cn-0012:~ #
    ```
-
 
 3. Validate the SHS installation.
 
@@ -334,8 +337,6 @@ When running in such a configuration, note the following caveats:
 Due to these caveats, it is recommended that the `cray-libcxi-dracut` RPM only
 be installed on systems whose configurations require HPE Slingshot CXI NIC support in early
 boot.
-
-
 
 ## HPE Slingshot CXI NIC firmware management
 
