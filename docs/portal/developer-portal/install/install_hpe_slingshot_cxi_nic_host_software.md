@@ -24,19 +24,19 @@ This may be a local directory, NFS mount, or an HTTP-accessible path.
 
    For example, `slingshot-host-software-13.1.0-43-rhel-9.6_x86_64.tar.gz`.
 
-2. Extract the package:  
+2. Extract the package.
 
    ```screen
    tar -xf slingshot-host-software-13.1.0-43-rhel-9.6_x86_64.tar.gz
    ```
 
-3. Navigate to the RPM directory:
+3. Navigate to the RPM directory.
 
    ```screen
    cd /home/SHS/slingshot-host-software-13.1.0-43-rhel-9.6_x86_64/rpms/cassini/rhel-9.6/ncn/
    ```
 
-4. Add a local repository:
+4. Add a local repository.
 
    - RHEL (dnf):
 
@@ -46,19 +46,17 @@ This may be a local directory, NFS mount, or an HTTP-accessible path.
 
    - SLES (zypper):
 
-      ```screen
-      zypper ar file://$PWD slingshot-local-repo
-      zypper refresh
-      ```
-
+        ```screen
+         zypper ar file://$PWD slingshot-local-repo
+         zypper refresh
+         ```
+      
    - Ubuntu (apt):
 
       ```screen
       echo "deb [trusted=yes] file:$PWD ./" | sudo tee /etc/apt/sources.list.d/slingshot-local.list
       sudo apt update
-      ```
-
-## Install the required RPMs 
+       ```
 
 To install the required RPMs, use either of the following methods:
 
@@ -67,7 +65,7 @@ To install the required RPMs, use either of the following methods:
   
   The list of required packages is provided below.
 
-### Use meta RPMs(Early Access Feature)
+## Use meta RPMs (Early Access Feature)
 
 SHS now provides meta RPMs that simplify installation by including all required SHS packages.
 These meta packages are available only for RHEL and SLES distributions.
@@ -77,7 +75,7 @@ Use `shs-hpcm-dkms` for DKMS-based installations, and `shs-hpcm-kmp` for KMP-bas
 
 For now, **use with caution**. If the installation fails due to dependencies or other issues, then install the RPMs directly following the "Use individual RPMs" procedure.
 
-**Use individual RPMs**
+## Use individual RPMs
 
 The following RPMs should be retrieved and installed using the package manager for the distro in use (`zypper`, `yum`, `dnf`, `apt`):
 
@@ -116,14 +114,13 @@ kdreg2-dkms
 shs-version
 ```
 
-**Ubuntu distribution** 
+**Ubuntu distribution**
+
 - If you are using an Ubuntu distribution, all package names ending with `-devel` should be replaced with `-dev`.  For example:  `sl-driver-devel` will become `sl-driver-dev`.
 - `cray-hms-firmware` must be changed to `hms-firmware-serdes`.
-- Only DKMS instalations are supported. 
+- Only DKMS instalations are supported.
 
-**Optional:**
-
-If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist. For example, to install a specific libfabric, add the following to the rpmlist:
+**Optional:** If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist. For example, to install a specific libfabric, add the following to the rpmlist:
 
 ```screen
 libfabric-x.y.z
@@ -186,7 +183,7 @@ To use these binaries instead of DKMS packages, follow these steps:
       kmod-kdreg2
       ```
 
-## Post Install 
+## Post Install
 
 After installing the required RPMs, the system must be configured to allow
 'unsupported' kernel modules before the drivers can be loaded. Edit
@@ -196,7 +193,7 @@ After installing the required RPMs, the system must be configured to allow
 # echo "allow_unsupported_modules 1" > /etc/modprobe.d/10-unsupported-modules.conf
 ```
 
-**RHEL-10 no longer recognizes this directive.** 
+**RHEL-10 no longer recognizes this directive.**
 
 For RHEL-10, unsigned kernel modules cannot load if Secure Boot is enabled. 
 
@@ -225,8 +222,9 @@ manually loaded with the following commands:
 
 ## Install validation
 
-1. DKMS Validation
-   After installing the HPE Slingshot CXI NIC host software, verify that all Dynamic Kernel Module Support (DKMS) components are correctly installed and built for the running kernel.
+1. Validate the Dynamic Kernel Module Support (DKMS) components.
+
+   After installing the HPE Slingshot CXI NIC host software, verify that all DKMS components are correctly installed and built for the running kernel.
 
    a. List the installed DKMS modules.
 
