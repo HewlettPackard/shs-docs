@@ -62,12 +62,15 @@ To install the required RPMs, use either of the following methods:
   
   The list of required packages is provided below.
 
-### Use meta RPMs
+### Use meta RPMs(Early Access Feature)
 
 SHS now provides meta RPMs that simplify installation by including all required SHS packages.
 These meta packages are available only for RHEL and SLES distributions.
 There are two available meta RPMs: `shs-hpcm-dkms` and `shs-hpcm-kmp`.
 Use `shs-hpcm-dkms` for DKMS-based installations, and `shs-hpcm-kmp` for KMP-based installations.
+**Note:** This feature is provided as an **Early Access Feature**. It has been fully tested internally and is planned for general availability in the next release.
+
+For now, **use with caution**. If the installation fails due to dependencies or other issues, then install the RPMs directly following the "Use individual RPMs" procedure.
 
 ### Use individual RPMs
 
@@ -76,6 +79,7 @@ The following RPMs should be retrieved and installed using the package manager f
 ```screen
 libfabric
 libfabric-devel
+sl-driver
 sl-driver-devel
 sl-driver-dkms
 slingshot-network-config
