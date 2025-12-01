@@ -35,6 +35,7 @@
            <topicref href="user/expected_number_of_ranks_and_peers.md" format="mdita"/>
            <topicref href="user/tag_matching_mode_settings.md" format="mdita"/>
            <topicref href="user/rendezvous_protocol_configuration.md" format="mdita"/>
+           <topicref href="user/linkx_provider.md" format="mdita"/>
        </topicref>
        <topicref href="user/debug_performance_and_failure_issues.md" format="mdita"/>
        <topicref href="user/collectives/libfabric_cxi_accelerated_collectives.md" format="mdita">
