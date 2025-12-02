@@ -117,6 +117,7 @@ shs-version
 **Ubuntu distribution**
 
 - If you are using an Ubuntu distribution, all package names ending with `-devel` should be replaced with `-dev`.  For example:  `sl-driver-devel` will become `sl-driver-dev`.
+   - Exception: cray-libcxi-devel remains unchanged on Ubuntu. This is a known bug in SHS v13.1.0 and will be fixed in the next release.
 - `cray-hms-firmware` must be changed to `hms-firmware-serdes`.
 - Only DKMS instalations are supported.
 
@@ -193,9 +194,9 @@ After installing the required RPMs, the system must be configured to allow
 # echo "allow_unsupported_modules 1" > /etc/modprobe.d/10-unsupported-modules.conf
 ```
 
-**RHEL-10 no longer recognizes this directive.**
+**RHEL-10 and Ubuntu no longer recognizes this directive.**
 
-For RHEL-10, unsigned kernel modules cannot load if Secure Boot is enabled. 
+For RHEL-10 and Ubuntu, unsigned kernel modules cannot load if Secure Boot is enabled. 
 
 To check the current status:
 
