@@ -107,6 +107,7 @@ For systems using Mellanox NICs, skip this section and proceed to the [Install a
 
       **Ubuntu distribution** 
       - If you are using an Ubuntu distribution, all package names ending with `-devel` should be replaced with `-dev`.  For example:  `sl-driver-devel` will become `sl-driver-dev`.
+        - Exception: cray-libcxi-devel remains unchanged on Ubuntu. This is a known bug in SHS v13.1.0 and will be fixed in the next release.
       - `cray-hms-firmware` must be changed to `hms-firmware-serdes`.
       - Only DKMS instalations are supported. 
 
