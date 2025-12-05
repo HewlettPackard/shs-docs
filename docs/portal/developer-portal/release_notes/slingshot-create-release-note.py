@@ -58,7 +58,7 @@ QUERY_FILTERS = { NS_NEW_FEATURES     : 'filter = shs-v13.1.0-release-notes-feat
                   NS_KNOWN_ISSUES     : 'filter = shs-v13.1.0-release-notes-known-issues',
                   NS_BREAKING_CHANGES : 'filter = shs-v13.1.0-release-notes-breaking-changes',
                   NS_SECURITY_ISSUES  : 'filter = shs-v13.1.0-release-notes-security-complete',
-                  NS_SUMMARY          : 'filter = shs-v13.1.0-release-notes-summary' }
+                  NS_SUMMARY          : 'filter = shs-v14.0.0-release-notes-summary' }
 
 QUERY_FIELDS  = { NS_NEW_FEATURES     : [ JIRA_FIELD_ID, JIRA_FIELD_SUMMARY, JIRA_FIELD_RISK_AND_ISSUES, JIRA_FIELD_EVALUATED_PROBLEM_DESCRIPTION ],
                   NS_RESOLVED_ISSUES  : [ JIRA_FIELD_ID, JIRA_FIELD_SUMMARY, JIRA_FIELD_RISK_AND_ISSUES, JIRA_FIELD_COMPONENTS, JIRA_FIELD_AFFECTS_VERSIONS ],
