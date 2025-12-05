@@ -16,26 +16,29 @@ Advisory: older platform targets (i.e. SLE 15 SP4, COS 2.X, CSM 1.3.X, RHEL 8.9)
 
 The following table shows operating system distribution support across SHS releases.
 
-| Item / Distribution | SHS v12.0.0 | SHS v13.0.0  | SHS v13.1.0  | SHS v14.0.0  |
-|---------------------|-------------|--------------|--------------|--------------|
-| Release Date        | Released    | Released     | Dec 2025     | March 2026   |
-|                     |             |              |              |              |
-| RHEL 8.10           | Supported   | Supported    | Supported    | Planned      |
-|                     |             |              |              |              |
-| RHEL 9.4            | Supported   | Supported    |              |              |
-| RHEL 9.5            | Supported   | Supported    | Supported    |              |
-| RHEL 9.6            |             | Supported    | Supported    | Planned      |
-| RHEL 9.7            |             |              |              | Planned      |
-|                     |             |              |              |              |
-| RHEL 10.0           |             |              | Supported*   | Planned      |
-|                     |             |              |              |              |
-| SLES 15 SP5         | Supported   |              |              |              |
-| SLES 15 SP6         | Supported   | Supported    | Supported    | TBD          |
-| SLES 15 SP7         |             | Supported    | Supported    | Planned      |
-|                     |             |              |              |              |
-| Ubuntu 24.04        |             |              | Supported*   | Planned      |
+| Item / Distribution | SHS v13.0.0 |  SHS v13.1.0  |  SHS v14.0.0  | SHS v15.0.0 |
+|---------------------|-------------|---------------|---------------|-------------|
+| **Release Date**    | Released    | Dec 2025      | March 2026    | Planned     |
+|                     |             |               |               |             |
+| **RHEL 8.10**       | Supported   | Supported     | Supported     | Planned     |
+|                     |             |               |               |             |
+| **RHEL 9.4**        | Supported   |               |               |             |
+| **RHEL 9.5**        | Supported   | Supported     |               |             |
+| **RHEL 9.6**        | Supported   | Supported     | Supported     | Planned     |
+| **RHEL 9.7**        |             |               | Supported     | Planned     |
+|                     |             |               |               |             |
+| **RHEL 10.0**       |             | Tech-Preview  | Supported     |             |
+| **RHEL 10.1**       |             |               |               | Planned     |
+|                     |             |               |               |             |
+| **SLES 15 SP5**     |             |               |               |             |
+| **SLES 15 SP6**     | Supported   | Supported     | Supported*    |             |
+| **SLES 15 SP7**     | Supported   | Supported     | Supported     | Planned     |
+|                     |             |               |               |             |
+| **Ubuntu 24.04**    |             | Tech-Preview  | Supported     | Planned     |
 
-\* Supported as Tech-Preview. 
+
+\* Support is provided only while the OS remains supported by the distribution vendor. We make a best-effort to enable compatibility, but builds may not be possible if the vendor does not supply necessary dependency packages.
+
 
 ## Fabric Manager and HPE Slingshot Host Software Release Compatibility
 
@@ -49,6 +52,7 @@ In the following table, **FM/SA Version** stands for the Fabric Manager and Swit
 | **SHS-12.0.2** |   Supported   |     R-A-B     |   Supported   | Incompatible  |
 | **SHS-13.0.0** |   Supported   |   Supported   |     R-A-B     |   Supported   |
 | **SHS-13.1.0** |   Supported   |   Supported   |   Supported   |   Supported   |
+| **SHS-14.0.0** |   Supported   |   Supported   |   Supported   |   Supported   |
 
 
 \*\* The combination is supported, but the new FMN features added in later versions will not be available.
@@ -75,32 +79,37 @@ The following table lists the **AMD** and **ROCM** versions included in this rel
 | Distribution             | Versions  | ROCM Version | CUDA Driver Version | Nvidia SDK |
 |--------------------------|-----------|--------------|---------------------|------------|
 | Red Hat Enterprise Linux | 8.10      | 7.0          | 580.95.05           | 25.09      |
-| Red Hat Enterprise Linux | 9.5       | 6.3.0        | 565.57.01           | 24.11      |
-| Red Hat Enterprise Linux | 9.5 ARM   | NA           | 565.57.01           | 24.11      |
 | Red Hat Enterprise Linux | 9.6       | 7.0          | 580.65.06           | 25.09      |
 | Red Hat Enterprise Linux | 9.6 ARM   | NA           | 580.65.06           | 25.09      |
+| Red Hat Enterprise Linux | 9.7       | 7.0          | 580.65.06           | 25.09      |
+| Red Hat Enterprise Linux | 9.7 ARM   | NA           | 580.65.06           | 25.09      |
 | Red Hat Enterprise Linux | 10.0      | 7.0.2        | 580.82.07           | 25.09      |
 | Red Hat Enterprise Linux | 10.0 ARM  | NA           | 580.65.06           | 25.09      |
 | SuSE Linux Enterprise 15 | SP6       | 6.4          | 570.124.06          | 25.05      |
 | SuSE Linux Enterprise 15 | SP6 ARM   | NA           | 570.124.06          | 25.05      |
 | SuSE Linux Enterprise 15 | SP7       | 7.0          | 580.65.06           | 25.09      |
 | SuSE Linux Enterprise 15 | SP7 ARM   | NA           | 580.65.06           | 25.09      |
+| Ubuntu                   | 24.04     | 7.0          | 580.65.06           | 25.09      |
+| Ubuntu                   | 24.04 ARM | NA           | 580.65.06           | 25.09      |
 
 ## NIC Support
 
 Support for Mellanox NIC (SS10) is not included in this release. For systems using HPE Slingshot 100Gbps NICs, continue using Slingshot Host Software (SHS) v12.0.x.
 
-| Distribution             | Versions | Mellanox NIC | Mellanox Version | HPE Slingshot Ethernet 200Gb | HPE Slingshot Ethernet 400Gb |
-|--------------------------|----------|--------------|------------------|------------------------------|------------------------------|
-| Red Hat Enterprise Linux | 8.10     | No           | Not Supported    | Yes                          | No                           |
-| Red Hat Enterprise Linux | 9.5      | No           | Not Supported    | Yes                          | No                           |
-| Red Hat Enterprise Linux | 9.5 ARM  | No           | Not Supported    | Yes                          | No                           |
-| Red Hat Enterprise Linux | 9.6      | No           | Not Supported    | Yes                          | Yes                          |
-| Red Hat Enterprise Linux | 9.6 ARM  | No           | Not Supported    | Yes                          | Yes                          |
-| SuSE Linux Enterprise 15 | SP6      | No           | Not Supported    | Yes                          | No                           |
-| SuSE Linux Enterprise 15 | SP6 ARM  | No           | Not Supported    | Yes                          | No                           |
-| SuSE Linux Enterprise 15 | SP7      | No           | Not Supported    | Yes                          | Yes                          |
-| SuSE Linux Enterprise 15 | SP7 ARM  | No           | Not Supported    | Yes                          | Yes                          |
+| Distribution             | Versions  | Mellanox NIC | Mellanox Version | HPE Slingshot Ethernet 200Gb | HPE Slingshot Ethernet 400Gb |
+|--------------------------|-----------|--------------|------------------|------------------------------|------------------------------|
+| Red Hat Enterprise Linux | 8.10      | No           | Not Supported    | Yes                          | No                           |
+| Red Hat Enterprise Linux | 9.6       | No           | Not Supported    | Yes                          | Yes                          |
+| Red Hat Enterprise Linux | 9.6 ARM   | No           | Not Supported    | Yes                          | Yes                          |
+| Red Hat Enterprise Linux | 9.7       | No           | Not Supported    | Yes                          | Yes                          |
+| Red Hat Enterprise Linux | 9.7 ARM   | No           | Not Supported    | Yes                          | Yes                          |
+| SuSE Linux Enterprise 15 | SP6       | No           | Not Supported    | Yes                          | No                           |
+| SuSE Linux Enterprise 15 | SP6 ARM   | No           | Not Supported    | Yes                          | No                           |
+| SuSE Linux Enterprise 15 | SP7       | No           | Not Supported    | Yes                          | Yes                          |
+| SuSE Linux Enterprise 15 | SP7 ARM   | No           | Not Supported    | Yes                          | Yes                          |
+| Ubuntu                   | 24.04     | No           | Not Supported    | Yes                          | Yes                          |
+| Ubuntu                   | 24.04 ARM | No           | Not Supported    | Yes                          | Yes                          |
+
 
 
 ## Libfabric Versions
@@ -119,26 +128,24 @@ The following cluster manager software compatibility information is for referenc
 
 _**Compute Node Image and Cluster Management Software Compatibility**_
 
-| Distribution             | Versions | Cray EX(CSM) | HPCM  |
-|--------------------------|----------|--------------|-------|
-| Red Hat Enterprise Linux | 8.10     | NA           | 1.11+ |
-| Red Hat Enterprise Linux | 9.3 ARM  | NA           | 1.10+ |
-| Red Hat Enterprise Linux | 9.5      | NA           | 1.13+ |
-| Red Hat Enterprise Linux | 9.5 ARM  | NA           | 1.13+ |
-| Red Hat Enterprise Linux | 9.6      | NA           | 1.14+ |
-| Red Hat Enterprise Linux | 9.6 ARM  | NA           | 1.14+ |
-| SuSE Linux Enterprise 15 | SP5      | NA           | 1.11+ |
-| SuSE Linux Enterprise 15 | SP5 ARM  | NA           | 1.11+ |
-| SuSE Linux Enterprise 15 | SP6      | 1.6.X*       | 1.12+ |
-| SuSE Linux Enterprise 15 | SP6 ARM  | 1.6.X*       | 1.12+ |
-| SuSE Linux Enterprise 15 | SP7      | 1.7.X*       | 1.14+ |
-| SuSE Linux Enterprise 15 | SP7 ARM  | 1.7.X*       | 1.14+ |
+| Distribution             | Versions  | Cray EX(CSM) | HPCM  |
+|--------------------------|-----------|--------------|-------|
+| Red Hat Enterprise Linux | 8.10      | NA           | 1.11+ |
+| Red Hat Enterprise Linux | 9.6       | NA           | 1.14+ |
+| Red Hat Enterprise Linux | 9.6 ARM   | NA           | 1.14+ |
+| Red Hat Enterprise Linux | 9.7       | NA           | 1.14+ |
+| Red Hat Enterprise Linux | 9.7 ARM   | NA           | 1.14+ |
+| SuSE Linux Enterprise 15 | SP6       | 1.6.X*       | 1.12+ |
+| SuSE Linux Enterprise 15 | SP6 ARM   | 1.6.X*       | 1.12+ |
+| SuSE Linux Enterprise 15 | SP7       | 1.7.X*       | 1.14+ |
+| SuSE Linux Enterprise 15 | SP7 ARM   | 1.7.X*       | 1.14+ |
+| Ubuntu                   | 24.04     | NA           | 1.14+ |
+| Ubuntu                   | 24.04 ARM | NA           | 1.14+ |
 
 **Note:** For CSM systems, installations of HPE Slingshot 100Gbps NICs on worker nodes are only supported up to the CSM 1.6 release.
 
 \+ Any versions released after the listed version are supported.
 
-\* Cray System Management (CSM) and Cray Operating System (COS) are tightly coupled, meaning each version of COS is specifically supported by a corresponding version of CSM. For instance, COS-2.5 should only be installed with CSM-1.4 and any CSM-1.4.x version.
 
 
 ## Soft-RoCE Support
