@@ -30,8 +30,7 @@ Each of the traditional monitors has advantages and disadvantages. Memhooks are 
 
 By default, HPE Slingshot uses the memhooks monitor unless set otherwise with the appropriate Libfabric environment variable. Also, HPE guides to select userfaultfd for applications that use NCCL or RCCL collectives libraries as they can hang at scale under memhooks.
 
-To overcome many of the previously described limitations as well as avoiding the need to configure this per-application, HPE introduced kdreg2 as a third memory cache monitor. kdreg2 is provided as a Linux kernel module and uses an open-source licensing model.
-As of the date of this note, it ships in the HPE Slingshot Host Software distribution and is optionally installed.
+To overcome many of the previously described limitations as well as avoiding the need to configure this per-application, HPE introduced kdreg2 as a third memory cache monitor. kdreg2 is provided as a Linux kernel module and uses an open-source licensing model. It currently ships in the HPE Slingshot Host Software distribution and is optionally installed.
 Future releases may install this by default, and eventually HPE expects HPE Slingshot NIC Libfabric provider to select kdreg2 by default instead of memhooks.
 
 kdreg2 uses kernel mechanisms to monitor mapping changes and provides synchronous notification to the memory registration cache. It can report changes at the byte level to any memory within the application’s virtual address space.
@@ -44,10 +43,13 @@ kdreg2 has been successfully deployed with enhanced performance for some weather
 There can be performance differences between the memory registration cache monitors as described above. In general, HPE has not characterized the range of applications to evaluate performance enhancement observed using kdreg2 versus memhooks and userfaultfd.
 But in all cases the performance of successful execution with memory registration cache is substantial over execution without caching. kdreg2 is HPE’s solution to allow more applications to enjoy the benefits of memory registration cache.
 
-The size of the memory registration cache is one of the most important parameters affecting performance when caching is employed. Since the primary users of Libfabric are communication collective libraries such as SHMEM and MPI, the user may not be aware of the presence of Libfabric nor of its configuration via environment variables. Users should be aware that the default values are set relatively low to accommodate development systems and non-supercomputer environments. It should be noted, however, that HPE communication collectives such as Cray MPI increase the size of the cache by default.
+The size of the memory registration cache is one of the most important parameters affecting performance when caching is employed.
+Since the primary users of Libfabric are communication collective libraries such as SHMEM and MPI, the user may not be aware of the presence of Libfabric nor of its configuration via environment variables.
+The Libfabric default values are set relatively low to accommodate development systems and non-supercomputer environments, but if the values have not been set via the environment, the CXI provider will increase the values to be more suitable for large scale supercomputing environments.
+It should be noted, however, that HPE communication collectives such as Cray MPI may further increase the size of the cache by default.
 
-In summary, kdreg2 is available as an additional memory cache monitor that can enable applications that otherwise use memory registration caching to achieve a performance advantage.  
+In summary, kdreg2 is available as an additional memory cache monitor that can enable applications that otherwise use memory registration caching to achieve a performance advantage.
+
 For sites that run a mix of HPC applications under the default memhooks while setting NCCL and RCCL applications to userfaultfd, setting the default configuration to kdreg2 may simplify operations by eliminating this per-application setting.
 
-Starting in SHS release 12.0.0, kdreg2 is installed by default.
-
+Starting in SHS release 12.0.0, the kdreg2 kernel module is included in the install, but Libfabric still defaults to the memhooks monitor unless the build is explicitly configured with a different default (`--with-default-monitor`) or the user overrides it at runtime via the Libfabric environment variable.
