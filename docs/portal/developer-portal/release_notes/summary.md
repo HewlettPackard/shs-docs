@@ -1,7 +1,7 @@
 
 # Summary
 
-Date of Release: December 18, 2025
+Date of Release: January 19, 2026
 
 HPE Slingshot Host Software (SHS) version 13.1.0 introduces new hardware enablement, expanded operating system compatibility, feature enhancements, and critical fixes to improve reliability and performance across HPE Slingshot systems.
 
