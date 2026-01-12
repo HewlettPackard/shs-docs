@@ -17,7 +17,7 @@ HPE Slingshot Host Software 13.1.0 Key Highlights
 
 + Enhanced DAOS Integration
 
-   + Support for configuring VNIs on DAOS client nodes through mechanisms other than scheduler plug-ins
+   + Added support for configuring DAOS Servers with Virtual Network Identifier (VNI) ranges to allow communication utilizing unique VNIs per DAOS client.
 
    + Increased VNI capacity beyond 256
 
