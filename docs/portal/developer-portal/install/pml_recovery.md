@@ -2,7 +2,7 @@
 
 Starting in the Slingshot Host Software (SHS) 11.1.0 release, PML recovery is supported for edge links. Edge links of earlier SHS versions will flap instead of recovering.
 
-**Note:** PML recovery is only available for HPE Slingshot 200Gbps NICs; it is not available for Mellanox NICs.
+**Note:** PML recovery is only available for HPE Slingshot 200Gbps NICs.
 
 PML recovery is disabled by default and must be enabled on the fabric before configuring it on the host. See the [PML recovery on the fabric](#./pml-recovery-on-the-fabric) section.
 
