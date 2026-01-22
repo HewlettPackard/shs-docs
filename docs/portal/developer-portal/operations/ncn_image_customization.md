@@ -50,9 +50,7 @@ The following steps describe how to use the NCN CFS configuration in conjunction
    - Replace `<git commit hash>` with the value saved in `${SHS_CONFIG_COMMIT_HASH}`.
    - Replace `<name of the CFS layer>` with `shs-integration-<release>`.
    - Replace `<release>` with the release of SHS that is being installed or updated to.
-   - Replace `<ansible playbook to run>` with one of the following:
-     - `shs_cassini_install.yml` if the HPE Slingshot 200Gbps NIC software stack should be installed or updated.
-     - `shs_mellanox_install.yml` if the Mellanox software stack should be installed or updated.
+   - Replace `<ansible playbook to run>` with `shs_cassini_install.yml` if the HPE Slingshot CXI NIC software stack should be installed or updated.
 
 3. Update the Configuration Framework Service (CFS) Session with the new SHS configuration.
 
