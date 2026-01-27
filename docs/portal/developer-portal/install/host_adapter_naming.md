@@ -18,7 +18,21 @@ The example dracut file can be found here:
 
 `/opt/slingshot/slingshot-network-config/default/share/dracut/99-slingshot-network-udev/module-setup.sh`
 
-To integrate these files into the image:
+**Ubuntu only:** Verify if the path `/opt/slingshot/slingshot-network-config/default/bin/` is valid.
+On some installs (for example, SHS‑13.1 on Ubuntu) the default symlink is missing or incorrect. If the path is invalid, create a symlink named default that points to the correct versioned directory, and then restart the `slingshot-ifroute service` so the change takes effect.
+
+**Caution:** Avoid adding the following step in the system image. The user must apply this workaround after booting the node.
+
+```screen
+export CONFIG_PATH="/opt/slingshot/slingshot-network-config"
+if [ -L "${CONFIG_PATH}/default" ]; then
+    rm -rf "${CONFIG_PATH}/default"
+fi
+ln -s ${CONFIG_PATH}/1.2.0-* ${CONFIG_PATH}/default
+systemctl start slingshot-ifroute
+```
+
+## Integrate files into the image
 
 1. Create a link in the udev rules folder to the example udev rule file.
 
