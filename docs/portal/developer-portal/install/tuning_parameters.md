@@ -6,26 +6,67 @@ These configurations vary depending on the type of connection and cable used, su
 The settings for connecting an HPE Slingshot 400Gbps NIC to an HPE Slingshot 400Gbps switch (non-AEC) are set by default.
 These settings are provided for information purposes only and do not require configuration adjustments.
 
-| Parameter                   | Cable Type            | 400Gbps NIC to 400Gbps Switch | 400Gbps NIC to 200Gbps Switch |
-|-----------------------------|-----------------------|-------------------------------|-------------------------------|
-| `ck-speed`                  | 200Gbps Passive Cable | on                            | off                           |
-|                             | 400Gbps Passive Cable | on                            | off                           |
-|                             | 200Gbps Active Cable  | on                            | off                           |
-|                             | 400Gbps Active Cable  | on                            | off                           |
-|                             | 200Gbps Optical Cable | on                            | off                           |
-|                             | 400Gbps Optical Cable | on                            | off                           |
-| `link-train`                | 200Gbps Passive Cable | on                            | off                           |
-|                             | 400Gbps Passive Cable | on                            | off                           |
-|                             | 200Gbps Active Cable  | off                           | off                           |
-|                             | 400Gbps Active Cable  | off                           | off                           |
-|                             | 200Gbps Optical Cable | on                            | off                           |
-|                             | 400Gbps Optical Cable | on                            | off                           |
-| `autoneg`                   | 200Gbps Passive Cable | on                            | on                            |
-|                             | 400Gbps Passive Cable | on                            | on                            |
-|                             | 200Gbps Active Cable  | off                           | off                           |
-|                             | 400Gbps Active Cable  | off                           | off                           |
-|                             | 200Gbps Optical Cable | off                           | off                           |
-|                             | 400Gbps Optical Cable | off                           | off                           |
+| **Parameter** | **Cable Type**        | **400Gbps NIC to 400Gbps Switch** | **400Gbps NIC to 200Gbps Switch** |
+|---------------|-----------------------|-----------------------------------|-----------------------------------|
+| `ck-speed`    | 200Gbps Passive Cable | on                                | off                               |
+|               | 400Gbps Passive Cable | on                                | off                               |
+|               | 200Gbps Active Cable  | on                                | off                               |
+|               | 400Gbps Active Cable  | on                                | off                               |
+|               | 200Gbps Optical Cable | on                                | off                               |
+|               | 400Gbps Optical Cable | on                                | off                               |
+| `link-train`  | 200Gbps Passive Cable | on                                | off                               |
+|               | 400Gbps Passive Cable | on                                | off                               |
+|               | 200Gbps Active Cable  | off                               | off                               |
+|               | 400Gbps Active Cable  | off                               | off                               |
+|               | 200Gbps Optical Cable | on                                | off                               |
+|               | 400Gbps Optical Cable | on                                | off                               |
+| `autoneg`     | 200Gbps Passive Cable | on                                | on                                |
+|               | 400Gbps Passive Cable | on                                | on                                |
+|               | 200Gbps Active Cable  | off                               | off                               |
+|               | 400Gbps Active Cable  | off                               | off                               |
+|               | 200Gbps Optical Cable | off                               | off                               |
+|               | 400Gbps Optical Cable | off                               | off                               |
+
+## Use the `use-unsupported-cable` flag
+
+The `use-unsupported-cable` is a new flag for the `ethtool` utility used to control the driver behavior upon detecting unsupported cables.
+The following describes how the new flag controls the driver behavior:
+
+| **Flag state** | **Cable type** | **Driver action**                         | **Result**                                      |
+|----------------|----------------|-------------------------------------------|-------------------------------------------------|
+| `off`          | Supported      | Attempt link up                           | Link up                                         |
+| `off`          | Unsupported    | Do not attempt to link up                    | No link up                                      |
+| `on`           | Unsupported    | Attempt link up despite unsupported cable | Will try to link up but no guarantee of success |
+
+To enable (or disable) it, use the following command:
+
+```screen
+ethtool --set-priv-flags hsn0 use-unsupported-cable < on | off >
+```
+
+For example:
+
+```screen
+ethtool --show-priv-flags hsn0
+
+Private flags for hsn0:
+internal-loopback        : off
+external-loopback        : off
+llr                      : on
+precoding                : off
+ifg-hpc                  : off
+roce-opt                 : off
+ignore-align             : off
+disable-pml-recovery     : off
+link-train               : on
+remote-fault-recovery    : off
+use-unsupported-cable    : off
+fec_monitor              : off
+auto-lane-degrade        : off
+ignore-media-error       : off
+use-supported-ss200-cable: off
+los-lol-hide             : off
+```
 
 ## Configuration examples
 
