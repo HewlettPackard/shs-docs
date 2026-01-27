@@ -114,12 +114,12 @@ kdreg2-dkms
 shs-version
 ```
 
-**Ubuntu distribution**
+**Ubuntu distribution:**
 
-- If you are using an Ubuntu distribution, all package names ending with `-devel` should be replaced with `-dev`.  For example:  `sl-driver-devel` will become `sl-driver-dev`.
-   - Exception: cray-libcxi-devel remains unchanged on Ubuntu. This is a known bug in SHS v13.1.0 and will be fixed in the next release.
-- `cray-hms-firmware` must be changed to `hms-firmware-serdes`.
-- Only DKMS instalations are supported.
+- Remove `sl-driver` and `shs-version` from the rpmlist.
+- If you are using an Ubuntu distribution, all package names ending with `-devel` should be replaced with `-dev`.  For example: `sl-driver-devel` will become `sl-driver-dev`.
+- Change `cray-hms-firmware` to `hms-firmware-serdes`.
+- Only DKMS installations are supported.
 
 **Optional:** If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist. For example, to install a specific libfabric, add the following to the rpmlist:
 
@@ -129,6 +129,7 @@ libfabric-devel-x.y.z
 ```
 
 For distributed binary builds, pre-built kernel binaries are available.
+Pre-built binaries are only supported on RHEL and SLES; they are not supported on Ubuntu.
 To use these binaries instead of DKMS packages, follow these steps:
 
 1. Identify the appropriate pre-built binary variant for your distribution.
@@ -203,6 +204,7 @@ To check the current status:
 ```screen
 dmesg | grep -i secureboot
 ```
+
 Example output:
 
 ```screen
@@ -212,7 +214,6 @@ secureboot: Secure boot disabled
 If Secure Boot is disabled, unsigned modules can load without additional steps.
 
 If Secure Boot is enabled, it must be disabled before unsupported modules can be loaded.
-
 
 The drivers will be automatically loaded on the next restart, or they can be
 manually loaded with the following commands:

@@ -45,25 +45,25 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
    To install the required RPMs, use either of the following methods:
 
-   - Meta RPMs
-   - Individual RPMs
+   - Using meta RPMs (Early Access Feature):
 
-   1. Using meta RPMs(Early Access Feature):
       SHS now provides meta RPMs that simplify installation by including all required SHS packages.
       These meta packages are available only for RHEL and SLES distributions.
       There are two available meta RPMs: `shs-hpcm-dkms` and `shs-hpcm-kmp`.
       Use `shs-hpcm-dkms` for DKMS-based installations and `shs-hpcm-kmp` for KMP-based installations.
 
       Example for DKMS-based installation:
-      
+
       ```screen
       echo -e "shs-hpcm-dkms" > ./shs-cxi.rpmlist
       ```
+
       **Note:** This feature is provided as an **Early Access Feature**. It has been fully tested internally and is planned for general availability in the next release.
 
       For now, **use with caution**. If the installation fails due to dependencies or other issues, then install the RPMs directly following the "Using individual RPMs" procedure.
 
-   2. Using individual RPMs:
+   - Using individual RPMs:
+
       The following RPMs should be retrieved and installed using the package manager for the distro in use (`zypper`, `yum`, `dnf`, `apt`). The default SHS installation uses the DKMS-based setup:
 
       ```screen
@@ -103,11 +103,12 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
       """ > ./shs-cxi.rpmlist
       ```
 
-      **Ubuntu distribution** 
-      - If you are using an Ubuntu distribution, all package names ending with `-devel` should be replaced with `-dev`.  For example:  `sl-driver-devel` will become `sl-driver-dev`.
-        - Exception: cray-libcxi-devel remains unchanged on Ubuntu. This is a known bug in SHS v13.1.0 and will be fixed in the next release.
-      - `cray-hms-firmware` must be changed to `hms-firmware-serdes`.
-      - Only DKMS instalations are supported. 
+      **Ubuntu distribution:**
+
+      - Remove `sl-driver` and `shs-version` from the rpmlist.
+      - If you are using an Ubuntu distribution, all package names ending with `-devel` should be replaced with `-dev`.  For example: `sl-driver-devel` will become `sl-driver-dev`.
+      - Change `cray-hms-firmware` to `hms-firmware-serdes`.
+      - Only DKMS installations are supported.
 
       **Optional:**
 
@@ -119,8 +120,9 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
          libfabric-devel-1.x.y.z
       """ >> ./shs-cxi.rpmlist
       ```
-   
+
       For distributed binary builds, pre-built kernel binaries are available.
+      Pre-built binaries are only supported on RHEL and SLES; they are not supported on Ubuntu.
       To use these binaries instead of DKMS packages, follow these steps:
 
       1. Identify the appropriate pre-built binary variant for your distribution.
@@ -136,7 +138,7 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
          - **Example 1:** Replacing DKMS Packages on SLES15 SP5 (x86)
 
-         If you are installing pre-built kernel modules on SLES15 SP5 for x86 systems, replace the following DKMS packages:
+            If you are installing pre-built kernel modules on SLES15 SP5 for x86 systems, replace the following DKMS packages:
 
             ```screen
                cray-slingshot-base-link-dkms
@@ -211,14 +213,17 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
      - Create the image.
 
+       The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
+
        ```screen
        IMAGE_NAME=${DISTRO}_hpcm_ss
        autoinstall_all_kernels=y cm image create -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} --rpmlist $(pwd)/image.rpmlist
        ```
 
-       **Note:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
-
    - If updating an image:
+
+     The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
+     `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is recommended to avoid problems when building in a `chroot` environment.
 
      - SLES environment:
 
@@ -227,17 +232,34 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
        autoinstall_all_kernels=y cm image zypper -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} install $(cat $(pwd)/shs-cxi.rpmlist)
        ```
 
-       **Note:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
-
      - RHEL environment:
 
        ```screen
        autoinstall_all_kernels=y cm image dnf -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} "update --allowerasing" $(cat $(pwd)/shs-cxi.rpmlist)
        ```
 
-       **Note:** The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
+     - Ubuntu environment:
+  
+       ```screen
+       autoinstall_all_kernels=y cm image apt -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} "update --allowerasing" $(cat $(pwd)/shs-cxi.rpmlist)
+       ```
 
-   **Note:** `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is recommended to avoid problems when building in a `chroot` environment.
+       Remove the network-configuration default link:
+
+       ```screen
+       cm image chroot -i ${IMAGE_NAME} rm /opt/slingshot/slingshot-network-config/default
+       ```
+
+       Add a post-boot route change:
+
+       ```screen
+       export CONFIG_PATH="/opt/slingshot/slingshot-network-config"
+       if [ -L "${CONFIG_PATH}/default" ]; then
+           rm -rf "${CONFIG_PATH}/default"
+       fi
+       ln -s ${CONFIG_PATH}/1.2.0-* ${CONFIG_PATH}/default
+       systemctl start slingshot-ifroute
+       ```
 
 6. Verify that DKMS successfully built the kernel modules.
 
@@ -280,9 +302,11 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 8. Load the HPE Slingshot drivers with the `slingshot-cxi-drivers-install` script that is provided in the `slingshot-utils` RPM.
    Skip this step if you are not using the `slingshot-cxi-drivers-install` script.
 
-   **Note:** `slingshot-cxi-drivers-install` must be used to load HPE Slingshot
-   drivers to ensure optimal performance for nodes where the I/O Memory Management Unit (IOMMU) is enabled with passthrough disabled.
+   **Notes:**
+
+   - `slingshot-cxi-drivers-install` must be used to load HPE Slingshot drivers to ensure optimal performance for nodes where the I/O Memory Management Unit (IOMMU) is enabled with passthrough disabled.
    Such node types include HPE Cray Supercomputing EX254n Grace Hopper nodes.
+   - `slingshot-cxi-drivers-install` will not be available for Ubuntu.
 
    A `modprobe.conf` for install `cxi-ss1` needs to be defined for
    `slingshot-cxi-drivers-install` to properly intercept the loading of `cxi-ss1`
