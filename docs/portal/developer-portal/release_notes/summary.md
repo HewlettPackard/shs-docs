@@ -11,6 +11,7 @@ Key Highlights
 
 + SHMEM enhancements, including libfabric append support
 
+
 Since 14.0.0 is a fast follower to SHS 13.1.0, here is a summary of what was introduced in 13.1.0:
 
 HPE Slingshot Host Software 13.1.0 Key Highlights 
