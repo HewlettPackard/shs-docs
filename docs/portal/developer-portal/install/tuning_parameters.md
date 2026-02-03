@@ -3,29 +3,37 @@
 To ensure optimal performance when connecting an HPE Slingshot 400Gbps NIC to HPE Slingshot switches (200Gbps or 400Gbps), specific settings are required.
 These configurations vary depending on the type of connection and cable used, such as an active electrical cable (AEC).
 
+The following is a description of the available tuning parameters:
+
+- `los-lol-hide`: Hides or shows Loss of Signal (LOS) and Loss of Lane (LOL) status reporting when a link goes down.
+- `link-train`: Enables or disables per‑lane link training during link initialization.
+- `autoneg`: Enables or disables automatic negotiation of link speed between the NIC and switch.
+- `r1-link-partner`: Indicates if the link partner is a 200Gbps switch (`on`) or a 400Gbps switch (`off`).
+- `use-unsupported-cable`: Controls the driver behavior upon detecting unsupported cables.
+
 The settings for connecting an HPE Slingshot 400Gbps NIC to an HPE Slingshot 400Gbps switch (non-AEC) are set by default.
 These settings are provided for information purposes only and do not require configuration adjustments.
 
-| **Parameter** | **Cable Type**        | **400Gbps NIC to 400Gbps Switch** | **400Gbps NIC to 200Gbps Switch** |
-|---------------|-----------------------|-----------------------------------|-----------------------------------|
-| `ck-speed`    | 200Gbps Passive Cable | on                                | off                               |
-|               | 400Gbps Passive Cable | on                                | off                               |
-|               | 200Gbps Active Cable  | on                                | off                               |
-|               | 400Gbps Active Cable  | on                                | off                               |
-|               | 200Gbps Optical Cable | on                                | off                               |
-|               | 400Gbps Optical Cable | on                                | off                               |
-| `link-train`  | 200Gbps Passive Cable | on                                | off                               |
-|               | 400Gbps Passive Cable | on                                | off                               |
-|               | 200Gbps Active Cable  | off                               | off                               |
-|               | 400Gbps Active Cable  | off                               | off                               |
-|               | 200Gbps Optical Cable | on                                | off                               |
-|               | 400Gbps Optical Cable | on                                | off                               |
-| `autoneg`     | 200Gbps Passive Cable | on                                | on                                |
-|               | 400Gbps Passive Cable | on                                | on                                |
-|               | 200Gbps Active Cable  | off                               | off                               |
-|               | 400Gbps Active Cable  | off                               | off                               |
-|               | 200Gbps Optical Cable | off                               | off                               |
-|               | 400Gbps Optical Cable | off                               | off                               |
+| **Parameter**     | **Cable Type**        | **400Gbps NIC to 400Gbps Switch** | **400Gbps NIC to 200Gbps Switch** |
+|-------------------|-----------------------|-----------------------------------|-----------------------------------|
+| `link-train`      | 200Gbps Passive Cable | on                                | off                               |
+|                   | 400Gbps Passive Cable | on                                | off                               |
+|                   | 200Gbps Active Cable  | off                               | off                               |
+|                   | 400Gbps Active Cable  | off                               | off                               |
+|                   | 200Gbps Optical Cable | on                                | off                               |
+|                   | 400Gbps Optical Cable | on                                | off                               |
+| `autoneg`         | 200Gbps Passive Cable | on                                | on                                |
+|                   | 400Gbps Passive Cable | on                                | on                                |
+|                   | 200Gbps Active Cable  | off                               | off                               |
+|                   | 400Gbps Active Cable  | off                               | off                               |
+|                   | 200Gbps Optical Cable | off                               | off                               |
+|                   | 400Gbps Optical Cable | off                               | off                               |
+| `r1-link-partner` | 200Gbps Passive Cable | off                               | on                                |
+|                   | 400Gbps Passive Cable | off                               | on                                |
+|                   | 200Gbps Active Cable  | off                               | on                                |
+|                   | 400Gbps Active Cable  | off                               | on                                |
+|                   | 200Gbps Optical Cable | off                               | on                                |
+|                   | 400Gbps Optical Cable | off                               | on                                |
 
 ## Use the `use-unsupported-cable` flag
 
@@ -35,7 +43,7 @@ The following describes how the new flag controls the driver behavior:
 | **Flag state** | **Cable type** | **Driver action**                         | **Result**                                      |
 |----------------|----------------|-------------------------------------------|-------------------------------------------------|
 | `off`          | Supported      | Attempt link up                           | Link up                                         |
-| `off`          | Unsupported    | Do not attempt to link up                    | No link up                                      |
+| `off`          | Unsupported    | Do not attempt to link up                 | No link up                                      |
 | `on`           | Unsupported    | Attempt link up despite unsupported cable | Will try to link up but no guarantee of success |
 
 To enable (or disable) it, use the following command:
@@ -75,21 +83,21 @@ The following are examples of how to configure the network interface `hsn0` for 
 - Configure `hsn0` for HPE Slingshot 400Gbps NIC to HPE Slingshot 200Gbps switch (passive cable):
 
     ```screen
-    ethtool --set-priv-flags hsn0 link-train off ck-speed off
+    ethtool --set-priv-flags hsn0 link-train off r1-link-partner on
     ethtool -s hsn0 autoneg on
     ```
 
 - Configure `hsn0` for HPE Slingshot 400Gbps NIC to HPE Slingshot 400Gbps switch (passive cable):
 
     ```screen
-    ethtool --set-priv-flags hsn0 link-train on ck-speed on
+    ethtool --set-priv-flags hsn0 link-train on
     ethtool -s hsn0 autoneg on
     ```
 
 - Configure `hsn0` for HPE Slingshot 400Gbps NIC to HPE Slingshot 400Gbps switch (active cable):
 
     ```screen
-    ethtool --set-priv-flags hsn0 link-train off ck-speed on
+    ethtool --set-priv-flags hsn0 link-train off
     ethtool -s hsn0 autoneg off
     ```
 
@@ -109,12 +117,12 @@ If the system has SU-leader nodes, run `cm image sync --scripts` before rebootin
 mkdir -p /etc/systemd/system/cm-slingshot-ama.service.d/
 cat << EOF > /etc/systemd/system/cm-slingshot-ama.service.d/cm-slingshot-ama-override.conf
 [Service]
-ExecStartPre=+/usr/bin/bash -c 'for hsn in \$(find /sys/class/net -name \$DEV_NAME_PREFIX[[:digit:]] -exec basename {} \; | sort); do /usr/sbin/ethtool --set-priv-flags \$hsn link-train off ck-speed off use-unsupported-cable on; done'
+ExecStartPre=+/usr/bin/bash -c 'for hsn in \$(find /sys/class/net -name \$DEV_NAME_PREFIX[[:digit:]] -exec basename {} \; | sort); do /usr/sbin/ethtool --set-priv-flags \$hsn link-train off r1-link-partner on use-unsupported-cable on; done'
 EOF
 
 mkdir -p /etc/systemd/system/cm-slingshot-ama@.service.d/
 cat << EOF > /etc/systemd/system/cm-slingshot-ama@.service.d/cm-slingshot-ama@-override.conf
 [Service]
-ExecStartPre=+/usr/sbin/ethtool --set-priv-flags %i link-train off ck-speed off use-unsupported-cable on
+ExecStartPre=+/usr/sbin/ethtool --set-priv-flags %i link-train off r1-link-partner on use-unsupported-cable on
 EOF
 ```
