@@ -1,6 +1,6 @@
-# HPE Cray Programming Environment
+# HPE Cray Supercomputing Programming Environment
 
-HPE Cray programming environment pre-programs many of the environment variables for the HPE Slingshot NIC libfabric.
+HPE Cray Supercomputing Programming Environment pre-programs many of the environment variables for the HPE Slingshot NIC libfabric.
 These settings have been found to be useful generally for HPE supercomputing customers when using the distributed middleware such as Cray MPI.
 The settings are a useful starting point for users of other MPI middleware though each MPI software may have unique attributes that could be better optimized though experimentation.
 

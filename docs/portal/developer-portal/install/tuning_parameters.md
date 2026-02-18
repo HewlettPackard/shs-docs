@@ -6,7 +6,7 @@ These configurations vary depending on the type of connection and cable used, su
 The following is a description of the available tuning parameters:
 
 - `los-lol-hide`: Hides or shows Loss of Signal (LOS) and Loss of Lane (LOL) status reporting when a link goes down.
-- `link-train`: Enables or disables per‑lane link training during link initialization.
+- `link-train`: Enables or disables per-lane link training during link initialization.
 - `autoneg`: Enables or disables automatic negotiation of link speed between the NIC and switch.
 - `r1-link-partner`: Indicates if the link partner is a 200Gbps switch (`on`) or a 400Gbps switch (`off`).
 - `use-unsupported-cable`: Controls the driver behavior upon detecting unsupported cables.

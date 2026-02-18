@@ -28,4 +28,4 @@ Software capabilities have evolved from prior versions of the HPE Slingshot Host
 
 Default settings are also current as of the SHS 2.1.2 release but can change in the future.
 
-Users of the HPE Cray Programming Environment (PE) will find additional information in the PE documentation.
+Users of the HPE Cray Supercomputing Programming Environment (CPE) will find additional information in the CPE documentation.
