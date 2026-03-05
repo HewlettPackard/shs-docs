@@ -32,18 +32,18 @@ Enabling, disabling, and creating CXI services are actions that can only be take
 
 There are two methods to enable or disable the default CXI service.
 
-- Module Parameters to `cxi-core`.
+- Module Parameters to `cxi-ss1`.
 
   To enable the default CXI service:
 
   ```screen
-  modprobe cxi-core disable_default_svc=0
+  modprobe cxi-ss1 disable_default_svc=0
   ```
 
   To disable the default CXI service:
 
   ```screen
-  modprobe cxi-core disable_default_svc=1
+  modprobe cxi-ss1 disable_default_svc=1
   ```
 
 - The `cxi_service` command line utility:
