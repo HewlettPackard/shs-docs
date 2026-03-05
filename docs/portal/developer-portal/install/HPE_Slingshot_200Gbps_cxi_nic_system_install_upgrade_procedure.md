@@ -235,13 +235,13 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
      - RHEL environment:
 
        ```screen
-       autoinstall_all_kernels=y cm image dnf -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} "update --allowerasing" $(cat $(pwd)/shs-cxi.rpmlist)
+       autoinstall_all_kernels=y cm image dnf -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} "install --allowerasing" $(cat $(pwd)/shs-cxi.rpmlist)
        ```
 
      - Ubuntu environment:
   
        ```screen
-       autoinstall_all_kernels=y cm image apt -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} "update --allowerasing" $(cat $(pwd)/shs-cxi.rpmlist)
+       autoinstall_all_kernels=y cm image apt -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} "install --allowerasing" $(cat $(pwd)/shs-cxi.rpmlist)
        ```
 
        Remove the network-configuration default link:
