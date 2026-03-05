@@ -24,6 +24,7 @@ The following are examples from the **200Gbps firmware RPM** (`slingshot-firmwar
 ```text
 cassini_fw_1.5.60.bin        - Standard 200 Gbps NIC firmware image
 cassini_fw_esm_1.5.60.bin    - Extended Speed Mode (ESM) 200 Gbps NIC firmware image
-                               (used exclusively on HPE Cray EX235a compute blades)
+                               (used exclusively on HPE Cray EX235a and EX255a compute blades)
+```
 
 The NIC firmware is flashed in-band after the nodes are booted. This is covered in the "Firmware management" section of the _HPE Slingshot Host Software Installation and Configuration Guide (S-9009)_. Ensure that all installed HPE Slingshot NICs, including both 200Gbps and 400Gbps variants—whether Mezzanine or PCIe form factors—are updated to the appropriate firmware version provided in the release.

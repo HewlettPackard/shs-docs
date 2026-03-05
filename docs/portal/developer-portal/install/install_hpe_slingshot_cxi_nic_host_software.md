@@ -351,7 +351,7 @@ Packages required to update firmware for each NIC type:
   The `slingshot-firmware-cassini` package provides includes two different versions:
 
   - `cassini_fw_x.x.x.bin` - Standard 200Gbps NIC firmware image
-  - `cassini_fw_esm_x.x.x.bin` - Extended Speed Mode (ESM) 200Gbps NIC firmware image used exclusively on HPE Cray EX235a compute blade
+  - `cassini_fw_esm_x.x.x.bin` - Extended Speed Mode (ESM) 200Gbps NIC firmware image used exclusively on HPE Cray EX235a and EX255a compute blades
 
 - **400Gbps:** `slingshot-firmware-cassini2` and `slingshot-firmware-management`
   
