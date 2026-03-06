@@ -41,9 +41,16 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
    cm repo group show ${REPO_GROUP}
    ```
 
-4. Add SHS RPMs to the CXI image rpmlist.
+4. Add SHS packages to the CXI image package list.
 
-   To install the required RPMs, use either of the following methods:
+   In the following examples, use a single placeholder for the package list file:
+
+   ```screen
+   # use .rpmlist for RHEL/SLES and .deblist for Ubuntu
+   PKG_LIST_FILE=./shs-cxi.<rpmlist|deblist>
+   ```
+
+   To install the required packages, use either of the following methods:
 
    - Using meta RPMs (Early Access Feature):
 
@@ -55,7 +62,7 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
       Example for DKMS-based installation:
 
       ```screen
-      echo -e "shs-hpcm-dkms" > ./shs-cxi.rpmlist
+      echo -e "shs-hpcm-dkms" > ${PKG_LIST_FILE}
       ```
 
       **Note:** This feature is provided as an **Early Access Feature**. It has been fully tested internally and is planned for general availability in the next release.
@@ -100,25 +107,26 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
          kdreg2-devel
          kdreg2-dkms
          shs-version
-      """ > ./shs-cxi.rpmlist
+      """ > ${PKG_LIST_FILE}
       ```
 
       **Ubuntu distribution:**
 
-      - Remove `sl-driver` and `shs-version` from the rpmlist.
-      - If you are using an Ubuntu distribution, all package names ending with `-devel` should be replaced with `-dev`.  For example: `sl-driver-devel` will become `sl-driver-dev`.
+      - Remove `sl-driver` and `shs-version` from the package list.
+      - If you are using an Ubuntu distribution, all package names ending with `-devel` should be replaced with `-dev`. For example: `sl-driver-devel` will become `sl-driver-dev`.
       - Change `cray-hms-firmware` to `hms-firmware-serdes`.
       - Only DKMS installations are supported.
 
       **Optional:**
 
-      If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist. For example, to install a specific libfabric, add the following to the rpmlist:
+      If a specific version is required, simply specify the versions you want when adding the packages to the package list.
+      For example, to install a specific libfabric, add the following to the package list:
 
       ```screen
       echo -e """\
          libfabric-1.x.y.z
          libfabric-devel-1.x.y.z
-      """ >> ./shs-cxi.rpmlist
+      """ >> ${PKG_LIST_FILE}
       ```
 
       For distributed binary builds, pre-built kernel binaries are available.
@@ -180,7 +188,7 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
                kmod-kdreg2
             ```
 
-5. Create or update an image.
+5. Determine the repo group to use.
 
    The following examples use the `slingshot-host-software-repo-group` repo group created earlier in this procedure.
    If a different repo group is preferred, use the following commands to find an existing repo group.
@@ -197,28 +205,37 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
     cm repo group show <REPO_GROUP_NAME>
     ```
 
+6. Create or update an image.
+
    - If creating an image:
 
-     - Create an `image.rpmlist` from generated rpmlists in step 4.
+     1. Set the package list type for the target distribution.
 
-       ```screen
-       cp /opt/clmgr/image/rpmlists/generated/generated-group-${REPO_GROUP}.rpmlist image.rpmlist
-       ```
+        ```screen
+        # use rpmlist for RHEL/SLES and deblist for Ubuntu
+        IMAGE_LIST_TYPE=<rpmlist|deblist>
+        ```
 
-     - Add the `.rpmlist` generated in step 5 to the `image.rpmlist`.
+     2. Create `image.<rpmlist|deblist>` from the generated package lists.
 
-       ```screen
-       cat ./shs-cxi.rpmlist >> image.rpmlist
-       ```
+        ```screen
+        cp /opt/clmgr/image/${IMAGE_LIST_TYPE}s/generated/generated-group-${REPO_GROUP}.${IMAGE_LIST_TYPE} image.${IMAGE_LIST_TYPE}
+        ```
 
-     - Create the image.
+     3. Add the package list generated in step 4 to `image.<rpmlist|deblist>`.
 
-       The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
+         ```screen
+         cat ${PKG_LIST_FILE} >> image.${IMAGE_LIST_TYPE}
+         ```
 
-       ```screen
-       IMAGE_NAME=${DISTRO}_hpcm_ss
-       autoinstall_all_kernels=y cm image create -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} --rpmlist $(pwd)/image.rpmlist
-       ```
+     4. Create the image.
+
+        The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
+
+        ```screen
+        IMAGE_NAME=${DISTRO}_hpcm_ss
+        autoinstall_all_kernels=y cm image create -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} --pkglist $(pwd)/image.${IMAGE_LIST_TYPE}
+        ```
 
    - If updating an image:
 
@@ -241,7 +258,7 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
      - Ubuntu environment:
   
        ```screen
-       autoinstall_all_kernels=y cm image apt -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} "install --allowerasing" $(cat $(pwd)/shs-cxi.rpmlist)
+       autoinstall_all_kernels=y cm image apt -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} "install --allowerasing" $(cat $(pwd)/shs-cxi.deblist)
        ```
 
        Remove the network-configuration default link:
@@ -261,7 +278,7 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
        systemctl start slingshot-ifroute
        ```
 
-6. Verify that DKMS successfully built the kernel modules.
+7. Verify that DKMS successfully built the kernel modules.
 
    There must be eight kernel modules in the `extra` directory for a successful build.
    Use the following script to verify:
@@ -290,16 +307,16 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
    To resolve this issue, refresh the repositories and ensure that the required kernel headers are installed.
 
-7. On HPE Slingshot CXI NIC systems running SLES, enable unsupported kernel modules in newly created image directory.
+8. On HPE Slingshot CXI NIC systems running SLES, enable unsupported kernel modules in newly created image directory.
 
-   - For systems using SLES15 SP4 or later:
+   For systems using SLES15 SP4 or later:
 
-      ```screen
-      sed -i 's/allow_unsupported_modules 0/allow_unsupported_modules 1/' \
-      /opt/clmgr/image/images/${IMAGE_NAME}/lib/modprobe.d/10-unsupported-modules.conf
-      ```
+   ```screen
+   sed -i 's/allow_unsupported_modules 0/allow_unsupported_modules 1/' \
+   /opt/clmgr/image/images/${IMAGE_NAME}/lib/modprobe.d/10-unsupported-modules.conf
+   ```
 
-8. Load the HPE Slingshot drivers with the `slingshot-cxi-drivers-install` script that is provided in the `slingshot-utils` RPM.
+9. Load the HPE Slingshot drivers with the `slingshot-cxi-drivers-install` script that is provided in the `slingshot-utils` RPM.
    Skip this step if you are not using the `slingshot-cxi-drivers-install` script.
 
    **Notes:**
@@ -320,6 +337,6 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
    other devices, `slingshot-cxi-drivers-install --iommu-group identity` will
    fail to run and `cxi-ss1` will not load.
 
-9. Boot the new image when it is ready.
+10. Boot the new image when it is ready.
 
-10. Apply the post-boot firmware and firmware configuration. General instructions are in the "Update firmware for HPCM and bare metal" section of the _HPE Slingshot Host Software Administration Guide_.
+11. Apply the post-boot firmware and firmware configuration. General instructions are in the "Update firmware for HPCM and bare metal" section of the _HPE Slingshot Host Software Administration Guide_.
