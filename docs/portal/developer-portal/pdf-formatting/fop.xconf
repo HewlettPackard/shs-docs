@@ -74,41 +74,9 @@ the location of this file.
           <font-triplet name="ArialMT" style="normal" weight="bold"/>
         </font>
         -->
-		<font kerning="yes" embed-url="MetricHPE-Desktop-Thin.otf" embedding-mode="subset">
-          <font-triplet name="MetricHPE" style="normal" weight="100"/>
-        </font>
-		<font kerning="yes" embed-url="MetricHPE-Desktop-ThinItalic.otf" embedding-mode="subset">
-          <font-triplet name="MetricHPE" style="italic" weight="100"/>
-        </font>
-		<font kerning="yes" embed-url="MetricHPE-Desktop-Light.otf" embedding-mode="subset">
-          <font-triplet name="MetricHPE" style="normal" weight="200"/>
-        </font>
-		<font kerning="yes" embed-url="MetricHPE-Desktop-LightItalic.otf" embedding-mode="subset">
-          <font-triplet name="MetricHPE" style="italic" weight="200"/>
-        </font>
-		<font kerning="yes" embed-url="MetricHPE-Desktop-Regular.otf" embedding-mode="subset">
-          <font-triplet name="MetricHPE" style="normal" weight="normal"/>
-        </font>
-		<font kerning="yes" embed-url="MetricHPE-Desktop-RegularItalic.otf" embedding-mode="subset">
-          <font-triplet name="MetricHPE" style="italic" weight="normal"/>
-        </font>
-		<font kerning="yes" embed-url="MetricHPE-Desktop-Medium.otf" embedding-mode="subset">
-          <font-triplet name="MetricHPE" style="normal" weight="500"/>
-        </font>
-		<font kerning="yes" embed-url="MetricHPE-Desktop-MediumItalic.otf" embedding-mode="subset">
-          <font-triplet name="MetricHPE" style="italic" weight="500"/>
-        </font>
-		<font kerning="yes" embed-url="MetricHPE-Desktop-Semibold.otf" embedding-mode="subset">
-          <font-triplet name="MetricHPE" style="normal" weight="600"/>
-        </font>
-		<font kerning="yes" embed-url="MetricHPE-Desktop-SemiboldItalic.otf" embedding-mode="subset">
-          <font-triplet name="MetricHPE" style="italic" weight="600"/>
-        </font>
-		<font kerning="yes" embed-url="MetricHPE-Desktop-Bold.otf" embedding-mode="subset">
-          <font-triplet name="MetricHPE" style="normal" weight="bold"/>
-        </font>
-		<font kerning="yes" embed-url="MetricHPE-Desktop-BoldItalic.otf" embedding-mode="subset">
-          <font-triplet name="MetricHPE" style="italic" weight="bold"/>
+    <font kerning="yes" embed-url="/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf" embedding-mode="subset">
+          <font-triplet name="DejaVu Sans Mono" style="normal" weight="normal"/>
+          <font-triplet name="monospace" style="normal" weight="normal"/>
         </font>
 
         <!-- auto-detect fonts -->
@@ -363,7 +331,6 @@ the location of this file.
             <afp-raster-font size="36" characterset="C04200Z0" base14-font="Courier"/>
           </afp-font>
           <font-triplet name="Courier" style="normal" weight="normal"/>
-          <font-triplet name="monospace" style="normal" weight="normal"/>
         </font>
 
         <!-- Courier Italic -->
