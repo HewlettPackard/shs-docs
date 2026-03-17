@@ -1,0 +1,77 @@
+---
+includes:
+  - hpesc.yaml
+  - pdf.yaml
+deliverables:
+  - name: 'SHS Admin Guide for HPESC'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Administration_Guide.ditamap'
+    output: '/src/build/HPE_Slingshot_Host_Software_Administration_Guide/hpesc/'
+    publication:
+      idref: 'hpesc'
+  - name: 'SHS Install and Config Guide for HPESC'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide.ditamap'
+    output: '/src/build/HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide/hpesc/'
+    publication:
+      idref: 'hpesc'
+  - name: 'SHS Release Notes for HPESC'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Release_Notes.ditamap'
+    output: '/src/build/HPE_Slingshot_Host_Software_Release_Notes/hpesc/'
+    publication:
+      idref: 'hpesc'
+  - name: 'SHS Troubleshooting Guide for HPESC'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Troubleshooting_Guide.ditamap'
+    output: '/src/build/HPE_Slingshot_Host_Software_Troubleshooting_Guide/hpesc/'
+    publication:
+      idref: 'hpesc'
+  - name: 'SHS User Guide for HPESC'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_User_Guide.ditamap'
+    output: '/src/build/HPE_Slingshot_Host_Software_User_Guide/hpesc/'
+    publication:
+      idref: 'hpesc'
+  - name: 'SHS Scale and Pefromance Validation Guide for HPESC'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Scale_and_Performance_Validation_Guide.ditamap'
+    output: '/src/build/HPE_Slingshot_Host_Software_Scale_and_Performance_Validation_Guide/hpesc/'
+    publication:
+      idref: 'hpesc'
+  - name: 'SHS Admin Guide PDF'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Administration_Guide.ditamap'
+    output: '/src/build/HPE_Slingshot_Host_Software_Administration_Guide/hpesc/'
+    publication:
+      idref: 'pdf'
+  - name: 'SHS Install and Config Guide PDF'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide.ditamap'
+    output: '/src/build/HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide/hpesc/'
+    publication:
+      idref: 'pdf'
+  - name: 'SHS Release Notes PDF'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Release_Notes.ditamap'
+    output: '/src/build/HPE_Slingshot_Host_Software_Release_Notes/hpesc/'
+    publication:
+      idref: 'pdf'
+  - name: 'SHS Troubleshooting Guide PDF'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Troubleshooting_Guide.ditamap'
+    output: '/src/build/HPE_Slingshot_Host_Software_Troubleshooting_Guide/hpesc/'
+    publication:
+      idref: 'pdf'
+  - name: 'SHS User Guide PDF'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_User_Guide.ditamap'
+    output: '/src/build/HPE_Slingshot_Host_Software_User_Guide/hpesc/'
+    publication:
+      idref: 'pdf'
+  - name: 'SHS Scale and Pefromance Validation Guide PDF'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Scale_and_Performance_Validation_Guide.ditamap'
+    output: '/src/build/HPE_Slingshot_Host_Software_Scale_and_Performance_Validation_Guide/hpesc/'
+    publication:
+      idref: 'pdf'

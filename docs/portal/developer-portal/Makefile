@@ -129,12 +129,7 @@ html:   $(HTMLDOCS) $(HTMLDOC2S)
 
 set-permissions:
 	chmod +x ../scripts/dita_build_prep.sh
-	chmod +x ../scripts/dita_build.sh
-
-
-dita_build: $(TMPDIR)/VeRsIoN.md
-	bash ../scripts/dita_build.sh
-
+	chmod +x ../scripts/dita_project_build.sh
 
 ## https://www.gnu.org/software/make/manual/html_node/Using-Implicit.html#Using-Implicit
 ## Each implicit rule has a arget pattern and prerequisite patterns.
@@ -150,14 +145,14 @@ $(TMPDIR)/VeRsIoN.md: clean
 	cd ../../.. && sh setup_versioning.sh -d > docs/portal/developer-portal/$(TMPDIR)/VeRsIoN.md
 
 dir: $(TMPDIR)/VeRsIoN.md
-	mkdir -p $(PDFBUILDDIR)
+#	mkdir -p $(PDFBUILDDIR)
 #	mkdir -p $(PDFDRAFTSBUILDDIR)
 #	mkdir -p $(HTMLBUILDDIR)/man
 #	mkdir -p $(HTMLDRAFTSBUILDDIR)
-	mkdir -p $(HPESCBUILDDIR)
-	mkdir -p $(MDBUILDDIR)
-	cp -r $(IMAGESDIR) $(HTMLBUILDDIR)
-	cp -r $(CSSDIR) $(HTMLBUILDDIR)
+#	mkdir -p $(HPESCBUILDDIR)
+#	mkdir -p $(MDBUILDDIR)
+#	cp -r $(IMAGESDIR) $(HTMLBUILDDIR)
+#	cp -r $(CSSDIR) $(HTMLBUILDDIR)
 	cp *.ditamap $(TMPDIR)
 	cp *.json $(TMPDIR)
 	cp -r dita_ot_jumbo_html5_files $(TMPDIR)
@@ -310,22 +305,26 @@ dita_ot_dir: dir
 dita_container_prep:
 	podman image build -t test-dita-ot-image:1.0 docker/
 
-hpesc_build: dita_ot_dir dita_container_prep
-	../scripts/dita_build.sh -b
+
+# build an HPESC managed bundle for each publication
+release_hpesc: dita_ot_dir dita_container_prep
+	../scripts/dita_project_build.sh -b
+# Run the repo-specific HPESC bundle creation code
+	../scripts/custom-release-tar.sh hpesc_bundle
 
 dita_ot_pdf: dita_ot_dir dita_container_prep
-	../scripts/dita_build.sh -p
+	../scripts/dita_project_build.sh -p
 
 dita_ot_md: dita_ot_dir dita_container_prep
-	../scripts/dita_build.sh -m
+	../scripts/dita_project_build.sh -m
 
 dita_ot_html: dita_ot_dir dita_container_prep
-	../scripts/dita_build.sh -w
+	../scripts/dita_project_build.sh -w
 
-dita_ot_tar: dita_ot_md dita_ot_html dita_ot_pdf
-	cp $(TMPDIR)/VeRsIoN.md $(BUILDDIR)/md
+dita_ot_tar: dita_ot_dir dita_container_prep
+	../scripts/dita_project_build.sh -a
+	tar -cvf pdfhtml.tar $(BUILDDIR)
+	mv pdfhtml.tar $(BUILDDIR)
 
 # Delete the empty HPESC bundle build dir
 	rm -fr $(HPESCBUILDDIR)
-	tar cf pdfhtml.tar $(BUILDDIR)
-	mv pdfhtml.tar $(BUILDDIR)

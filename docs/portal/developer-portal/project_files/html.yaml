@@ -1,0 +1,13 @@
+---
+publications:
+  - id: 'html'
+    transtype: 'HPEscHtml5'
+    params:
+      - name: 'processing-mode'
+        value: 'strict'
+      - name: 'root-chunk-override'
+        value: 'to-content'
+      - name: 'nav-toc'
+        value: 'full'
+      - name: 'parallel'
+        value: 'true'

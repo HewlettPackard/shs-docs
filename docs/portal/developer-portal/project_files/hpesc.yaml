@@ -1,0 +1,9 @@
+---
+publications:
+  - id: 'hpesc'
+    transtype: 'HPEscHtml5'
+    params:
+      - name: 'processing-mode'
+        value: 'strict'
+      - name: 'parallel'
+        value: 'true'

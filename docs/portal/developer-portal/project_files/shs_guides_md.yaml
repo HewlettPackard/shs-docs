@@ -1,0 +1,58 @@
+---
+includes:
+  - 'md_stage1.yaml'
+deliverables:
+  - name: 'SHS Admin Guide Markdown Stage 1'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Administration_Guide.ditamap'
+    output: '/src/build/md/HPE_Slingshot_Host_Software_Administration_Guide/'
+    publication:
+      idref: 'md_stage1'
+      params:
+        - name: 'args.html5.toc'
+          value: 'HPE_Slingshot_Host_Software_Administration_Guide_S-9012'
+  - name: 'SHS Install and Config Guide Markdown Stage 1'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide.ditamap'
+    output: '/src/build/md/HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide/'
+    publication:
+      idref: 'md_stage1'
+      params:
+        - name: 'args.html5.toc'
+          value: 'HPE_Slingshot_Host_Software_Installation_and_Configuration_Guide_S-9009'
+  - name: 'SHS Release Notes Markdown Stage 1'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Release_Notes.ditamap'
+    output: '/src/build/md/HPE_Slingshot_Host_Software_Release_Notes/'
+    publication:
+      idref: 'md_stage1'
+      params:
+        - name: 'args.html5.toc'
+          value: 'HPE_Slingshot_Host_Software_Release_Notes_S-9010'
+  - name: 'SHS Troubleshooting Guide Markdown Stage 1'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Troubleshooting_Guide.ditamap'
+    output: '/src/build/md/HPE_Slingshot_Host_Software_Troubleshooting_Guide/'
+    publication:
+      idref: 'md_stage1'
+      params:
+        - name: 'args.html5.toc'
+          value: 'HPE_Slingshot_Host_Software_Troubleshooting_Guide_S-9011'
+  - name: 'SHS User Guide Markdown Stage 1'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_User_Guide.ditamap'
+    output: '/src/build/md/HPE_Slingshot_Host_Software_User_Guide/'
+    publication:
+      idref: 'md_stage1'
+      params:
+        - name: 'args.html5.toc'
+          value: 'HPE_Slingshot_Host_Software_User_Guide_S-9014'
+  - name: 'SHS Scale and Pefromance Validation Guide Markdown Stage 1'
+    context:
+      input: '/src/tmp/HPE_Slingshot_Host_Software_Scale_and_Performance_Validation_Guide.ditamap'
+    output: '/src/build/md/HPE_Slingshot_Host_Software_Scale_and_Performance_Validation_Guide/'
+    publication:
+      idref: 'md_stage1'
+      params:
+        - name: 'args.html5.toc'
+          value: 'HPE_Slingshot_Host_Software_Scale_and_Performance_Validation_Guide_S-9008'

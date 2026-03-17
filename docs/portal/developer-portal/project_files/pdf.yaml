@@ -1,0 +1,13 @@
+---
+publications:
+  - id: 'pdf'
+    transtype: 'pdf'
+    params:
+      - name: 'processing-mode'
+        value: 'strict'
+      - name: 'theme'
+        value: '/src/pdf-formatting/hpe-basic-pdf-theme.yaml'
+      - name: 'args.fo.userconfig'
+        value: '/src/pdf-formatting/fop.xconf'
+      - name: 'parallel'
+        value: 'true'

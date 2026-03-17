@@ -1,0 +1,5 @@
+---
+includes:
+  - 'shs_guides_html5.yaml'
+  - 'shs_guides_md.yaml'
+  - 'shs_guides_pdf.yaml'

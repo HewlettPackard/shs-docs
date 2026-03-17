@@ -1,0 +1,13 @@
+---
+publications:
+  - id: 'md_stage1'
+    transtype: 'HPEscHtml5'
+    params:
+      - name: 'processing-mode'
+        value: 'strict'
+      - name: 'root-chunk-override'
+        value: 'to-content'
+      - name: 'args.html5.classattr'
+        value: 'no'
+      - name: 'parallel'
+        value: 'true'

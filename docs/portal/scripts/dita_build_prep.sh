@@ -1,25 +1,5 @@
 #!/bin/bash
 
-# use basenames to avoid hard-coding specific dirs and files 
-# in the build code 
-for MAP in $(ls ${PWD}/*.ditamap);do
-	STEM=$(basename $MAP | cut -d "." -f1)
-	PUB_STEMS+=($STEM);done
-
-# create a subdir for each publication
-for STEM in ${PUB_STEMS[@]};do
-	mkdir -p build/hpesc/$STEM;
-	mkdir -p build/pdf/$STEM;
-    mkdir -p build/html/$STEM;
-    mkdir -p build/md/$STEM;
-	# create an images subdir for each pub
-    # the DITA-OT container isn't allowed to
-    # create them during Jenkins builds
-	mkdir -p build/hpesc/$STEM/images;
-    mkdir -p build/html/$STEM/images;
-    mkdir -p build/md/$STEM/images;
-	done
-
 # remove inline LaTeX
 sed -i'' -e "s/\\\pagebreak//g" ${PWD}/tmp/VeRsIoN.md
 
