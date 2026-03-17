@@ -20,3 +20,6 @@ and ARM IOMMUs:
     ```screen
     iommu.passthrough=1
     ```
+
+    **Note:** HPE Cray Supercomputing EX254n Grace Hopper nodes running AArch64 Linux kernels older than 6.11 must set `iommu.passthrough=0` to run CUDA applications.
+    For details, see the external [NVIDIA documentation](https://docs.nvidia.com/dccpu/generic-linux-install-guide/appendix-b.html#cuda-application-workaround).
