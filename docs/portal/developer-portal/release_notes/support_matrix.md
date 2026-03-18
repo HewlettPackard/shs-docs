@@ -42,11 +42,10 @@ The following table shows operating system distribution support across SHS relea
 
 ## Fabric Manager and HPE Slingshot Host Software Release Compatibility
 
-In the following table, **FM/SA Version** stands for the Fabric Manager and Switch Agent version.
+The following table shows compatibility between SHS releases and specific Fabric Manager and Switch Agent versions.
 
-|  SHS Version   | FM/SA Version | FM/SA Version | FM/SA Version | FM/SA Version |
+|  SHS Version   |   **2.2.0**   |   **2.3.0**   |   **2.3.1**   |   **3.0.0**   |
 |:--------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-|                |   **2.2.0**   |   **2.3.0**   |   **2.3.1**   |   **3.0.0**   |
 |   **2.2.0**    |     R-A-B     |   Supported   |   Supported   | Incompatible  |
 | **SHS-11.1.0** |   Supported   |   Supported   |   Supported   | Incompatible  |
 | **SHS-12.0.2** |   Supported   |     R-A-B     |   Supported   | Incompatible  |
