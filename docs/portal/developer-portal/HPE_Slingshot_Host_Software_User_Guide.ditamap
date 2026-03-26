@@ -65,8 +65,7 @@
     </topichead>
     <topicref href="user/application_software_overview.md" format="mdita">
        <topicref href="user/hpe_cray_programming_environment.md" format="mdita"/>
-       <topicref href="user/nccl.md" format="mdita"/>
-       <topicref href="user/rccl.md" format="mdita"/>
+       <topicref href="user/nccl_and_rccl.md" format="mdita"/>
        <topicref href="user/intel_mpi.md" format="mdita"/>
        <topicref href="user/daos.md" format="mdita"/>
        <topicref href="user/openmpi.md" format="mdita"/>
