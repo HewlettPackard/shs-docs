@@ -41,9 +41,6 @@ jobs:
   markdown-link-check:
     needs: create-runner
     runs-on: ['${{ needs.create-runner.outputs.runner_name }}', 'ignore']
-    container:
-      image: arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/ghcr.io/tcort/markdown-link-check:3.9.3
-      options: --entrypoint ""
     steps:
     - uses: actions/checkout@v4
 
@@ -78,13 +75,24 @@ jobs:
       if: steps.get-changed-files.outputs.changed_files != ''
       run: |
         for file in ${{ steps.get-changed-files.outputs.changed_files }}; do
-          markdown-link-check --config .github/config/markdown_link.json "$file"
+          podman run --rm \
+            -v "${PWD}":/workdir \
+            --workdir /workdir \
+            arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/ghcr.io/tcort/markdown-link-check:3.9.3 \
+            --config .github/config/markdown_link.json "$file"
         done
 
     - name: Full scan
       if: steps.get-changed-files.outputs.changed_files == '' || inputs.force_full_scan
       run: |
-        find . -name "*.md" -not -path "./.github/*" -exec sh -c "set -o pipefail; markdown-link-check --config .github/config/markdown_link.json {} 2>&1 | tee output.txt || cat output.txt >> error.txt" ";"
+        find . -name "*.md" -not -path "./.github/*" | while read -r file; do
+          set -o pipefail
+          podman run --rm \
+            -v "${PWD}":/workdir \
+            --workdir /workdir \
+            arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/ghcr.io/tcort/markdown-link-check:3.9.3 \
+            --config .github/config/markdown_link.json "$file" 2>&1 | tee output.txt || cat output.txt >> error.txt
+        done
 
     - name: Report errors
       if: always()

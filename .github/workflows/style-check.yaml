@@ -35,9 +35,6 @@ jobs:
   style-check:
     needs: create-runner
     runs-on: ['${{ needs.create-runner.outputs.runner_name }}', 'ignore']
-    container:
-      image: arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/ghcr.io/igorshubovych/markdownlint-cli:v0.31.1
-      options: --entrypoint /bin/bash
     steps:
     - uses: actions/checkout@v4
 
@@ -71,4 +68,9 @@ jobs:
 
     - name: Run markdownlint
       if: steps.get-changed-files.outputs.changed_files != ''
-      run: markdownlint --config .github/config/markdown_style.yaml ${{ steps.get-changed-files.outputs.changed_files }}
+      run: |
+        podman run --rm \
+          -v "${PWD}":/workdir \
+          --workdir /workdir \
+          arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/ghcr.io/igorshubovych/markdownlint-cli:v0.31.1 \
+          markdownlint --config .github/config/markdown_style.yaml ${{ steps.get-changed-files.outputs.changed_files }}

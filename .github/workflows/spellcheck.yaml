@@ -35,9 +35,6 @@ jobs:
   spellcheck:
     needs: create-runner
     runs-on: ['${{ needs.create-runner.outputs.runner_name }}', 'ignore']
-    container:
-      image: arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/tmaier/markdown-spellcheck:latest
-      options: --entrypoint /bin/bash
     steps:
     - uses: actions/checkout@v4
 
@@ -69,4 +66,9 @@ jobs:
       if: steps.get-changed-files.outputs.changed_files != ''
       env:
         FORCE_COLOR: "1"
-      run: mdspell ${{ steps.get-changed-files.outputs.changed_files }} -r -a -n
+      run: |
+        podman run --rm \
+          -v "${PWD}":/workdir \
+          --workdir /workdir \
+          arti.hpc.amslabs.hpecorp.net/third-party-docker-stable-local/tmaier/markdown-spellcheck:latest \
+          mdspell ${{ steps.get-changed-files.outputs.changed_files }} -r -a -n
