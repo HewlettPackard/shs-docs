@@ -52,7 +52,7 @@ configurations:
 
 This step should not be executed until after COS install has finished on the system. COS provides the instructions for creating a CFS configuration for compute nodes. The procedure in this section aims at updating the existing CFS configuration for compute nodes.
 
-The existing configuration will likely include other Cray EX product entries. The Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) provides guidance on how and when to update the entries for the other products.
+The existing configuration will likely include other Cray EX product entries. The Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-17/operations/iuf/iuf/) provides guidance on how and when to update the entries for the other products.
 
 1. Retrieve the existing configuration file.
 
@@ -120,4 +120,4 @@ The existing configuration will likely include other Cray EX product entries. Th
    }
    ```
 
-At this point, SHS configuration content has been updated in HPE Cray EX System Software CFS. If other HPE Cray EX software products are being installed in conjunction with SHS, refer to the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) to determine what step to perform next. If other HPE Cray EX software products are not being installed at this time, continue to the next section of this document.
+At this point, SHS configuration content has been updated in HPE Cray EX System Software CFS. If other HPE Cray EX software products are being installed in conjunction with SHS, refer to the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-17/operations/iuf/iuf/) to determine what step to perform next. If other HPE Cray EX software products are not being installed at this time, continue to the next section of this document.
