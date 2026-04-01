@@ -7,7 +7,7 @@ Ensure that the [Setup](setup.md#setup) section has been completed prior to runn
 
 The following steps describe how to use the NCN CFS configuration in conjunction with HPE Cray EX System Software CFS to install, update, and configure SHS provided content with NCN images. These steps provide the networking drivers, management software, and device firmware.
 
-**Note:** The existing configuration will likely include other HPE Cray EX product entries. The Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) provides guidance on how and when to update the entries for the other products following the `sat bootprep` input files.
+**Note:** The existing configuration will likely include other HPE Cray EX product entries. The Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-17/operations/iuf/iuf/) provides guidance on how and when to update the entries for the other products following the `sat bootprep` input files.
 
 1. Retrieve the existing configuration file. The following is an example of what the configuration could look like with stub values for each field:
 
@@ -74,4 +74,4 @@ The following steps describe how to use the NCN CFS configuration in conjunction
 
 At this point, SHS configuration content has been updated in HPE Cray EX System Software CFS.
 
-If other HPE Cray EX software products are being installed in conjunction with SHS, refer to the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-14/operations/iuf/iuf/) to determine what step to perform next. If other HPE Cray EX software products are not being installed at this time, continue to the next section of this document.
+If other HPE Cray EX software products are being installed in conjunction with SHS, refer to the Install and Upgrade Framework (IUF) section of the [Cray System Management (CSM) Documentation](https://cray-hpe.github.io/docs-csm/en-17/operations/iuf/iuf/) to determine what step to perform next. If other HPE Cray EX software products are not being installed at this time, continue to the next section of this document.
