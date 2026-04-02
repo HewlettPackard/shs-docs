@@ -8,7 +8,7 @@ All material will be available via the source URLs provided below as part of the
 
 | Package Name                  | Description                                                                                                   | Target Nodes                     |
 |-------------------------------|---------------------------------------------------------------------------------------------------------------|----------------------------------|
-| cray-cassini-headers-user      | Header files and example user-space tools for developing applications on the HPE Slingshot 200Gbps fabric         | all compute nodes                |
+| cray-cassini-headers-user      | Header files and example user-space tools for developing applications on the HPE Slingshot fabric. The cassini2-firmware-devel headers were moved to this package.         | all compute nodes                |
 | cray-slingshot-base-link       | HPE Slingshot Base Link driver providing core networking and link management                                     | all compute nodes                |
 | sl-driver                      | HPE Slingshot Link driver enabling host-to-fabric communication                                                  | all compute nodes                |
 | cray-cxi-driver                | HPE Slingshot 200Gbps driver providing low-level fabric interface for user and system communication                        | all compute nodes                |
