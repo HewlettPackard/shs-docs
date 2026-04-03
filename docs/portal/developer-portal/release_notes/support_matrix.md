@@ -16,25 +16,25 @@ Advisory: older platform targets (i.e. SLE 15 SP4, COS 2.X, CSM 1.3.X, RHEL 8.9)
 
 The following table shows operating system distribution support across SHS releases.
 
-| Item / Distribution | SHS v13.0.0 |  SHS v13.1.0  |  SHS v14.0.0  | SHS v15.0.0 |
-|---------------------|-------------|---------------|---------------|-------------|
-| **Release Date**    | Released    | Dec 2025      | March 2026    | Planned     |
-|                     |             |               |               |             |
-| **RHEL 8.10**       | Supported   | Supported     | Supported     | Planned     |
-|                     |             |               |               |             |
-| **RHEL 9.4**        | Supported   |               |               |             |
-| **RHEL 9.5**        | Supported   | Supported     |               |             |
-| **RHEL 9.6**        | Supported   | Supported     | Supported     | Planned     |
-| **RHEL 9.7**        |             |               | Supported     | Planned     |
-|                     |             |               |               |             |
-| **RHEL 10.0**       |             | Tech-Preview  | Supported     |             |
-| **RHEL 10.1**       |             |               |               | Planned     |
-|                     |             |               |               |             |
-| **SLES 15 SP5**     |             |               |               |             |
-| **SLES 15 SP6**     | Supported   | Supported     | Supported*    |             |
-| **SLES 15 SP7**     | Supported   | Supported     | Supported     | Planned     |
-|                     |             |               |               |             |
-| **Ubuntu 24.04**    |             | Tech-Preview  | Supported     | Planned     |
+| Item / Distribution | SHS v13.0.0 | SHS v13.1.0  | SHS v14.0.0 | SHS v15.0.0 |
+|---------------------|-------------|--------------|-------------|-------------|
+| **Release Date**    | Released    | Dec 2025     | March 2026  | Planned     |
+|                     |             |              |             |             |
+| **RHEL 8.10**       | Supported   | Supported    | Supported   | Planned     |
+|                     |             |              |             |             |
+| **RHEL 9.4**        | Supported   |              |             |             |
+| **RHEL 9.5**        | Supported   | Supported    |             |             |
+| **RHEL 9.6**        | Supported   | Supported    | Supported   | Planned     |
+| **RHEL 9.7**        |             |              | Supported   | Planned     |
+|                     |             |              |             |             |
+| **RHEL 10.0**       |             | Tech-Preview | Supported   |             |
+| **RHEL 10.1**       |             |              |             | Planned     |
+|                     |             |              |             |             |
+| **SLES 15 SP5**     |             |              |             |             |
+| **SLES 15 SP6**     | Supported   | Supported    | Supported*  |             |
+| **SLES 15 SP7**     | Supported   | Supported    | Supported   | Planned     |
+|                     |             |              |             |             |
+| **Ubuntu 24.04**    |             | Tech-Preview | Supported   | Planned     |
 
 
 \* Support is provided only while the OS remains supported by the distribution vendor. We make a best-effort to enable compatibility, but builds may not be possible if the vendor does not supply necessary dependency packages.
@@ -64,6 +64,15 @@ In the following table, **FM/SA Version** stands for the Fabric Manager and Swit
 | R-A-B        | Release As Bundle, Supported |
 | Supported    | Supported                    |
 | Incompatible | Incompatible                 |
+
+## `sl-driver` Host and Switch Compatibility
+
+Use the following `sl-driver` pairing for the current release cycle:
+
+| Component                       | Recommended version |
+|---------------------------------|---------------------|
+| SHS                             | 14.0.0              |
+| Fabric Manager and Switch Agent | 3.1.0               |
 
 ## AMD ROCM and Nvidia CUDA Versions
 
@@ -124,10 +133,10 @@ All distributions are provided with libfabric version v2.3.1, branched from v2.3
 
 The following cluster manager software compatibility information is for reference. For the most up-to-date compatibility details, see the "CSM Software Compatibility Matrix Version" section of the _HPE Cray Supercomputing EX System Software Stack Installation and Upgrade Guide for CSM (S-8052)_ and the "2.2 Operating System Support" section in the _HPE Performance Cluster Manager Release Notes_.
 
-| Cluster Management                     | Versions Supported     |
-|----------------------------------------|------------------------|
-| HPE Cray EX System Software            | 1.6.X, 1.7.X           |
-| HPE Performance Cluster Manager (HPCM) | 1.13, 1.14             |
+| Cluster Management                     | Versions Supported |
+|----------------------------------------|--------------------|
+| HPE Cray EX System Software            | 1.6.X, 1.7.X       |
+| HPE Performance Cluster Manager (HPCM) | 1.13, 1.14         |
 
 _**Compute Node Image and Cluster Management Software Compatibility**_
 
@@ -159,10 +168,10 @@ Soft-RoCE support in this release is limited due to low demand and known perform
 For SHS-13.1.0, Soft-RoCE is supported only on the following platforms:
 
 | Distribution             | Version | Arch | Cray EX (CSM) | HPCM |
-|--------------------------|---------|------|----------------|------|
-| Red Hat Enterprise Linux | 9.6     | x86  | No             | Yes  |
-| SUSE Linux Enterprise 15 | SP6     | x86  | Yes            | Yes  |
-| SUSE Linux Enterprise 15 | SP7     | x86  | Yes            | Yes  |
+|--------------------------|---------|------|---------------|------|
+| Red Hat Enterprise Linux | 9.6     | x86  | No            | Yes  |
+| SUSE Linux Enterprise 15 | SP6     | x86  | Yes           | Yes  |
+| SUSE Linux Enterprise 15 | SP7     | x86  | Yes           | Yes  |
 
 ### Usage and Workload Guidance
 
