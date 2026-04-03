@@ -64,6 +64,15 @@ The following table shows compatibility between SHS releases and specific Fabric
 | Supported    | Supported                    |
 | Incompatible | Incompatible                 |
 
+## `sl-driver` Host and Switch Compatibility
+
+Use the following `sl-driver` pairing for the current release cycle:
+
+| Component                       | Recommended version |
+|---------------------------------|---------------------|
+| SHS                             | 14.0.0              |
+| Fabric Manager and Switch Agent | 3.1.0               |
+
 ## AMD ROCM and Nvidia CUDA Versions
 
 The following table lists the **AMD** and **ROCM** versions included in this release as part of the recipe.  
