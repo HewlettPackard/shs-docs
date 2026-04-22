@@ -30,6 +30,7 @@ if [ -L "${CONFIG_PATH}/default" ]; then
 fi
 ln -s ${CONFIG_PATH}/1.2.0-* ${CONFIG_PATH}/default
 systemctl start slingshot-ifroute
+```
 
 ## Integrate files into the image
 

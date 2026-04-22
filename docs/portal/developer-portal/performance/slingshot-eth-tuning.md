@@ -1,6 +1,6 @@
 # Ethernet tuning
 
-The Slingshot Host Software (SHS) Ethernet tuning utility script (`slingshot-eth-tuning.sh`) is designed to optimize network interface parameters for high-performance networking, particularly for High-Speed Network (HSN) interfaces.
+The Slingshot Host Software (SHS) Ethernet tuning utility script (`slingshot-eth-tuning`) is designed to optimize network interface parameters for high-performance networking, particularly for High-Speed Network (HSN) interfaces.
 It provides a comprehensive set of tools to get, set, and recommend optimal network parameters for both system-wide TCP settings and device-specific configurations.
 
 The script helps achieve optimal TCP performance through the following capabilities:
