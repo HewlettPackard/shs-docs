@@ -8,8 +8,8 @@ The script provides three main modes of operation.
    - Shows recommended values for optimal performance
 
    ```bash
-   slingshot-eth-tuning.sh --get value [--device <network_device>]
-   slingshot-eth-tuning.sh --get recommendation
+   slingshot-eth-tuning --get value [--device <network_device>]
+   slingshot-eth-tuning --get recommendation
    ```
 
 2. **Set mode:**
@@ -18,8 +18,8 @@ The script provides three main modes of operation.
    - Can set recommended values automatically
 
    ```bash
-   slingshot-eth-tuning.sh --set value [--device <network_device>] [options]
-   slingshot-eth-tuning.sh --set recommendation [--device <network_device>]
+   slingshot-eth-tuning --set value [--device <network_device>] [options]
+   slingshot-eth-tuning --set recommendation [--device <network_device>]
    ```
 
 3. **Dry-run mode:**
@@ -28,5 +28,5 @@ The script provides three main modes of operation.
    - Useful for previewing changes
 
    ```bash
-   slingshot-eth-tuning.sh --set value [options] --dry-run
+   slingshot-eth-tuning --set value [options] --dry-run
    ```

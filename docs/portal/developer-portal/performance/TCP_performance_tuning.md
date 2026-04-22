@@ -21,7 +21,7 @@ To achieve high TCP performance on the HPE Slingshot system, tune the following 
 The following recommended settings are based on the TCP window size formula and RTT of 0.13ms, which may differ for each system.
 These settings have been tested with HPE Slingshot 200Gbps and 400Gbps systems.
 
-For additional help implementing the recommended settings, the `slingshot-eth-tuning.sh` script is available.
+For additional help implementing the recommended settings, the `slingshot-eth-tuning` script is available.
 See the [Ethernet tuning](slingshot-eth-tuning.md#ethernet-tuning) section for more information.
 
 - Use 16MB buffers with RTT 0.13ms:
