@@ -24,6 +24,8 @@ These settings have been tested with HPE Slingshot 200Gbps and 400Gbps systems.
 For additional help implementing the recommended settings, the `slingshot-eth-tuning` script is available.
 See the [Ethernet tuning](slingshot-eth-tuning.md#ethernet-tuning) section for more information.
 
+To apply these settings directly, see [Apply the recommended TCP settings with `slingshot-eth-tuning`](#apply-the-recommended-tcp-settings-with-slingshot-eth-tuning).
+
 - Use 16MB buffers with RTT 0.13ms:
 
   16MB buffers provide more consistent throughput across multiple `iperf` flows.
@@ -80,3 +82,66 @@ See the [Ethernet tuning](slingshot-eth-tuning.md#ethernet-tuning) section for m
   ```screen
   cpupower frequency-set -g performance
   ```
+
+## Apply the recommended TCP settings with `slingshot-eth-tuning`
+
+Use the `slingshot-eth-tuning` script to apply the recommended settings across all nodes with HSN NICs. For example:
+
+```screen
+# slingshot-eth-tuning --set recommendation
+
+Setting system-wide parameters
+Setting rmem_max to 16777216
+net.core.rmem_max = 16777216
+Setting wmem_max to 16777216
+net.core.wmem_max = 16777216
+Setting tcp_rmem to 4096 131072 16777216
+net.ipv4.tcp_rmem = 4096 131072 16777216
+Setting tcp_wmem to 4096 131072 16777216
+net.ipv4.tcp_wmem = 4096 131072 16777216
+Setting irqbalance service to stop
+Failed to stop irqbalance.service: Unit irqbalance.service not loaded.
+Applying device specific settings to all HSN interfaces...
+Applying to device: hsn0
+Setting MTU for hsn0 to 9000
+Setting pause parameters for hsn0 to on
+Setting number of queues for hsn0 to 16
+Setting ring buffer for hsn0 to 4096
+Setting TX queue length for hsn0 to 10000
+Setting XPS bitmasks for hsn0
+Setting CXI IRQ CPU affinity for hsn0
+Successfully set RX IRQ 435 to CPU 0
+Successfully set RX IRQ 180 to CPU 1
+Successfully set RX IRQ 181 to CPU 2
+Successfully set RX IRQ 182 to CPU 3
+Successfully set RX IRQ 183 to CPU 4
+Successfully set RX IRQ 184 to CPU 5
+Successfully set RX IRQ 185 to CPU 6
+Successfully set RX IRQ 186 to CPU 7
+Successfully set RX IRQ 187 to CPU 8
+Successfully set RX IRQ 188 to CPU 9
+Successfully set RX IRQ 189 to CPU 10
+Successfully set RX IRQ 190 to CPU 11
+Successfully set RX IRQ 191 to CPU 12
+Successfully set RX IRQ 192 to CPU 13
+Successfully set RX IRQ 193 to CPU 14
+Successfully set RX IRQ 194 to CPU 15
+Successfully set TX IRQ 563 to CPU 0
+Successfully set TX IRQ 308 to CPU 1
+Successfully set TX IRQ 309 to CPU 2
+Successfully set TX IRQ 310 to CPU 3
+Successfully set TX IRQ 311 to CPU 4
+Successfully set TX IRQ 312 to CPU 5
+Successfully set TX IRQ 313 to CPU 6
+Successfully set TX IRQ 314 to CPU 7
+Successfully set TX IRQ 315 to CPU 8
+Successfully set TX IRQ 316 to CPU 9
+Successfully set TX IRQ 317 to CPU 10
+Successfully set TX IRQ 318 to CPU 11
+Successfully set TX IRQ 319 to CPU 12
+Successfully set TX IRQ 320 to CPU 13
+Successfully set TX IRQ 321 to CPU 14
+Successfully set TX IRQ 322 to CPU 15
+```
+
+See the [Ethernet tuning](slingshot-eth-tuning.md#ethernet-tuning) section for more information on this tool.
