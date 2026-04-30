@@ -14,16 +14,11 @@
         <topicref href="operations/operational_activities_csm.md" format="mdita">
             <topicref href="operations/shs_cfs_variable_reference.md" format="mdita"/>
             <topicref href="operations/setup.md" format="mdita"/>
-            <topicref href="operations/authentication_credentials.md" format="mdita"/>
-            <topicref href="operations/find_targets.md" format="mdita"/>
-            <topicref href="operations/clone.md" format="mdita"/>
-            <topicref href="operations/references.md" format="mdita"/>
-            <topicref href="operations/target_shell_variables.md" format="mdita"/>
+            <topicref href="operations/ncn_image_customization.md" format="mdita"/>
+            <topicref href="operations/compute_node_configuration.md" format="mdita"/>
+            <topicref href="operations/application_node_configuration.md" format="mdita"/>
+            <topicref href="operations/image_building.md" format="mdita"/>
         </topicref>
-        <topicref href="operations/ncn_image_customization.md" format="mdita"/>
-        <topicref href="operations/compute_node_configuration.md" format="mdita"/>
-        <topicref href="operations/application_node_configuration.md" format="mdita"/>
-        <topicref href="operations/image_building.md" format="mdita"/>
     </topicref>
     <topicref href="install/Install_SHS_for_HPCM.md" format="mdita">
         <topicref href="install/install_or_upgrade_shs_on_hpcm_compute_nodes.md" format="mdita">

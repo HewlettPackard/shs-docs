@@ -2,6 +2,8 @@
 
 This section provides detailed instructions on how to modify Compute CFS configurations to support SHS installation use cases on HPE Cray EX systems.
 
+Ensure that the [Set up the SHS configuration repository](setup.md) procedure has been completed prior to running any steps in this section.
+
 There are two options for modifying those configurations:
 
 - SAT Bootprep
