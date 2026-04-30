@@ -3,7 +3,7 @@
 NCN image customization is the process of applying product-specific configuration to an NCN image prior to boot.
 It must be run on the NCN worker node image to ensure the appropriate SHS CFS layer is applied.
 
-Ensure that the [Setup](setup.md#setup) section has been completed prior to running any steps in this section.
+Ensure that the [Set up the SHS configuration repository](setup.md) procedure has been completed prior to running any steps in this section.
 
 The following steps describe how to use the NCN CFS configuration in conjunction with HPE Cray EX System Software CFS to install, update, and configure SHS provided content with NCN images. These steps provide the networking drivers, management software, and device firmware.
 

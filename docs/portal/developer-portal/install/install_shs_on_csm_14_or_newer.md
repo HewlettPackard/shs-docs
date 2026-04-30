@@ -35,5 +35,4 @@ This section describes any SHS details that an administrator may need to be awar
 
 **update-cfs-config**:
 
-- **Action**: Before running this stage, make any site-local SHS configuration changes so the following stages run using the desired SHS configuration values.
-  See the [Configure nodes or images with CFS](../operations/operational_activities_csm.md#configure-nodes-or-images-with-cfs) section for more information.
+- **Action**: Before running this stage, complete the [Set up the SHS configuration repository](../operations/setup.md) procedure to ensure the integration branch is configured with the correct SHS configuration values for the target release and system environment.
