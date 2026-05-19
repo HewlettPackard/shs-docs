@@ -53,12 +53,12 @@ MARKDOWN_PDF_SAFE_NL = MARKDOWN_SAFE_NL + WHITE_SPACE + WHITE_SPACE
 MISSING_JIRA_CONTENT     = "**MISSING-JIRA-CONTENT-IN-FIELD**:"
 UNSUPPORTED_JIRA_CONTENT = "UNSUPPORTED-JIRA-CONTENT-IN-FIELD:"
 
-QUERY_FILTERS = { NS_NEW_FEATURES     : 'filter = shs-v13.1.0-release-notes-feature-complete',
-                  NS_RESOLVED_ISSUES  : 'filter = shs-v13.1.0-release-notes-resolved-issues',
-                  NS_KNOWN_ISSUES     : 'filter = shs-v13.1.0-release-notes-known-issues',
-                  NS_BREAKING_CHANGES : 'filter = shs-v13.1.0-release-notes-breaking-changes',
-                  NS_SECURITY_ISSUES  : 'filter = shs-v13.1.0-release-notes-security-complete',
-                  NS_SUMMARY          : 'filter = shs-v14.0.0-release-notes-summary' }
+QUERY_FILTERS = { NS_NEW_FEATURES     : 'filter = SHS-v14.0.1-Release-Notes-Feature-Complete',
+                  NS_RESOLVED_ISSUES  : 'filter = SHS-v14.0.1-Release-Notes-Resolved-Issues',
+                  NS_KNOWN_ISSUES     : 'filter = SHS-v14.0.1-Release-Notes-Known-Issues',
+                  NS_BREAKING_CHANGES : 'filter = SHS-v14.0.1-Release-Notes-Breaking-Changes',
+                  NS_SECURITY_ISSUES  : 'filter = SHS-v14.0.1-Release-Notes-Security-Changes',
+                  NS_SUMMARY          : 'filter = SHS-v14.0.1-Release-Notes-Summary' }
 
 QUERY_FIELDS  = { NS_NEW_FEATURES     : [ JIRA_FIELD_ID, JIRA_FIELD_SUMMARY, JIRA_FIELD_RISK_AND_ISSUES, JIRA_FIELD_EVALUATED_PROBLEM_DESCRIPTION ],
                   NS_RESOLVED_ISSUES  : [ JIRA_FIELD_ID, JIRA_FIELD_SUMMARY, JIRA_FIELD_RISK_AND_ISSUES, JIRA_FIELD_COMPONENTS, JIRA_FIELD_AFFECTS_VERSIONS ],

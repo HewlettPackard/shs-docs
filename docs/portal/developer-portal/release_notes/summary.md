@@ -1,40 +1,42 @@
 
 # Summary
 
-Date of Release: March 13, 2026
+Date of Release: June 12, 2026
 
-This is Slingshot Host Software version 14.0.0.  It includes new hardware support, compatibility updates, support updates, and critical bug fixes.
+Slingshot Host Software version 14.0.1 is an update to the SHS-v14.0.0 Long Term Support (LTS) release. It delivers critical bug fixes and updates platform compatibility to support the latest GPU driver stacks.
 
-Key Highlights
+Highlights: 
+
++ Maintenance release with critical fixes on top of version 14.0.0
+
++ Updated support across all operating systems for:
+
++ + AMD ROCm™ 7.12
+
++ + NVIDIA® 26.3 / 580.x drivers
+
+
+
+14.0.0 LTS Highlights 
 
 + LTS release aligned with the March 2026 recipe
 
-+ SHMEM enhancements, including libfabric append support
++ SHMEM and libfabric enhancements
 
-Since 14.0.0 is a fast follower to SHS 13.1.0, here is a summary of what was introduced in 13.1.0:
++ Support for RHEL 9.7
 
-HPE Slingshot Host Software 13.1.0 Key Highlights 
++ Enhanced DAOS integration
 
-+ Enhanced DAOS Integration
++ Increased VNI capacity (>256)
 
-   + Support for configuring VNIs on DAOS client nodes through mechanisms other than scheduler plug-ins
++ Slingshot 400 Gbps performance improvements
 
-   + Increased VNI capacity beyond 256
++ Improved switch‑based collectives
 
-+ Slingshot 400Gbps Improvements
++ Stability updates including RGID fixes
 
-+ Switch-Based Collectives improvements
++ DMABUF enabled by default for GPU/NIC interoperability
 
-+ RGID-related fixes and additional stability updates
-
-+ Updated OS & Driver Support
-
-   + Added ROCm 7.0 and NVIDIA 580.x drivers for SLES 15 SP7, RHEL 8.10, and RHEL 9.6
-
-   + Tech Preview: Initial enablement for RHEL 10.0 and Ubuntu 24.04
-
-   + DMABUF enabled by default for improved GPU/NIC interoperability
-
-+ Added Soft-RoCE support for RHEL 9.6 x86 and SLES 15 SP7 x86
++ Soft‑RoCE support for RHEL 9.6 (x86) and SLES 15 SP7 (x86)
 
 HPE recommends thoroughly reviewing the release notes and readme.txt files before upgrading systems. Note that release notes are specific to each release, so customers should consider reviewing the cumulative set of release notes to understand the net changes.
