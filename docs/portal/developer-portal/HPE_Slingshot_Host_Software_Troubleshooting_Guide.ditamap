@@ -64,6 +64,7 @@
         </topicref>
     </topicref>
     <topicref href="troubleshoot/compute/troubleshoot_compute.md" format="mdita"/>
+    <topicref href="troubleshoot/link_driver/slstat_link_diagnostics.md" format="mdita"/>
     <topicref href="troubleshoot/cassini/HPE_Slingshot_CXI_NIC.md" format="mdita">
         <topicref href="troubleshoot/cassini/HPE_Slingshot_CXI_NIC_troubleshooting.md"
             format="mdita">
