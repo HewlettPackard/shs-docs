@@ -71,6 +71,7 @@
                 href="troubleshoot/cassini/check_and_fix_misconfigured_nonvlan_tagged_ethernet_pcp_settings.md"
                 format="mdita"/>
             <topicref href="troubleshoot/cassini/lldp_mac_address_issue.md" format="mdita"/>
+            <topicref href="troubleshoot/cassini/ama_prefix_change_requires_reboot.md" format="mdita"/>
         </topicref>
         <topicref href="troubleshoot/cassini/HPE_Slingshot_CXI_NIC_Host_troubleshooting.md"
             format="mdita">
