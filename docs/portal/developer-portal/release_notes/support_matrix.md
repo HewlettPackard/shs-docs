@@ -12,10 +12,9 @@ Here are the System Software requirements for the SHS release, detailing compati
 
 Advisory: older platform targets (i.e. SLE 15 SP4, COS 2.X, CSM 1.3.X, RHEL 8.9) are supported by earlier versions of SHS. Software for older platforms can be found in earlier SHS releases.
 
-## Operating Systems 
+## Operating Systems
 
 The following table shows operating system distribution support across SHS releases.
-
 
 | Item / Distribution | SHS v13.1.0 | SHS v14.0.0 | SHS v14.0.1 | SHS v15.0.0 |
 |---------------------|--------------|-------------|-------------|-------------|
@@ -25,10 +24,10 @@ The following table shows operating system distribution support across SHS relea
 |                     |              |             |             |             |
 | **RHEL 9.6**        | Supported    | Supported   | Supported   | Deprecated  |
 | **RHEL 9.7**        |              | Supported   | Supported   | Planned     |
-| **RHEL 9.8**        |              |             |             | Planned     |
+| **RHEL 9.8**        |              |             |             | Supported   |
 |                     |              |             |             |             |
 | **RHEL 10.0**       | Tech-Preview | Supported   | Supported   | Deprecated  |
-| **RHEL 10.2**       |              |             |             | Planned     |
+| **RHEL 10.2**       |              |             |             | Supported   |
 |                     |              |             |             |             |
 | **SLES 15 SP6**     | Supported    | Supported*  | Supported   | Deprecated  |
 | **SLES 15 SP7**     | Supported    | Supported   | Supported   | Planned     |
