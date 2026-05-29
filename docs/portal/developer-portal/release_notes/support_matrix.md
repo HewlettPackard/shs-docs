@@ -134,7 +134,7 @@ For systems using HPE Slingshot 100Gbps NICs, continue using Slingshot Host Soft
 
 ## Libfabric Versions
 
-All distributions are provided with libfabric version v2.3.1, branched from v2.3.x: https://github.com/ofiwg/libfabric/tree/v2.3.x.
+All distributions are provided with libfabric version v2.3.1, branched from v2.3.x: [https://github.com/ofiwg/libfabric/tree/v2.3.x](https://github.com/ofiwg/libfabric/tree/v2.3.x).
 
 - Branched off ofiwg: `v2.3.x` 
 - Last OFI Tag: `v2.3.1` 
