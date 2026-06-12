@@ -1,7 +1,7 @@
 
 # Summary
 
-Date of Release: June 12, 2026
+Date of Release: June 23, 2026
 
 Slingshot Host Software version 14.0.1 is an update to the SHS-v14.0.0 Long Term Support (LTS) release. It delivers critical bug fixes and updates platform compatibility to support the latest GPU driver stacks.
 
@@ -31,9 +31,9 @@ Highlights:
 
 + Increased VNI capacity (>256)
 
-+ Slingshot 400 Gbps performance improvements
++ Slingshot 400Gbps performance improvements
 
-+ Improved switch‑based collectives
++ Improved switch-based collectives
 
 + Stability updates including RGID fixes
 

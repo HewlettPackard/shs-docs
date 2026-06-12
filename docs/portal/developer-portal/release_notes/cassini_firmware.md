@@ -15,7 +15,7 @@ The following firmware images are included in SHS releases:
 | NIC Speed | Firmware Version | RPM Package Name | Description |
 |------------|------------------|------------------|--------------|
 | 200Gbps | 1.5.61 | `slingshot-firmware-cassini-1.5.61-SSHOT*` | Firmware for HPE Slingshot 200Gbps NICs |
-| 400Gbps | 2.1.24 | `slingshot-firmware-cassini2-2.1.24-SSHOT*` | Firmware for HPE Slingshot 400Gbps NICs |
+| 400Gbps | 2.1.26 | `slingshot-firmware-cassini2-2.1.26-SSHOT*` | Firmware for HPE Slingshot 400Gbps NICs |
 
 Both firmware RPMs include image files for their respective NICs. 
 

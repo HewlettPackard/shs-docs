@@ -2,6 +2,7 @@
 # Resolved Issues
 |ID|Description|Impact|Component|Affected Version/s|
 |:--:|:---------|:---------|:----|:----|
+|3840584|CXI Services cannot share VNIs|This resolves an issue introduced in SHS 13.1 that prevented multiple CXI services for a given NIC from sharing a common VNI. This prevented Job Level VNIs from being shared by Job Steps.|cxicore|SHS v13.0.0<br>  SHS v13.1.0<br>  SHS v14.0.0|
 |3812231|Add support for temperature reading on SFF formatted cables|Added support to read and report temperature metrics from SFF cables across supported configurations.|sl driver|SHS v14.0.0|
 |3799514|cxi\_prov\_hw.h missing <string.h> include causes build failures|Added the missing #include <string.h> in cxi\_prov\_hw.h to resolve undefined references to memcpy and memset, enabling successful builds of ldmsd with --enable-slingshot.|Cassini|SHS v12.0.0<br>  SHS v13.0.0<br>  SHS v14.0.0<br>  SHS v15.0.0|
 |3791035|LE allocation should not create an LE pool if reserved is 0|Resolved an issue where LE pools, a limited hardware resource, were allocated even when a job requested zero reserved LEs. This unnecessary allocation could limit the number of jobs that could start simultaneously.|cxicore|SHS v12.0.0|
@@ -38,4 +39,3 @@
 |2790942|Improve libfabric CXI provider locking for threaded environments|Locking is improved to allow concurrent read access to internal CXI provider data structures. This may lead to improved threaded operation rates.|cxiprov|SHS v11.0.0|
 |2714448|Implementation of upstream disable non-inject RMA IDC usage is wrong|New experimental flags where added to disable RMA or AMO automatic use of Immediate Data Commands when FI\_INJECT is not specified. This can be useful with GPU source buffers to avoid the host copy in cases a performant copy cannot be used.<br>  <br>  FI\_CXI\_DISABLE\_NON\_INJECT\_RMA\_IDC<br>  FI\_CXI\_DISABLE\_NON\_INJECT\_AMO\_IDC|cxiprov<br>  libfabric|SHS v11.0.0|
 |2416029|libfabric CXI provider: Support FI\_CXI\_DISABLE\_NON\_INJECT\_MSG\_IDC for FI\_RMA and FI\_AMOs|The inclusion of FI\_CXI\_DISABLE\_NON\_INJECT\_RMA\_IDC and FI\_CXI\_DISABLE\_NON\_INJECT\_AMO\_IDC can disable use of immediate data commands for small transfers when FI\_INJECT is not specified for RMA and AMO operations respectively. This may improve message rates for small messages where FI\_INJECT buffer behavior is not required. |cxiprov|SHS v11.0.0|
-
