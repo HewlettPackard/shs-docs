@@ -17,24 +17,24 @@ Advisory: older platform targets (i.e. SLE 15 SP4, COS 2.X, CSM 1.3.X, RHEL 8.9)
 The following table shows operating system distribution support across SHS releases.
 
 
-| Item / Distribution | SHS v13.1.0 | SHS v14.0.0 | SHS v14.0.1 | SHS v15.0.0 |
-|---------------------|--------------|-------------|-------------|-------------|
-| **Release Date**    | Dec 2025     | March 2026  | June 2026   | Planned     |
-|                     |              |             |             |             |
-| **RHEL 8.10**       | Supported    | Supported   | Supported   | Planned     |
-|                     |              |             |             |             |
-| **RHEL 9.6**        | Supported    | Supported   | Supported   | Deprecated  |
-| **RHEL 9.7**        |              | Supported   | Supported   | Planned     |
-| **RHEL 9.8**        |              |             |             | Planned     |
-|                     |              |             |             |             |
-| **RHEL 10.0**       | Tech-Preview | Supported   | Supported   | Deprecated  |
-| **RHEL 10.2**       |              |             |             | Planned     |
-|                     |              |             |             |             |
-| **SLES 15 SP6**     | Supported    | Supported*  | Supported   | Deprecated  |
-| **SLES 15 SP7**     | Supported    | Supported   | Supported   | Planned     |
-|                     |              |             |             |             |
-| **Ubuntu 24.04**    | Tech-Preview | Supported   | Supported   | Deprecated  |
-| **Ubuntu 26.04**    |              |             |             | Planned     |
+| Item / Distribution | SHS v13.1.0  | SHS v14.0.0  | SHS v14.0.1  | SHS v15.0.0  |
+|---------------------|--------------|--------------|--------------|--------------|
+| **Release Date**    | Dec 2025     | March 2026   | June 2026    | Planned      |
+|                     |              |              |              |              |
+| **RHEL 8.10**       | Supported    | Supported    | Supported    | Planned      |
+|                     |              |              |              |              |
+| **RHEL 9.6**        | Supported    | Supported    | Supported    | Deprecated   |
+| **RHEL 9.7**        |              | Supported    | Supported    | Planned      |
+| **RHEL 9.8**        |              |              |              | Planned      |
+|                     |              |              |              |              |
+| **RHEL 10.0**       | Tech-Preview | Tech-Preview | Tech-Preview | Deprecated   |
+| **RHEL 10.2**       |              |              |              | Planned      |
+|                     |              |              |              |              |
+| **SLES 15 SP6**     | Supported    | Supported*   | Supported    | Deprecated   |
+| **SLES 15 SP7**     | Supported    | Supported    | Supported    | Planned      |
+|                     |              |              |              |              |
+| **Ubuntu 24.04**    | Tech-Preview | Tech-Preview | Tech-Preview | Deprecated   |
+| **Ubuntu 26.04**    |              |              |              | Planned      |
 
 
 **KEY:**
