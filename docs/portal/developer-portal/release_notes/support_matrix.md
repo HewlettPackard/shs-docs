@@ -12,28 +12,29 @@ Here are the System Software requirements for the SHS release, detailing compati
 
 Advisory: older platform targets (i.e. SLE 15 SP4, COS 2.X, CSM 1.3.X, RHEL 8.9) are supported by earlier versions of SHS. Software for older platforms can be found in earlier SHS releases.
 
-## Operating Systems
+## Operating Systems 
 
 The following table shows operating system distribution support across SHS releases.
 
-| Item / Distribution | SHS v13.1.0 | SHS v14.0.0 | SHS v14.0.1 | SHS v15.0.0 |
-|---------------------|--------------|-------------|-------------|-------------|
-| **Release Date**    | Dec 2025     | March 2026  | June 2026   | Planned     |
-|                     |              |             |             |             |
-| **RHEL 8.10**       | Supported    | Supported   | Supported   | Planned     |
-|                     |              |             |             |             |
-| **RHEL 9.6**        | Supported    | Supported   | Supported   | Deprecated  |
-| **RHEL 9.7**        |              | Supported   | Supported   | Planned     |
-| **RHEL 9.8**        |              |             |             | Supported   |
-|                     |              |             |             |             |
-| **RHEL 10.0**       | Tech-Preview | Supported   | Supported   | Deprecated  |
-| **RHEL 10.2**       |              |             |             | Supported   |
-|                     |              |             |             |             |
-| **SLES 15 SP6**     | Supported    | Supported*  | Supported   | Deprecated  |
-| **SLES 15 SP7**     | Supported    | Supported   | Supported   | Planned     |
-|                     |              |             |             |             |
-| **Ubuntu 24.04**    | Tech-Preview | Supported   | Supported   | Deprecated  |
-| **Ubuntu 26.04**    |              |             |             | Planned     |
+
+| Item / Distribution | SHS v13.1.0  | SHS v14.0.0  | SHS v14.0.1  | SHS v15.0.0  |
+|---------------------|--------------|--------------|--------------|--------------|
+| **Release Date**    | Dec 2025     | March 2026   | June 2026    | Planned      |
+|                     |              |              |              |              |
+| **RHEL 8.10**       | Supported    | Supported    | Supported    | Planned      |
+|                     |              |              |              |              |
+| **RHEL 9.6**        | Supported    | Supported    | Supported    | Deprecated   |
+| **RHEL 9.7**        |              | Supported    | Supported    | Planned      |
+| **RHEL 9.8**        |              |              |              | Planned      |
+|                     |              |              |              |              |
+| **RHEL 10.0**       | Tech-Preview | Tech-Preview | Tech-Preview | Deprecated   |
+| **RHEL 10.2**       |              |              |              | Planned      |
+|                     |              |              |              |              |
+| **SLES 15 SP6**     | Supported    | Supported*   | Supported    | Deprecated   |
+| **SLES 15 SP7**     | Supported    | Supported    | Supported    | Planned      |
+|                     |              |              |              |              |
+| **Ubuntu 24.04**    | Tech-Preview | Tech-Preview | Tech-Preview | Deprecated   |
+| **Ubuntu 26.04**    |              |              |              | Planned      |
 
 
 **KEY:**
@@ -50,7 +51,7 @@ The following table shows operating system distribution support across SHS relea
 
 ## Fabric Manager and HPE Slingshot Host Software Release Compatibility
 
-In the following table, **FM/SA Version** stands for the Fabric Manager and Switch Agent version.
+The following table shows compatibility between SHS releases and specific Fabric Manager and Switch Agent versions.
 
 | SHS Version     | FM/SA Version | FM/SA Version | FM/SA Version | FM/SA Version |
 |:---------------:|:-------------:|:-------------:|:-------------:|:-------------:|
@@ -112,7 +113,8 @@ The following table lists the **AMD** and **ROCM** versions included in this rel
 
 ## NIC Support
 
-Support for Mellanox NIC (SS10) is not included in this release. For systems using HPE Slingshot 100Gbps NICs, continue using Slingshot Host Software (SHS) v12.0.x.
+Support for Mellanox NIC (SS10) is not included in this release.
+For systems using HPE Slingshot 100Gbps NICs, continue using Slingshot Host Software (SHS) v12.0.x.
 
 | Distribution             | Versions  | Mellanox NIC | Mellanox Version | HPE Slingshot Ethernet 200Gb | HPE Slingshot Ethernet 400Gb |
 |--------------------------|-----------|--------------|------------------|------------------------------|------------------------------|
@@ -121,6 +123,8 @@ Support for Mellanox NIC (SS10) is not included in this release. For systems usi
 | Red Hat Enterprise Linux | 9.6 ARM   | No           | Not Supported    | Yes                          | Yes                          |
 | Red Hat Enterprise Linux | 9.7       | No           | Not Supported    | Yes                          | Yes                          |
 | Red Hat Enterprise Linux | 9.7 ARM   | No           | Not Supported    | Yes                          | Yes                          |
+| Red Hat Enterprise Linux | 10.0      | No           | Not Supported    | Yes                          | Yes                          |
+| Red Hat Enterprise Linux | 10.0 ARM  | No           | Not Supported    | Yes                          | Yes                          |
 | SuSE Linux Enterprise 15 | SP6       | No           | Not Supported    | Yes                          | No                           |
 | SuSE Linux Enterprise 15 | SP6 ARM   | No           | Not Supported    | Yes                          | No                           |
 | SuSE Linux Enterprise 15 | SP7       | No           | Not Supported    | Yes                          | Yes                          |
@@ -128,11 +132,9 @@ Support for Mellanox NIC (SS10) is not included in this release. For systems usi
 | Ubuntu                   | 24.04     | No           | Not Supported    | Yes                          | Yes                          |
 | Ubuntu                   | 24.04 ARM | No           | Not Supported    | Yes                          | Yes                          |
 
-
-
 ## Libfabric Versions
 
-All distributions are provided with libfabric version v2.3.1, branched from v2.3.x: https://github.com/ofiwg/libfabric/tree/v2.3.x. 
+All distributions are provided with libfabric version v2.3.1, branched from v2.3.x: [https://github.com/ofiwg/libfabric/tree/v2.3.x](https://github.com/ofiwg/libfabric/tree/v2.3.x).
 
 - Branched off ofiwg: `v2.3.x` 
 - Last OFI Tag: `v2.3.1` 
@@ -161,21 +163,19 @@ _**Compute Node Image and Cluster Management Software Compatibility**_
 | SuSE Linux Enterprise 15 | SP6 ARM   | 1.6.X*       | 1.12+ |
 | SuSE Linux Enterprise 15 | SP7       | 1.7.X*       | 1.14+ |
 | SuSE Linux Enterprise 15 | SP7 ARM   | 1.7.X*       | 1.14+ |
-| Ubuntu                   | 24.04     | NA           | 1.14+ |
-| Ubuntu                   | 24.04 ARM | NA           | 1.14+ |
+| Ubuntu                   | 24.04     | NA           | NA    |
+| Ubuntu                   | 24.04 ARM | NA           | NA    |
 
 **Note:** For CSM systems, installations of HPE Slingshot 100Gbps NICs on worker nodes are only supported up to the CSM 1.6 release.
 
 \+ Any versions released after the listed version are supported.
 
-
-
 ## Soft-RoCE Support
 
 Soft-RoCE support in this release is limited due to low demand and known performance constraints.
- ​Soft-RoCE is not supported on ARM(aarch64).  
+​Soft-RoCE is not supported on ARM(aarch64).  
 
-For SHS-13.1.0, Soft-RoCE is supported only on the following platforms:
+For SHS-14.0.0, Soft-RoCE is supported only on the following platforms:
 
 | Distribution             | Version | Arch | Cray EX (CSM) | HPCM |
 |--------------------------|---------|------|---------------|------|
@@ -188,7 +188,6 @@ For SHS-13.1.0, Soft-RoCE is supported only on the following platforms:
 - Soft-RoCE is validated only for filesystem-type workloads.
 - **Lustre** is the only filesystem HPE validates with Soft-RoCE.
 - Due to performance limitations, Soft-RoCE is **not recommended** for MPI or other high-performance applications.
-
 
 ## Versioning Model for HPE Slingshot Host Software Starting from Release 11.0.0
 
