@@ -234,7 +234,7 @@ manually loaded with the following commands:
 
    After installing the HPE Slingshot CXI NIC host software, verify that all DKMS components are correctly installed and built for the running kernel.
 
-   a. List the installed DKMS modules.
+   1. List the installed DKMS modules.
 
       Run the following command to display all DKMS-managed modules and their build status:
 
@@ -242,7 +242,7 @@ manually loaded with the following commands:
       dkms status
       ```
 
-   b. Verify that there are entries similar to the following for the HPE Slingshot components:
+   2. Verify that there are entries similar to the following for the HPE Slingshot components:
 
       Example RHEL-9.6 aarch64:
 
@@ -256,7 +256,7 @@ manually loaded with the following commands:
       [root@cn-0001 ~]#
       ```
 
-   c. (Optional) If any HPE Slingshot module is missing, built for the wrong kernel, or not installed, rebuild and reinstall the affected module using:
+   3. (Optional) If any HPE Slingshot module is missing, built for the wrong kernel, or not installed, rebuild and reinstall the affected module using:
 
       ```screen
          for m in cray-slingshot-base-link kdreg2 sl-driver cray-cxi-driver cray-kfabric; do
@@ -295,21 +295,28 @@ manually loaded with the following commands:
 
 3. Validate the SHS installation.
 
-   The HPE Slingshot CXI NIC software stack install procedure should make all NIC devices available for Ethernet and RDMA. 
+   The HPE Slingshot CXI NIC software stack install procedure should make all NIC devices available for Ethernet and RDMA.
 
-   Check for HPE Slingshot CXI NIC RDMA devices.
-   The `fi_info` tool is installed with libfabric
-   and reports available RDMA devices.
+   1. Check the installed SHS version.
 
-   ```screen
-   # fi_info -p cxi
-   provider: cxi
-      fabric: cxi
-      domain: cxi0
-      version: 0.0
-      type: FI_EP_RDM
-      protocol: FI_PROTO_CXI
-   ```
+      ```screen
+      # shs-version
+      SHS 15.0.0
+      ```
+
+   2. Check for HPE Slingshot CXI NIC RDMA devices.
+      The `fi_info` tool is installed with libfabric
+      and reports available RDMA devices.
+
+      ```screen
+      # fi_info -p cxi
+      provider: cxi
+         fabric: cxi
+         domain: cxi0
+         version: 0.0
+         type: FI_EP_RDM
+         protocol: FI_PROTO_CXI
+      ```
 
 4. Check for HPE Slingshot CXI NIC Ethernet network devices.
 
