@@ -52,12 +52,14 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
    To install the required packages, use either of the following methods:
 
-   - Using meta RPMs (Early Access Feature):
+   - Using meta RPMs:
 
-      SHS now provides meta RPMs that simplify installation by including all required SHS packages.
-      These meta packages are available only for RHEL and SLES distributions.
+      SHS provides meta RPMs that simplify installation by including all required SHS packages.
       There are two available meta RPMs: `shs-hpcm-dkms` and `shs-hpcm-kmp`.
       Use `shs-hpcm-dkms` for DKMS-based installations and `shs-hpcm-kmp` for KMP-based installations.
+
+      These meta packages are available for RHEL, SLES, and Ubuntu distributions.
+      Ubuntu only supports DKMS installations; the `shs-hpcm-kmp` meta package is not available for Ubuntu.
 
       Example for DKMS-based installation:
 
@@ -65,9 +67,7 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
       echo -e "shs-hpcm-dkms" > ${PKG_LIST_FILE}
       ```
 
-      **Note:** This feature is provided as an **Early Access Feature**. It has been fully tested internally and is planned for general availability in the next release.
-
-      For now, **use with caution**. If the installation fails due to dependencies or other issues, then install the RPMs directly following the "Using individual RPMs" procedure.
+      If the installation fails due to dependencies or other issues, then install the RPMs directly following the "Using individual RPMs" procedure.
 
    - Using individual RPMs:
 
@@ -110,9 +110,13 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
       """ > ${PKG_LIST_FILE}
       ```
 
+      **RHEL 8.10 distribution:**
+
+      - Remove `sl-driver` and `slingshot-firmware-cassini2` from the package list.
+
       **Ubuntu distribution:**
 
-      - Remove `sl-driver` and `shs-version` from the package list.
+      - Remove `sl-driver` from the package list.
       - If you are using an Ubuntu distribution, all package names ending with `-devel` should be replaced with `-dev`. For example: `sl-driver-devel` will become `sl-driver-dev`.
       - Change `cray-hms-firmware` to `hms-firmware-serdes`.
       - Only DKMS installations are supported.

@@ -65,15 +65,16 @@ To install the required RPMs, use either of the following methods:
   
   The list of required packages is provided below.
 
-## Use meta RPMs (Early Access Feature)
+## Use meta RPMs
 
-SHS now provides meta RPMs that simplify installation by including all required SHS packages.
-These meta packages are available only for RHEL and SLES distributions.
+SHS provides meta RPMs that simplify installation by including all required SHS packages.
 There are two available meta RPMs: `shs-hpcm-dkms` and `shs-hpcm-kmp`.
 Use `shs-hpcm-dkms` for DKMS-based installations, and `shs-hpcm-kmp` for KMP-based installations.
-**Note:** This feature is provided as an **Early Access Feature**. It has been fully tested internally and is planned for general availability in the next release.
 
-For now, **use with caution**. If the installation fails due to dependencies or other issues, then install the RPMs directly following the "Use individual RPMs" procedure.
+These meta packages are available for RHEL, SLES, and Ubuntu distributions.
+Ubuntu only supports DKMS installations; the `shs-hpcm-kmp` meta package is not available for Ubuntu.
+
+If the installation fails due to dependencies or other issues, then install the RPMs directly following the "Use individual RPMs" procedure.
 
 ## Use individual RPMs
 
@@ -114,14 +115,19 @@ kdreg2-dkms
 shs-version
 ```
 
+**RHEL 8.10 distribution:**
+
+- Remove `sl-driver` and `slingshot-firmware-cassini2` from the rpmlist.
+
 **Ubuntu distribution:**
 
-- Remove `sl-driver` and `shs-version` from the rpmlist.
+- Remove `sl-driver` from the rpmlist.
 - If you are using an Ubuntu distribution, all package names ending with `-devel` should be replaced with `-dev`.  For example: `sl-driver-devel` will become `sl-driver-dev`.
 - Change `cray-hms-firmware` to `hms-firmware-serdes`.
 - Only DKMS installations are supported.
 
-**Optional:** If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist. For example, to install a specific libfabric, add the following to the rpmlist:
+**Optional:** If a specific version is required, simply specify the versions you want when adding the packages to the rpmlist.
+For example, to install a specific libfabric, add the following to the rpmlist:
 
 ```screen
 libfabric-x.y.z
