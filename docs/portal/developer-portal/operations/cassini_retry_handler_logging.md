@@ -1,5 +1,8 @@
 # Logging
 
+This page focuses on live (dynamic) log-level changes.
+For setting and troubleshooting the base/default retry handler log level through `systemd` service configuration, see the "Retry Handler" section in the _HPE Slingshot Host Software Troubleshooting Guide_.
+
 `systemd` services handle logging through the `systemd` journal, which is managed by `journald`.
 Logs are stored in `/run/log/journal/` (temporary) and `/var/log/journal/` (persistent).
 
@@ -25,6 +28,7 @@ As of the SHS 11.1 release, the RH primarily uses four log Levels. Some messages
 The default log level is set via the `systemd` service file for `cxi_rh` via the `LogLevelMax` parameter. This `systemd` service log level cannot be changed live.
 A change to the service file requires that a service is restarted - which is unsafe to do for `cxi_rh`.
 To change the default log level, modify the service file or a service override file.
+This default value acts as the base level for dynamic log adjustments.
 
 ## Change the log level dynamically
 
@@ -42,7 +46,7 @@ To dynamically change the RH Log Level (for cxi0 in this example) one may write 
   echo -2 > /run/cxi/cxi0/config/log_increment
   ```
 
-Accepted values are in the range -7 to 7. Increment or decrement will be capped based on base LogLevelMax.
+Accepted values are in the range -7 to 7. Increment or decrement will be capped based on the base `LogLevelMax`.
 For example, if the base log level is `LOG_DEBUG (7)`, you cannot increase the log level further.
 
 ## Log forwarding
