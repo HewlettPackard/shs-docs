@@ -117,7 +117,7 @@ shs-version
 
 **RHEL 8.10 distribution:**
 
-- Remove `sl-driver` and `slingshot-firmware-cassini2` from the rpmlist.
+- Remove `sl-driver`, `sl-driver-devel`, and `slingshot-firmware-cassini2` from the rpmlist.
 
 **Ubuntu distribution:**
 
