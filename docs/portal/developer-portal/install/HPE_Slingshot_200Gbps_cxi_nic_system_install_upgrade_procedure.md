@@ -112,7 +112,7 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
       **RHEL 8.10 distribution:**
 
-      - Remove `sl-driver`, `sl-driver-devel`, and `slingshot-firmware-cassini2` from the package list.
+      - Remove `sl-driver` and `slingshot-firmware-cassini2` from the package list.
 
       **Ubuntu distribution:**
 
