@@ -12,13 +12,4 @@ When the Fabric Manager initiates a run‑time update of the global MAC prefix, 
 
 ## Workaround
 
-After a global MAC prefix change, perform one of the following actions:
-
-- Reboot the nodes with the `reboot` command.
-
-- Flap the HSN interfaces:
-  
-  ```screen
-  ip link set hsn<index> down
-  ip link set hsn<index> up
-  ```
+After a global MAC prefix change, reboot the nodes with the `reboot` command.
