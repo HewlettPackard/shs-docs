@@ -59,7 +59,9 @@
                     </topicref>
                 <topicref href="user/collectives/collective_close.md" format="mdita"/>
             </topicref>
-            <topicref href="user/collectives/environment_variables.md" format="mdita"/>
+            <topicref href="user/collectives/environment_variables.md" format="mdita">
+                <topicref href="user/collectives/fi_cxi_hwcoll_addrs_per_job.md" format="mdita"/>
+            </topicref>
             <topicref href="user/collectives/error_codes.md" format="mdita"/>
         </topicref>
     </topichead>

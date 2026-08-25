@@ -10,7 +10,7 @@ The following environment variables must be provided by the WLM (Workload Manage
 | `FI_CXI_COLL_JOB_STEP_ID`     | integer | WLM job step identifier           |
 | `FI_CXI_COLL_MCAST_TOKEN`     | string  | FM API REST authorization token   |
 | `FI_CXI_COLL_FABRIC_MGR_URL`  | string  | FM API REST URL                   |
-| `FI_CXI_HWCOLL_ADDRS_PER_JOB` | integer | maximum quota for mcast addresses |
+| `FI_CXI_HWCOLL_ADDRS_PER_JOB` | integer | maximum quota for mcast addresses; see [`FI_CXI_HWCOLL_ADDRS_PER_JOB` details](./fi_cxi_hwcoll_addrs_per_job.md) for node count and hardware resource constraints |
 
 ## User environment
 
