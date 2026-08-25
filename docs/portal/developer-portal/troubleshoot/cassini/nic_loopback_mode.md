@@ -17,3 +17,5 @@ systemctl stop 'cxi_rh@cxi*.service'
 modprobe -r -a cxi-eth cxi-user cxi-ss1 sbl
 modprobe -a sbl cxi-ss1 cxi-user cxi-eth
 ```
+
+If you reloaded the NIC drivers, follow the "Recover AMA assignment after driver reload" procedure in the _HPE Slingshot Host Software Administration Guide_ to refresh and verify the AMA.

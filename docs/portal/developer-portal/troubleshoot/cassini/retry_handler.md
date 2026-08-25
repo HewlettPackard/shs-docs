@@ -5,7 +5,9 @@ Each HPE Slingshot CXI NIC must have a Retry Handler daemon running and they are
 **Note:** These instructions refer to `cxi0` in the example.
 
 If the retry handler crashes for some reason, the node must be rebooted. Due to the crash, an unpredictable state (for example, missing traffic that requires retry) may be reached, which can result in putting the fabric into a bad state.
-In addition, restarting the retry handler with any amount of traffic flowing, regardless if it would generate a PCT event, is not a safe operation. This must be avoided. When deploying a new retry handler configuration, reload `cxi-ss1` or reboot the node.
+
+In addition, restarting the retry handler with any amount of traffic flowing, regardless if it would generate a PCT event, is not a safe operation.
+This must be avoided. When deploying a new retry handler configuration, reload `cxi-ss1` or reboot the node. After reloading `cxi-ss1`, follow the "Recover AMA assignment after driver reload" procedure in the _HPE Slingshot Host Software Administration Guide_ to refresh and verify the AMA.
 
 `systemd` and `udev` must automatically handle starting the retry handler, but if there are issues, verify the status:
 

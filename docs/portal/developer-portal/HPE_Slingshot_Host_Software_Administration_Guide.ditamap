@@ -31,7 +31,10 @@
         <topicref href="performance/HSN_performance_benchmarking.md" format="mdita"/>
         <topicref href="performance/ARP.md" format="mdita"/>
         <topicref href="performance/ethtool_node_tuning.md" format="mdita"/>
-        <topicref href="performance/AMA.md" format="mdita"/>
+        <topicref href="performance/AMA.md" format="mdita">
+            <topicref href="performance/ama_verification_procedure.md" format="mdita"/>
+            <topicref href="performance/recover_ama.md" format="mdita"/>
+        </topicref>
         <topicref href="performance/TCP_performance_tuning.md" format="mdita"/>
         <topicref href="performance/iommu.md" format="mdita">
             <topicref href="performance/iommu_overview.md" format="mdita"/>
