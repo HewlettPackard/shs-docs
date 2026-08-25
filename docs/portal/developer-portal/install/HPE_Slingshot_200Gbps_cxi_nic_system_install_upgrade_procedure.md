@@ -243,6 +243,10 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
    - If updating an image:
 
+     **CAUTION:** When upgrading to SHS 15.0.0 from a prior release, some packages are renamed or replaced across SHS releases; for example, `cassini2-firmware-devel` was replaced by `cray-cassini-headers-user`.
+     If an older package remains in the image, the update can fail because the old and new packages conflict.
+     Use the supported image-update procedure and the target-version package list so the correct replacement packages are installed.
+
      The `autoinstall_all_kernels=y` prefix in the command is specific to the DKMS image and does not apply to other images.
      `autoinstall_all_kernels` instructs DKMS to attempt to build the kernel modules from SHS for all installed kernels. This is recommended to avoid problems when building in a `chroot` environment.
 

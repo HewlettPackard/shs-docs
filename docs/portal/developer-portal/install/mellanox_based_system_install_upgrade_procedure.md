@@ -192,6 +192,10 @@ For systems using HPE Slingshot CXI NICs, skip this section and instead proceed 
 
     - If updating an image:
 
+      **CAUTION:** When upgrading to SHS 15.0.0 from a prior release, some packages are renamed or replaced across SHS releases; for example, `cassini2-firmware-devel` was replaced by `cray-cassini-headers-user`.
+      If an older package remains in the image, the update can fail because the old and new packages conflict.
+      Use the supported image-update procedure and the target-version package list so the correct replacement packages are installed.
+
       - SLES environment:
 
          ```screen
