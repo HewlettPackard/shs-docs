@@ -84,6 +84,7 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
          slingshot-firmware-management
          slingshot-firmware-cassini
          slingshot-firmware-cassini2
+         cm-slingshot
          slingshot-utils
          cray-cassini-headers-user
          cray-cxi-driver-devel
@@ -260,13 +261,13 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
      - RHEL environment:
 
        ```screen
-       autoinstall_all_kernels=y cm image dnf -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} "install --allowerasing" $(cat $(pwd)/shs-cxi.rpmlist)
+       autoinstall_all_kernels=y cm image dnf -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} "install --best --allowerasing" $(cat $(pwd)/shs-cxi.rpmlist)
        ```
 
      - Ubuntu environment:
   
        ```screen
-       autoinstall_all_kernels=y cm image apt -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} "install --allowerasing" $(cat $(pwd)/shs-cxi.deblist)
+       autoinstall_all_kernels=y cm image apt -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} "install --best --allowerasing" $(cat $(pwd)/shs-cxi.deblist)
        ```
 
        Remove the network-configuration default link:
