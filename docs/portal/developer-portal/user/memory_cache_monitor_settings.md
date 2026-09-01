@@ -12,8 +12,7 @@ Ensuring the data in the MR cache is “fresh” is the role of the memory regis
 
 Use the `FI_MR_CACHE_MONITOR` environment variable to select the memory registration cache monitor: `userfaultfd`, `memhooks`, `kdreg2`.
 
-`memhooks` is currently the default setting because of its wide availability, but it is not the best option for the CXI provider. Choose `kdreg2` whenever possible.
-Applications running NCCL or RCCL require `userfaultfd`.
+Starting with SHS 15.0.0, `kdreg2` is the default and preferred setting for the CXI provider. Older SHS releases default to `memhooks` because of its wide availability. Applications running NCCL or RCCL still require `userfaultfd`.
 
 - `userfaultfd` (or `uffd`)
   
@@ -28,7 +27,7 @@ Applications running NCCL or RCCL require `userfaultfd`.
 
 - `kdreg2`
   
-  This is not installed by default, and HPE encourages system administrators to ensure that it is installed so that users can try it and see where it provides benefits and whether it can be a single cache monitor for all applications. Future releases of SHS will change the installation to be done by default, and will likely make this the default memory cache monitor in the future.
+  This is the default memory cache monitor for the CXI provider.
 
   The purpose of `kdreg2` is to overcome situations where `memhooks` and `uffd` both fail so that the application can achieve performance by utilizing caching. `kdreg2` is able to monitor static, dynamic, and stack memory. It can support arbitrary alignment. It provides synchronous notification mechanisms. And it can employ extra data to detect allocate/free/reallocate scenarios.
   
