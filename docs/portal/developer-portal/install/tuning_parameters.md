@@ -134,3 +134,70 @@ cat << EOF > /etc/systemd/system/cm-slingshot-ama@.service.d/cm-slingshot-ama@-o
 ExecStartPre=+/usr/sbin/ethtool --set-priv-flags %i link-train off r1-link-partner on use-unsupported-cable on
 EOF
 ```
+
+## Apply `ethtool` settings immediately after the HSN interfaces are created
+
+Network managers typically wait for all configured interfaces to appear before completing, and that wait can delay boot by several minutes when the `hsn*` interfaces are not yet up.
+Because the `cm-slingshot-ama` service starts after the network manager completes, any `ethtool` settings applied by that service, such as autoneg or private flags, are applied late.
+
+An asymmetric link configuration does not come up unless the settings match on both sides of the link, so the host must apply its `ethtool` settings as soon as the driver loads.
+Use a `udev` rule to start a `systemd` service when the `hsn*` interfaces are created instead of waiting for the network manager and `cm-slingshot-ama`.
+
+Perform the following procedure on the HPCM admin node.
+
+1. Chroot into the node image.
+
+    ```screen
+    # cm image chroot -i <image_name>
+    ```
+
+1. Create a `udev` rule that starts the service when an `hsn*` interface is matched.
+
+    ```screen
+    # cat /etc/udev/rules.d/90-slingshot-autoneg.rules
+    SUBSYSTEM=="net", KERNEL=="hsn*", \
+    TAG+="systemd", \
+    ENV{SYSTEMD_WANTS}+="slingshot-autoneg.service"
+    ```
+
+1. Create the service.
+
+    ```screen
+    # cat /etc/systemd/system/slingshot-autoneg.service
+    [Unit]
+    Description=Apply ethtool settings on all HSN interfaces
+
+    [Service]
+    Type=oneshot
+    ExecStart=/usr/local/sbin/slingshot-autoneg.sh
+    ```
+
+1. Create the script so that the `slingshot-autoneg` service runs.
+
+    1. Set `autoneg` and any private flags to match the required settings for the cable and switch combination in use.
+
+        ```screen
+        # cat /usr/local/sbin/slingshot-autoneg.sh
+        #!/bin/bash
+
+        # Small delay to allow all hsn interfaces to appear
+        sleep 2
+        for dev in /sys/class/net/hsn*; do
+                [ -e "$dev" ] || continue
+                hsn=$(basename "$dev")
+                echo "Setting autoneg for interface $hsn"
+                /usr/sbin/ethtool -s $hsn autoneg on
+        done
+        ```
+
+    1. Change the script permissions.
+
+        ```screen
+        # chmod 755 /usr/local/sbin/slingshot-autoneg.sh
+        ```
+
+1. Exit the chroot and provision the nodes with the updated image.
+
+    ```screen
+    # cm node provision --image <image_name> --nodes <node_name>
+    ```
