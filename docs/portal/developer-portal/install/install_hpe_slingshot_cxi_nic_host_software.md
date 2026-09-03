@@ -4,12 +4,15 @@ The HPE Slingshot CXI NIC software stack (200Gbps or 400Gbps) includes drivers a
 
 ## Prerequisites for compute node installs
 
-The HPE Slingshot CXI NIC software stack must be installed after a base compute OS install has been completed.
+- The HPE Slingshot CXI NIC software stack must be installed after a base compute OS install has been completed.
+  
+  Supported operating systems and distributions are listed in the “Support Matrix” section of the _HPE Slingshot Host Software Release Notes (S-9010)_.
+  After verifying that your target OS is supported, follow the installation instructions specific to that distribution.
 
-Supported operating systems and distributions are listed in the “Support Matrix” section of the _HPE Slingshot Host Software Release Notes (S-9010)_.
-After verifying that your target OS is supported, follow the installation instructions specific to that distribution.
+  For each supported distribution, download the required RPMs referenced in the _HPE Slingshot Host Software Release Notes (S-9010)_.
 
-For each supported distribution, download the required RPMs referenced in the _HPE Slingshot Host Software Release Notes (S-9010)_.
+- Install the `fuse` package before installing SHS.
+  The package is required for the Cassini retry handler (`cxi_rh`) to function correctly and may not be installed by default on supported operating systems.
 
 ## Prepare the installation source
 
