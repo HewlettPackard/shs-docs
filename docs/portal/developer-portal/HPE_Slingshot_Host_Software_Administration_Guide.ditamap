@@ -21,6 +21,7 @@
         <topicref href="operations/update_firmware_hpcm_metal.md" format="mdita"/>
         <topicref href="operations/update_firmware_csm.md" format="mdita"/>
     </topicref>
+    <topicref href="operations/configure_kernel_module_parameters.md" format="mdita"/>
     <topicref href="operations/configure_qos_shs.md" format="mdita"/>
     <topicref href="performance/HSN_performance.md" format="mdita">
         <topicref href="performance/gpcnet_benchmark.md" format="mdita"/>
