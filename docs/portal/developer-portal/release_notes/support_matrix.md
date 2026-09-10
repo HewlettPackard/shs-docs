@@ -17,34 +17,34 @@ Advisory: older platform targets (i.e. SLE 15 SP4, COS 2.X, CSM 1.3.X, RHEL 8.9)
 The following table shows operating system distribution support across SHS releases.
 
 
-| Item / Distribution | SHS v13.1.0  | SHS v14.0.0  | SHS v14.0.1  | SHS v15.0.0  |
-|---------------------|--------------|--------------|--------------|--------------|
-| **Release Date**    | Dec 2025     | March 2026   | June 2026    | Planned      |
-|                     |              |              |              |              |
-| **RHEL 8.10**       | Supported    | Supported    | Supported    | Planned      |
-|                     |              |              |              |              |
-| **RHEL 9.6**        | Supported    | Supported    | Supported    | Deprecated   |
-| **RHEL 9.7**        |              | Supported    | Supported    | Planned      |
-| **RHEL 9.8**        |              |              |              | Planned      |
-|                     |              |              |              |              |
-| **RHEL 10.0**       | Tech-Preview | Tech-Preview | Tech-Preview | Deprecated   |
-| **RHEL 10.2**       |              |              |              | Planned      |
-|                     |              |              |              |              |
-| **SLES 15 SP6**     | Supported    | Supported*   | Supported    | Deprecated   |
-| **SLES 15 SP7**     | Supported    | Supported    | Supported    | Planned      |
-|                     |              |              |              |              |
-| **Ubuntu 24.04**    | Tech-Preview | Tech-Preview | Tech-Preview | Deprecated   |
-| **Ubuntu 26.04**    |              |              |              | Planned      |
+| Item / Distribution | SHS v13.1.0  | SHS v14.0.0  | SHS v14.0.1  | SHS v15.0.0                 |
+|---------------------|--------------|--------------|--------------|-----------------------------|
+| **Release Date**    | Dec 2025     | March 2026   | June 2026    | Planned                     |
+|                     |              |              |              |                             |
+| **RHEL 8.10**       | Supported    | Supported    | Supported    | Planned                     |
+|                     |              |              |              |                             |
+| **RHEL 9.6**        | Supported    | Supported    | Supported    | Deprecated                  |
+| **RHEL 9.7**        |              | Supported    | Supported    | Planned                     |
+| **RHEL 9.8**        |              |              |              | Planned                     |
+|                     |              |              |              |                             |
+| **RHEL 10.0**       | Tech-Preview | Tech-Preview | Tech-Preview | Deprecated                  |
+| **RHEL 10.2**       |              |              |              | Planned                     |
+|                     |              |              |              |                             |
+| **SLES 15 SP6**     | Supported    | Supported*   | Supported    | Deprecated                  |
+| **SLES 15 SP7**     | Supported    | Supported    | Supported    | Planned                     |
+|                     |              |              |              |                             |
+| **Ubuntu 24.04**    | Tech-Preview | Tech-Preview | Tech-Preview | Deprecated                  |
+| **Ubuntu 26.04**    |              |              |              | Supported (x86 and AArch64) |
 
 
 **KEY:**
 
-| Label         | Meaning                                         |
-|---------------|-------------------------------------------------|
-| Supported     | Fully supported                                 |
-| Planned       | Targeted for support in upcoming release        |
-| Deprecated    | Planned for removal in a future release         |
-| Tech-Preview  | Limited / early access support                  |
+| Label        | Meaning                                  |
+|--------------|------------------------------------------|
+| Supported    | Fully supported                          |
+| Planned      | Targeted for support in upcoming release |
+| Deprecated   | Planned for removal in a future release  |
+| Tech-Preview | Limited / early access support           |
 
 \* Support is provided only while the OS remains supported by the distribution vendor. We make a best-effort to enable compatibility, but builds may not be possible if the vendor does not supply necessary dependency packages.
 
@@ -53,27 +53,27 @@ The following table shows operating system distribution support across SHS relea
 
 The following table shows compatibility between SHS releases and specific Fabric Manager and Switch Agent versions.
 
-| SHS Version     | FM/SA Version | FM/SA Version | FM/SA Version | FM/SA Version |
-|:---------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-|                 | **2.3.1**     | **2.3.2**     | **3.0.0**     | **3.1.0**     |
-| **2.2.0**       | Supported     | Supported     | Incompatible  | Incompatible  |
-| **SHS-11.1.0**  | Supported     | Supported     | Incompatible  | Incompatible  |
-| **SHS-12.0.2**  | Supported     | Supported     | Incompatible  | Incompatible  |
-| **SHS-13.0.0**  | R-A-B         | Supported     | Supported     | Incompatible  |
-| **SHS-13.1.0**  | Supported*    | Supported     | R-A-B         | Incompatible  |
-| **SHS-14.0.0**  | Supported*    | Supported     | Supported*    | Supported*    |
-| **SHS-14.0.1**  | Supported*    | R-A-B         | Supported*    | R-A-B         |
+|  SHS Version   | FM/SA Version | FM/SA Version | FM/SA Version | FM/SA Version |
+|:--------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+|                |   **2.3.1**   |   **2.3.2**   |   **3.0.0**   |   **3.1.0**   |
+|   **2.2.0**    |   Supported   |   Supported   | Incompatible  | Incompatible  |
+| **SHS-11.1.0** |   Supported   |   Supported   | Incompatible  | Incompatible  |
+| **SHS-12.0.2** |   Supported   |   Supported   | Incompatible  | Incompatible  |
+| **SHS-13.0.0** |     R-A-B     |   Supported   |   Supported   | Incompatible  |
+| **SHS-13.1.0** |  Supported*   |   Supported   |     R-A-B     | Incompatible  |
+| **SHS-14.0.0** |  Supported*   |   Supported   |  Supported*   |  Supported*   |
+| **SHS-14.0.1** |  Supported*   |     R-A-B     |  Supported*   |     R-A-B     |
 
 
 \* The combination is supported, but the new FMN features added in later versions will not be available.
 
 **KEY:**
 
-| Label        | Meaning                      |
-|--------------|------------------------------|
+| Label        | Meaning                             |
+|--------------|-------------------------------------|
 | R-A-B        | Release As Recipe Bundle, Supported |
-| Supported    | Supported                    |
-| Incompatible | Incompatible                 |
+| Supported    | Supported                           |
+| Incompatible | Incompatible                        |
 
 ## `sl-driver` Host and Switch Compatibility
 
@@ -95,21 +95,21 @@ The following table lists the **AMD** and **ROCM** versions included in this rel
 - **NVIDIA:** DMABuf support will be available starting with the **580.x driver** version.  
 
 
-| Distribution             | Version    | ROCm Version | AMD Driver | CUDA Driver Version | Nvidia SDK |
-|--------------------------|------------|--------------|------------|---------------------|------------|
-| Red Hat Enterprise Linux | 8.10       | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
-| Red Hat Enterprise Linux | 9.6        | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
-| Red Hat Enterprise Linux | 9.6 ARM    | NA           | 31.20.0    | 580.82.07           | 26.3       |
-| Red Hat Enterprise Linux | 9.7        | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
-| Red Hat Enterprise Linux | 9.7 ARM    | NA           | 31.20.0    | 580.82.07           | 26.3       |
-| Red Hat Enterprise Linux | 10.0       | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
-| Red Hat Enterprise Linux | 10.0 ARM   | NA           | 31.20.0    | 580.82.07           | 26.3       |
-| SUSE Linux Enterprise 15 | SP6        | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
-| SUSE Linux Enterprise 15 | SP6 ARM    | NA           | 31.20.0    | 580.82.07           | 26.3       |
-| SUSE Linux Enterprise 15 | SP7        | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
-| SUSE Linux Enterprise 15 | SP7 ARM    | NA           | 31.20.0    | 580.82.07           | 26.3       |
-| Ubuntu                   | 24.04      | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
-| Ubuntu                   | 24.04 ARM  | NA           | 31.20.0    | 580.82.07           | 26.3       |
+| Distribution             | Version   | ROCm Version | AMD Driver | CUDA Driver Version | Nvidia SDK |
+|--------------------------|-----------|--------------|------------|---------------------|------------|
+| Red Hat Enterprise Linux | 8.10      | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
+| Red Hat Enterprise Linux | 9.6       | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
+| Red Hat Enterprise Linux | 9.6 ARM   | NA           | 31.20.0    | 580.82.07           | 26.3       |
+| Red Hat Enterprise Linux | 9.7       | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
+| Red Hat Enterprise Linux | 9.7 ARM   | NA           | 31.20.0    | 580.82.07           | 26.3       |
+| Red Hat Enterprise Linux | 10.0      | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
+| Red Hat Enterprise Linux | 10.0 ARM  | NA           | 31.20.0    | 580.82.07           | 26.3       |
+| SUSE Linux Enterprise 15 | SP6       | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
+| SUSE Linux Enterprise 15 | SP6 ARM   | NA           | 31.20.0    | 580.82.07           | 26.3       |
+| SUSE Linux Enterprise 15 | SP7       | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
+| SUSE Linux Enterprise 15 | SP7 ARM   | NA           | 31.20.0    | 580.82.07           | 26.3       |
+| Ubuntu                   | 24.04     | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
+| Ubuntu                   | 24.04 ARM | NA           | 31.20.0    | 580.82.07           | 26.3       |
 
 ## NIC Support
 
