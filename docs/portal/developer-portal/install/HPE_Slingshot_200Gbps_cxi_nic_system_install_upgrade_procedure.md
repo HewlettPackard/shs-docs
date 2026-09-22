@@ -255,6 +255,7 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
        ```screen
        IMAGE_NAME=${DISTRO}_hpcm_ss
+       cm image zypper -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} ref -f
        autoinstall_all_kernels=y cm image zypper -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} install $(cat $(pwd)/shs-cxi.rpmlist)
        ```
 
