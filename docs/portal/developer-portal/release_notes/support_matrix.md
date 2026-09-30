@@ -10,7 +10,7 @@ Here are the System Software requirements for the SHS release, detailing compati
 - **Cluster Managers**: Specified supported cluster managers and their respective versions.
 - **SoftRoCE**: SoftRoCE compatibility
 
-Advisory: older platform targets (i.e. SLE 15 SP4, COS 2.X, CSM 1.3.X, RHEL 8.9) are supported by earlier versions of SHS. Software for older platforms can be found in earlier SHS releases.
+Advisory: older platform targets (i.e. SLE 15 SP5, COS 3.X, CSM 1.6.X, RHEL 8.9) are supported by earlier versions of SHS. Software for older platforms can be found in earlier SHS releases.
 
 ## Operating Systems 
 
@@ -36,6 +36,25 @@ The following table shows operating system distribution support across SHS relea
 | **Ubuntu 24.04**    | Tech-Preview | Tech-Preview | Tech-Preview | Deprecated                  |
 | **Ubuntu 26.04**    |              |              |              | Supported (x86 and AArch64) |
 
+
+| Item / Distribution | SHS v13.1.0  | SHS v14.0.0  | SHS v14.0.1  | SHS v15.0.0                 | SHS v16.0.0                 |
+| ------------------- | ------------ | ------------ | ------------ | --------------------------- | --------------------------- |
+| **Release Date**    | Dec 2025     | March 2026   | June 2026    | November 2026               | Planned                     |
+|                     |              |              |              |                             |                             |
+| **RHEL 8.10**       | Supported    | Supported    | Supported    | Supported                   | Planned                     |
+|                     |              |              |              |                             |                             |
+| **RHEL 9.6**        | Supported    | Supported    | Supported    | Deprecated                  |                             |
+| **RHEL 9.7**        |              | Supported    | Supported    | Supported                   | Deprecated                  |
+| **RHEL 9.8**        |              |              |              | Supported                   | Supported                   |
+|                     |              |              |              |                             |                             |
+| **RHEL 10.0**       | Tech-Preview | Tech-Preview | Tech-Preview | Deprecated                  |                             |
+| **RHEL 10.2**       |              |              |              | Supported                   | Supported                   |
+|                     |              |              |              |                             |                             |
+| **SLES 15 SP6**     | Supported    | Supported\*  | Supported    | Supported                   | Deprecated                  |
+| **SLES 15 SP7**     | Supported    | Supported    | Supported    | Supported                   | Supported                   |
+|                     |              |              |              |                             |                             |
+| **Ubuntu 24.04**    | Tech-Preview | Tech-Preview | Tech-Preview | Deprecated                  |                             |
+| **Ubuntu 26.04**    |              |              |              | Supported                   | Supported                   |
 
 **KEY:**
 
@@ -81,8 +100,8 @@ Use the following `sl-driver` pairing for the current release cycle:
 
 | Component                       | Recommended version |
 |---------------------------------|---------------------|
-| SHS                             | 14.0.1              |
-| Fabric Manager and Switch Agent | 3.1.0               |
+| SHS                             | 15.0.0              |
+| Fabric Manager and Switch Agent | 3.1.1               |
 
 ## AMD ROCM and Nvidia CUDA Versions
 
@@ -95,49 +114,53 @@ The following table lists the **AMD** and **ROCM** versions included in this rel
 - **NVIDIA:** DMABuf support will be available starting with the **580.x driver** version.  
 
 
-| Distribution             | Version   | ROCm Version | AMD Driver | CUDA Driver Version | Nvidia SDK |
-|--------------------------|-----------|--------------|------------|---------------------|------------|
-| Red Hat Enterprise Linux | 8.10      | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
-| Red Hat Enterprise Linux | 9.6       | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
-| Red Hat Enterprise Linux | 9.6 ARM   | NA           | 31.20.0    | 580.82.07           | 26.3       |
-| Red Hat Enterprise Linux | 9.7       | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
-| Red Hat Enterprise Linux | 9.7 ARM   | NA           | 31.20.0    | 580.82.07           | 26.3       |
-| Red Hat Enterprise Linux | 10.0      | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
-| Red Hat Enterprise Linux | 10.0 ARM  | NA           | 31.20.0    | 580.82.07           | 26.3       |
-| SUSE Linux Enterprise 15 | SP6       | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
-| SUSE Linux Enterprise 15 | SP6 ARM   | NA           | 31.20.0    | 580.82.07           | 26.3       |
-| SUSE Linux Enterprise 15 | SP7       | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
-| SUSE Linux Enterprise 15 | SP7 ARM   | NA           | 31.20.0    | 580.82.07           | 26.3       |
-| Ubuntu                   | 24.04     | 7.12         | 31.20.0    | 580.82.07           | 26.3       |
-| Ubuntu                   | 24.04 ARM | NA           | 31.20.0    | 580.82.07           | 26.3       |
+| Distribution             | Version   | ROCm Version | AMD Driver | Nvidia Driver Version | Nvidia SDK | CUDA Toolkit |
+| ------------------------ | --------- | ------------ | ---------- | --------------------- | ---------- | ------------ |
+| Red Hat Enterprise Linux | 8.10      | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+| Red Hat Enterprise Linux | 9.6       | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+| Red Hat Enterprise Linux | 9.7       | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+| Red Hat Enterprise Linux | 9.7 ARM   | NA           | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+| Red Hat Enterprise Linux | 9.8       | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+| Red Hat Enterprise Linux | 9.8 ARM   | NA           | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+| Red Hat Enterprise Linux | 10.2      | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+| Red Hat Enterprise Linux | 10.2 ARM  | NA           | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+| SUSE Linux Enterprise 15 | SP6       | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+| SUSE Linux Enterprise 15 | SP6 ARM   | NA           | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+| SUSE Linux Enterprise 15 | SP7       | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+| SUSE Linux Enterprise 15 | SP7 ARM   | NA           | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+| Ubuntu                   | 26.04     | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+| Ubuntu                   | 26.04 ARM | NA           | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+
 
 ## NIC Support
 
 Support for Mellanox NIC (SS10) is not included in this release.
 For systems using HPE Slingshot 100Gbps NICs, continue using Slingshot Host Software (SHS) v12.0.x.
 
-| Distribution             | Versions  | Mellanox NIC | Mellanox Version | HPE Slingshot Ethernet 200Gb | HPE Slingshot Ethernet 400Gb |
-|--------------------------|-----------|--------------|------------------|------------------------------|------------------------------|
-| Red Hat Enterprise Linux | 8.10      | No           | Not Supported    | Yes                          | No                           |
-| Red Hat Enterprise Linux | 9.6       | No           | Not Supported    | Yes                          | Yes                          |
-| Red Hat Enterprise Linux | 9.6 ARM   | No           | Not Supported    | Yes                          | Yes                          |
-| Red Hat Enterprise Linux | 9.7       | No           | Not Supported    | Yes                          | Yes                          |
-| Red Hat Enterprise Linux | 9.7 ARM   | No           | Not Supported    | Yes                          | Yes                          |
-| Red Hat Enterprise Linux | 10.0      | No           | Not Supported    | Yes                          | Yes                          |
-| Red Hat Enterprise Linux | 10.0 ARM  | No           | Not Supported    | Yes                          | Yes                          |
-| SuSE Linux Enterprise 15 | SP6       | No           | Not Supported    | Yes                          | No                           |
-| SuSE Linux Enterprise 15 | SP6 ARM   | No           | Not Supported    | Yes                          | No                           |
-| SuSE Linux Enterprise 15 | SP7       | No           | Not Supported    | Yes                          | Yes                          |
-| SuSE Linux Enterprise 15 | SP7 ARM   | No           | Not Supported    | Yes                          | Yes                          |
-| Ubuntu                   | 24.04     | No           | Not Supported    | Yes                          | Yes                          |
-| Ubuntu                   | 24.04 ARM | No           | Not Supported    | Yes                          | Yes                          |
+| Distribution             | Versions  | HPE Slingshot Ethernet 200Gb | HPE Slingshot Ethernet 400Gb |
+| ------------------------ | --------- | ---------------------------- | ---------------------------- |
+| Red Hat Enterprise Linux | 8.10      | Yes                          | **No**                       |
+| Red Hat Enterprise Linux | 9.6       | Yes                          | Yes                          |
+| Red Hat Enterprise Linux | 9.7       | Yes                          | Yes                          |
+| Red Hat Enterprise Linux | 9.7 ARM   | Yes                          | Yes                          |
+| Red Hat Enterprise Linux | 9.8       | Yes                          | Yes                          |
+| Red Hat Enterprise Linux | 9.8 ARM   | Yes                          | Yes                          |
+| Red Hat Enterprise Linux | 10.2      | Yes                          | Yes                          |
+| Red Hat Enterprise Linux | 10.2 ARM  | Yes                          | Yes                          |
+| SuSE Linux Enterprise 15 | SP6       | Yes                          | **No**                       |
+| SuSE Linux Enterprise 15 | SP6 ARM   | Yes                          | **No**                       |
+| SuSE Linux Enterprise 15 | SP7       | Yes                          | Yes                          |
+| SuSE Linux Enterprise 15 | SP7 ARM   | Yes                          | Yes                          |
+| Ubuntu                   | 26.04     | Yes                          | Yes                          |
+| Ubuntu                   | 26.04 ARM | Yes                          | Yes                          |
+
 
 ## Libfabric Versions
 
-All distributions are provided with libfabric version v2.3.1, branched from v2.3.x: [https://github.com/ofiwg/libfabric/tree/v2.3.x](https://github.com/ofiwg/libfabric/tree/v2.3.x).
+All distributions are provided with libfabric version v2.7.0, branched from v2.7.x: [https://github.com/ofiwg/libfabric/tree/v2.7.x](https://github.com/ofiwg/libfabric/tree/v2.7.x).
 
-- Branched off ofiwg: `v2.3.x` 
-- Last OFI Tag: `v2.3.1` 
+- Branched off ofiwg: `v2.7.x` 
+- Last OFI Tag: `v2.7.0` 
 - GitHash: `g69137ab59`
 
 
@@ -152,19 +175,24 @@ The following cluster manager software compatibility information is for referenc
 
 _**Compute Node Image and Cluster Management Software Compatibility**_
 
-| Distribution             | Versions  | Cray EX(CSM) | HPCM  |
-|--------------------------|-----------|--------------|-------|
-| Red Hat Enterprise Linux | 8.10      | NA           | 1.11+ |
-| Red Hat Enterprise Linux | 9.6       | NA           | 1.14+ |
-| Red Hat Enterprise Linux | 9.6 ARM   | NA           | 1.14+ |
-| Red Hat Enterprise Linux | 9.7       | NA           | 1.14+ |
-| Red Hat Enterprise Linux | 9.7 ARM   | NA           | 1.14+ |
-| SuSE Linux Enterprise 15 | SP6       | 1.6.X*       | 1.12+ |
-| SuSE Linux Enterprise 15 | SP6 ARM   | 1.6.X*       | 1.12+ |
-| SuSE Linux Enterprise 15 | SP7       | 1.7.X*       | 1.14+ |
-| SuSE Linux Enterprise 15 | SP7 ARM   | 1.7.X*       | 1.14+ |
-| Ubuntu                   | 24.04     | NA           | NA    |
-| Ubuntu                   | 24.04 ARM | NA           | NA    |
+| Distribution             | Versions  | Cray EX (CSM) | HPCM  | SUMS  |
+| ------------------------ | --------- | ------------- | ----- | ----- |
+| Red Hat Enterprise Linux | 8.10      | NA            | 1.11+ | NA    |
+| Red Hat Enterprise Linux | 9.6       | NA            | 1.14+ | NA    |
+| Red Hat Enterprise Linux | 9.7       | NA            | 1.14+ | NA    |
+| Red Hat Enterprise Linux | 9.7 ARM   | NA            | 1.14+ | NA    |
+| Red Hat Enterprise Linux | 9.8       | NA            | 1.16  | NA    |
+| Red Hat Enterprise Linux | 9.8 ARM   | NA            | 1.16  | NA    |
+| Red Hat Enterprise Linux | 10.2      | NA            | NA    | 1.0.0 |
+| Red Hat Enterprise Linux | 10.2 ARM  | NA            | NA    | 1.0.0 |
+| SuSE Linux Enterprise 15 | SP6       | 1.6.X\*       | 1.12+ | NA    |
+| SuSE Linux Enterprise 15 | SP6 ARM   | 1.6.X\*       | 1.12+ | NA    |
+| SuSE Linux Enterprise 15 | SP7       | 1.7.X\*       | 1.14+ | NA    |
+| SuSE Linux Enterprise 15 | SP7 ARM   | 1.7.X\*       | 1.14+ | NA    |
+| Ubuntu                   | 26.04     | NA            | NA    | NA    |
+| Ubuntu                   | 26.04 ARM | NA            | NA    | NA    |
+
+
 
 **Note:** For CSM systems, installations of HPE Slingshot 100Gbps NICs on worker nodes are only supported up to the CSM 1.6 release.
 
