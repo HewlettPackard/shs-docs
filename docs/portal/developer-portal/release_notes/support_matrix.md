@@ -141,7 +141,7 @@ All distributions are provided with libfabric version v2.7.0, branched from v2.7
 
 - Branched off ofiwg: `v2.7.x` 
 - Last OFI Tag: `v2.7.0` 
-- GitHash: `g69137ab59`
+- GitHash: `gdbe84bd2e`
 
 
 ## HPE System Cluster Management Software

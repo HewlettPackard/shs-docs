@@ -1,44 +1,26 @@
 
 # Summary
 
-Date of Release: June 23, 2026
+Date of Release: November 30, 2026
 
-Slingshot Host Software version 14.0.1 is an update to the SHS-v14.0.0 Long Term Support (LTS) release. It delivers critical bug fixes and updates platform compatibility to support the latest GPU driver stacks.
+This release introduces Slingshot Host Software (SHS) 15.0.0, delivering expanded platform support, enhanced hardware compatibility, and critical stability improvements. 
 
-Highlights: 
+In addition to important bug fixes and maintenance updates, SHS 15.0.0 adds support for new virtualization, GPU, operating system, and system platform capabilities.
 
-+ Maintenance release with critical fixes on top of version 14.0.0
+Key Highlights in SHS 15.0.0
 
-+ Add support for ALD and PML Recovery in Slingshot 400 
++ Virtualization Support: Added Cassini SR-IOV support, enabling enhanced virtualization and resource sharing capabilities.
++ HPE Cray GX Support: Added support for HPE Cray GX systems.
++ Operating System Updates: Added support for the latest enterprise Linux distributions, including:
++ + RHEL 10.2
++ + RHEL 9.8
++ + Ubuntu 26.04
++ GPU Stack Updates
++ + Added support for AMD ROCm 10.0.
++ + Added support for NVIDIA 610.x drivers and the CUDA 13.3 Toolkit.
 
-+ Updated support across all operating systems for:
+Critical Fixes and Compatibility Improvements: Includes numerous bug fixes, performance enhancements, and compatibility updates across the software stack.
 
-     + AMD ROCm™ 7.12
-
-     + NVIDIA® 26.3 / 580.x drivers
-
-
-
-14.0.0 LTS Highlights 
-
-+ LTS release aligned with the March 2026 recipe
-
-+ SHMEM and libfabric enhancements
-
-+ Support for RHEL 9.7
-
-+ Enhanced DAOS integration
-
-+ Increased VNI capacity (>256)
-
-+ Slingshot 400Gbps performance improvements
-
-+ Improved switch-based collectives
-
-+ Stability updates including RGID fixes
-
-+ DMABUF enabled by default for GPU/NIC interoperability
-
-+ SoftRoCE support for RHEL 9.6 (x86) and SLES 15 SP7 (x86)
+This release continues to improve SHS platform coverage while ensuring compatibility with the latest compute, networking, virtualization, and accelerator technologies.
 
 HPE recommends thoroughly reviewing the release notes and readme.txt files before upgrading systems. Note that release notes are specific to each release, so customers should consider reviewing the cumulative set of release notes to understand the net changes.
