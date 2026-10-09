@@ -72,7 +72,7 @@ function copy_css(){
 function image_fix_html(){
     # Replace image references to "/src" with ".." in the jumbo HTML file
     for html in $(find ${THIS_DIR}/build/ -name "*.html");do
-        sed -i'' -e "s/\/src\/images/images/g" $html;done
+        sed -i'' -e "s/\/src\/tmp\/images/images/g" $html;done
 }
 
 function md_stage2(){
