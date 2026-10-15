@@ -268,7 +268,8 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
      - Ubuntu environment:
   
        ```screen
-       autoinstall_all_kernels=y cm image apt -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} "install --best --allowerasing" $(cat $(pwd)/shs-cxi.deblist)
+       cm image apt -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} update
+       autoinstall_all_kernels=y cm image apt -i ${IMAGE_NAME} --repo-group ${REPO_GROUP} install $(cat $(pwd)/shs-cxi.deblist)
        ```
 
        Remove the network-configuration default link:
