@@ -94,6 +94,7 @@ slingshot-firmware-management
 slingshot-firmware-cassini
 slingshot-firmware-cassini2
 slingshot-utils
+cray-cassini-csr-defs
 cray-cassini-headers-user
 cray-cxi-driver-devel
 cray-cxi-driver-udev
