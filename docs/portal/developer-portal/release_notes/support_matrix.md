@@ -27,6 +27,10 @@ The following table shows operating system distribution support across SHS relea
 | **RHEL 9.7**        |              | Supported    | Supported    | Planned                     |
 | **RHEL 9.8**        |              |              |              | Planned                     |
 |                     |              |              |              |                             |
+| **Rocky Linux 9.6** | Supported    | Supported    | Supported    | Deprecated                  |
+| **Rocky Linux 9.7** |              | Supported    | Supported    | Supported                   |
+| **Rocky Linux 9.8** |              |              |              | Planned                     |
+|                     |              |              |              |                             |
 | **RHEL 10.0**       | Tech-Preview | Tech-Preview | Tech-Preview | Deprecated                  |
 | **RHEL 10.2**       |              |              |              | Planned                     |
 |                     |              |              |              |                             |
@@ -46,6 +50,10 @@ The following table shows operating system distribution support across SHS relea
 | **RHEL 9.6**        | Supported    | Supported    | Supported    | Deprecated                  |                             |
 | **RHEL 9.7**        |              | Supported    | Supported    | Supported                   | Deprecated                  |
 | **RHEL 9.8**        |              |              |              | Supported                   | Supported                   |
+|                     |              |              |              |                             |                             |
+| **Rocky Linux 9.6** | Supported    | Supported    | Supported    | Deprecated                  |                             |
+| **Rocky Linux 9.7** |              | Supported    | Supported    | Supported                   | Deprecated                  |
+| **Rocky Linux 9.8** |              |              |              | Supported                   | Supported                   |
 |                     |              |              |              |                             |                             |
 | **RHEL 10.0**       | Tech-Preview | Tech-Preview | Tech-Preview | Deprecated                  |                             |
 | **RHEL 10.2**       |              |              |              | Supported                   | Supported                   |
@@ -67,6 +75,7 @@ The following table shows operating system distribution support across SHS relea
 
 \* Support is provided only while the OS remains supported by the distribution vendor. We make a best-effort to enable compatibility, but builds may not be possible if the vendor does not supply necessary dependency packages.
 
+**Note:** Rocky Linux is validated with SHS packages for the matching RHEL minor release (for example, use RHEL 9.6 packages on Rocky Linux 9.6). For prebuilt modules, select a `kmod` package that matches the installed kernel; a package built for a different RHEL kernel is not portable. Use DKMS packages when no matching prebuilt kernel variant is available.
 
 ## Fabric Manager and HPE Slingshot Host Software Release Compatibility
 
