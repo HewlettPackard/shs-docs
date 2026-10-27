@@ -197,33 +197,37 @@ To use these binaries instead of DKMS packages, follow these steps:
 
 ## Post Install
 
-After installing the required RPMs, the system must be configured to allow
-'unsupported' kernel modules before the drivers can be loaded. Edit
-`/etc/modprobe.d/10-unsupported-modules.conf` to allow unsupported modules:
+After installing the required RPMs, configure kernel module loading according
+to the host distribution.
 
-```screen
-# echo "allow_unsupported_modules 1" > /etc/modprobe.d/10-unsupported-modules.conf
-```
+- **SLES:** Edit `/etc/modprobe.d/10-unsupported-modules.conf` to allow
+   unsupported modules:
 
-**RHEL-10 and Ubuntu no longer recognizes this directive.**
+   ```screen
+   # echo "allow_unsupported_modules 1" > /etc/modprobe.d/10-unsupported-modules.conf
+   ```
 
-For RHEL-10 and Ubuntu, unsigned kernel modules cannot load if Secure Boot is enabled. 
+   This directive is supported only on SLES. Do not create this file on RHEL or
+   Ubuntu; their `modprobe` implementations do not support it.
 
-To check the current status:
+- **RHEL-10 and Ubuntu:** Unsigned kernel modules cannot load if Secure Boot is
+   enabled. To check the current status:
 
-```screen
-dmesg | grep -i secureboot
-```
+   ```screen
+   dmesg | grep -i secureboot
+   ```
 
-Example output:
+   Example output:
 
-```screen
-secureboot: Secure boot disabled
-```
+   ```screen
+   secureboot: Secure boot disabled
+   ```
 
-If Secure Boot is disabled, unsigned modules can load without additional steps.
+   If Secure Boot is disabled, unsigned modules can load without additional
+   steps.
 
-If Secure Boot is enabled, it must be disabled before unsupported modules can be loaded.
+   If Secure Boot is enabled, it must be disabled before unsupported modules can
+   be loaded.
 
 The drivers will be automatically loaded on the next restart, or they can be
 manually loaded with the following commands:
