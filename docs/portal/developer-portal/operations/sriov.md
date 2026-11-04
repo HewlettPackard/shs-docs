@@ -169,6 +169,7 @@ export CXIP_SKIP_AMA_CHECK=1
 - Software bridges multicast and broadcast ingress. HPE Slingshot 200Gbps CXI NICs and HPE Slingshot 400Gbps CXI NICs do not provide hardware packet duplication for this traffic; the PF receives packets and distributes them to subscribed VFs. **Do not use multicast for application data delivery because software replication is not performance-oriented.**
 - Software also bridges multicast and broadcast egress. VEPA switch mode must reflect broadcast packets, which requires switch support and additional configuration APIs planned for a later switch release.
 - The driver does not allow promiscuous mode on VFs. Only the PF interface can enter promiscuous mode.
+- The MTU of a VF Ethernet interface is controlled by the PF and cannot be modified from the VF side. An attempt to change the MTU from the VF is rejected with `RTNETLINK answers: Operation not supported`. This is expected behavior, not a driver or VF malfunction
 - When administrators enable multiple VFs, they must reduce Ethernet resources per VF. For example, a PF configured with 8 RX queues and RSS with 64 slots may need fewer queues per VF because the hardware RMU has a limited number of slots. In practice this is aligned with expected VF deployment, where each VF typically runs inside a VM or container with a limited CPU set.
 - The NIC aggregates telemetry and counters across all VFs rather than per VF. A VF application therefore reads aggregated NIC counters. To avoid exposing counters from other VFs, administrators can disable telemetry reads per VF by setting `telem_enabled`:
 
@@ -185,7 +186,7 @@ export CXIP_SKIP_AMA_CHECK=1
 
 ## Troubleshoot SR-IOV
 
-If writing a non-zero value to `sriov_numvfs` fails, check `dmesg` for one of the following errors.
+For SR-IOV failures, compare the command output and `dmesg` messages with the following cases.
 
 - **Not enough MMIO resources for SR-IOV:**
 
@@ -207,3 +208,49 @@ If writing a non-zero value to `sriov_numvfs` fails, check `dmesg` for one of th
     **Cause:** A CXI service was not assigned to one or more VFs before SR-IOV was enabled.
 
     **Resolution:** Assign a valid service ID to each VF through `/sys/class/cxi/cxi<N>/vf/<vf_idx>/svc_id`, and then write to `sriov_numvfs` again. See [Configure VFs and assign CXI resources](#configure-vfs-and-assign-cxi-resources).
+
+- **VF MAC address change is rejected:**
+
+    Attempting to change the MAC address of an untrusted VF Ethernet interface to an address other than the one assigned by the PF administrator, for example with `ip link set eth1 address 02:00:01:00:00:ab` from the VF interface, fails with:
+
+    ```text
+    RTNETLINK answers: Operation not permitted
+    ```
+
+    The kernel log of the system that owns the VF reports a message similar to:
+
+    ```text
+    cxi_ss1 0000:06:00.0 eth1: MAC address not allowed: -1
+    ```
+
+    The host kernel log reports the rejected request and the assigned VF MAC address, for example:
+
+    ```text
+    cxi_ss1 0000:01:00.0: cxi0[hsn0] VF0 MAC 02:00:01:00:00:ab not allowed (assigned: 02:00:01:00:00:0d)
+    ```
+
+    **Cause:** The VF is untrusted, and the requested MAC address differs from the one assigned by the PF administrator.
+    The VF retains its assigned MAC address after the rejected request, even if the interface is down when the change is attempted.
+
+    **Resolution:** Assign the required MAC address from the PF with `ip link set dev hsn0 vf <vf_idx> mac <address>`, or mark the VF as trusted with `ip link set dev hsn0 vf <vf_idx> trust on` so that it can set its own MAC address.
+
+- **VF MTU change is not supported:**
+
+    Attempting to change the VF Ethernet MTU from the VF interface, whether in a VM or a container, fails, for example:
+
+    ```screen
+    ip link set dev eth1 mtu 1500
+    RTNETLINK answers: Operation not supported
+    ```
+
+    The kernel log of the system that owns the VF reports a message similar to the following (the PCI address is a synthetic example):
+
+    ```text
+    cxi_ss1 0000:03:00.1 eth1: VF MTU is controlled by the PF
+    ```
+
+    **Cause:** The PF controls the VF MTU. Although Linux normally allows an administrator to configure an interface MTU with `ip link set`, this operation is not supported on an HPE Slingshot VF.
+
+    **Resolution:** No driver or VF repair is required. This rejection is expected behavior, not an SR-IOV configuration failure or driver malfunction.
+    If a different MTU is required, have the PF administrator configure it from the host.
+
