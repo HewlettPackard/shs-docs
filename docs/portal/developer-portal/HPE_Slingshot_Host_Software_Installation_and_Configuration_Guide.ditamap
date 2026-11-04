@@ -27,6 +27,7 @@
                 format="mdita"/>
         </topicref>
         <topicref href="install/ama_hpcm.md" format="mdita"/>
+        <topicref href="install/skip_ama_assignment_when_mac_learning_enabled.md" format="mdita"/>
     </topicref>
     <topicref href="install/Install_SHS_for_bare_metal.md" format="mdita">
         <topicref href="install/compute_install_prereqs.md" format="mdita"/>
