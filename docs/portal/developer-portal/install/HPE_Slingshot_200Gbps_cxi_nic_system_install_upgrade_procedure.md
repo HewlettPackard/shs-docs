@@ -29,8 +29,13 @@ This section is for systems using HPE Slingshot 200Gbps or 400Gbps CXI NICs.
 
 3. Create a new repo group and add HPE Slingshot, Distro Base-OS, OS Updates, Cluster Manager, MPI Repos, and DKMS.
 
-   **Note:** SHS uses DKMS as the default mechanism for installing the kernel driver.
-   HPCM will no longer include or manage DKMS packages. Customers must obtain DKMS independently or by using the HPE Cray Supercomputing User Services Software (USS) software download tool in the associated recipe release.
+   **Note:** SHS uses DKMS as the default mechanism for installing the kernel driver. HPCM does not include or manage DKMS packages. DKMS must be installed separately before installing SHS. Customers may obtain DKMS from any appropriate source available for their environment, including the following:
+
+   - The HPE Cray Supercomputing User Services Software (USS) software download tool included with the associated recipe release.
+   - Distribution-provided or community repositories available for the operating system, such as repositories used with RHEL or Ubuntu.
+   - Other software distributions that provide DKMS as part of their installation dependencies, such as NVIDIA or AMD software stacks.
+
+   The DKMS source does not need to be USS. Customers who do not use USS may install DKMS using an appropriate repository or package source available for their supported operating system and environment.
 
    ```screen
    # Set the REPO_GROUP to the name to use for the new repo group
