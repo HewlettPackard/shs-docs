@@ -3,7 +3,7 @@
 
 Date of Release: November 30, 2026
 
-This release introduces Slingshot Host Software (SHS) 15.0.0, delivering expanded platform support, enhanced hardware compatibility, and critical stability improvements. 
+This release introduces Slingshot Host Software (SHS) 15.0.0, delivering expanded platform support, enhanced hardware compatibility, and critical stability improvements.
 
 In addition to important bug fixes and maintenance updates, SHS 15.0.0 adds support for new virtualization, GPU, operating system, and system platform capabilities.
 
@@ -12,12 +12,12 @@ Key Highlights in SHS 15.0.0
 + Virtualization Support: Added Cassini SR-IOV support, enabling enhanced virtualization and resource sharing capabilities.
 + HPE Cray GX Support: Added support for HPE Cray GX systems.
 + Operating System Updates: Added support for the latest enterprise Linux distributions, including:
-+ + RHEL 10.2
-+ + RHEL 9.8
-+ + Ubuntu 26.04
+  + RHEL 10.2
+  + RHEL 9.8
+  + Ubuntu 26.04
 + GPU Stack Updates
-+ + Added support for AMD ROCm 10.0.
-+ + Added support for NVIDIA 610.x drivers and the CUDA 13.3 Toolkit.
+  + Added support for AMD ROCm 10.0.
+  + Added support for NVIDIA 615.x drivers and the CUDA 13.4 Toolkit.
 
 Critical Fixes and Compatibility Improvements: Includes numerous bug fixes, performance enhancements, and compatibility updates across the software stack.
 

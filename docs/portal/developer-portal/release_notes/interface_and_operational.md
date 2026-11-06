@@ -1,5 +1,6 @@
 
 # Interface and Operational Changes
+
 |ID|Description|Impact|Benefit|
 |:--:|:---------|:---------|:---------|
 |3860664|Starting with SHS 15.0.0, the cm-slingshot package is provided and distributed directly as part of the SHS release.|The cm-slingshot RPM is now included in SHS package tarballs and uses version 5.0.0 or later. HPCM and SUMS Foundation no longer distribute cm-slingshot, and deployment procedures have been updated accordingly.|Provides a single source for cm-slingshot delivery through SHS, simplifies package management, and ensures the package remains aligned with the corresponding SHS release. This also reduces dependencies on HPCM and SUMS Foundation distribution workflows.|

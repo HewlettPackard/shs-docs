@@ -8,7 +8,7 @@ Here are the System Software requirements for the SHS release, detailing compati
 - **NICs**: Supported Network Interface Cards (NICs) are listed for each given OS distribution.
 - **Libfabric**: Libfabric version supported.
 - **Cluster Managers**: Specified supported cluster managers and their respective versions.
-- **SoftRoCE**: SoftRoCE compatibility
+- **Soft-RoCE**: Soft-RoCE compatibility
 
 Advisory: older platform targets (i.e. SLE 15 SP5, COS 3.X, CSM 1.6.X, RHEL 8.9) are supported by earlier versions of SHS. Software for older platforms can be found in earlier SHS releases.
 
@@ -16,18 +16,25 @@ Advisory: older platform targets (i.e. SLE 15 SP5, COS 3.X, CSM 1.6.X, RHEL 8.9)
 
 The following table shows operating system distribution support across SHS releases.
 
-| Item / Distribution | SHS v13.1.0  | SHS v14.0.0  | SHS v14.0.1  | SHS v15.0.0                 | SHS v16.0.0                 |
+| Item / Distribution | SHS v13.1.0  | SHS v14.0.0  | SHS v14.0.1  | SHS v15.0.0                 | SHS v15.1.0                 |
 | ------------------- | ------------ | ------------ | ------------ | --------------------------- | --------------------------- |
 | **Release Date**    | Dec 2025     | March 2026   | June 2026    | November 2026               | Planned                     |
 |                     |              |              |              |                             |                             |
-| **RHEL 8.10**       | Supported    | Supported    | Supported    | Supported                   | Planned                     |
+| **RHEL 8.10**       | Supported    | Supported    | Supported    | Supported                   | Supported                   |
 |                     |              |              |              |                             |                             |
 | **RHEL 9.6**        | Supported    | Supported    | Supported    | Deprecated                  |                             |
 | **RHEL 9.7**        |              | Supported    | Supported    | Supported                   | Deprecated                  |
 | **RHEL 9.8**        |              |              |              | Supported                   | Supported                   |
+| **RHEL 9.9**        |              |              |              |                             | Planned                     |
+|                     |              |              |              |                             |                             |
+| **Rocky Linux 9.6** | Supported    | Supported    | Supported    | Deprecated                  |                             |
+| **Rocky Linux 9.7** |              | Supported    | Supported    | Supported                   | Deprecated                  |
+| **Rocky Linux 9.8** |              |              |              | Supported                   | Supported                   |
+| **Rocky Linux 9.9** |              |              |              |                             | Planned                     |
 |                     |              |              |              |                             |                             |
 | **RHEL 10.0**       | Tech-Preview | Tech-Preview | Tech-Preview | Deprecated                  |                             |
 | **RHEL 10.2**       |              |              |              | Supported                   | Supported                   |
+| **RHEL 10.4**       |              |              |              |                             | Planned                     |
 |                     |              |              |              |                             |                             |
 | **SLES 15 SP6**     | Supported    | Supported\*  | Supported    | Supported                   | Deprecated                  |
 | **SLES 15 SP7**     | Supported    | Supported    | Supported    | Supported                   | Supported                   |
@@ -54,15 +61,11 @@ The following table shows compatibility between SHS releases and specific Fabric
 
 |  SHS Version   | FM/SA Version | FM/SA Version | FM/SA Version | FM/SA Version |
 |:--------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-|                |   **2.3.1**   |   **2.3.2**   |   **3.0.0**   |   **3.1.0**   |
-|   **2.2.0**    |   Supported   |   Supported   | Incompatible  | Incompatible  |
-| **SHS-11.1.0** |   Supported   |   Supported   | Incompatible  | Incompatible  |
-| **SHS-12.0.2** |   Supported   |   Supported   | Incompatible  | Incompatible  |
-| **SHS-13.0.0** |     R-A-B     |   Supported   |   Supported   | Incompatible  |
-| **SHS-13.1.0** |  Supported*   |   Supported   |     R-A-B     | Incompatible  |
-| **SHS-14.0.0** |  Supported*   |   Supported   |  Supported*   |  Supported*   |
-| **SHS-14.0.1** |  Supported*   |     R-A-B     |  Supported*   |     R-A-B     |
-
+|                |   **2.3.2**   |   **3.1.0**   |   **3.1.1**   |   **3.1.2**   |
+| **SHS-13.1.0** |   Supported   |  Incompatible |  Incompatible |  Incompatible |
+| **SHS-14.0.0** |   Supported   |   Supported*  |   Supported*  |   Supported*  |
+| **SHS-14.0.1** |     R-A-B     |     R-A-B     |   Supported*  |   Supported*  |
+| **SHS-15.0.0** |  Incompatible |   Supported*  |     R-A-B     |   Supported   |
 
 \* The combination is supported, but the new FMN features added in later versions will not be available.
 
@@ -81,36 +84,44 @@ Use the following `sl-driver` pairing for the current release cycle:
 | Component                       | Recommended version |
 |---------------------------------|---------------------|
 | SHS                             | 15.0.0              |
-| Fabric Manager and Switch Agent | 3.1.1               |
+| Fabric Manager and Switch Agent | 3.1.2               |
 
 ## AMD ROCM and Nvidia CUDA Versions
 
-The following table lists the **AMD** and **ROCM** versions included in this release as part of the recipe.  
-**Slingshot Host Software (SHS)** includes **DMABuf support**; however, GPU vendors have gradually enabled DMABuf functionality in their newer releases.
+**Slingshot Host Software (SHS)** supports **DMABuf** and has transitioned to DMABuf for GPU memory registration with both AMD and NVIDIA GPUs.
 
-### DMABuf Support Overview
+- **AMD:** DMABuf is supported through the **AMD ROCR** runtime.
+- **NVIDIA:** DMABuf is supported starting with the **580.x driver** version.
 
-- **AMD:** DMABuf support is available and supported through the **AMD ROCR** runtime.  
-- **NVIDIA:** DMABuf support will be available starting with the **580.x driver** version.  
+### Build Recipe Versions
 
+The following table lists the GPU driver and toolkit versions (recipe) used to build this release of SHS.
 
-| Distribution             | Version   | ROCm Version | AMD Driver | Nvidia Driver Version | Nvidia SDK | CUDA Toolkit |
-| ------------------------ | --------- | ------------ | ---------- | --------------------- | ---------- | ------------ |
-| Red Hat Enterprise Linux | 8.10      | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
-| Red Hat Enterprise Linux | 9.6       | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
-| Red Hat Enterprise Linux | 9.7       | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
-| Red Hat Enterprise Linux | 9.7 ARM   | NA           | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
-| Red Hat Enterprise Linux | 9.8       | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
-| Red Hat Enterprise Linux | 9.8 ARM   | NA           | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
-| Red Hat Enterprise Linux | 10.2      | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
-| Red Hat Enterprise Linux | 10.2 ARM  | NA           | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
-| SUSE Linux Enterprise 15 | SP6       | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
-| SUSE Linux Enterprise 15 | SP6 ARM   | NA           | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
-| SUSE Linux Enterprise 15 | SP7       | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
-| SUSE Linux Enterprise 15 | SP7 ARM   | NA           | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
-| Ubuntu                   | 26.04     | 10.0         | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
-| Ubuntu                   | 26.04 ARM | NA           | 31.60.0    | 615.71.09             | 26.9       | 13.4         |
+| Distribution             | Version   | ROCm Version | AMD Driver | Nvidia Driver         | CUDA Toolkit |
+| ------------------------ | --------- | ------------ | ---------- | --------------------- | ------------ |
+| Red Hat Enterprise Linux | 8.10      | 10.0         | 31.60.0    | 615.71.09             | 13.4         |
+| Red Hat Enterprise Linux | 9.6       | 10.0         | 31.60.0    | 615.71.09             | 13.4         |
+| Red Hat Enterprise Linux | 9.7       | 10.0         | 31.60.0    | 615.71.09             | 13.4         |
+| Red Hat Enterprise Linux | 9.7 ARM   | NA           | 31.60.0    | 615.71.09             | 13.4         |
+| Red Hat Enterprise Linux | 9.8       | 10.0         | 31.60.0    | 615.71.09             | 13.4         |
+| Red Hat Enterprise Linux | 9.8 ARM   | NA           | 31.60.0    | 615.71.09             | 13.4         |
+| Red Hat Enterprise Linux | 10.2      | 10.0         | 31.60.0    | 615.71.09             | 13.4         |
+| Red Hat Enterprise Linux | 10.2 ARM  | NA           | 31.60.0    | 615.71.09             | 13.4         |
+| SUSE Linux Enterprise 15 | SP6       | 10.0         | 31.60.0    | 615.71.09             | 13.4         |
+| SUSE Linux Enterprise 15 | SP6 ARM   | NA           | 31.60.0    | 615.71.09             | 13.4         |
+| SUSE Linux Enterprise 15 | SP7       | 10.0         | 31.60.0    | 615.71.09             | 13.4         |
+| SUSE Linux Enterprise 15 | SP7 ARM   | NA           | 31.60.0    | 615.71.09             | 13.4         |
+| Ubuntu                   | 26.04     | 10.0         | 31.60.0    | 615.71.09             | 13.4         |
+| Ubuntu                   | 26.04 ARM | NA           | 31.60.0    | 615.71.09             | 13.4         |
 
+### Validated Versions
+
+For release SHS-v15.0.0, SHS has been validated with the following GPU software versions:
+
+- **AMD:** ROCm 10.1 and its corresponding AMD driver.
+- **NVIDIA:** Driver 620.70.06 and CUDA Toolkit 13.5.
+
+Before every release, SHS is validated with the proposed recipe versions. Unless specifically noted in this section, newer GPU driver and toolkit versions than those listed above can be installed and are expected to work.
 
 ## NIC Support
 
@@ -134,15 +145,13 @@ For systems using HPE Slingshot 100Gbps NICs, continue using Slingshot Host Soft
 | Ubuntu                   | 26.04     | Yes                          | Yes                          |
 | Ubuntu                   | 26.04 ARM | Yes                          | Yes                          |
 
-
 ## Libfabric Versions
 
 All distributions are provided with libfabric version v2.7.0, branched from v2.7.x: [https://github.com/ofiwg/libfabric/tree/v2.7.x](https://github.com/ofiwg/libfabric/tree/v2.7.x).
 
-- Branched off ofiwg: `v2.7.x` 
-- Last OFI Tag: `v2.7.0` 
-- GitHash: `gdbe84bd2e`
-
+- Branched off ofiwg: `v2.7.x`
+- Last OFI Tag: `v2.7.0`
+- GitHash: `g69137ab59`
 
 ## HPE System Cluster Management Software
 
@@ -171,8 +180,6 @@ _**Compute Node Image and Cluster Management Software Compatibility**_
 | SuSE Linux Enterprise 15 | SP7 ARM   | 1.7.X\*       | 1.14+ | NA    |
 | Ubuntu                   | 26.04     | NA            | NA    | NA    |
 | Ubuntu                   | 26.04 ARM | NA            | NA    | NA    |
-
-
 
 **Note:** For CSM systems, installations of HPE Slingshot 100Gbps NICs on worker nodes are only supported up to the CSM 1.6 release.
 
