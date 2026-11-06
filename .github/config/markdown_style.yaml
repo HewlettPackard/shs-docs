@@ -183,8 +183,9 @@ MD032: true
 
 # MD033/no-inline-html - Inline HTML
 MD033:
-  # Allowed elements
-  allowed_elements: [ "a" ]
+  # Allowed elements ("br" is the only way to break a line inside a table cell;
+  # the release notes generated from Jira rely on it)
+  allowed_elements: [ "a", "br" ]
 
 # MD034/no-bare-urls - Bare URL used
 MD034: true

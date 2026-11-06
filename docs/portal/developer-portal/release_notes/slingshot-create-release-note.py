@@ -112,9 +112,9 @@ def commandline_args() -> tuple:
     opts = []
     
     try:
-        opts, [] = getopt.getopt(sys.argv[1:], "c:u:p:h", ['user=', 'password=', 'cacert', 'help'])
-    except:
-        print("Error for command line aurguments")
+        opts, [] = getopt.getopt(sys.argv[1:], "c:u:p:h", ['user=', 'password=', 'cacert=', 'help'])
+    except getopt.GetoptError as e:
+        print(f"Error for command line arguments: {e}")
         
     for opt, arg in opts:
         if opt in ['-u', '--user']:
@@ -124,14 +124,14 @@ def commandline_args() -> tuple:
         elif opt in ['-c', '--cacert']:
             cacert = arg            
         elif opt in ['-h', '--help']:
-            print("format for executing file: slingshot-create-release-note.py -u <user name> -p <password> -c <cacert>")
+            print("format for executing file: slingshot-create-release-note.py -u <email> -p <Jira API token> [-c <cacert>]")
             exit(1)
             
     return (user, password, cacert)
 
 
 def generate_heading(fd : TextIOWrapper, key : str) -> int:
-    return fd.write(f'{NL}{H1} {HEADINGS[key]}{NL}')    
+    return fd.write(f'{NL}{H1} {HEADINGS[key]}{NL}{NL}')
 
 
 def generate_markdown_table(fd : TextIOWrapper, col : str) -> int:
@@ -147,6 +147,11 @@ def generate_markdown_content(fd : TextIOWrapper, content : str) -> int:
     return fd.write(content)
 
 
+def markdown_clean_lines(content : str) -> str:
+    # Jira text arrives with CRLF line endings and stray trailing spaces.
+    return NL.join([ line.rstrip() for line in content.splitlines() ]).rstrip() + NL
+
+
 def generate_markdown_summary(fd : TextIOWrapper, contents : list) -> int:
     try:
         date_obj = datetime.strptime(contents[0], "%Y-%m-%d")
@@ -156,14 +161,14 @@ def generate_markdown_summary(fd : TextIOWrapper, contents : list) -> int:
         
     content = SUMMARY_TEMPLATE.format(H1, HEADINGS[NS_SUMMARY],date_str, contents[1])
     
-    return generate_markdown_content(fd, content)
+    return generate_markdown_content(fd, markdown_clean_lines(content))
 
 
 def generate_release_note_snippet(name : str, contents : list) -> None:
     with open(f'{name}.md', 'w') as fd:
         if (contents == []):
             generate_heading(fd, name)            
-            generate_markdown_content(fd, EMPTY_CONTENT)
+            generate_markdown_content(fd, EMPTY_CONTENT + NL)
             return 
 
         if (name == NS_SUMMARY):
@@ -232,6 +237,7 @@ def safe_query_result(issue : Any, key : str) -> Any:
 def query(file_name : str) -> list:
     user, password, cacert = commandline_args()
     query_uri = JIRA_HOST + JIRA_API_ENDPOINT + QUERY_FILTERS[file_name]    
+    # jira-pro accepts <email> + API token as HTTP Basic auth credentials.
     query_resp = requests.get(query_uri, verify = cacert, auth = HTTPBasicAuth(user, password))
     query_resp.raise_for_status()
     query_resp_text = json.loads(query_resp.text)
