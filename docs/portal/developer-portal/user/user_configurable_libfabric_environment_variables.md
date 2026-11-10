@@ -1,31 +1,39 @@
-# User configurable Libfabric environment variables when using the HPE Slingshot NIC
+﻿# Libfabric environment variables relevance to users
 
-The `cxi` provider uses various environment parameters to size hardware resources according to the needs of the system, potentially application and message pattern and system processing type and size. If those patterns are constant, the configuration would be globally set, but for systems that have heterogenous applications and processing, sometimes these need to be set on a per-application basis.
-Often tuning of environment variables is more relevant for larger clusters and larger jobs.
+General Libfabric and CXI provider-specific environment variables size resources, such as queues, matching tables, and memory-registration caches. They also optimize protocol behavior based on factors such as communication patterns, processor type, and system scale.
 
-Some are specific to the `cxi` provider, while others are general Libfabric object attribute size and environment variables important when using the `cxi` provider.
+Users most commonly modify environment variables to:
 
-The use of these settings can be relevant in several ways:
+- **Avoid hangs and instability:** Some applications are sensitive to interactions among memory allocation, memory registration, and other runtime behaviors that require explicit configuration for reliable execution.
+  This issue occurs especially often with NVIDIA Collective Communications Library (NCCL) and AMD ROCm Collective Communications Library (RCCL) workloads. See the later sections for specific guidance.
+- **Achieve expected performance:** Some applications require larger internal structures to sustain RDMA performance.
+  Default sizing balances support for most communication patterns against the risk of oversized allocations that waste host memory.
+  At larger scales, users may need to increase these settings to support more in-flight operations and a larger number of communicating peers.
+  If users set the values too low, internal command queues and hardware event queues can fill, causing backpressure and temporary failures that Libfabric reports as `-FI_EAGAIN` until the system drains the outstanding work.
+  If users set the values too high, the provider reserves memory to support more software- and hardware-backed resources than the application can use effectively.
+- **Fine-tune performance:** Advanced users and developers can explore configurable resource settings to tailor performance for particular applications and communication patterns. These settings may help optimize the use of specific hardware offload features.
 
-- Optimizing host memory use: over sizing some parameters can waste host memory.
-- Optimize performance: sizing the resources properly can help performance by maximizing use of the hardware offload capability, minimizing “on-loading” to the host, avoiding the impact of stopping and starting to flow control messages, and maximizing the opportunities re-use host memory caches.
-- Overcoming hangs that may be caused by the complex interaction of any specific application’s memory access and communications patterns with the memory caching and other functions in the communications stack.
+The site administrator, middleware such as an MPI library, or runtime environment variables can set environment values.
 
-Environment variable defaults are usually set by the administrator but can be overridden on an application basis – either the middleware like the MPI library, or on an application-by-application basis. Sometimes the optimal default settings are site-specific, a function of the type of processors being employed (GPU vs CPU), the main type of applications being run (For example, GPU-based AI, MPI, or SHMEM), and the scale of the system.
-Sometimes, a specific application will need unique settings. These settings can include both general Libfabric parameters as well HPE Slingshot specific ones.
+On systems with relatively uniform workloads and hardware, HPE recommends that sites establish default settings that reflect differences in:
 
-Note that HPE Cray MPI provides default settings for environment variables that are not yet set by other Libfabric stacks (like open-source MPI or GPU communications collectives library) and therefore might need to be explicitly set, particularly for larger cluster sizes.
-While it is difficult to provide general guidance across the breadth of different system sizes and types using the HPE Slingshot NIC, sites should consider whether the trade-off of setting a parameter too high at the cost of wasted host memory is more impactful than being too constrained, in which case the HPE Cray MPI settings is a good template thought they are sized for the customer base of large systems.
+- Processor type, such as CPU versus GPU
+- Dominant workload type, such as MPI, OpenSHMEM, or GPU-based collective libraries such as NCCL and RCCL
+- Overall system size
 
-The most detailed reference for the HPE Slingshot provider is the [manpage for the `cxi` provider](https://github.com/ofiwg/libfabric/blob/main/man/fi_cxi.7.md).
-Libfabric software developers (For example, those developing MPI middleware) should see the manpages for the most complete and information.
-The intent of the information here is to document the most common settings administrators and specific application users will need to use, partially based on current customer experience.
-The [HPE Slingshot NIC RDMA protocol and traffic classes](./hpe_slingshot_nic_rdma_protocol_and_traffic_classes.md#hpe-slingshot-nic-rdma-protocol-and-traffic-classes) table in the appendix of HPE Slingshot NIC specific settable parameters is copied from the `cxi` Libfabric provider man page.
-The syntax for these variables starts with `FI_CXI_xxx`.
+On systems that run heterogeneous applications or hardware, administrators may achieve better results by applying settings on a per-application basis.
+One method encapsulates relevant environment-variable changes in site-supplied user modules.
+For example, administrators can place NCCL and RCCL related settings in the GPU library module.
 
-General Libfabric variables will use the syntax `FI_xxx` and would be explained in the general Libfabric man page available on `ofiwg.github.io`.
-Software capabilities have evolved from prior versions of the HPE Slingshot Host Software, and guidance might have been different in the past.
+Variables specific to the CXI provider use the `FI_CXI_` prefix, while general Libfabric variables use the `FI_` prefix.
 
-Default settings are also current as of the SHS 2.1.2 release but can change in the future.
+The complete technical reference is available in the Libfabric man pages at [ofiwg.github.io](https://ofiwg.github.io/).
+This section does not replace the man pages or explain every configuration option. Instead, it explains the settings that users encounter most often, based on field experience.
 
-Users of the HPE Cray Supercomputing Programming Environment (CPE) will find additional information in the CPE documentation.
+Software capabilities change across HPE Slingshot Host Software releases.
+As a result, guidance and details such as default values may change over time.
+
+This document assumes at least **HPE Slingshot Host Software version 13.1**.
+In version 13.0, HPE increased the default values of some environment variables to match the larger values that HPE Cray MPICH had always configured.
+
+Before this change, users frequently needed to configure some of these variables when running non-HPE Cray MPICH workloads, such as Open MPI or Intel MPI, at scale.

@@ -1,1 +1,1 @@
-# Collective functions
+﻿# Collective functions

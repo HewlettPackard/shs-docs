@@ -1,4 +1,4 @@
-# Overview
+﻿# Overview
 
 The accelerated collectives feature uses special multicast trees within the HPE Slingshot fabric to accelerate collective operations.
 

@@ -1,27 +1,48 @@
-# Debug performance and failure issues
+﻿# Debugging strategies
 
-This section describes how to debug applications once a fabric is considered operational.
+Debugging strategies assume that administrators regularly check switch performance and health, including link flaps that may indicate a cable needs to be reseated or replaced.
+This section provides general guidance for debugging applications once a fabric is operational.
+Failures during initial system bring-up can involve the network or host. For link-flap failures, use the system's link-debugging procedures.
 
-When a fabric is first being brought up and applications are failing, there can be many issues related to either the network or the host. Transient network failures can impact applications, but debugging whether that is the cause of the application failure is not covered here in depth.
-For example, if links are flapping causing an application to fail one would use link debugging procedures.
+Once a fabric is operational, consider the context:
+
+- Is this a new application, one that has been running successfully, or an application running at a new scale?
+
+  For a new application, focus on getting the configuration correct, including environment variables and required dependencies. For an application that has started failing or fails at a new scale, consider what changed and what the errors indicate.
+  If it fails at larger scale but works at smaller scale, environment-variable settings may need adjustment.
+
+- Is one application experiencing the issue, or are many applications affected?
+
+  If many applications are affected, suspect shared configuration or network issues. The steps here focus on one application.
+
+- Was hardware service recently performed?
+
+  Misconfigured cables can affect performance and may require the same debugging steps as bringing up a new system.
+
+- Was software recently upgraded? If so, what changed?
+
+  Consider dependencies involving job scheduling, GPU software, host images, IP networking, the HPE Slingshot driver, and Libfabric. OS upgrades can cause configuration drift that appears as poor network performance.
+
+Use the relevant sections of this guide for each scenario.
 
 ## Prerequisites
 
 - AMAs must be assigned to every NIC as is done at boot up.
-- TCP communication must be working. Even for RDMA communications, the job scheduler and MPI use TCP/IP to set up connections. If a system is being set up, TCP failures can relate to Linux misconfigurations in the ARP cache, static ARP tables, or missing routing rules that should have been set up using `ifroute` during boot up (for nodes with more than one NIC).
-- VNI job configuration must be enabled unless the system is running with the “default” `cxi-service`.
-- For systems with GPUs, there is a matched set of GPU drivers and programming toolkits for each version of the `cxi` driver as documented in the release notes. Install the GDRCopy library for NVIDIA GPUs.
+- TCP communication must be working. Even for RDMA communications, the job scheduler and MPI use TCP/IP to set up connections. TCP failures can result from Linux misconfiguration of the ARP cache, static ARP tables, or routing rules. Boot-script changes may disable these settings, and OS configuration may fail to preserve routing rules during link-up or link-down events. For multi-NIC nodes, check the routing rules configured with `ifroute` during boot.
+- VNI job configuration must be enabled unless the system is running with the default `cxi-service`.
+- For systems with GPUs, install the GPU drivers before the `cxi` driver so DKMS can build against them. Use the matched GPU-driver and programming-toolkit versions for each `cxi` driver release, as documented in the release notes. Install the GDRCopy library for NVIDIA GPUs.
+- For applications that do not use HPE Cray MPICH, check the application-specific setup and dependency guidance for NCCL/RCCL, Intel MPI, or Open MPI.
 
 ## Debug steps
 
 The following is a high-level list of actions that can be taken to debug applications:
 
-- Check the _HPE Slingshot Host Software Release Notes_ for known issues or resolved issues. If not running the latest release, check the release notes for the releases that came after the running system.
+- Check the *HPE Slingshot Host Software Release Notes* for known or resolved issues. If the system is not running the latest release, check later releases for issues that may have been fixed.
 - Run the application with Libfabric logging, `FI_LOG_LEVEL=warn` and `FI_LOG_PROV=cxi`. The resulting logs provide guidance and will greatly aid the teams in responding to support tickets.
 - For memory registration related issues, try running with `kdreg2` memory monitor to see if the issue relates to choice or memory cache monitor.  Also one can disable memory registration caching altogether, which will free up an application that is deadlocking but allow it to run instead of locking up. This points to tuning the memory registration cache settings.
-- If failures are being caused be hardware matching resource exhaustion, try setting matching mode to hybrid.
-- For general concern with resource exhaustion when not running Cray MPI, try setting the environment variables sized larger. Using the Cray MPI settings described below plus setting matching mode to hybrid would help detect whether the default settings are too small for the system or application. If so subsequent testing can help tune the size to avoid too much unneeded memory consumption is desired.
-- If the application performed differently after a software upgrade to the HPE Slingshot Host Software, it is possible to try running with the previous version of the Libfabric user space libraries, or even a more recent version of the Libfabric libraries. This might be easier for a user to try than building a new host image. (It is possible that this combination will not work – one can ask the HPE support team whether there are any known incompatibilities.) Today mixing and matching is not always an officially tested or supported combination, but it can be helpful in debugging and sometimes will be perfectly fine in production.
-- Trying the alternative rendezvous protocol – if the application is using large message and is performance glacially slow, trying the instructions for the alternative rendezvous protocol may be a useful debug step.
-- Collect the NIC counters for an application. See the _HPE Cray Cassini Performance Counters User Guide (S-9929)_ on the [HPE Support Center](https://support.hpe.com/connect/s/?language=en_US) for details.
-Counters are collected with Cray MPI, Libfabric, `sysfs`, or LDMS – different deployments use different strategies. Some of these counters are the same as can be collected on the switch port but will be easier for the user. These can present issues such as PCIe congestion, network congestion (pause exertions), and other factors. This can also be of great use by the support teams in responding to tickets.
+- If failures may be caused by hardware matching resource exhaustion, try setting the matching mode to `software` or `hybrid`.
+- For general concern with resource exhaustion when not running HPE Cray MPICH, try setting the relevant environment variables larger. Using the HPE Cray MPICH settings described elsewhere in this guide, together with `FI_CXI_RX_MATCH_MODE=hybrid`, helps determine whether the default settings are too small for the system or application. If so, subsequent testing can tune the sizes without unnecessarily consuming additional host memory.
+- With Libfabric versions before SHS 13.0, resource exhaustion was more likely for applications not using HPE Cray MPICH. Newer SHS releases increased several defaults, so this is less common; consult the environment-variable guidance before increasing settings.
+- If behavior changed after a software upgrade, try the previous or a newer Libfabric user-space library before rebuilding the host image. Mixed versions may be unsupported or untested, so check with HPE support for known compatibility issues.
+- Trying the alternative rendezvous protocol: if the application is using large messages and performs extremely slowly, trying the alternative rendezvous protocol may be a useful debug step.
+- Collect NIC counters for the application.

@@ -1,4 +1,4 @@
-# Collective close
+﻿# Collective close
 
 Use `fi_close()` on the `mc_obj` file identifier returned by `fi_join_collective`.
 

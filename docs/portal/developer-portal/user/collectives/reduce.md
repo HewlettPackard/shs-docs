@@ -1,4 +1,4 @@
-# Reduce
+﻿# Reduce
 
 This operation initiates reduction of the data supplied in `buf` from all endpoints and delivers the `result` in the designated `root_addr`.
 
@@ -6,7 +6,7 @@ It is implemented as an allreduce operation, where the result on all endpoints o
 
 The `result` parameter can be NULL on all endpoints other than the `root_addr` endpoint.
 
-**Note:** `data` is limited to 16 bytes.
+**Note:** `data` is limited to 32 bytes.
 
 ```screen
 ssize_t fi_reduce(struct fid_ep *ep, const void *buf, size_t count,
@@ -26,5 +26,5 @@ ssize_t fi_reduce(struct fid_ep *ep, const void *buf, size_t count,
 - `root_addr` is the address of the result target
 - `datatype` is the data type
 - `fi_op` is the reduction operator
-- `flags` modify the operation (see below)
+- `flags` modify the operation (see [Collective flags](./collective_flags.md) for details)
 - `context` is a user context pointer

@@ -1,4 +1,4 @@
-# Configure application software
+﻿# Common application scenarios
 
-This section provides guidance on configuring application for the HPE Slingshot NIC using the environment variables previously described to share best-known methods from HPE and other users.
-The needs of specific applications with specific data sets may always vary from these guidelines.
+This section describes configuring various Libfabric applications beyond HPE Cray MPICH and HPE Slingshot SHMEM based on observed practical experience.
+While some of these include explicit Libfabric environment guidance, this does not preclude additional user- or application-specific tuning described in the previous section.

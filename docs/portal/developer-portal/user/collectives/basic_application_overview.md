@@ -1,6 +1,6 @@
-# Basic application overview
+﻿# Basic application overview
 
-1. The user application must be started on multiple compute nodes by an appropriate Workload Manager, such as SLURM or PBS/PALS, which is adapted to support accelerated collective requirements. The WLM must:
+1. The user application must be started on multiple compute nodes by an appropriate Workload Manager, such as Slurm or PBS/PALS, which is adapted to support accelerated collective requirements. The WLM must:
 
    - Gain secure access to the Fabric Manager (HTTPS) prior to job start
    - Generate environment variables needed by the `libfabric` library

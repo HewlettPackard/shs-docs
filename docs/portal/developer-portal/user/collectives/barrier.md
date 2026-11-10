@@ -1,4 +1,4 @@
-# Barrier
+﻿# Barrier
 
 This operation initiates a barrier operation and returns immediately.
 The user must poll the Completion Queue (CQ) for a successful completion.
