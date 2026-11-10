@@ -1,4 +1,4 @@
-# OpenMPI
+# Open MPI
 
 The Open MPI Project is an open-source implementation of the Message Passing Interface (MPI).
 It is developed and maintained by a consortium of academic, research, and industry partners.

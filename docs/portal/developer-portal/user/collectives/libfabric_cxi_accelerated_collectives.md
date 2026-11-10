@@ -1,4 +1,4 @@
-# `libfabric` CXI accelerated collectives
+﻿# Appendix 2: Developer guide for HPE Slingshot in-network accelerated collectives
 
 The `libfabric` CXI provider supports HPC hardware-accelerated collectives through the `libfabric` `fi_collectives` API.
 This is a subset of collectives, with some extensions.

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
-<map id="shs_relnotes">
+<map id="shs-user">
     <title>HPE Slingshot Host Software User Guide (S-9014) (@product_version@)</title>
     <topicmeta>
         <shortdesc>This publication describes user procedures for SHS.</shortdesc>
@@ -10,74 +10,96 @@
     <topicref href="VeRsIoN.md" format="mdita" />
     <topicref href="user/about.md" format="mdita" />
     <topichead>
-      <topicmeta>
-          <navtitle>HPE Slingshot NIC overview</navtitle>
-      </topicmeta>
+      <topicmeta><navtitle>HPE Slingshot NIC overview and theory of operation</navtitle></topicmeta>
       <topicref href="user/hardware_overview.md" format="mdita" />
-      <topicref href="user/libfabric_and_the_hpe_slingshot_nic_offloads.md" format="mdita" />
-      <topicref href="user/memory_registration.md" format="mdita" />
       <topicref href="user/hardware_offload_capabilities.md" format="mdita" />
+      <topicref href="user/rdma_transport_theory.md" format="mdita" />
+      <topicref href="user/memory_registration.md" format="mdita" />
+      <topicref href="user/ats_odp_overview.md" format="mdita" />
+      <topicref href="user/retry_handler_and_recovery.md" format="mdita" />
+      <topicref href="user/cxi_services_resource_management.md" format="mdita" />
+      <topicref href="user/host_system_pcie_numa_and_topology.md" format="mdita" />
+      <topicref href="user/host_system_considerations.md" format="mdita" />
+      <topicref href="user/ip_networking_considerations.md" format="mdita" />
       <topicref href="user/software_architecture.md" format="mdita" />
       <topicref href="user/performance_counters.md" format="mdita" />
-      <topicref href="user/ip_networking_considerations.md" format="mdita" />
     </topichead>
     <topichead>
-      <topicmeta>
-          <navtitle>HPE Slingshot NIC Libfabric</navtitle>
-      </topicmeta>
-      <topicref href="user/download_and_build_libfabric.md" format="mdita"/>
-      <topicref href="user/libfabric_performance_regression.md" format="mdita"/>
-      <topicref href="user/user_configurable_libfabric_environment_variables.md" format="mdita">
-           <topicref href="user/rdma_messaging_and_relationship_to_environment_settings.md" format="mdita"/>
-           <topicref href="user/memory_cache_monitor_settings.md" format="mdita"/>
-           <topicref href="user/endpoint_receive_size_attribute.md" format="mdita"/>
-           <topicref href="user/endpoint_transmit_size_attribute.md" format="mdita"/>
-           <topicref href="user/completion_queue_size_attribute.md" format="mdita"/>
-           <topicref href="user/expected_number_of_ranks_and_peers.md" format="mdita"/>
-           <topicref href="user/tag_matching_mode_settings.md" format="mdita"/>
-           <topicref href="user/rendezvous_protocol_configuration.md" format="mdita"/>
-           <topicref href="user/linkx_provider.md" format="mdita"/>
-       </topicref>
-       <topicref href="user/debug_performance_and_failure_issues.md" format="mdita"/>
-       <topicref href="user/collectives/libfabric_cxi_accelerated_collectives.md" format="mdita">
-            <topicref href="user/collectives/overview.md" format="mdita"/>
-            <topicref href="user/collectives/requirements.md" format="mdita"/>
-            <topicref href="user/collectives/basic_application_overview.md" format="mdita"/>
-            <topicref href="user/collectives/collective_functions.md" format="mdita">
-                <topicref href="user/collectives/collective_join.md" format="mdita">
-                    <topicref href="user/collectives/fi_av.md" format="mdita"/>
-                    <topicref href="user/collectives/fi_av_set.md" format="mdita"/>
-                    <topicref href="user/collectives/collective_join.md" format="mdita"/>
-                    </topicref>
-                <topicref href="user/collectives/collective_operations.md" format="mdita">
-                    <topicref href="user/collectives/barrier.md" format="mdita"/>
-                    <topicref href="user/collectives/broadcast.md" format="mdita"/>
-                    <topicref href="user/collectives/reduce.md" format="mdita"/>
-                    <topicref href="user/collectives/allreduce.md" format="mdita"/>
-                    <topicref href="user/collectives/collective_flags.md" format="mdita"/>
-                    <topicref href="user/collectives/collective_operators.md" format="mdita"/>
-                    </topicref>
-                <topicref href="user/collectives/collective_close.md" format="mdita"/>
-            </topicref>
-            <topicref href="user/collectives/environment_variables.md" format="mdita">
-                <topicref href="user/collectives/fi_cxi_hwcoll_addrs_per_job.md" format="mdita"/>
-            </topicref>
-            <topicref href="user/collectives/error_codes.md" format="mdita"/>
-        </topicref>
+      <topicmeta><navtitle>HPE Slingshot NIC Libfabric</navtitle></topicmeta>
+      <topicref href="user/libfabric_and_the_hpe_slingshot_nic_offloads.md" format="mdita"/>
+      <topicref href="user/user_configurable_libfabric_environment_variables.md" format="mdita" />
+      <topicref href="user/rdma_messaging_and_relationship_to_environment_settings.md" format="mdita" />
+      <topicref href="user/memory_cache_monitor_settings.md" format="mdita" />
+      <topicref href="user/buffer_and_queue_sizes.md" format="mdita">
+        <topicref href="user/endpoint_receive_size_attribute.md" format="mdita" />
+        <topicref href="user/endpoint_transmit_size_attribute.md" format="mdita" />
+        <topicref href="user/completion_queue_size_attribute.md" format="mdita" />
+        <topicref href="user/expected_number_of_ranks_and_peers.md" format="mdita" />
+      </topicref>
+      <topicref href="user/tag_matching_mode_settings.md" format="mdita" >
+        <topicref href="user/configuring_matching.md" format="mdita" />
+        <topicref href="user/hardware_matching.md" format="mdita" />
+        <topicref href="user/cxi_request_buffers.md" format="mdita" />
+        <topicref href="user/hybrid_matching.md" format="mdita" />
+      </topicref>
+      <topicref href="user/rendezvous_protocol.md" format="mdita" />
+      <topicref href="user/summary_table.md" format="mdita" />
+      <topicref href="user/linkx_provider.md" format="mdita" />
+      <topicref href="user/download_and_build_libfabric.md" format="mdita" />
+      <topicref href="user/libfabric_performance_regression.md" format="mdita" />
     </topichead>
     <topicref href="user/application_software_overview.md" format="mdita">
-       <topicref href="user/hpe_cray_programming_environment.md" format="mdita"/>
-       <topicref href="user/nccl_and_rccl.md" format="mdita"/>
-       <topicref href="user/intel_mpi.md" format="mdita"/>
-       <topicref href="user/daos.md" format="mdita"/>
-       <topicref href="user/openmpi.md" format="mdita"/>
+        <topicref href="user/hpe_cray_mpich_and_hpe_slingshot_shmem.md" format="mdita" />
+        <topicref href="user/nccl_and_rccl.md" format="mdita" />
+        <topicref href="user/intel_mpi.md" format="mdita" />
+        <topicref href="user/openmpi.md" format="mdita" >
+          <topicref href="user/openmpi_and_libfabric.md" format="mdita" />
+          <topicref href="user/openmpi_counters.md" format="mdita" />
+        </topicref>
     </topicref>
-    <topichead>
-      <topicmeta>
-          <navtitle>Appendix</navtitle>
-       </topicmeta>
-       <topicref href="user/hpe_slingshot_nic_rdma_protocol_and_traffic_classes.md" format="mdita"/>
-       <topicref href="user/ip_performance_and_configuration_settings.md" format="mdita"/>
-       <topicref href="user/libfabric_runtime_configurable_parameters.md" format="mdita"/>
-    </topichead>
+    <topicref href="user/performance_counter_reference.md" format="mdita">
+        <topicref href="user/performance_counter_overview.md" format="mdita" />
+        <topicref href="user/counter_access.md" format="mdita" />
+        <topicref href="user/navigating_counter_taxonomy.md" format="mdita" />
+        <topicref href="user/counter_for_observing.md" format="mdita">
+          <topicref href="user/traffic_classes_and_request_response.md" format="mdita" />
+        </topicref>
+        <topicref href="user/counter_for_analyzing.md" format="mdita">
+          <topicref href="user/matching_resource_use_effectiveness.md" format="mdita" />
+          <topicref href="user/matching_counters_debug_performance.md" format="mdita" />
+          <topicref href="user/hardware_match_engine_effectiveness.md" format="mdita" />
+        </topicref>
+        <topicref href="user/mpi_counter_reporting.md" format="mdita">
+          <topicref href="user/mpi_level_1_reporting.md" format="mdita" />
+          <topicref href="user/mpi_level_2_reporting.md" format="mdita" />
+          <topicref href="user/mpi_diagnostic_examples.md" format="mdita" />
+        </topicref>
+    </topicref>
+    <topicref href="user/debug_performance_and_failure_issues.md" format="mdita" />
+    <topicref href="user/libfabric_runtime_configurable_parameters.md" format="mdita" />
+    <topicref href="user/collectives/libfabric_cxi_accelerated_collectives.md" format="mdita">
+        <topicref href="user/collectives/overview.md" format="mdita" />
+        <topicref href="user/collectives/requirements.md" format="mdita" />
+        <topicref href="user/collectives/basic_application_overview.md" format="mdita" />
+        <topicref href="user/collectives/collective_functions.md" format="mdita">
+          <topicref href="user/collectives/collective_join.md" format="mdita">
+            <topicref href="user/collectives/fi_av.md" format="mdita" />
+            <topicref href="user/collectives/fi_av_set.md" format="mdita" />
+            <topicref href="user/collectives/fi_join_collective.md" format="mdita" />
+          </topicref>
+          <topicref href="user/collectives/collective_operations.md" format="mdita">
+            <topicref href="user/collectives/barrier.md" format="mdita" />
+            <topicref href="user/collectives/broadcast.md" format="mdita" />
+            <topicref href="user/collectives/reduce.md" format="mdita" />
+            <topicref href="user/collectives/allreduce.md" format="mdita" />
+            <topicref href="user/collectives/collective_flags.md" format="mdita" />
+            <topicref href="user/collectives/collective_operators.md" format="mdita" />
+          </topicref>
+          <topicref href="user/collectives/collective_close.md" format="mdita" />
+        </topicref>
+        <topicref href="user/collectives/environment_variables.md" format="mdita">
+          <topicref href="user/collectives/fi_cxi_hwcoll_addrs_per_job.md" format="mdita" />
+        </topicref>
+        <topicref href="user/collectives/error_codes.md" format="mdita" />
+    </topicref>
 </map>

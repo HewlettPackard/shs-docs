@@ -1,8 +1,8 @@
-# Allreduce
+﻿# Allreduce
 
 This operation initiates reduction of the data supplied in `buf` from all endpoints and delivers it to the `result` on all endpoints.
 
-**Note:** `data` is limited to 16 bytes.
+**Note:** `data` is limited to 32 bytes.
 
 ```screen
 ssize_t fi_allreduce(struct fid_ep *ep, const void *buf, size_t count,
@@ -21,5 +21,5 @@ ssize_t fi_allreduce(struct fid_ep *ep, const void *buf, size_t count,
 - `coll_addr` is the typecast `mc_obj` for the collective group
 - `datatype` is the data type
 - `fi_op` is the reduction operator
-- `flags` modify the operation (see below)
+- `flags` modify the operation (see [Collective flags](./collective_flags.md) for details)
 - `context` is a user context pointer

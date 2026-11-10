@@ -1,4 +1,4 @@
-# `fi_join_collective()`
+﻿# `fi_join_collective()`
 
 Once the `fi_av_set` structure is created, use `fi_join_collective()` to create the collective `mc_obj` that represents the multicast tree.
 
@@ -8,7 +8,7 @@ int fi_join_collective(ep, FI_ADDR_NOTAVAIL, avset, 0L, &mc_obj, ctx);
 
 - `ep` is the endpoint on which the function is called
 - `FI_ADDR_NOTAVAIL` is a mandatory placeholder
-- `avset` is the fi_av_set created above
+- `avset` is the previously created `fi_av_set`
 - `flags` are not supported
 - `mc_obj` is the return multicast object pointer
 - `ctx` is an arbitrary pointer associated with this operation to allow concurrency, and can be NULL

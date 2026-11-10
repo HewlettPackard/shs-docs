@@ -1,10 +1,10 @@
-# Requirements
+﻿# Requirements
 
 The following are requirements for Cray System Management (CSM) and HPE Performance Cluster Manager (HPCM) environments:
 
 - HPE Slingshot CXI NICs
 - Rosetta fabric switches
-- Fabric Manager REST API (FM API)
+- Fabric Manager (FM) Representational State Transfer (REST) API
 - Supported Workload Manager (WLM)
 - `libfabric`/`cxi` libraries
 - `libcurl.so` library

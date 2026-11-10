@@ -1,4 +1,4 @@
-
+﻿
 # Download and build `libfabric`
 
 Download, configure, and build the `libfabric` library from the open source repository.
@@ -42,20 +42,20 @@ Ensure that required dependencies are installed on the system, which include the
    - Replace `--prefix=/some/network/file/system/location` with a valid directory path where the library will be installed for shared use across compute nodes.
 
     ```screen
-    ./configure LDFLAGS=-Wl,--build-id --enable-only --enable-restricted-dl --enable-tcp --enable-udp --enable-rxm --enable-rxd --enable-hook_debug --enable-hook_hmem --enable-dmabuf_peer_mem --enable-shm --enable-cxi --with-cuda=/usr/local/cuda --enable-cuda-dlopen --enable-gdrcopy-dlopen --with-rocr=/opt/rocm --enable-rocr-dlopen --prefix=/some/network/file/system/location
+   ./configure LDFLAGS=-Wl,--build-id --enable-only --enable-restricted-dl --enable-tcp --enable-udp --enable-rxm --enable-rxd --enable-hook_debug --enable-hook_hmem --enable-dmabuf_peer_mem --enable-shm --enable-cxi --enable-lnx --with-cuda=/usr/local/cuda --enable-cuda-dlopen --enable-gdrcopy-dlopen --with-rocr=/opt/rocm --enable-rocr-dlopen --prefix=/some/network/file/system/location
     ```
 
 5. Compile and install the library.
 
    Select the appropriate command for the environment in use:
 
-   - For RHEL and SLES systems:
+   - For Red Hat Enterprise Linux (RHEL) and SUSE Linux Enterprise Server (SLES) systems:
 
       ```screen
       make -j8 rpm
       ```
 
-      Once the RPM packages are created, install them with the `rpm -ivh` command.
+      Once the RPM Package Manager (RPM) packages are created, install them with the `rpm -ivh` command.
 
       ```screen
       rpm -ivh /path/to/generated/rpms/*.rpm

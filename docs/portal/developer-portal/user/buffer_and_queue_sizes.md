@@ -1,0 +1,1 @@
+﻿# Buffer and queue sizes

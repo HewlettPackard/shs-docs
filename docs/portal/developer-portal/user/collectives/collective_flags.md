@@ -1,4 +1,4 @@
-# Collective flags
+﻿# Collective flags
 
 Calling any reduction function normally submits the reduction to the fabric.
 
@@ -9,8 +9,9 @@ The local reduction is typically performed using normal C operators, such as sum
 
 Accelerated collectives provide two "novel" operators, the `MINMAXLOC` operator and the `REPSUM` operator.
 
-To allow these functions to be easily used, the `FI_MORE` flag can be specified for any accelerated collective reduction. which informs the reduction that more data is expected. This reduces data (in software) and holds the reduction data without submitting it to the fabric.
-This can be repeated any number of times to continue to accumulate results.
-When a subsequent reduction is performed without the `FI_MORE` flag, the supplied value is taken as the final contribution, is locally reduced with the existing reduction data, and the result is submitted to the fabric for collective reduction across endpoints.
+`FI_SUM` is also an `fi_op` reduction operator, not a flag.
+`fi_broadcast()` does not support flags.
+`fi_reduce()` and `fi_allreduce()` support `FI_MORE` and `FI_CXI_PRE_REDUCED`:
 
-This mechanism can be used for any operator, such as `FI_SUM`, but this is not generally the most efficient way to do this, since the normal addition operators are available in C.
+- `FI_MORE` accumulates locally into an opaque `struct cxip_coll_accumulator` without submitting to the fabric. It can be specified on successive reductions to continue accumulating. A subsequent reduction without `FI_MORE` adds the final contribution and submits the result to the fabric.
+- `FI_CXI_PRE_REDUCED` overloads `FI_SOURCE` and indicates that `buf` points to a pre-reduced `struct cxip_coll_accumulator`.

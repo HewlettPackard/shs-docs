@@ -1,15 +1,17 @@
-# Memory registration
+﻿# Memory registration and address translation
 
-High-performance applications use Remote Direct Memory Access (RDMA), allowing the networking stack to read and write data directly into application memory, bypassing normal operating system protection mechanisms.
-To facilitate data transfer from application space to the NIC, memory ranges are "registered" through an operation that translates virtual addresses into physical addresses and pins the relevant pages.
+In RDMA, the NIC performs direct memory access (DMA) to and from application buffers only after the system makes those buffers safe for device access.
+Libfabric memory registration tells the NIC that an application will use a specific virtual address range in CPU or GPU memory for RDMA.
+The registration translates virtual addresses into physical addresses and, by default, pins the relevant pages so the operating system cannot move them during the transfer. (With on-demand paging (ODP) enabled, CPU-memory pages can remain unpinned; device memory is always pinned.)
+With HPE Slingshot, the Libfabric provider performs this work automatically. The provider registers local buffers through the Libfabric memory registration cache.
+The registration establishes device-accessible mappings and access permissions, allowing the NIC to DMA directly to and from the buffer without copying. The provider may copy small inject payloads through a bounce buffer, but large transfers are zero-copy.
+In the default NTA mode, the NIC performs address translation on the device by using a page table that the driver provides. In ATS mode, translation is performed through the CPU's IOMMU instead.
 
-HPE Slingshot leverages Libfabric for its communication libraries, which manage the registration of RDMA memory regions.
-Libfabric supports the registration of both CPU and GPU memory.
+Libfabric does not require providers to register memory automatically, so other Libfabric-enabled NICs may use a different approach.
+Applications or middleware can also register memory explicitly.
+Libfabric supports registration for both CPU and GPU memory.
 
-In addition to RDMA transfer capabilities, Libfabric implements a "memory registration cache."
-This feature enhances performance by allowing RDMA hardware to reuse previous registrations, thereby reducing computational overhead. This is particularly effective for transfers that repeatedly use the same memory regions and for applications with a limited number of transfer locations.
-However, different applications may require different caching optimizations that can impact performance. Libfabric environment variables can be used to tune caching behavior for specific applications.
-
-The memory registration cache requires a mechanism to maintain accurate data.
-The Memory Registration Cache Monitor tracks changes in the memory map and invalidates the appropriate cached memory registration entries as needed. Libfabric supports various memory registration cache monitors (`userfaultfd`, `memhooks`, and `kdreg2`), which use different techniques to detect changes in the memory map, accommodating application-specific memory allocation strategies.
-These monitors and their associated environment variables are described in more detail in later sections of this document.
+Because registration and deregistration can be expensive, Libfabric uses a memory registration (MR) cache to reuse registrations when an application repeatedly uses the same buffers or overlapping ranges.
+The cache can reuse a registration safely only while it matches the process's current memory map. For example, the process might free an address range and later reuse it for a different allocation.
+Libfabric pairs the MR cache with a memory registration cache monitor to handle these changes.
+The monitor detects changes to the memory map and invalidates cached registrations that the NIC can no longer safely reuse. For CPU memory, Libfabric provides several monitor choices, including `memhooks`, `userfaultfd`, and `kdreg2`, as discussed in the Libfabric sections of this guide.

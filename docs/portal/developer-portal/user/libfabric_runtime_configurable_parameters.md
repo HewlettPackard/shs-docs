@@ -1,10 +1,14 @@
-# Libfabric runtime configurable parameters
+# Appendix 1: Libfabric runtime configurable parameters
 
 The CXI provider checks for the following environment variables.
 
+Defaults can vary by HPE Slingshot Host Software and Libfabric release. The release-dependent defaults below follow the SHS 13.0 and later guidance in this document; check the installed `fi_cxi(7)` man page for the definitive values on your system.
+
+**Note:** Use the `fi_info` utility to query provider environment variables: `fi_info -p cxi -e`
+
 ## `FI_CXI_ODP`
 
-Enables on-demand paging.
+Enables on-demand paging (ODP).
 If disabled, all DMA buffers are pinned.
 If enabled and `mr_mode` bits in the hints exclude `FI_MR_ALLOCATED`, then ODP mode will be used.
 
@@ -15,40 +19,47 @@ This is intended to be used primarily for testing.
 
 ## `FI_CXI_ATS`
 
-Enables PCIe ATS. If disabled, the NTA mechanism is used.
+Enables PCIe ATS. If disabled, the provider uses its on-NIC address-translation mechanism.
 
 ## `FI_CXI_ATS_MLOCK_MODE`
 
-Sets ATS `mlock` mode. The `mlock()` system call may be used in conjunction with ATS to help avoid network page faults. Valid values are "off" and "all". When `mlock` mode is "off", the provider does not use `mlock()`.
-An application using ATS without `mlock()` may experience network page faults, reducing network performance. When `ats_mlock_mode` is set to "all", the provider uses `mlockall()` during initialization with ATS. `mlockall()` causes all mapped addresses to be locked in RAM at all times. This helps to avoid most network page faults.
+Sets ATS `mlock` mode. The `mlock()` system call may be used in conjunction with ATS to help avoid network page faults. Valid values are `off` and `all`. When `mlock` mode is `off`, the provider does not use `mlock()`.
+An application using ATS without `mlock()` may experience network page faults, reducing network performance. When `ats_mlock_mode` is set to `all`, the provider uses `mlockall()` during initialization with ATS. `mlockall()` causes all mapped addresses to be locked in random access memory (RAM) at all times. This helps to avoid most network page faults.
 Using `mlockall()` may increase pressure on physical memory. Ignored when ODP is disabled.
+
+**Default:** `all`
 
 ## `FI_CXI_RDZV_THRESHOLD`
 
-Message size threshold for rendezvous protocol.
+Message size threshold for the rendezvous protocol.
 
-**Default:** 2048
+A send with length less than or equal to `FI_CXI_RDZV_THRESHOLD` plus `FI_CXI_RDZV_GET_MIN` will always be performed using the eager protocol instead of the non-eager rendezvous path.
+
+**Default:** `16384`
 
 ## `FI_CXI_RDZV_GET_MIN`
 
-Minimum rendezvous. Get payload size. A Send with length less than or equal to `FI_CXI_RDZV_THRESHOLD` plus `FI_CXI_RDZV_GET_MIN` will be performed using the eager protocol.
-Larger Sends will be performed using the rendezvous protocol with `FI_CXI_RDZV_EAGER_SIZE` bytes of payload sent eagerly and the remainder of the payload read from the source using a Get. `FI_CXI_RDZV_THRESHOLD` plus `FI_CXI_RDZV_GET_MIN` must be less than or equal to `FI_CXI_OFLOW_BUF_SIZE`.
+Minimum rendezvous Get payload size.
 
-**Default:** 2049
+Larger sends will be performed using the rendezvous protocol with `FI_CXI_RDZV_EAGER_SIZE` bytes of payload sent using the eager protocol and the remainder of the payload read from the source using a Get. `FI_CXI_RDZV_THRESHOLD` plus `FI_CXI_RDZV_GET_MIN` must be less than or equal to `FI_CXI_OFLOW_BUF_SIZE`.
+
+**Default:** `2049`
 
 ## `FI_CXI_RDZV_EAGER_SIZE`
 
-Eager data size for rendezvous protocol.
+Eager data size for the rendezvous protocol.
 
-**Default:** 2048
+This value is the amount of payload sent eagerly before the remainder is fetched using the rendezvous Get path.
+
+**Default:** `2048`
 
 ## `FI_CXI_RDZV_PROTO`
 
-Direct the provider to use a preferred protocol to transfer non-eager rendezvous data. Note that all rendezvous protocols use RDMA to transfer eager and non-eager rendezvous data. Adjusting the protocol can help improve performance for collective operations.
+Selects the preferred rendezvous protocol for transferring non-eager rendezvous data. All rendezvous protocols use RDMA to transfer eager and non-eager rendezvous data.
 
 ## `FI_CXI_RDZV_PROTO= default | alt_read`
 
-To use the `alt_read` alternate rendezvous protocol, the CXI driver property `rdzv_get_en` should be set to "0". The `alt_read` rendezvous protocol may help improve collective operation performance. Note that all rendezvous protocols use RDMA to transfer eager and non-eager rendezvous data.
+The alternate `alt_read` rendezvous protocol may improve performance for some workloads, especially large GPU communication patterns. To use it, the CXI driver property `rdzv_get_en` must be set to `0`. The default protocol remains `default` unless explicitly changed.
 
 ## `FI_CXI_DISABLE_NON_INJECT_MSG_IDC`
 
@@ -59,22 +70,22 @@ Experimental option to disable favoring Immediate Data Command (IDC) for transmi
 ## `FI_CXI_DISABLE_HOST_REGISTER`
 
 Disable registration of host buffers (overflow and request) with GPU.
-There are scenarios where using many processes per GPU results in page locking excessive amounts of memory degrading performance and/or restricting process counts.
+There are scenarios where using many processes per GPU results in page locking excessive amounts of memory, degrading performance or restricting process counts.
 
 **Default:** Register buffers with the GPU
 
 ## `FI_CXI_OFLOW_BUF_SIZE`
 
-Size of overflow buffers. Increasing the overflow buffer size allows for more unexpected message eager data to be held in a single overflow buffer. Applications with a large number of unexpected messages and/or using a large rendezvous threshold may perform better increasing this size.
+Size of overflow buffers. Increasing the overflow buffer size allows more unexpected message eager data to be held in a single overflow buffer. Applications with a large number of unexpected messages or a large rendezvous threshold may perform better with a larger buffer.
 
-**Default:** 2MB
+**Default:** `12MB`
 
 ## `FI_CXI_OFLOW_BUF_MIN_POSTED/FI_CXI_OFLOW_BUF_COUNT`
 
 The minimum number of overflow buffers that should be posted.
 Buffers will grow unbounded to support outstanding unexpected messages. Care should be taken to size appropriately based on job scale, size of eager data, and the amount of unexpected message traffic to reduce the need for flow control.
 
-**Default:** 3
+**Default:** `3`
 
 ## `FI_CXI_OFLOW_BUF_MAX_CACHED`
 
@@ -85,15 +96,15 @@ A value of zero indicates that once an overflow buffer is allocated it will be c
 
 ## `FI_CXI_SAFE_DEVMEM_COPY_THRESHOLD`
 
-Defines the maximum CPU `memcpy` size for HMEM device memory that is accessible by the CPU with load/store operations.
+Defines the maximum CPU `memcpy` size for heterogeneous memory (HMEM) device memory that the CPU can access with load/store operations.
 
-**Default:** 4096
+**Default:** `4096`
 
 ## `FI_CXI_OPTIMIZED_MRS`
 
 Enables optimized memory regions. See section CXI Domain Control Extensions on how to enable/disable optimized MRs at the domain level instead of for the global process/job.
 
-**Default:** 1
+**Default:** `1`
 
 ## `FI_CXI_MR_MATCH_EVENTS`
 
@@ -101,45 +112,45 @@ Enabling MR match events in a client/server environment can be used to ensure th
 
 See section CXI Domain Control Extensions on how to enable MR match events at the domain level instead of for the global process/job.
 
-**Default:** Disabled
+**Default:** `Disabled`
 
 ## `FI_CXI_PROV_KEY_CACHE`
 
-Enabled by default, the caching of remote MR provider keys can be disable by setting to 0.
+Enabled by default, the caching of remote MR provider keys can be disabled by setting the value to `0`.
 
 See section CXI Domain Control Extensions on how to disable the remote provider key cache at the domain level instead of for the global process/job.
 
-**Default:** Enabled
+**Default:** `Enabled`
 
 ## `FI_CXI_LLRING_MODE`
 
-Set the policy for use of the low-latency command queue ring mechanism. This mechanism improves the latency of command processing on an idle command queue. Valid values are idle, always, and never.
+Set the policy for use of the low-latency command queue ring mechanism. This mechanism improves the latency of command processing on an idle command queue. Valid values are `idle`, `always`, and `never`.
 
-**Default:** Idle
+**Default:** `Idle`
 
 ## `FI_CXI_CQ_POLICY`
 
-Experimental. Set a Command Queue write-back policy. Valid values are always, high_empty, low_empty, and low. "always", "high", and "low" refer to the frequency of write-backs. "empty" refers to whether a write-back is performed when the queue becomes empty.
+Experimental. Set a Command Queue write-back policy. Valid values are `always`, `high_empty`, `low_empty`, and `low`. The `always`, `high`, and `low` values refer to the frequency of write-backs. The `empty` value refers to whether the provider performs a write-back when the queue becomes empty.
 
-**Default:** Empty
+**Default:** `low_empty`
 
 ## `FI_CXI_DEFAULT_VNI`
 
 The default VNI value used only for service IDs where the VNI is not restricted.
 
-**Default:** 10
+**Default:** `10`
 
 ## `FI_CXI_RNR_MAX_TIMEOUT_US`
 
-When using the endpoint `FI_PROTO_CXI_RNR` protocol, this setting is used to control the maximum time from the original posting of the message that the message should be retried. A value of 0 will return an error completion on the first RNR ack status.
+When using the endpoint `FI_PROTO_CXI_RNR` protocol, this setting controls the maximum time from the original posting of the message before the provider retries it. A value of `0` returns an error completion on the first Receiver Not Ready (RNR) acknowledgment status.
 
-**Default:** 500000 microseconds
+**Default:** `500000` microseconds
 
 ## `FI_CXI_EQ_ACK_BATCH_SIZE`
 
-Number of EQ events to process before writing an acknowledgment to HW. Batching ACKs amortizes the cost of event acknowledgment over multiple network operations.
+Number of event queue (EQ) events to process before writing an acknowledgment to the hardware. Batching acknowledgments amortizes the cost of event acknowledgment over multiple network operations.
 
-**Default:** 32
+**Default:** `32`
 
 ## `FI_CXI_RX_MATCH_MODE`
 
@@ -149,107 +160,111 @@ Specify the receive message matching mode to be utilized. `FI_CXI_RX_MATCH_MODE=
 - `software` - Message matching is fully onloaded.
 - `hybrid` - Message matching begins fully offloaded, if resources become exhausted hardware will transition message matching to a hybrid of hardware and software matching.
 
-For both "hybrid" and "software" modes and care should be taken to minimize the threshold for rendezvous processing (For instance, `FI_CXI_RDZV_THRESHOLD` and `FI_CXI_RDZV_GET_MIN`). When running in software endpoint mode the environment variables `FI_CXI_REQ_BUF_SIZE` and `FI_CXI_REQ_BUF_MIN_POSTED` are used to control the size and number of the eager request buffers posted to handle incoming unmatched messages.
+For both `hybrid` and `software` modes, minimize the threshold for rendezvous processing (for instance, `FI_CXI_RDZV_THRESHOLD` and `FI_CXI_RDZV_GET_MIN`). In software endpoint mode, the environment variables `FI_CXI_REQ_BUF_SIZE` and `FI_CXI_REQ_BUF_MIN_POSTED` control the size and number of eager request buffers posted to handle incoming unmatched messages.
 
 Guidance: Use `hybrid` mode when the device reports that the application has exhausted its resources and aborts. Use `hardware` mode when you have tuned the application with workload-specific settings that stay within the resources reserved for the application. Running in `hardware` mode uses less internal buffer memory than running in `hybrid` mode.
 When resource exhaustion occurs in `hardware` mode in Libfabric, the provider will attempt to recover resources utilized by on-loading unexpected messages and continue operation in `hardware` mode. The application will abort if additional resources are required for successful recovery and are not recovered/replenished. Examples of this include: RXE PtlTE Priority LE exhaustion, or LE Exhaustion during flow control, and more where LE are not freed. There are more instances, but Libfabric will emit a `FI_LOG_WARN` level message indicating the type of exhaustion and how it was encountered. Other errors are not directly tied to the hardware, but may cause Libfabric to abort, such as buffer pool exhaustion for the PtlTE buffer list being exhausted, or being unable to join a specific reduction or join collective event.
 The best way to determine if you are running out of resources is to set `FI_LOG_LEVEL=warn` and see if one of the ranks in the job reports a fatal error message. If nothing is emitted by Libfabric, then the error may be reported back from the driver and provided to the application layer where MPI may choose to abort. In this case, check the system console log for `cxi` driver messages to determine if resource limits were encountered.
 
-**Default:** hardware
+**Default:** `hardware`
 
 ## `FI_CXI_HYBRID_PREEMPTIVE`
 
 When in hybrid mode, this variable can be used to enable preemptive transitions to software matching. This is useful at scale for poorly written applications with many unexpected messages where reserved resources may be insufficient to prevent starvation of software request list match entries.
 
-**Default:** 0, disabled
+**Default:** `0` (disabled)
 
 ## `FI_CXI_HYBRID_RECV_PREEMPTIVE`
 
 When in hybrid mode, this variable can be used to enable preemptive transitions to software matching. This is useful at scale for poorly written applications with many unmatched posted receives where reserved resources may be insufficient to prevent starvation of software request list match entries.
 
-**Default:** 0, disabled
+**Default:** `0` (disabled)
 
 ## `FI_CXI_HYBRID_POSTED_RECV_PREEMPTIVE`
 
 When in hybrid mode, this variable can be used to enable preemptive transitions to software matching when the number of posted receives exceeds the user requested RX size attribute. This is useful for applications where they may not know the exact number of posted receives and they are experiencing application termination due to event queue overflow.
 
-**Default:** 0, disabled
+**Default:** `0` (disabled)
 
 ## `FI_CXI_HYBRID_UNEXPECTED_MSG_PREEMPTIVE`
 
 When in hybrid mode, this variable can be used to enable preemptive transitions to software matching when the number of hardware unexpected messages exceeds the user requested RX size attribute. This is useful for applications where they may not know the exact number of posted receives and they are experiencing application termination due to event queue overflow.
 
-**Default:** 0, disabled
+**Default:** `0` (disabled)
 
 ## `FI_CXI_REQ_BUF_SIZE`
 
 Size of request buffers. Increasing the request buffer size allows for more unmatched messages to be sent into a single request buffer.
 
-**Default:** 2MB
+**Default:** `12 MiB` (`12,582,912` bytes)
 
 ## `FI_CXI_REQ_BUF_MIN_POSTED`
 
 The minimum number of request buffers that must be posted. The number of buffers will grow unbounded to support outstanding unexpected messages. Care must be taken to size appropriately based on job scale and the size of eager data to reduce the need for flow control.
 
-**Default:** 4
+**Default:** `6`
 
 ## `FI_CXI_REQ_BUF_MAX_CACHED/FI_CXI_REQ_BUF_MAX_COUNT`
 
 The maximum number of request buffers that will be cached. A value of zero indicates that once a request buffer is allocated it will be cached and used as needed. A non-zero value can be used with bursty traffic to shrink the number of allocated buffers to a maximum count when they are no longer needed.
 
-**Default:** 0
+**Default:** `0`
 
 ## `FI_CXI_MSG_LOSSLESS`
 
 Enable or disable lossless receive matching. If hardware resources are exhausted, hardware will pause the associated traffic class until an overflow buffer (hardware match mode) or request buffer (software match mode or hybrid match mode) is posted. This is considered experimental and not intended for application use.
 
-**Default:** disabled.
+**Default:** `disabled`.
 
 ## `FI_CXI_FC_RETRY_USEC_DELAY`
 
 Number of microseconds to sleep before retrying a dropped side-band, flow control message. Setting to zero will disable any sleep.
 
-**Default:** 1000 microseconds
+**Default:** `1000` microseconds
 
 ## `FI_UNIVERSE_SIZE`
 
 Defines the maximum number of processes that will be used by distribute OFI application. This value is used in setting the default control EQ size, see `FI_CXI_CTRL_RX_EQ_MAX_SIZE`.
 
-**Default:** 256
+**Default:** `1024`
 
 ## `FI_CXI_CTRL_RX_EQ_MAX_SIZE`
 
 Max size of the receive event queue used for side-band/control messages. Default receive event queue size is based on `FI_UNIVERSE_SIZE`. Increasing the receive event queue size can help prevent side-band/control messages from being dropped and retried but at the cost of additional memory usage. Size is always aligned up to a 4KiB boundary.
 
+The default maximum is `67108864` bytes (64 MiB). The actual queue size is also capped by a value derived from `FI_UNIVERSE_SIZE`.
+
+**Default:** `67108864` bytes (64 MiB)
+
 ## `FI_CXI_DEFAULT_CQ_SIZE`
 
 Change the provider default completion queue size expressed in entries. This may be useful for applications which rely on middleware, and middleware defaults the completion queue size to the provider default.
 
-**Default:** 1024
+**Default:** `131072`
 
 ## `FI_CXI_DISABLE_EQ_HUGETLB/FI_CXI_DISABLE_CQ_HUGETLB`
 
 By default, the provider will attempt to allocate 2 MiB `hugetlb` pages for provider event queues. Disabling `hugetlb` support will cause the provider to fall back to memory allocators using host page sizes. `FI_CXI_DISABLE_EQ_HUGETLB` replaces `FI_CXI_DISABLE_CQ_HUGETLB`, however use of either is still supported.
 
-**Default:** 2 MiB `hugetlb` pages
+**Default:** `2 MiB` `hugetlb` pages
 
 ## `FI_CXI_DEFAULT_TX_SIZE`
 
 Set the default `tx_attr.size` field to be used by the provider if the size is not specified in the user provided `fi_info` hints.
 
-**Default:** 512
+**Default:** `1024`
 
 ## `FI_CXI_DEFAULT_RX_SIZE`
 
 Set the default `rx_attr.size` field to be used by the provider if the size is not specified in the user provided `fi_info` hints.
 
-**Default:** 512
+**Default:** `1024`
 
 ## `FI_CXI_SW_RX_TX_INIT_MAX`
 
 Debug control to override the number of TX operations that can be outstanding that are initiated by software RX processing. It has no impact on hardware initiated RX rendezvous gets.
 
-**Default:** 1024
+**Default:** `1024`
 
 ## `FI_CXI_DEVICE_NAME`
 
@@ -263,13 +278,13 @@ Perform a telemetry delta between `fi_domain` open and close. Format is a comma-
 
 Resource group ID (RGID) to restrict the telemetry collection to. Value less than 0 is no restrictions.
 
-**Default:** `-1` – no restrictions
+**Default:** `-1` (no restrictions)
 
 ## `FI_CXI_CQ_FILL_PERCENT`
 
 Fill percent of the underlying hardware event queue used to determine when the completion queue is saturated. A saturated completion queue results in the provider returning `-FI_EAGAIN` for data transfer and other related Libfabric operations.
 
-**Default:** 50
+**Default:** `50`
 
 ## `FI_CXI_COLL_FABRIC_MGR_URL`
 
@@ -277,31 +292,33 @@ Accelerated collectives: Specify the HTTPS address of the fabric manager REST AP
 
 ## `FI_CXI_COLL_TIMEOUT_USEC`
 
-Accelerated collectives: Specify the reduction engine timeout. This should be larger than the maximum expected compute cycle in repeated reductions, or acceleration can create incast congestion in the switches. The relative performance benefit of acceleration declines with increasing compute cycle time, dropping below one percent at 32 microseconds (32000). Using acceleration with compute cycles larger than 32 microseconds is not recommended except for experimental purposes.
+Accelerated collectives: Specify the reduction engine timeout in microseconds. This should be larger than the maximum expected compute cycle in repeated reductions, or acceleration can create incast congestion in the switches. The relative performance benefit of acceleration declines with increasing compute cycle time, dropping below one percent at 32 milliseconds (32,000 microseconds). Using acceleration with compute cycles longer than 32 milliseconds is not recommended except for experimental purposes.
 
-**Default:** 32 microseconds (32000), maximum is 20 sec (20000000)
+**Default:** `20,000,000` microseconds (20 seconds; also the maximum).
+
+**Note:** Some versions of the `fi_cxi(7)` man page still list the earlier default of 32 milliseconds (32,000 microseconds); the current provider default is 20 seconds.
+
+This is distinct from `FI_CXI_COLL_RETRY_USEC`, whose default and maximum are `32,000` microseconds (32 milliseconds).
 
 ## `FI_CXI_COLL_USE_DMA_PUT`
 
 Accelerated collectives: Use DMA for collective packet put. This uses DMA to inject reduction packets rather than IDC, and is considered experimental.
 
-**Default:** False
+**Default:** `False`
 
 ## `FI_CXI_DISABLE_HMEM_DEV_REGISTER`
 
 Disable registering HMEM device buffer for load/store access. Some HMEM devices (For example, AMD, Nvidia, and Intel GPUs) support backing the device memory by the PCIe BAR.
 This enables software to perform load/stores to the device memory via the BAR instead of using device DMA engines. Direct load/store access may improve performance.
 
-**Default:** 0 – not disabled
+**Default:** `0` (not disabled)
 
 ## `FI_CXI_FORCE_ZE_HMEM_SUPPORT`
 
-Force the enablement of ZE HMEM support. By default, the CXI provider will only support ZE memory registration if implicit scaling is disabled (For example, the environment variables `EnableImplicitScaling=0` and `NEOReadDebugKeys=1` are set). Set `FI_CXI_FORCE_ZE_HMEM_SUPPORT` to 1 will cause the CXI provider to skip the implicit scaling checks. GPU direct RDMA may or may not work in this case.
+Force the enablement of ZE HMEM support. By default, the CXI provider supports ZE memory registration only if implicit scaling is disabled (for example, the environment variables `EnableImplicitScaling=0` and `NEOReadDebugKeys=1` are set). Setting `FI_CXI_FORCE_ZE_HMEM_SUPPORT` to `1` causes the CXI provider to skip the implicit scaling checks. GPU direct RDMA may or may not work in this case.
 
 ## `FI_CXI_ENABLE_TRIG_OP_LIMIT`
 
 Enable enforcement of triggered operation limit. Doing this can prevent `fi_control(FI_QUEUE_WORK)` deadlocking at the cost of performance.
 
-**Note:** Use the `fi_info` utility to query provider environment variables: `fi_info -p cxi -e`
-
-**Default:** 0 – disabled
+**Default:** `0` (disabled)
