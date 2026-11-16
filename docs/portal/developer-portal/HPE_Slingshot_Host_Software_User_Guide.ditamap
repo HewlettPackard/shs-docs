@@ -46,6 +46,7 @@
       <topicref href="user/summary_table.md" format="mdita" />
       <topicref href="user/linkx_provider.md" format="mdita" />
       <topicref href="user/download_and_build_libfabric.md" format="mdita" />
+      <topicref href="user/build_container_images.md" format="mdita" />
       <topicref href="user/libfabric_performance_regression.md" format="mdita" />
     </topichead>
     <topicref href="user/application_software_overview.md" format="mdita">
